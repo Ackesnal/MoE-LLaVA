@@ -1,15 +1,15 @@
 #!/bin/bash
 
-gpu_list="${CUDA_VISIBLE_DEVICES:-0}"
+gpu_list="${CUDA_VISIBLE_DEVICES:-0,1}"
 IFS=',' read -ra GPULIST <<< "$gpu_list"
 
 CHUNKS=${#GPULIST[@]}
 
-CONV="conv_template"
-CKPT_NAME="your_ckpt_name"
+CONV="stablelm"
+CKPT_NAME="MoE-LLaVA-StableLM-1.6B-4e"
 CKPT="checkpoints/${CKPT_NAME}"
-SPLIT="llava_vqav2_mscoco_test-dev2015"
-EVAL="eval"
+SPLIT="llava_vqav2_mscoco_test2015"
+EVAL="/mnt/data/llava_data/eval"
 
 for IDX in $(seq 0 $((CHUNKS-1))); do
     deepspeed --include localhost:${GPULIST[$IDX]} --master_port $((${GPULIST[$IDX]} + 29501)) moellava/eval/model_vqa_loader.py \

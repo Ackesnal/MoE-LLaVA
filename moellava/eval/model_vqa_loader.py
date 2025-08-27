@@ -4,6 +4,8 @@ import os
 import json
 from tqdm import tqdm
 import shortuuid
+import time
+import numpy as np
 
 from moellava.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN
 from moellava.conversation import conv_templates, SeparatorStyle
@@ -14,6 +16,13 @@ from torch.utils.data import Dataset, DataLoader
 
 from PIL import Image
 import math
+
+try:
+    from fvcore.nn import FlopCountMode, flop_count
+    FVCORE_AVAILABLE = True
+except ImportError:
+    FVCORE_AVAILABLE = False
+    print("Warning: fvcore not available. FLOPs calculation will be disabled.")
 
 
 def split_list(lst, n):
@@ -76,6 +85,11 @@ def eval_model(args):
     model_name = get_model_name_from_path(model_path)
     tokenizer, model, processor, context_len = load_pretrained_model(model_path, args.model_base, model_name)
 
+    # 计算模型参数量
+    param_stats = count_parameters(model)
+    print(f"Loaded model: {model_name}")
+    print_model_stats(param_stats)
+
     if args.return_gating_logit is not None:
         from moellava.utils import get_gating_logit_by_hook
         print(model)
@@ -95,6 +109,9 @@ def eval_model(args):
     data_loader = create_data_loader(questions, args.image_folder, tokenizer, image_processor, model.config)
 
     cnt = -1
+    total_generation_time = 0
+    total_generated_tokens = 0
+    
     for (input_ids, image_tensor), line in tqdm(zip(data_loader, questions), total=len(questions)):
         cnt += 1
         # if cnt == 30:
@@ -109,6 +126,9 @@ def eval_model(args):
         keywords = [stop_str]
         stopping_criteria = [KeywordsStoppingCriteria(keywords, tokenizer, input_ids)]
 
+        # 记录生成开始时间
+        start_time = time.time()
+        
         with torch.inference_mode():
             output_ids = model.generate(
                 input_ids,
@@ -121,6 +141,26 @@ def eval_model(args):
                 use_cache=True if args.return_gating_logit is None else False,
                 stopping_criteria=stopping_criteria
             )
+        
+        # 记录生成结束时间
+        end_time = time.time()
+        generation_time = end_time - start_time
+        
+        # 计算生成的token数量
+        input_token_len = input_ids.shape[1]
+        generated_tokens = output_ids.shape[1] - input_token_len
+        
+        # 更新总统计信息
+        total_generation_time += generation_time
+        total_generated_tokens += generated_tokens
+        
+        # 计算FLOPs
+        if cnt == 0:  # 只在第一个样本时计算并显示FLOPs统计
+            flop_stats = estimate_flops_generation(model, input_ids, image_tensor, generated_tokens)
+            print_model_stats(param_stats, flop_stats, generation_time)
+        elif cnt % 10 == 0:  # 每10个样本显示一次性能统计
+            print(f"\nSample {cnt}: Generated {generated_tokens} tokens in {generation_time:.2f}s ({generated_tokens/generation_time:.2f} tokens/s)")
+        
         if args.return_gating_logit is not None:
             # import ipdb
             # ipdb.set_trace()
@@ -132,7 +172,6 @@ def eval_model(args):
             # assert fea_hooks[0].fea.shape[0] + 1 == output_ids.shape[1] + 575
             print('The number of hooks is:', len(fea_hooks))
 
-        input_token_len = input_ids.shape[1]
         n_diff_input_output = (input_ids != output_ids[:, :input_token_len]).sum().item()
         if n_diff_input_output > 0:
             print(f'[Warning] {n_diff_input_output} output_ids are not the same as the input_ids')
@@ -146,12 +185,259 @@ def eval_model(args):
                                    "text": outputs,
                                    "answer_id": ans_id,
                                    "model_id": model_name,
-                                   "metadata": {}}) + "\n")
+                                   "metadata": {
+                                       "generation_time": generation_time,
+                                       "generated_tokens": generated_tokens,
+                                       "tokens_per_second": generated_tokens / generation_time if generation_time > 0 else 0
+                                   }}) + "\n")
         # ans_file.flush()
     ans_file.close()
 
+    # 打印总体统计信息
+    if total_generated_tokens > 0:
+        avg_tokens_per_second = total_generated_tokens / total_generation_time if total_generation_time > 0 else 0
+        print(f"\n" + "="*60)
+        print("OVERALL STATISTICS")
+        print("="*60)
+        print(f"Total samples processed: {cnt + 1}")
+        print(f"Total tokens generated: {total_generated_tokens}")
+        print(f"Total generation time: {total_generation_time:.2f} seconds")
+        print(f"Average tokens per second: {avg_tokens_per_second:.2f}")
+        print(f"Average tokens per sample: {total_generated_tokens / (cnt + 1):.2f}")
+        print(f"Average time per sample: {total_generation_time / (cnt + 1):.2f} seconds")
+        
+        # 显示模型激活参数信息
+        if param_stats.get('is_moe', False):
+            print(f"Model Type: MoE ({param_stats['num_experts']} experts, {param_stats['experts_per_token']} active)")
+            print(f"Total Parameters: {param_stats['total_params_B']:.2f}B")
+            print(f"Activated Parameters: {param_stats['activated_params_B']:.2f}B ({param_stats['activated_params'] / param_stats['total_params'] * 100:.1f}% of total)")
+        else:
+            print(f"Model Type: Dense")
+            print(f"Total Parameters: {param_stats['total_params_B']:.2f}B")
+        
+        print("="*60)
+
     if args.return_gating_logit is not None:
         torch.save(all_gating_logits, f'{args.return_gating_logit}.pt')
+
+def count_parameters(model):
+    """计算模型的参数量，包括MoE模型的激活参数量"""
+    total_params = sum(p.numel() for p in model.parameters())
+    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    
+    # 计算MoE相关参数
+    moe_stats = analyze_moe_structure(model)
+    
+    result = {
+        'total_params': total_params,
+        'trainable_params': trainable_params,
+        'total_params_M': total_params / 1e6,
+        'trainable_params_M': trainable_params / 1e6,
+        'total_params_B': total_params / 1e9,
+        'trainable_params_B': trainable_params / 1e9
+    }
+    
+    # 添加MoE相关统计
+    if moe_stats['is_moe']:
+        result.update(moe_stats)
+        result['activated_params_M'] = moe_stats['activated_params'] / 1e6
+        result['activated_params_B'] = moe_stats['activated_params'] / 1e9
+    
+    return result
+
+def analyze_moe_structure(model):
+    """分析模型的MoE结构，计算激活参数量"""
+    moe_info = {
+        'is_moe': False,
+        'num_experts': 0,
+        'experts_per_token': 0,
+        'moe_layers': 0,
+        'expert_params': 0,
+        'non_expert_params': 0,
+        'activated_params': 0
+    }
+    
+    # 遍历模型查找MoE层
+    for name, module in model.named_modules():
+        # 检查是否是MoE层（根据常见的MoE命名模式）
+        if any(keyword in name.lower() for keyword in ['moe', 'expert', 'mixture']):
+            moe_info['is_moe'] = True
+            
+            # 尝试获取专家数量和选择数量
+            if hasattr(module, 'num_experts'):
+                moe_info['num_experts'] = max(moe_info['num_experts'], module.num_experts)
+            if hasattr(module, 'top_k') or hasattr(module, 'num_experts_per_tok'):
+                experts_per_token = getattr(module, 'top_k', getattr(module, 'num_experts_per_tok', 2))
+                moe_info['experts_per_token'] = max(moe_info['experts_per_token'], experts_per_token)
+            
+            # 计算专家参数
+            if 'experts' in name.lower():
+                expert_params = sum(p.numel() for p in module.parameters())
+                moe_info['expert_params'] += expert_params
+                moe_info['moe_layers'] += 1
+    
+    # 如果没有直接找到MoE信息，尝试从配置中获取
+    if not moe_info['is_moe'] and hasattr(model, 'config'):
+        config = model.config
+        if hasattr(config, 'num_experts') or hasattr(config, 'moe'):
+            moe_info['is_moe'] = True
+            moe_info['num_experts'] = getattr(config, 'num_experts', 8)
+            moe_info['experts_per_token'] = getattr(config, 'num_experts_per_tok', 2)
+            
+            # 估算专家参数（基于总参数和配置）
+            if hasattr(config, 'intermediate_size') and hasattr(config, 'hidden_size'):
+                # 假设每个专家主要是FFN层
+                expert_size = 2 * config.hidden_size * config.intermediate_size
+                num_layers = getattr(config, 'num_hidden_layers', 32)
+                moe_info['expert_params'] = expert_size * moe_info['num_experts'] * num_layers
+                moe_info['moe_layers'] = num_layers
+    
+    # 计算总参数量和激活参数量
+    total_model_params = sum(p.numel() for p in model.parameters())
+    
+    if moe_info['is_moe'] and moe_info['num_experts'] > 0 and moe_info['experts_per_token'] > 0:
+        # 非专家参数 = 总参数 - 专家参数
+        moe_info['non_expert_params'] = total_model_params - moe_info['expert_params']
+        
+        # 激活参数 = 非专家参数 + (激活专家数 / 总专家数) * 专家参数
+        activation_ratio = moe_info['experts_per_token'] / moe_info['num_experts']
+        activated_expert_params = moe_info['expert_params'] * activation_ratio
+        moe_info['activated_params'] = moe_info['non_expert_params'] + activated_expert_params
+    else:
+        # 非MoE模型，激活参数等于总参数
+        moe_info['activated_params'] = total_model_params
+        moe_info['non_expert_params'] = total_model_params
+    
+    return moe_info
+
+def estimate_flops_generation(model, input_ids, image_tensor, generated_tokens):
+    """估算生成过程中的FLOPs，考虑MoE模型的激活参数"""
+    try:
+        # 获取模型配置
+        if hasattr(model, 'config'):
+            config = model.config
+        elif hasattr(model, 'model') and hasattr(model.model, 'config'):
+            config = model.model.config
+        else:
+            print("Warning: Cannot access model config for FLOPs calculation")
+            return None
+            
+        # 基本参数
+        vocab_size = getattr(config, 'vocab_size', 32000)
+        hidden_size = getattr(config, 'hidden_size', 4096)
+        num_layers = getattr(config, 'num_hidden_layers', 32)
+        intermediate_size = getattr(config, 'intermediate_size', 11008)
+        num_attention_heads = getattr(config, 'num_attention_heads', 32)
+        
+        # 检查是否为MoE模型
+        is_moe = hasattr(config, 'num_experts') or any('moe' in name.lower() for name, _ in model.named_modules())
+        num_experts = getattr(config, 'num_experts', 8) if is_moe else 1
+        experts_per_token = getattr(config, 'num_experts_per_tok', 2) if is_moe else 1
+        
+        # 输入序列长度
+        seq_len = input_ids.shape[1]
+        batch_size = input_ids.shape[0]
+        
+        # 1. Attention FLOPs: 4 * batch_size * seq_len * hidden_size^2 + 2 * batch_size * seq_len^2 * hidden_size
+        attention_flops = 4 * batch_size * seq_len * hidden_size * hidden_size + 2 * batch_size * seq_len * seq_len * hidden_size
+        
+        # 2. FFN FLOPs for MoE vs regular models
+        if is_moe:
+            # MoE: 只计算激活的专家
+            moe_flops = 2 * batch_size * seq_len * hidden_size * intermediate_size * experts_per_token
+            # 路由网络FLOPs
+            routing_flops = batch_size * seq_len * hidden_size * num_experts
+            ffn_flops = moe_flops + routing_flops
+        else:
+            # 普通FFN
+            ffn_flops = 2 * batch_size * seq_len * hidden_size * intermediate_size
+        
+        # 3. 每层的总FLOPs
+        layer_flops = attention_flops + ffn_flops
+        
+        # 4. 所有层的FLOPs
+        total_layer_flops = num_layers * layer_flops
+        
+        # 5. 输出投影FLOPs
+        output_projection_flops = batch_size * seq_len * hidden_size * vocab_size
+        
+        # 总FLOPs（用于一次前向传播）
+        total_flops_single = total_layer_flops + output_projection_flops
+        
+        # 生成的总FLOPs（考虑生成的每个token都需要完整的前向传播）
+        total_generation_flops = total_flops_single * generated_tokens
+        
+        result = {
+            'flops_per_token': total_flops_single,
+            'total_generation_flops': total_generation_flops,
+            'flops_per_token_G': total_flops_single / 1e9,
+            'total_generation_flops_T': total_generation_flops / 1e12,
+            'generated_tokens': generated_tokens,
+            'input_length': seq_len
+        }
+        
+        # 添加MoE相关信息
+        if is_moe:
+            result['is_moe'] = True
+            result['num_experts'] = num_experts
+            result['experts_per_token'] = experts_per_token
+            result['moe_efficiency'] = experts_per_token / num_experts
+            result['routing_flops'] = routing_flops * num_layers * generated_tokens
+            result['routing_flops_G'] = result['routing_flops'] / 1e9
+        
+        return result
+        
+    except Exception as e:
+        print(f"Error calculating FLOPs: {e}")
+        return None
+
+def print_model_stats(param_stats, flop_stats=None, generation_time=None):
+    """打印模型统计信息"""
+    print("\n" + "="*60)
+    print("MODEL STATISTICS")
+    print("="*60)
+    
+    # 参数量统计
+    print(f"Total Parameters: {param_stats['total_params']:,} ({param_stats['total_params_M']:.2f}M / {param_stats['total_params_B']:.2f}B)")
+    print(f"Trainable Parameters: {param_stats['trainable_params']:,} ({param_stats['trainable_params_M']:.2f}M / {param_stats['trainable_params_B']:.2f}B)")
+    
+    # MoE相关统计
+    if param_stats.get('is_moe', False):
+        print(f"MoE Model Detected: YES")
+        print(f"Number of Experts: {param_stats['num_experts']}")
+        print(f"Experts per Token: {param_stats['experts_per_token']}")
+        print(f"MoE Layers: {param_stats['moe_layers']}")
+        print(f"Expert Parameters: {param_stats['expert_params']:,} ({param_stats['expert_params'] / 1e6:.2f}M / {param_stats['expert_params'] / 1e9:.2f}B)")
+        print(f"Non-Expert Parameters: {param_stats['non_expert_params']:,} ({param_stats['non_expert_params'] / 1e6:.2f}M / {param_stats['non_expert_params'] / 1e9:.2f}B)")
+        print(f"Activated Parameters: {param_stats['activated_params']:,} ({param_stats['activated_params_M']:.2f}M / {param_stats['activated_params_B']:.2f}B)")
+        activation_ratio = param_stats['activated_params'] / param_stats['total_params'] * 100
+        print(f"Activation Ratio: {activation_ratio:.1f}%")
+    else:
+        print(f"MoE Model Detected: NO")
+        print(f"Activated Parameters: {param_stats['total_params']:,} ({param_stats['total_params_M']:.2f}M / {param_stats['total_params_B']:.2f}B)")
+    
+    # FLOPs统计
+    if flop_stats:
+        print(f"Input Length: {flop_stats['input_length']} tokens")
+        print(f"Generated Tokens: {flop_stats['generated_tokens']} tokens")
+        print(f"FLOPs per Token: {flop_stats['flops_per_token_G']:.2f} GFLOPs")
+        print(f"Total Generation FLOPs: {flop_stats['total_generation_flops_T']:.2f} TFLOPs")
+        
+        # MoE相关FLOPs信息
+        if flop_stats.get('is_moe', False):
+            print(f"MoE Efficiency: {flop_stats['moe_efficiency']:.1%} (using {flop_stats['experts_per_token']}/{flop_stats['num_experts']} experts)")
+            print(f"Routing FLOPs: {flop_stats['routing_flops_G']:.2f} GFLOPs")
+    
+    # 时间统计
+    if generation_time:
+        print(f"Generation Time: {generation_time:.2f} seconds")
+        if flop_stats:
+            tokens_per_second = flop_stats['generated_tokens'] / generation_time
+            print(f"Generation Speed: {tokens_per_second:.2f} tokens/second")
+            tflops_per_second = flop_stats['total_generation_flops_T'] / generation_time
+            print(f"Computational Throughput: {tflops_per_second:.2f} TFLOPs/second")
+    
+    print("="*60 + "\n")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

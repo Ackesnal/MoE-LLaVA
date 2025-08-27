@@ -2,10 +2,10 @@
 
 SPLIT="mmbench_dev_20230712"
 
-CONV="conv_template"
-CKPT_NAME="your_ckpt_name"
+CONV="stablelm"
+CKPT_NAME="MoE-LLaVA-StableLM-1.6B-4e"
 CKPT="checkpoints/${CKPT_NAME}"
-EVAL="eval"
+EVAL="/mnt/data/llava_data/eval"
 deepspeed moellava/eval/model_vqa_mmbench.py \
     --model-path ${CKPT} \
     --question-file ${EVAL}/mmbench/$SPLIT.tsv \
@@ -21,3 +21,5 @@ python3 scripts/convert_mmbench_for_submission.py \
     --result-dir ${EVAL}/mmbench/answers/$SPLIT \
     --upload-dir ${EVAL}/mmbench/answers_upload/$SPLIT \
     --experiment ${CKPT_NAME}
+
+

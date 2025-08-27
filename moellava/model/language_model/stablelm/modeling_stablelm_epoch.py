@@ -163,10 +163,57 @@ class MLP(nn.Module):
         self.up_proj = nn.Linear(config.hidden_size, config.intermediate_size, bias=False)
         self.down_proj = nn.Linear(config.intermediate_size, config.hidden_size, bias=False)
         self.act_fn = nn.SiLU()
-
+        
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
 
+
+class RePaMLP(nn.Module):
+    def __init__(self, config: StableLMEpochConfig):
+        super().__init__()
+        self.config = config
+        self.hidden_size = config.hidden_size
+        self.intermediate_size = config.intermediate_size
+        self.gate_proj = nn.Linear(config.hidden_size, config.intermediate_size, bias=False)
+        self.up_proj = nn.Linear(config.hidden_size, config.intermediate_size, bias=False)
+        self.down_proj = nn.Linear(config.intermediate_size, config.hidden_size, bias=False)
+        self.act_fn = nn.SiLU()
+        
+        self.gated_ratio = 1.0
+        self.num_gated_channels = int(self.intermediate_size * self.gated_ratio)
+        # 使用 register_buffer 而不是 nn.Parameter，这样会自动跟随模型的设备移动
+        self.register_buffer('mask', torch.ones(self.intermediate_size, dtype=torch.bool))
+        self.adjust_gated_ratio(self.gated_ratio)
+        self.reparamed = False
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        if self.reparamed:
+            return self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
+        else:
+            x_gate = self.act_fn(self.gate_proj(x))
+            if len(x.shape) == 3:
+                # for input with shape (batch_size, seq_len, hidden_size)
+                x_masked = torch.where(self.mask[None,None,:], x_gate, torch.ones_like(x_gate))
+            elif len(x.shape) == 4:
+                # for input with shape (batch_size, expert, seq_len, hidden_size)
+                x_masked = torch.where(self.mask[None,None,None,:], x_gate, torch.ones_like(x_gate))
+            return self.down_proj(x_masked * self.up_proj(x))
+        
+    def reparam(self):
+        if not self.reparamed:
+            reparamed_weight = self.up_proj[self.num_gated_channels:].T @ self.down_proj.weight[:, self.num_gated_channels:].T
+            self.gate_proj.weight = self.gate_proj[:self.num_gated_channels]
+            self.up_proj.weight = self.up_proj[:self.num_gated_channels]
+            self.down_proj.weight = self.down_proj[:, :self.num_gated_channels]
+            self.reparamed = True
+            return reparamed_weight
+        
+    def adjust_gated_ratio(self, gated_ratio):
+        self.gated_ratio = gated_ratio
+        self.num_gated_channels = int(self.intermediate_size * self.gated_ratio)
+        # 确保mask在正确的设备上
+        self.mask.fill_(False)  # 先全部设为False
+        self.mask[:self.num_gated_channels] = True
 
 def repeat_kv(hidden_states: torch.Tensor, n_rep: int) -> torch.Tensor:
     """
@@ -492,7 +539,7 @@ class DecoderLayer(nn.Module):
     def __init__(self, config: StableLMEpochConfig):
         super().__init__()
         self.self_attn = ATTENTION_CLASSES[config._attn_implementation](config=config)
-        self.mlp = MLP(config)
+        self.mlp = RePaMLP(config)
         self.input_layernorm = nn.LayerNorm(config.hidden_size, eps=config.norm_eps)
         self.post_attention_layernorm = nn.LayerNorm(config.hidden_size, eps=config.norm_eps)
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-JSON_FOLDER="pt_json"
-IMAGE_FOLDER="train_image_video"
+JSON_FOLDER="/mnt/data/llava_data/train_json"
+IMAGE_FOLDER="/mnt/data/llava_data"
 cd ~/MoE-LLaVA
 HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 deepspeed moellava/train/train_mem.py \
     --deepspeed ./scripts/zero2.json \

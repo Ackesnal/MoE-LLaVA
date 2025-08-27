@@ -96,6 +96,7 @@ class ModelArguments:
     min_capacity: int = 0
     use_residual: bool = False
     router_aux_loss_coef: float = 0.01
+    gated_ratio: float = 1.0
     # =============================================================
 
 @dataclass
@@ -145,6 +146,7 @@ class TrainingArguments(transformers.TrainingArguments):
     lora_bias: str = "none"
     mm_projector_lr: Optional[float] = None
     group_by_modality_length: bool = field(default=False)
+    finetune_repa: bool = False
 
 
 

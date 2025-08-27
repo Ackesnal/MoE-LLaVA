@@ -1,10 +1,10 @@
 #!/bin/bash
 
 
-CONV="conv_template"
-CKPT_NAME="your_ckpt_name"
+CONV="stablelm"
+CKPT_NAME="MoE-LLaVA-StableLM-1.6B-4e"
 CKPT="checkpoints/${CKPT_NAME}"
-EVAL="eval"
+EVAL="/mnt/data/llava_data/eval"
 deepspeed moellava/eval/model_vqa_science.py \
     --model-path ${CKPT} \
     --question-file ${EVAL}/scienceqa/llava_test_CQM-A.json \
