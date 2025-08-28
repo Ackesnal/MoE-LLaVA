@@ -174,7 +174,12 @@ class LLaVATrainer(Trainer):
         """Setup RePaMoE fine-tuning mode"""
         
         # Import here to avoid circular imports
-        from moellava.model.language_model.llava_stablelm_moe import RePaMoE
+        if "stablelm" in self.model.config.model_type:
+            from moellava.model.language_model.llava_stablelm_moe import RePaMoE
+        elif "qwen" in self.model.config.model_type:
+            from moellava.model.language_model.llava_qwen_moe import RePaMoE
+        elif "phi" in self.model.config.model_type:
+            from moellava.model.language_model.llava_phi_moe import RePaMoE
         
         # 1. Identify MoE layers
         model = self.model
@@ -206,8 +211,8 @@ class LLaVATrainer(Trainer):
         self.repa_state['n_step'] = num_training_steps
         
         # 3. Calculate phase durations
-        phase_1_steps = num_training_steps // 3
-        phase_2_steps = num_training_steps // 3  
+        phase_1_steps = 12 # num_training_steps // 3
+        phase_2_steps = 2 # num_training_steps // 3  
         phase_3_steps = num_training_steps - phase_1_steps - phase_2_steps
         
         self.repa_state['phase_1_steps'] = phase_1_steps
@@ -289,22 +294,22 @@ class LLaVATrainer(Trainer):
         for param in model.parameters():
             param.requires_grad = False
         
-        # 7. Immediately unfreeze the first RePaMoE layer to avoid empty optimizer
+        # 7. Immediately unfreeze the first RePaMoE layer and subsequent layers to avoid empty optimizer
         if self.repa_state['repamoe_layers']:
             # Get the last layer (which will be unfrozen first in phase 1)
             first_layer_to_unfreeze = max(self.repa_state['moe_layers_idx'])
             if first_layer_to_unfreeze in self.repa_state['repamoe_layers']:
+                # Unfreeze the RePaMoE layer itself
                 repamoe = self.repa_state['repamoe_layers'][first_layer_to_unfreeze]
                 repamoe.unfreeze()
                 for param in repamoe.parameters():
                     param.requires_grad = True
-                # Call adjust_gated_ratio
-                gated_ratio = getattr(self.args, 'repa_gated_ratio', 1.0)
-                repamoe.adjust_gated_ratio(gated_ratio)
+                
+                # Unfreeze all subsequent layers
+                subsequent_params = self._unfreeze_subsequent_layers(first_layer_to_unfreeze)
+                
                 self.repa_state['unfrozen_layers'].add(first_layer_to_unfreeze)
-                print(f"  Pre-unfroze RePaMoE layer {first_layer_to_unfreeze} to avoid empty optimizer")
-            
-        print(f"RePaMoE Setup:")
+                print(f"  Pre-unfroze RePaMoE layer {first_layer_to_unfreeze} and {len(subsequent_params)} subsequent parameters to avoid empty optimizer")
         print(f"  MoE layers: {moe_layers_idx} (total: {self.repa_state['moe_layers_num']})")
         print(f"  Total steps: {num_training_steps}")
         print(f"  Phase 1 (unfreezing): {phase_1_steps} steps")
@@ -357,6 +362,10 @@ class LLaVATrainer(Trainer):
                         param.requires_grad = True
                         newly_unfrozen_params.append(param)
                 
+                # CRITICAL: Unfreeze all subsequent layers (including self-attn, norm layers)
+                subsequent_params = self._unfreeze_subsequent_layers(layer_idx)
+                newly_unfrozen_params.extend(subsequent_params)
+                
                 # Call adjust_gated_ratio
                 gated_ratio = getattr(self.args, 'repa_gated_ratio', 1.0)
                 repamoe.adjust_gated_ratio(gated_ratio)
@@ -374,7 +383,7 @@ class LLaVATrainer(Trainer):
                     self._fallback_optimizer_recreation()
                     self.verify_optimizer_params()
                     
-                print(f"Step {current_step}: Unfroze RePaMoE layer {layer_idx}")
+                print(f"Step {current_step}: Unfroze RePaMoE layer {layer_idx} and all subsequent layers")
             else:
                 # If no remaining layers, we might have pre-unfrozen the first layer
                 # Just call adjust_gated_ratio for already unfrozen layers
@@ -857,6 +866,77 @@ class LLaVATrainer(Trainer):
         except Exception as e:
             print(f"    Warning: Failed to initialize RePaMLP from expert weights: {e}")
             print(f"    Available expert keys: {list(expert_state_dict.keys())}")
+    
+    def _unfreeze_subsequent_layers(self, moe_layer_idx):
+        """
+        Unfreeze all layers after the given MoE layer index.
+        This includes self_attn, norm layers, and all subsequent decoder layers.
+        """
+        newly_unfrozen_params = []
+        
+        try:
+            # Access the language model layers
+            if hasattr(self.model.model, 'layers'):
+                layers = self.model.model.layers
+            elif hasattr(self.model, 'model') and hasattr(self.model.model, 'layers'):
+                layers = self.model.model.layers
+            else:
+                print(f"  Warning: Could not find language model layers for subsequent unfreezing")
+                return newly_unfrozen_params
+            
+            # Unfreeze all layers from moe_layer_idx onwards
+            for layer_idx in range(moe_layer_idx, len(layers)):
+                layer = layers[layer_idx]
+                
+                # For the current MoE layer, unfreeze non-MoE components (self_attn, norms)
+                if layer_idx == moe_layer_idx:
+                    # Unfreeze self_attn
+                    if hasattr(layer, 'self_attn'):
+                        for param in layer.self_attn.parameters():
+                            if not param.requires_grad:
+                                param.requires_grad = True
+                                newly_unfrozen_params.append(param)
+                    
+                    # Unfreeze norm layers
+                    if hasattr(layer, 'input_layernorm'):
+                        for param in layer.input_layernorm.parameters():
+                            if not param.requires_grad:
+                                param.requires_grad = True
+                                newly_unfrozen_params.append(param)
+                    
+                    if hasattr(layer, 'post_attention_layernorm'):
+                        for param in layer.post_attention_layernorm.parameters():
+                            if not param.requires_grad:
+                                param.requires_grad = True
+                                newly_unfrozen_params.append(param)
+                
+                # For subsequent layers, unfreeze everything
+                elif layer_idx > moe_layer_idx:
+                    for param in layer.parameters():
+                        if not param.requires_grad:
+                            param.requires_grad = True
+                            newly_unfrozen_params.append(param)
+            
+            # Also unfreeze final norm and lm_head if present
+            if hasattr(self.model.model, 'norm'):
+                for param in self.model.model.norm.parameters():
+                    if not param.requires_grad:
+                        param.requires_grad = True
+                        newly_unfrozen_params.append(param)
+            
+            if hasattr(self.model, 'lm_head'):
+                for param in self.model.lm_head.parameters():
+                    if not param.requires_grad:
+                        param.requires_grad = True
+                        newly_unfrozen_params.append(param)
+            
+            print(f"  Unfroze {len(newly_unfrozen_params)} subsequent parameters after layer {moe_layer_idx}")
+            
+        except Exception as e:
+            print(f"  Error unfreezing subsequent layers: {e}")
+            print(f"  Continuing with just MoE layer parameters...")
+        
+        return newly_unfrozen_params
 
 
 

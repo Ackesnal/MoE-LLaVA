@@ -8,7 +8,7 @@ router_aux_loss_coef=0.01
 
 # RePaMoE specific arguments
 FINETUNE_REPA_MODE=true
-REPA_GATED_RATIO=1.0
+REPA_GATED_RATIO=0.25
 
 JSON_FOLDER="/mnt/data/llava_data/train_json"
 IMAGE_FOLDER="/mnt/data/llava_data/train_image"
@@ -32,8 +32,8 @@ HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 deepspeed moellava/train/train_mem.
     --bf16 True \
     --output_dir ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa \
     --num_train_epochs 1 \
-    --per_device_train_batch_size 8 \
-    --per_device_eval_batch_size 1 \
+    --per_device_train_batch_size 4 \
+    --per_device_eval_batch_size 4 \
     --gradient_accumulation_steps 2 \
     --evaluation_strategy "no" \
     --save_strategy "steps" \
