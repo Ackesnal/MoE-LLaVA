@@ -146,7 +146,8 @@ class TrainingArguments(transformers.TrainingArguments):
     lora_bias: str = "none"
     mm_projector_lr: Optional[float] = None
     group_by_modality_length: bool = field(default=False)
-    finetune_repa: bool = False
+    finetune_repa_mode: bool = field(default=False, metadata={"help": "Enable RePaMoE finetuning mode"})
+    repa_gated_ratio: float = field(default=1.0, metadata={"help": "Gated ratio for RePaMoE adjust_gated_ratio function"})
 
 
 
@@ -1275,13 +1276,22 @@ def train():
                     **bnb_model_from_pretrained_args
                 )
             elif 'stablelm' in model_args.model_name_or_path.lower():
-                model = MoELLaVAStablelmForCausalLM.from_pretrained(
-                    model_args.model_name_or_path,
-                    cache_dir=training_args.cache_dir,
-                    # attn_implementation="flash_attention_2",
-                    # torch_dtype=torch.bfloat16,
-                    **bnb_model_from_pretrained_args
-                )
+                if not training_args.finetune_repa_mode:
+                    model = MoELLaVAStablelmForCausalLM.from_pretrained(
+                        model_args.model_name_or_path,
+                        cache_dir=training_args.cache_dir,
+                        # attn_implementation="flash_attention_2",
+                        # torch_dtype=torch.bfloat16,
+                        **bnb_model_from_pretrained_args
+                    )
+                else:
+                    model = EvalMoELLaVAStablelmForCausalLM.from_pretrained(
+                        model_args.model_name_or_path,
+                        cache_dir=training_args.cache_dir,
+                        # attn_implementation="flash_attention_2",
+                        # torch_dtype=torch.bfloat16,
+                        **bnb_model_from_pretrained_args
+                    )
             else:
                 model = MoELLaVALlamaForCausalLM.from_pretrained(
                     model_args.model_name_or_path,
@@ -1320,7 +1330,7 @@ def train():
     training_args.moe_enable = model_args.moe_enable
     training_args.only_lora_ffn = model_args.only_lora_ffn
     model_args.lora_enable = training_args.lora_enable
-    if model_args.moe_enable:
+    if model_args.moe_enable and not training_args.finetune_repa_mode:
         if training_args.lora_enable:
             from peft import LoraConfig, get_peft_model
             if 'qwen' in model_args.model_name_or_path.lower() and '1.5' not in model_args.model_name_or_path.lower():
@@ -1505,7 +1515,7 @@ def train():
         model.config.mm_use_im_patch_token = model_args.mm_use_im_patch_token
         model.initialize_vision_tokenizer(model_args, tokenizer=tokenizer)
 
-    rank0_print('Vision encoder and proj init.\n', model)
+    rank0_print('Vision encoder and proj init.\n')
     if training_args.bits in [4, 8]:
         from peft.tuners.lora import LoraLayer
         for name, module in model.named_modules():
@@ -1518,9 +1528,9 @@ def train():
                 if hasattr(module, 'weight'):
                     if training_args.bf16 and module.weight.dtype == torch.float32:
                         module = module.to(torch.bfloat16)
-    for name, param in model.named_parameters():
-        if param.requires_grad:
-            rank0_print(name)
+    # for name, param in model.named_parameters():
+    #     if param.requires_grad:
+    #         rank0_print(name)
     rank0_print(model)
     # sys.exit()
 
@@ -1530,7 +1540,7 @@ def train():
                     tokenizer=tokenizer,
                     args=training_args,
                     **data_module)
-
+    
     if list(pathlib.Path(training_args.output_dir).glob("checkpoint-*")):
         trainer.train(resume_from_checkpoint=True)
     else:

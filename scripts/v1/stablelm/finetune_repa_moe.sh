@@ -5,6 +5,11 @@ num_experts=4
 top_k_experts=2
 use_residual=False
 router_aux_loss_coef=0.01
+
+# RePaMoE specific arguments
+FINETUNE_REPA_MODE=true
+REPA_GATED_RATIO=1.0
+
 JSON_FOLDER="/mnt/data/llava_data/train_json"
 IMAGE_FOLDER="/mnt/data/llava_data/train_image"
 cd ~/MoE-LLaVA
@@ -27,7 +32,7 @@ HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 deepspeed moellava/train/train_mem.
     --bf16 True \
     --output_dir ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa \
     --num_train_epochs 1 \
-    --per_device_train_batch_size 4 \
+    --per_device_train_batch_size 8 \
     --per_device_eval_batch_size 1 \
     --gradient_accumulation_steps 2 \
     --evaluation_strategy "no" \
@@ -42,9 +47,10 @@ HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 deepspeed moellava/train/train_mem.
     --tf32 True \
     --model_max_length 2048 \
     --gradient_checkpointing True \
-    --dataloader_num_workers 4 \
+    --dataloader_num_workers 8 \
     --lazy_preprocess True \
     --report_to tensorboard \
     --cache_dir "./cache_dir" \
-    --finetune_repa True \
-    --gated_ratio 0.5
+    --report_to wandb \
+    --finetune_repa_mode $FINETUNE_REPA_MODE \
+    --repa_gated_ratio $REPA_GATED_RATIO 
