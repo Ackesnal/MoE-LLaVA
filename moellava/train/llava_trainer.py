@@ -211,8 +211,8 @@ class LLaVATrainer(Trainer):
         self.repa_state['n_step'] = num_training_steps
         
         # 3. Calculate phase durations
-        phase_1_steps = 12 # num_training_steps // 3
-        phase_2_steps = 2 # num_training_steps // 3  
+        phase_1_steps = num_training_steps // 3
+        phase_2_steps = num_training_steps // 3  
         phase_3_steps = num_training_steps - phase_1_steps - phase_2_steps
         
         self.repa_state['phase_1_steps'] = phase_1_steps
