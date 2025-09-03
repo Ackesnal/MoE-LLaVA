@@ -1,4 +1,4 @@
-name: moellava-test
+name: moellava-test2
 channels:
   - defaults
 dependencies:
@@ -80,7 +80,6 @@ dependencies:
       - fastapi==0.116.1
       - ffmpy==0.6.1
       - filelock==3.13.1
-      - flash-attn==2.7.1.post4
       - fonttools==4.59.2
       - fsspec==2024.6.1
       - gitdb==4.0.12
@@ -187,4 +186,3 @@ dependencies:
       - wandb==0.21.3
       - wavedrom==2.0.3.post3
       - websockets==15.0.1
-prefix: /home/s4695741/anaconda3/envs/moellava-test
