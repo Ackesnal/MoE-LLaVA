@@ -30,14 +30,14 @@ HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 deepspeed moellava/train/train_mem.
     --image_aspect_ratio pad \
     --group_by_modality_length True \
     --bf16 True \
-    --output_dir ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa \
+    --output_dir ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-2 \
     --num_train_epochs 1 \
     --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 4 \
-    --gradient_accumulation_steps 2 \
-    --evaluation_strategy "no" \
+    --gradient_accumulation_steps 1 \
+    --eval_strategy "no" \
     --save_strategy "steps" \
-    --save_steps 24000 \
+    --save_steps 4000 \
     --save_total_limit 1 \
     --learning_rate 2e-5 \
     --weight_decay 0. \
@@ -47,7 +47,7 @@ HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 deepspeed moellava/train/train_mem.
     --tf32 True \
     --model_max_length 2048 \
     --gradient_checkpointing True \
-    --dataloader_num_workers 8 \
+    --dataloader_num_workers 20 \
     --lazy_preprocess True \
     --report_to tensorboard \
     --cache_dir "./cache_dir" \

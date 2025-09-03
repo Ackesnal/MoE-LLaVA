@@ -150,7 +150,6 @@ class TrainingArguments(transformers.TrainingArguments):
     repa_gated_ratio: float = field(default=1.0, metadata={"help": "Gated ratio for RePaMoE adjust_gated_ratio function"})
 
 
-
 def maybe_zero_3(param, ignore_status=False, name=None):
     from deepspeed import zero
     from deepspeed.runtime.zero.partition_parameters import ZeroParamStatus
@@ -1276,8 +1275,8 @@ def train():
                     **bnb_model_from_pretrained_args
                 )
             elif 'stablelm' in model_args.model_name_or_path.lower():
-                if not training_args.finetune_repa_mode:
-                    model = MoELLaVAStablelmForCausalLM.from_pretrained(
+                if training_args.finetune_repa_mode:
+                    model = RePaMoELLaVAStablelmForCausalLM.from_pretrained(
                         model_args.model_name_or_path,
                         cache_dir=training_args.cache_dir,
                         # attn_implementation="flash_attention_2",
@@ -1285,7 +1284,7 @@ def train():
                         **bnb_model_from_pretrained_args
                     )
                 else:
-                    model = EvalMoELLaVAStablelmForCausalLM.from_pretrained(
+                    model = MoELLaVAStablelmForCausalLM.from_pretrained(
                         model_args.model_name_or_path,
                         cache_dir=training_args.cache_dir,
                         # attn_implementation="flash_attention_2",
@@ -1308,7 +1307,7 @@ def train():
             # torch_dtype=torch.bfloat16,
             **bnb_model_from_pretrained_args
         )
-    rank0_print('LLM init. firstly\n', model)
+    # rank0_print('LLM init. firstly\n', model)
     model.config.use_cache = False
 
     if model_args.freeze_backbone:
@@ -1370,6 +1369,8 @@ def train():
             rank0_print("Adding LoRA adapters...")
             model = get_peft_model(model, lora_config)
         model.initialize_moe_modules(model_args=model_args)
+    elif model_args.moe_enable and training_args.finetune_repa_mode:
+        model.disable_moe_allreduce()
     else:
         if training_args.lora_enable:
             from peft import LoraConfig, get_peft_model
@@ -1533,7 +1534,7 @@ def train():
     #         rank0_print(name)
     rank0_print(model)
     # sys.exit()
-
+            
     data_module = make_supervised_data_module(tokenizer=tokenizer,
                                               data_args=data_args)
     trainer = LLaVATrainer(model=model,

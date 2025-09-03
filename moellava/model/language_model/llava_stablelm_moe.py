@@ -18,7 +18,7 @@ from typing import List, Optional, Tuple, Union
 import torch
 import torch.nn as nn
 
-from transformers import AutoConfig, AutoModelForCausalLM
+from transformers import AutoConfig, AutoModelForCausalLM, GenerationMixin
 from .stablelm.configuration_stablelm_epoch import StableLMEpochConfig
 from .stablelm.modeling_stablelm_epoch import StableLMEpochModel, StableLMEpochForCausalLM
 
@@ -58,7 +58,12 @@ class MoELLaVAStablelmConfig(StableLMEpochConfig):
                  min_capacity=4,
                  use_residual=False,
                  router_aux_loss_coef=0.01,
+                 pretraining_tp=1,
                  **kwargs):
+        
+        # 设置默认值
+        kwargs.setdefault('pretraining_tp', pretraining_tp)
+        
         self.moe = dict(
             moe_enable=moe_enable,
             moe_mode=moe_mode,
@@ -306,7 +311,7 @@ def MoEStablelmModel_forward(self):
     return forward
 
 
-class MoELLaVAStablelmForCausalLM(StableLMEpochForCausalLM, LlavaMetaForCausalLM):
+class MoELLaVAStablelmForCausalLM(StableLMEpochForCausalLM, LlavaMetaForCausalLM, GenerationMixin):
     config_class = MoELLaVAStablelmConfig
 
     def __init__(self, config):
@@ -508,7 +513,7 @@ class MoELLaVAStablelmForCausalLM(StableLMEpochForCausalLM, LlavaMetaForCausalLM
         # ipdb.set_trace()
 
 
-class EvalMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM):
+class EvalMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMixin):
     config_class = MoELLaVAStablelmConfig
 
     def __init__(self, config):
@@ -541,7 +546,6 @@ class EvalMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM):
         rank0_print(f'replace StablelmModel.forward to MoEStablelmModel.forward')
 
 
-
 class RePaMLP(nn.Module):
     def __init__(self, config: StableLMEpochConfig):
         super().__init__()
@@ -555,6 +559,7 @@ class RePaMLP(nn.Module):
         
         self.gated_ratio = 1.0
         self.num_gated_channels = int(self.intermediate_size * self.gated_ratio)
+        
         # 使用 register_buffer 而不是 nn.Parameter，这样会自动跟随模型的设备移动
         self.register_buffer('mask', torch.ones(self.intermediate_size, dtype=torch.bool))
         self.adjust_gated_ratio(self.gated_ratio)
@@ -565,14 +570,9 @@ class RePaMLP(nn.Module):
             return self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
         else:
             x_gate = self.act_fn(self.gate_proj(x))
-            if len(x.shape) == 3:
-                # for input with shape (batch_size, seq_len, hidden_size)
-                x_masked = torch.where(self.mask[None,None,:], x_gate, torch.ones_like(x_gate))
-            elif len(x.shape) == 4:
-                # for input with shape (batch_size, expert, seq_len, hidden_size)
-                x_masked = torch.where(self.mask[None,None,None,:], x_gate, torch.ones_like(x_gate))
-            return self.down_proj(x_masked * self.up_proj(x))
-        
+            x_mask = torch.where(self.mask[None,None,:], x_gate, torch.ones_like(x_gate))
+            return self.down_proj(x_mask * self.up_proj(x))
+
     def reparam(self):
         if not self.reparamed:
             reparamed_weight = self.up_proj.weight[self.num_gated_channels:].T @ self.down_proj.weight[:, self.num_gated_channels:].T
@@ -580,7 +580,7 @@ class RePaMLP(nn.Module):
             self.up_proj.weight = nn.Parameter(self.up_proj.weight[:self.num_gated_channels])
             self.down_proj.weight = nn.Parameter(self.down_proj.weight[:, :self.num_gated_channels])
             self.reparamed = True
-            return reparamed_weight
+            return reparamed_weight.T
         
     def adjust_gated_ratio(self, gated_ratio):
         self.gated_ratio = gated_ratio
@@ -590,98 +590,210 @@ class RePaMLP(nn.Module):
         self.mask[:self.num_gated_channels] = True
 
 
-class RePaMoE(nn.Module):
+class RePaMoE(MoE):
     """
     RePaMoE (Reparametrized Mixture of Experts): 
-    Replaces MoE layers with num_experts parallel MLPs for fine-tuning.
+    Inherits from DeepSpeed's MoE and adds reparameterization functionality.
     """
-    def __init__(self, config: StableLMEpochConfig, num_experts: int = 4):
-        super().__init__()
-        self.config = config
-        self.num_experts = num_experts
-        self.hidden_size = config.hidden_size
-        self.intermediate_size = config.intermediate_size
+    def __init__(self, hidden_size, expert, num_experts=4, ep_size=1, k=2, 
+                 capacity_factor=1.0, eval_capacity_factor=1.0, min_capacity=4, 
+                 use_residual=False):
+        # Initialize the parent MoE class with RePaMLP experts
+        super().__init__(
+            hidden_size=hidden_size,
+            expert=expert,  # This will be a RePaMLP instance
+            num_experts=num_experts,
+            ep_size=ep_size,
+            k=k,
+            capacity_factor=capacity_factor,
+            eval_capacity_factor=eval_capacity_factor,
+            min_capacity=min_capacity,
+            use_residual=use_residual
+        )
         
-        # Create num_experts parallel MLPs (each is a RePaMLP)
-        self.experts = nn.ModuleList([
-            RePaMLP(config) for _ in range(num_experts)
-        ])
-        
-        # Router for selecting which expert to use (simple learnable weights)
-        self.router = nn.Linear(config.hidden_size, num_experts, bias=False)
-        
+        # Add reparamed flag and new expert for post-reparameterization
         self.reparamed = False
-        self.frozen = False
+        self.new_expert = None
         
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        if self.frozen:
-            # Get router weights (softmax over experts)
-            router_logits = self.router(x)  # [batch_size, seq_len, num_experts]
-            router_weights = torch.softmax(router_logits, dim=-1)
-            
-            # Process input through all experts
-            expert_outputs = []
-            for expert in self.experts:
-                expert_output = expert(x)  # [batch_size, seq_len, hidden_size]
-                expert_outputs.append(expert_output)
-            
-            # Stack expert outputs: [batch_size, seq_len, num_experts, hidden_size]
-            expert_outputs = torch.stack(expert_outputs, dim=2)
-            
-            # Weighted combination of expert outputs
-            # router_weights: [batch_size, seq_len, num_experts, 1]
-            # expert_outputs: [batch_size, seq_len, num_experts, hidden_size]
-            router_weights = router_weights.unsqueeze(-1)
-            output = torch.sum(router_weights * expert_outputs, dim=2)  # [batch_size, seq_len, hidden_size]
-            
+        for expert in self.deepspeed_moe.experts.deepspeed_experts:
+            if not isinstance(expert, RePaMLP):
+                raise ValueError("Experts must be instances of RePaMLP for RePaMoE")
+            for param in expert.parameters():
+                param.allreduce = False  # Disable allreduce for expert params
+        for param in self.deepspeed_moe.gate.parameters():
+            param.allreduce = False # Disable allreduce for gate params
+    
+    def forward(self, x: torch.Tensor, *args, **kwargs) -> torch.Tensor:
+        """
+        Forward pass through RePaMoE.
+        If reparamed=False, use MoE's forward.
+        If reparamed=True, combine MoE's forward with new expert's output.
+        """
+        if self.reparamed and self.new_expert is not None:
+            # Get MoE output
+            moe_output, moe_l_aux, moe_exp_counts = super().forward(x, *args, **kwargs)
+            # Get new expert output
+            new_expert_output = self.new_expert(x)
+            # Combine outputs
+            combined_output = moe_output + new_expert_output
+            return combined_output, moe_l_aux, moe_exp_counts 
         else:
-            if self.reparamed:
-                # Process input through all experts
-                expert_outputs = []
-                for expert in self.experts[:self.num_experts]:
-                    expert_output = expert(x)  # [batch_size, seq_len, hidden_size]
-                    expert_outputs.append(expert_output)
-                expert_outputs = torch.stack(expert_outputs, dim=2)
-                output = torch.mean(expert_outputs, dim=2) + self.experts[-1](x)
+            # Use standard MoE forward
+            return super().forward(x, *args, **kwargs)
+    
+    def reparam(self):
+        """
+        Aggregate expert reparam results into a new expert.
+        This method reparameterizes all experts and creates a new aggregated expert.
+        """
+        if not self.reparamed:
+            # Collect reparameterization results from all experts
+            reparam_weights = []
+            
+            # Access experts from the parent MoE class
+            # DeepSpeed MoE stores experts in self.deepspeed_moe.experts.deepspeed_experts
+            if hasattr(self, 'deepspeed_moe') and hasattr(self.deepspeed_moe, 'experts'):
+                experts = self.deepspeed_moe.experts.deepspeed_experts
+                for expert in experts:
+                    if hasattr(expert, 'reparam') and callable(expert.reparam):
+                        reparam_weight = expert.reparam()
+                        if reparam_weight is not None:
+                            reparam_weights.append(reparam_weight)
+            
+            if reparam_weights:
+                # Aggregate all reparam weights (mean aggregation)
+                aggregated_weight = torch.stack(reparam_weights, dim=0).mean(dim=0)
+                
+                # Create new expert with aggregated weights
+                self.new_expert = nn.Linear(
+                    aggregated_weight.shape[0], 
+                    aggregated_weight.shape[1], 
+                    bias=False
+                )
+                self.new_expert.weight.data = aggregated_weight
+                
+                # Move to same device as other experts
+                if len(reparam_weights) > 0:
+                    device = reparam_weights[0].device
+                    self.new_expert.to(device)
+                
+                self.reparamed = True
+                rank0_print(f"RePaMoE reparameterized with {len(reparam_weights)} experts")
             else:
-                # Process input through all experts
-                expert_outputs = []
-                for expert in self.experts:
-                    expert_output = expert(x)  # [batch_size, seq_len, hidden_size]
-                    expert_outputs.append(expert_output)
-                expert_outputs = torch.stack(expert_outputs, dim=2)
-                output = torch.mean(expert_outputs, dim=2)
-        return output
+                rank0_print("Warning: No reparam weights collected from experts")
     
     def adjust_gated_ratio(self, gated_ratio: float):
         """Apply adjust_gated_ratio to all experts"""
-        for expert in self.experts:
-            expert.adjust_gated_ratio(gated_ratio)
-    
-    def reparam(self):
-        """Apply reparam to all experts"""
-        linear_weights = []
-        for expert in self.experts:
-            linear_weight = expert.reparam()
-            linear_weights.append(linear_weight)
-        linear_weights = torch.stack(linear_weights, dim=0).mean(0)
-        reparamed_expert = nn.Linear(self.config.hidden_size, self.config.hidden_size, bias=False)
-        reparamed_expert.weight = nn.Parameter(linear_weights)
-        reparamed_expert.to(self.experts[0].gate_proj.weight.device)
-        self.experts.append(reparamed_expert)
+        if hasattr(self, 'deepspeed_moe') and hasattr(self.deepspeed_moe, 'experts'):
+            experts = self.deepspeed_moe.experts.deepspeed_experts
+            for expert in experts:
+                if hasattr(expert, 'adjust_gated_ratio') and callable(expert.adjust_gated_ratio):
+                    expert.adjust_gated_ratio(gated_ratio)
 
-    def freeze(self):
-        """Freeze all experts"""
-        self.frozen = True
+
+class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMixin):
+    """
+    RePaMoE version of LLaVA StableLM for Causal LM.
+    Replaces MoE with RePaMoE and expert with RePaMLP, inheriting parameters.
+    """
+    config_class = MoELLaVAStablelmConfig
+
+    def __init__(self, config):
+        super(RePaMoELLaVAStablelmForCausalLM, self).__init__(config)
+
+        self.router_aux_loss_coef = self.config.moe['router_aux_loss_coef']
+        num_layers = self.config.num_hidden_layers
+        moe_layers_idx = self.config.moe['moe_layers_idx']
+            
+        # Replace MoE layers with RePaMoE after model initialization
+        for num_experts, layer_num in zip(self.config.moe['num_experts'], moe_layers_idx):
+            # Create RePaMLP from the original MLP
+            repa_expert = RePaMLP(config)
+            
+            # Replace with RePaMoE
+            self.model.layers[layer_num].mlp = RePaMoE(
+                hidden_size=self.config.hidden_size,
+                expert=repa_expert,
+                num_experts=num_experts,
+                ep_size=self.config.moe['ep_size'],
+                k=self.config.moe['top_k_experts'],
+                capacity_factor=self.config.moe['capacity_factor'],
+                eval_capacity_factor=self.config.moe['eval_capacity_factor'],
+                min_capacity=self.config.moe['min_capacity'],
+                use_residual=self.config.moe['use_residual'],
+            )
+        
+        rank0_print(f"LLM num_layers: {num_layers}, RePaMoE num_layers: {len(moe_layers_idx)}, where\n",
+                    *[f'layer-{layer_num} has {num_experts} experts\n' for num_experts, layer_num in
+                      zip(self.config.moe['num_experts'], moe_layers_idx)])
+
+        for m in self.model.layers:
+            m.forward = MoEStablelmDecoderLayer_forward(m)
+        rank0_print(f'replace StablelmDecoderLayer.forward to MoEStablelmDecoderLayer.forward')
+        self.model.forward = MoEStablelmModel_forward(self.model)
+        rank0_print(f'replace StablelmModel.forward to MoEStablelmModel.forward')
+
+    def get_model(self):
+        return self.model
+
+    def reparam_moe_layers(self):
+        """
+        Reparameterize all RePaMoE layers in the model.
+        """
+        moe_layers_idx = self.config.moe['moe_layers_idx']
+        for layer_num in moe_layers_idx:
+            moe_layer = self.model.layers[layer_num].mlp
+            if isinstance(moe_layer, RePaMoE):
+                moe_layer.reparam()
+                rank0_print(f"Reparameterized RePaMoE layer {layer_num}")
+            else:
+                rank0_print(f"Layer {layer_num} is not a RePaMoE layer, skipping reparameterization")
     
-    def unfreeze(self):
-        """Unfreeze all experts"""
-        self.frozen = False
-        if hasattr(self, 'router'):
-            del self.router
+    def adjust_gated_ratio_all_layers(self, gated_ratio: float):
+        """
+        Adjust gated ratio for all RePaMoE layers.
+        """
+        moe_layers_idx = self.config.moe['moe_layers_idx']
+        for layer_num in moe_layers_idx:
+            moe_layer = self.model.layers[layer_num].mlp
+            if isinstance(moe_layer, RePaMoE):
+                moe_layer.adjust_gated_ratio(gated_ratio)
+        rank0_print(f"Adjusted gated ratio to {gated_ratio} for all RePaMoE layers")
+
+    def disable_moe_allreduce(self):
+        """
+        Disable allreduce for all parameters in MoE layers.
+        This function sets allreduce=False for expert parameters and gate parameters 
+        in all RePaMoE layers to prevent gradient synchronization across processes.
+        """
+        moe_layers_idx = self.config.moe['moe_layers_idx']
+        for layer_num in moe_layers_idx:
+            moe_layer = self.model.layers[layer_num].mlp
+            if isinstance(moe_layer, RePaMoE):
+                # Disable allreduce for expert parameters
+                if hasattr(moe_layer, 'deepspeed_moe') and hasattr(moe_layer.deepspeed_moe, 'experts'):
+                    experts = moe_layer.deepspeed_moe.experts.deepspeed_experts
+                    for expert in experts:
+                        for param in expert.parameters():
+                            param.allreduce = False
+                            param.group_name = moe_layer.expert_group_name
+
+                # Disable allreduce for gate parameters
+                if hasattr(moe_layer, 'deepspeed_moe') and hasattr(moe_layer.deepspeed_moe, 'gate'):
+                    for param in moe_layer.deepspeed_moe.gate.parameters():
+                        param.allreduce = False
+                        param.group_name = moe_layer.expert_group_name
+
+                # Disable allreduce for new_expert parameters if exists
+                if hasattr(moe_layer, 'new_expert') and moe_layer.new_expert is not None:
+                    for param in moe_layer.new_expert.parameters():
+                        param.allreduce = False
+                        param.group_name = moe_layer.expert_group_name
+        
+        rank0_print(f"Disabled allreduce for all MoE layer parameters in {len(moe_layers_idx)} layers")
 
 
 AutoConfig.register("moe_llava_stablelm", MoELLaVAStablelmConfig)
 AutoModelForCausalLM.register(MoELLaVAStablelmConfig, MoELLaVAStablelmForCausalLM)
-
 AutoModelForCausalLM.register(MoELLaVAStablelmConfig, EvalMoELLaVAStablelmForCausalLM)
+AutoModelForCausalLM.register(MoELLaVAStablelmConfig, RePaMoELLaVAStablelmForCausalLM)
