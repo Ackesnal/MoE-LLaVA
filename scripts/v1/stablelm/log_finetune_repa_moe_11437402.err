@@ -1,0 +1,175 @@
+/cm/local/apps/slurm/var/spool/job11437402/slurm_script: line 63: 8: command not found
+/cm/local/apps/slurm/var/spool/job11437402/slurm_script: line 64: 0: command not found
+/cm/local/apps/slurm/var/spool/job11437402/slurm_script: line 65: 0: command not found
+/cm/local/apps/slurm/var/spool/job11437402/slurm_script: line 66: 0: command not found
+/cm/local/apps/slurm/var/spool/job11437402/slurm_script: line 67: 0: command not found
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 196, in __init__
+    backend, distributed_type = self._prepare_backend(cpu, use_sagemaker_dp, original_backend)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 760, in _prepare_backend
+    elif int(os.environ.get("LOCAL_RANK", -1)) != -1 and not cpu:
+ValueError: invalid literal for int() with base 10: ''
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 196, in __init__
+    backend, distributed_type = self._prepare_backend(cpu, use_sagemaker_dp, original_backend)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 760, in _prepare_backend
+    elif int(os.environ.get("LOCAL_RANK", -1)) != -1 and not cpu:
+ValueError: invalid literal for int() with base 10: ''
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 196, in __init__
+    backend, distributed_type = self._prepare_backend(cpu, use_sagemaker_dp, original_backend)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 760, in _prepare_backend
+    elif int(os.environ.get("LOCAL_RANK", -1)) != -1 and not cpu:
+ValueError: invalid literal for int() with base 10: ''
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 196, in __init__
+    backend, distributed_type = self._prepare_backend(cpu, use_sagemaker_dp, original_backend)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 760, in _prepare_backend
+    elif int(os.environ.get("LOCAL_RANK", -1)) != -1 and not cpu:
+ValueError: invalid literal for int() with base 10: ''
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 196, in __init__
+    backend, distributed_type = self._prepare_backend(cpu, use_sagemaker_dp, original_backend)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 760, in _prepare_backend
+    elif int(os.environ.get("LOCAL_RANK", -1)) != -1 and not cpu:
+ValueError: invalid literal for int() with base 10: ''
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 196, in __init__
+    backend, distributed_type = self._prepare_backend(cpu, use_sagemaker_dp, original_backend)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 760, in _prepare_backend
+    elif int(os.environ.get("LOCAL_RANK", -1)) != -1 and not cpu:
+ValueError: invalid literal for int() with base 10: ''
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 196, in __init__
+    backend, distributed_type = self._prepare_backend(cpu, use_sagemaker_dp, original_backend)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 760, in _prepare_backend
+    elif int(os.environ.get("LOCAL_RANK", -1)) != -1 and not cpu:
+ValueError: invalid literal for int() with base 10: ''
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 196, in __init__
+    backend, distributed_type = self._prepare_backend(cpu, use_sagemaker_dp, original_backend)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 760, in _prepare_backend
+    elif int(os.environ.get("LOCAL_RANK", -1)) != -1 and not cpu:
+ValueError: invalid literal for int() with base 10: ''
+srun: error: g009: tasks 4-7: Exited with exit code 1
+srun: error: g005: tasks 0-3: Exited with exit code 1
