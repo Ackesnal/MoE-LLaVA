@@ -1,6 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=finetune_repa_moe
 #SBATCH --nodes=2
+#SBATCH --ntasks-per-node=4
 #SBATCH --cpus-per-task=18
 #SBATCH --gres=gpu:4
 #SBATCH --mem=200G
@@ -40,38 +41,45 @@ REPA_GATED_RATIO=1.0
 JSON_FOLDER="/scratch3/li309/data/llava_data/train_json"
 IMAGE_FOLDER="/scratch3/li309/data/llava_data/train_data"
 
-export NCCL_DEBUG=INFO
-export NCCL_DEBUG_SUBSYS=INIT,GRAPH
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,GRAPH
 
 # export NCCL_P2P_DISABLE=1
 # export NCCL_P2P_LEVEL=PCI
 
-function makehostfile() {
-perl -e '$slots=split /,/, $ENV{"SLURM_STEP_GPUS"};
-$slots=4 if $slots==0; # workaround 4 gpu machines
-@nodes = split /\n/, qx[scontrol show hostnames $ENV{"SLURM_JOB_NODELIST"}];
-print map { "$b$_ slots=$slots\n" } @nodes'
-}
+# function makehostfile() {
+# perl -e '$slots=split /,/, $ENV{"SLURM_STEP_GPUS"};
+# $slots=4 if $slots==0; # workaround 4 gpu machines
+# @nodes = split /\n/, qx[scontrol show hostnames $ENV{"SLURM_JOB_NODELIST"}];
+# print map { "$b$_ slots=$slots\n" } @nodes'
+# }
 
-makehostfile > hostfile
+# makehostfile > hostfile
 
-cat hostfile
+# cat hostfile
 
 export MASTER_PORT=33789
 export MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)
-export WORLD_SIZE=$(($SLURM_NNODES * $SLURM_GPUS_ON_NODE))
+export WORLD_SIZE=$SLURM_NTASKS
+export RANK=$SLURM_PROCID
+export GLOBAL_RANK=$SLURM_PROCID
+export LOCAL_RANK=$SLURM_LOCALID
+export NODE_RANK=$SLURM_NODEID
 
 echo "MASTER_PORT: $MASTER_PORT"
 echo "MASTER_ADDR: $MASTER_ADDR"
 echo "WORLD_SIZE: $WORLD_SIZE"
-echo "SLURM_NODEID: $SLURM_NODEID"
+echo "RANK: $RANK"
+echo "GLOBAL_RANK: $GLOBAL_RANK"
+echo "LOCAL_RANK: $LOCAL_RANK"
+echo "NODE_RANK: $NODE_RANK"
+
+        # --master_addr=$MASTER_ADDR --master_port=$MASTER_PORT --node_rank=$SLURM_NODEID \
+        # --launcher=slurm --num_gpus=$SLURM_GPUS_ON_NODE --num_nodes=$SLURM_NNODES \
+        # --hostfile=hostfile \
 
 # Run training
-WANDB_MODE=offline HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 deepspeed \
-               --master_addr=$MASTER_ADDR --master_port=$MASTER_PORT --node_rank=$SLURM_NODEID \
-               --launcher=slurm --num_gpus=$SLURM_GPUS_ON_NODE --num_nodes=$SLURM_NNODES \
-               --hostfile=hostfile \
-            moellava/train/train_mem.py \
+WANDB_MODE=offline HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 python moellava/train/train_mem.py \
     --moe_enable True --num_experts ${num_experts} --top_k_experts ${top_k_experts} --capacity_factor 1.5 \
     --moe_mode ${moe_mode} --use_residual ${use_residual} --router_aux_loss_coef ${router_aux_loss_coef} \
     --train_modules gate_proj up_proj down_proj wg \
