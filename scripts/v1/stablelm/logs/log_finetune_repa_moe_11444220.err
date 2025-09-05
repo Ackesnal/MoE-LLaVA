@@ -1,0 +1,847 @@
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:27<00:27, 27.37s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 13.60s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 15.67s/it]
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:27<00:27, 27.23s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 13.63s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 15.67s/it]
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:27<00:27, 27.22s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 13.68s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 15.71s/it]
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:27<00:27, 27.37s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 13.65s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 15.71s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:27<00:27, 27.37s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 13.65s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 15.71s/it]
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:27<00:27, 27.70s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 13.59s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 15.71s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:27<00:27, 27.70s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 13.59s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 15.71s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:27<00:27, 27.70s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 13.59s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:31<00:00, 15.71s/it]
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+wandb: Tracking run with wandb version 0.21.3
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb: Run data is saved locally in /datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/wandb/offline-run-20250905_134653-i31ov1p4
+wandb: Tracking run with wandb version 0.21.3
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb: Run data is saved locally in /datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/wandb/offline-run-20250905_134653-i21ud0y6
+wandb: Tracking run with wandb version 0.21.3
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb: Run data is saved locally in /datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/wandb/offline-run-20250905_134653-bcmh9x2k
+wandb: Tracking run with wandb version 0.21.3
+wandb: Tracking run with wandb version 0.21.3
+wandb: Tracking run with wandb version 0.21.3
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb: Run data is saved locally in /datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/wandb/offline-run-20250905_134653-egtlceev
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb: Run data is saved locally in /datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/wandb/offline-run-20250905_134653-6cdsictu
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb: Run data is saved locally in /datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/wandb/offline-run-20250905_134653-5ws611mu
+wandb: Tracking run with wandb version 0.21.3
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb: Run data is saved locally in /datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/wandb/offline-run-20250905_134653-ke3ov4n3
+wandb: Tracking run with wandb version 0.21.3
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb: Run data is saved locally in /datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/wandb/offline-run-20250905_134653-g5o67y70
+  0%|          | 0/20791 [00:00<?, ?it/s]Traceback (most recent call last):
+  0%|          | 0/20791 [00:00<?, ?it/s]Traceback (most recent call last):
+  0%|          | 0/20791 [00:00<?, ?it/s]Traceback (most recent call last):
+  0%|          | 0/20791 [00:00<?, ?it/s]Traceback (most recent call last):
+  0%|          | 0/20791 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+  0%|          | 0/20791 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+  0%|          | 0/20791 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+Exception in thread Thread-3 (_pin_memory_loop):
+Traceback (most recent call last):
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+Exception in thread Thread-3 (_pin_memory_loop):
+Traceback (most recent call last):
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+Exception in thread Thread-3 (_pin_memory_loop):
+Traceback (most recent call last):
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+Exception in thread Thread-3 (_pin_memory_loop):
+Traceback (most recent call last):
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+    self.run()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 953, in run
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 953, in run
+    self.run()
+    self.run()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 953, in run
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+    self._target(*self._args, **self._kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    self._target(*self._args, **self._kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    self._target(*self._args, **self._kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+Exception in thread Thread-3 (_pin_memory_loop):
+Traceback (most recent call last):
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    self.run()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+    do_one_step()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    do_one_step()
+    do_one_step()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    do_one_step()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/queues.py", line 122, in get
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/queues.py", line 122, in get
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+    return _ForkingPickler.loads(res)
+    return _ForkingPickler.loads(res)
+    return _ForkingPickler.loads(res)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    return _ForkingPickler.loads(res)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+Exception in thread Thread-3 (_pin_memory_loop):
+Traceback (most recent call last):
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+    fd = df.detach()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    fd = df.detach()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    fd = df.detach()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    fd = df.detach()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    fd = df.detach()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+Exception in thread Thread-3 (_pin_memory_loop):
+Traceback (most recent call last):
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    self.run()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/connection.py", line 508, in Client
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/connection.py", line 508, in Client
+    socket.send() raised exception.
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+socket.send() raised exception.
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+with _resource_sharer.get_connection(self._id) as conn:socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/connection.py", line 508, in Client
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+  0%|          | 0/20791 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+    trainer.train()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py", line 300, in training_step
+    return super().training_step(model, inputs, num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/nn/parallel/data_parallel.py", line 177, in forward
+    raise RuntimeError(
+RuntimeError: module must have its parameters and buffers on device cuda:0 (device_ids[0]) but found one of them on device: cpu
+Exception in thread Thread-3 (_pin_memory_loop):
+Traceback (most recent call last):
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    self.run()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    fd = df.detach()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/connection.py", line 508, in Client
+    answer_challenge(c, authkey)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/connection.py", line 752, in answer_challenge
+    message = connection.recv_bytes(256)         # reject large message
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/connection.py", line 216, in recv_bytes
+    buf = self._recv_bytes(maxlength)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/connection.py", line 414, in _recv_bytes
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    buf = self._recv(4)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/multiprocessing/connection.py", line 379, in _recv
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    chunk = read(handle, remaining)
+ConnectionResetError: [Errno 104] Connection reset by peer
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+srun: error: g002: task 1: Exited with exit code 1
+srun: error: g002: tasks 0,2-3: Exited with exit code 1
+srun: error: g008: tasks 4-7: Exited with exit code 1

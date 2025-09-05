@@ -1,0 +1,284 @@
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 20, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 20, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 216, in __init__
+    dist.init_distributed(dist_backend=self.backend, auto_mpi_discovery=False, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/comm.py", line 854, in init_distributed
+    cdb = TorchBackend(dist_backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 120, in __init__
+    self.init_process_group(backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 163, in init_process_group
+    torch.distributed.init_process_group(backend, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 95, in wrapper
+    func_return = func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py", line 1714, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 274, in _env_rendezvous_handler
+    store = _create_c10d_store(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 194, in _create_c10d_store
+    return TCPStore(
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 216, in __init__
+    dist.init_distributed(dist_backend=self.backend, auto_mpi_discovery=False, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/comm.py", line 854, in init_distributed
+    cdb = TorchBackend(dist_backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 120, in __init__
+    self.init_process_group(backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 163, in init_process_group
+RuntimeError: The server socket has failed to listen on any local network address. port: 33789, useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+    torch.distributed.init_process_group(backend, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 95, in wrapper
+    func_return = func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py", line 1714, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 274, in _env_rendezvous_handler
+    store = _create_c10d_store(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 194, in _create_c10d_store
+    return TCPStore(
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 20, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+RuntimeError: The server socket has failed to listen on any local network address. port: 33789, useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 216, in __init__
+    dist.init_distributed(dist_backend=self.backend, auto_mpi_discovery=False, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/comm.py", line 854, in init_distributed
+    cdb = TorchBackend(dist_backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 120, in __init__
+    self.init_process_group(backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 163, in init_process_group
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 20, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+    torch.distributed.init_process_group(backend, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 95, in wrapper
+    func_return = func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py", line 1714, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 274, in _env_rendezvous_handler
+    store = _create_c10d_store(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 194, in _create_c10d_store
+    return TCPStore(
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 216, in __init__
+    dist.init_distributed(dist_backend=self.backend, auto_mpi_discovery=False, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/comm.py", line 854, in init_distributed
+    cdb = TorchBackend(dist_backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 120, in __init__
+    self.init_process_group(backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 163, in init_process_group
+RuntimeError: The server socket has failed to listen on any local network address. port: 33789, useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+    torch.distributed.init_process_group(backend, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 95, in wrapper
+    func_return = func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py", line 1714, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 274, in _env_rendezvous_handler
+    store = _create_c10d_store(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 194, in _create_c10d_store
+    return TCPStore(
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 20, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+RuntimeError: The server socket has failed to listen on any local network address. port: 33789, useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 216, in __init__
+    dist.init_distributed(dist_backend=self.backend, auto_mpi_discovery=False, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/comm.py", line 854, in init_distributed
+    cdb = TorchBackend(dist_backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 120, in __init__
+    self.init_process_group(backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 163, in init_process_group
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 20, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+    torch.distributed.init_process_group(backend, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 95, in wrapper
+    func_return = func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py", line 1714, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 274, in _env_rendezvous_handler
+    store = _create_c10d_store(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 194, in _create_c10d_store
+    return TCPStore(
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 216, in __init__
+    dist.init_distributed(dist_backend=self.backend, auto_mpi_discovery=False, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/comm.py", line 854, in init_distributed
+    cdb = TorchBackend(dist_backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 120, in __init__
+    self.init_process_group(backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 163, in init_process_group
+RuntimeError: The server socket has failed to listen on any local network address. port: 33789, useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+    torch.distributed.init_process_group(backend, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 95, in wrapper
+    func_return = func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py", line 1714, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 274, in _env_rendezvous_handler
+    store = _create_c10d_store(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 194, in _create_c10d_store
+    return TCPStore(
+RuntimeError: The server socket has failed to listen on any local network address. port: 33789, useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+srun: error: g007: tasks 1-3: Exited with exit code 1
+srun: error: g008: tasks 4-5,7: Exited with exit code 1
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 20, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 216, in __init__
+    dist.init_distributed(dist_backend=self.backend, auto_mpi_discovery=False, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/comm.py", line 854, in init_distributed
+    cdb = TorchBackend(dist_backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 120, in __init__
+    self.init_process_group(backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 163, in init_process_group
+    torch.distributed.init_process_group(backend, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 95, in wrapper
+    func_return = func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py", line 1714, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 274, in _env_rendezvous_handler
+    store = _create_c10d_store(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 194, in _create_c10d_store
+    return TCPStore(
+torch.distributed.DistNetworkError: failed to recv, got 0 bytes
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 20, in <module>
+    train()
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1150, in train
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/hf_argparser.py", line 358, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 151, in __init__
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 1803, in __post_init__
+    self.device
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2332, in device
+    return self._setup_devices
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/utils/generic.py", line 74, in __get__
+    cached = self.fget(obj)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/training_args.py", line 2259, in _setup_devices
+    self.distributed_state = PartialState(**accelerator_state_kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/accelerate/state.py", line 216, in __init__
+    dist.init_distributed(dist_backend=self.backend, auto_mpi_discovery=False, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/comm.py", line 854, in init_distributed
+    cdb = TorchBackend(dist_backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 120, in __init__
+    self.init_process_group(backend, timeout, init_method, rank, world_size)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/comm/torch.py", line 163, in init_process_group
+    torch.distributed.init_process_group(backend, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 95, in wrapper
+    func_return = func(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py", line 1714, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 274, in _env_rendezvous_handler
+    store = _create_c10d_store(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 194, in _create_c10d_store
+    return TCPStore(
+torch.distributed.DistStoreError: Timed out after 1801 seconds waiting for clients. 2/8 clients joined.
+srun: error: g007: task 0: Exited with exit code 1
+srun: error: g008: task 6: Exited with exit code 1
