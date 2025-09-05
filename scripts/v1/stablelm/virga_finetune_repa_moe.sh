@@ -60,11 +60,11 @@ IMAGE_FOLDER="/scratch3/li309/data/llava_data/train_data"
 
 export MASTER_PORT=33789
 export MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)
-export WORLD_SIZE=$($SLURM_NTASKS)
-export RANK=$($SLURM_PROCID)
-export GLOBAL_RANK=$($SLURM_PROCID)
-export LOCAL_RANK=$($SLURM_LOCALID)
-export NODE_RANK=$($SLURM_NODEID)
+export WORLD_SIZE=$SLURM_NTASKS
+export RANK=$SLURM_PROCID
+export GLOBAL_RANK=$SLURM_PROCID
+export LOCAL_RANK=$SLURM_LOCALID
+export NODE_RANK=$SLURM_NODEID
 
 echo "MASTER_PORT: $MASTER_PORT"
 echo "MASTER_ADDR: $MASTER_ADDR"
@@ -73,6 +73,10 @@ echo "RANK: $RANK"
 echo "GLOBAL_RANK: $GLOBAL_RANK"
 echo "LOCAL_RANK: $LOCAL_RANK"
 echo "NODE_RANK: $NODE_RANK"
+echo "SLURM_NNODES: $SLURM_NNODES"
+echo "SLURM_NTASKS: $SLURM_NTASKS"
+echo "SLURM_PROCID: $SLURM_PROCID"
+echo "SLURM_LOCALID: $SLURM_LOCALID"
 
         # --master_addr=$MASTER_ADDR --master_port=$MASTER_PORT --node_rank=$SLURM_NODEID \
         # --launcher=slurm --num_gpus=$SLURM_GPUS_ON_NODE --num_nodes=$SLURM_NNODES \
