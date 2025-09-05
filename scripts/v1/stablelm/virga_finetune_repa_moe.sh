@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=finetune_repa_moe
 #SBATCH --nodes=2
-#SBATCH --ntasks=1
+#SBATCH --ntasks=2
 #SBATCH --cpus-per-task=72
 #SBATCH --gres=gpu:4
 #SBATCH --mem=200G
