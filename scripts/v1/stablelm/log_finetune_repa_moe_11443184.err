@@ -210,3 +210,6 @@ Traceback (most recent call last):
 RuntimeError: The server socket has failed to listen on any local network address. port: 33789, useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
 srun: error: g004: tasks 0-2: Exited with exit code 1
 srun: error: g008: tasks 4,6-7: Exited with exit code 1
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 11443184 ON g004 CANCELLED AT 2025-09-05T13:34:31 ***
+slurmstepd: error: *** STEP 11443184.0 ON g004 CANCELLED AT 2025-09-05T13:34:31 ***
