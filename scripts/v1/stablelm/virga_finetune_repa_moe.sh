@@ -86,8 +86,24 @@ echo "SLURM_LOCALID: $SLURM_LOCALID"
         # --launcher=slurm --num_gpus=$SLURM_GPUS_ON_NODE --num_nodes=$SLURM_NNODES \
         # --hostfile=hostfile \
 
-# Run training
-WANDB_MODE=offline HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 deepspeed \
+# 仅在 node rank 0 上启动 deepspeed
+HOSTLIST=($(scontrol show hostnames "$SLURM_JOB_NODELIST"))
+THIS_HOST=$(hostname -s)
+NODE_RANK_CALC=${SLURM_NODEID:-}
+if [ -z "$NODE_RANK_CALC" ]; then
+  NODE_RANK_CALC=0
+  for i in "${!HOSTLIST[@]}"; do
+    if [ "${HOSTLIST[$i]}" = "$THIS_HOST" ]; then NODE_RANK_CALC=$i; break; fi
+  done
+fi
+export NODE_RANK=$NODE_RANK_CALC
+echo "Computed NODE_RANK: $NODE_RANK"
+
+if [ "$NODE_RANK" -eq 0 ]; then
+  echo "Launching DeepSpeed on NODE_RANK 0 (host: $THIS_HOST)"
+
+  # Run training
+  WANDB_MODE=offline HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 deepspeed \
     --master_addr=$MASTER_ADDR --master_port=$MASTER_PORT --launcher=slurm --hostfile=myhostfile \
     moellava/train/train_mem.py \
     --moe_enable True --num_experts ${num_experts} --top_k_experts ${top_k_experts} --capacity_factor 1.5 \
@@ -130,3 +146,6 @@ WANDB_MODE=offline HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 deepspeed \
     --report_to wandb \
     --finetune_repa_mode $FINETUNE_REPA_MODE \
     --repa_gated_ratio $REPA_GATED_RATIO 
+else
+  echo "NODE_RANK=$NODE_RANK on host $THIS_HOST: skipping DeepSpeed launch."
+fi
