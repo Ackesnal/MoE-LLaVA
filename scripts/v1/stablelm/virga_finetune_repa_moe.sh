@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --job-name=finetune_repa_moe
-#SBATCH --nodes=2
-#SBATCH --ntasks=2
-#SBATCH --cpus-per-task=72
-#SBATCH --gres=gpu:4
+#SBATCH --nodes=4
+#SBATCH --ntasks=4
+#SBATCH --cpus-per-task=18
+#SBATCH --gres=gpu:1
 #SBATCH --mem=200G
 #SBATCH --time=1:00:00
 #SBATCH --output=log_finetune_repa_moe_%j.out
@@ -70,6 +70,7 @@ export MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)
 # export LOCAL_RANK=$SLURM_LOCALID
 # export NODE_RANK=$SLURM_NODEID
 
+echo "VERSION: 1.0"
 echo "MASTER_PORT: $MASTER_PORT"
 echo "MASTER_ADDR: $MASTER_ADDR"
 echo "WORLD_SIZE: $WORLD_SIZE"
