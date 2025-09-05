@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=finetune_repa_moe
 #SBATCH --nodes=4
-#SBATCH --ntasks=4
+#SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=18
 #SBATCH --gres=gpu:1
 #SBATCH --mem=200G
@@ -73,19 +73,15 @@ export MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)
 echo "VERSION: 1.1"
 echo "MASTER_PORT: $MASTER_PORT"
 echo "MASTER_ADDR: $MASTER_ADDR"
-echo "WORLD_SIZE: $WORLD_SIZE"
-echo "RANK: $RANK"
-echo "GLOBAL_RANK: $GLOBAL_RANK"
-echo "LOCAL_RANK: $LOCAL_RANK"
-echo "NODE_RANK: $NODE_RANK"
-echo "SLURM_NNODES: $SLURM_NNODES"
-echo "SLURM_NTASKS: $SLURM_NTASKS"
-echo "SLURM_PROCID: $SLURM_PROCID"
-echo "SLURM_LOCALID: $SLURM_LOCALID"
-
-        # --master_addr=$MASTER_ADDR --master_port=$MASTER_PORT --node_rank=$SLURM_NODEID \
-        # --launcher=slurm --num_gpus=$SLURM_GPUS_ON_NODE --num_nodes=$SLURM_NNODES \
-        # --hostfile=hostfile \
+#echo "WORLD_SIZE: $WORLD_SIZE"
+#echo "RANK: $RANK"
+#echo "GLOBAL_RANK: $GLOBAL_RANK"
+#echo "LOCAL_RANK: $LOCAL_RANK"
+#echo "NODE_RANK: $NODE_RANK"
+#echo "SLURM_NNODES: $SLURM_NNODES"
+#echo "SLURM_NTASKS: $SLURM_NTASKS"
+#echo "SLURM_PROCID: $SLURM_PROCID"
+#echo "SLURM_LOCALID: $SLURM_LOCALID"
 
 # 仅在 node rank 0 上启动 deepspeed
 HOSTLIST=($(scontrol show hostnames "$SLURM_JOB_NODELIST"))
