@@ -6,8 +6,8 @@
 #SBATCH --gres=gpu:1
 #SBATCH --mem=200G
 #SBATCH --time=1:00:00
-#SBATCH --output=log_finetune_repa_moe_%j.out
-#SBATCH --error=log_finetune_repa_moe_%j.err
+#SBATCH --output=logs/log_finetune_repa_moe_v1.1_%j.out
+#SBATCH --error=logs/log_finetune_repa_moe_v1.1_%j.err
 
 # Load required modules
 
@@ -61,7 +61,7 @@ perl -e '
 
 makehostfile > myhostfile
 
-cat hostfile
+cat myhostfile
 
 export MASTER_PORT=33789
 export MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)
@@ -70,7 +70,7 @@ export MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)
 # export LOCAL_RANK=$SLURM_LOCALID
 # export NODE_RANK=$SLURM_NODEID
 
-echo "VERSION: 1.0"
+echo "VERSION: 1.1"
 echo "MASTER_PORT: $MASTER_PORT"
 echo "MASTER_ADDR: $MASTER_ADDR"
 echo "WORLD_SIZE: $WORLD_SIZE"
@@ -106,6 +106,7 @@ if [ "$NODE_RANK" -eq 0 ]; then
   # Run training
   WANDB_MODE=offline HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 deepspeed \
     --master_addr=$MASTER_ADDR --master_port=$MASTER_PORT --launcher=slurm --hostfile=myhostfile \
+    --num_gpus=$SLURM_GPUS_ON_NODE --num_nodes=$SLURM_NNODES \
     moellava/train/train_mem.py \
     --moe_enable True --num_experts ${num_experts} --top_k_experts ${top_k_experts} --capacity_factor 1.5 \
     --moe_mode ${moe_mode} --use_residual ${use_residual} --router_aux_loss_coef ${router_aux_loss_coef} \
