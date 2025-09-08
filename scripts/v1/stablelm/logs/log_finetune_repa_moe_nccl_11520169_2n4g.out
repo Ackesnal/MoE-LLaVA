@@ -1,0 +1,1411 @@
+Loading cuda/12.4.0
+  Unloading conflict: cuda/12.8.1
+VERSION: 1.4 (NCCL-only)
+MASTER_PORT: 42957
+MASTER_ADDR: g002
+[2025-09-08 23:47:18,116] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-08 23:47:18,116] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-08 23:47:18,116] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-08 23:47:18,116] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-08 23:47:18,121] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-08 23:47:18,121] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-08 23:47:18,121] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-08 23:47:18,121] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+
+
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+
+[2025-09-08 23:47:32,582] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-08 23:47:32,582] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-08 23:47:32,582] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-08 23:47:32,582] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-08 23:47:32,587] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-08 23:47:32,587] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-08 23:47:32,587] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-08 23:47:32,587] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+⚙️  Running in WANDB offline mode
+⚙️  Running in WANDB offline mode⚙️  Running in WANDB offline mode
+
+⚙️  Running in WANDB offline mode
+⚙️  Running in WANDB offline mode⚙️  Running in WANDB offline mode⚙️  Running in WANDB offline mode
+
+
+⚙️  Running in WANDB offline mode
+[2025-09-08 23:47:36,367] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-08 23:47:36,367] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-08 23:47:36,367] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-08 23:47:36,368] [INFO] [comm.py:852:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[2025-09-08 23:47:36,368] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-08 23:47:36,367] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-08 23:47:36,367] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-08 23:47:36,367] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-08 23:47:36,367] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-08 23:47:36,759] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:47:36,761] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:47:36,763] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:47:36,765] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:47:36,767] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:47:36,769] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:47:36,771] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:47:36,772] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:47:36,774] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:47:36,776] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:47:36,777] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:47:36,779] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+Vision encoder and proj init.
+
+Vision encoder and proj init.
+
+RePaMoELLaVAStablelmForCausalLM(
+  (model): MoELLaVAStablelmModel(
+    (embed_tokens): Embedding(100352, 2048, padding_idx=100280)
+    (layers): ModuleList(
+      (0): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (1): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (2): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (3): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (4): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (5): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (6): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (7): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (8): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (9): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (10): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (11): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (12): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (13): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (14): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (15): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (16): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (17): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (18): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (19): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (20): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (21): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (22): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (23): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+    (image_tower): CLIPVisionTower(
+      (image_tower): CLIPVisionModel(
+        (vision_model): CLIPVisionTransformer(
+          (embeddings): CLIPVisionEmbeddings(
+            (patch_embedding): Conv2d(3, 1024, kernel_size=(14, 14), stride=(14, 14), bias=False)
+            (position_embedding): Embedding(577, 1024)
+          )
+          (pre_layrnorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (encoder): CLIPEncoder(
+            (layers): ModuleList(
+              (0-23): 24 x CLIPEncoderLayer(
+                (self_attn): CLIPAttention(
+                  (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                )
+                (layer_norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+                (mlp): CLIPMLP(
+                  (activation_fn): QuickGELUActivation()
+                  (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+                  (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+                )
+                (layer_norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              )
+            )
+          )
+          (post_layernorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (mm_projector): build_projector(
+      (image_spatial_proj): Sequential(
+        (0): Linear(in_features=1024, out_features=2048, bias=True)
+        (1): GELU(approximate='none')
+        (2): Linear(in_features=2048, out_features=2048, bias=True)
+      )
+      (video_patch_proj): Identity()
+      (video_spatial_proj): Identity()
+      (video_temproal_proj): Identity()
+      (video_global_proj): Identity()
+    )
+  )
+  (lm_head): Linear(in_features=2048, out_features=100352, bias=False)
+)
+RePaMoELLaVAStablelmForCausalLM(
+  (model): MoELLaVAStablelmModel(
+    (embed_tokens): Embedding(100352, 2048, padding_idx=100280)
+    (layers): ModuleList(
+      (0): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (1): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (2): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (3): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (4): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (5): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (6): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (7): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (8): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (9): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (10): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (11): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (12): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (13): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (14): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (15): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (16): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (17): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (18): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (19): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (20): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (21): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (22): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (23): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+    (image_tower): CLIPVisionTower(
+      (image_tower): CLIPVisionModel(
+        (vision_model): CLIPVisionTransformer(
+          (embeddings): CLIPVisionEmbeddings(
+            (patch_embedding): Conv2d(3, 1024, kernel_size=(14, 14), stride=(14, 14), bias=False)
+            (position_embedding): Embedding(577, 1024)
+          )
+          (pre_layrnorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (encoder): CLIPEncoder(
+            (layers): ModuleList(
+              (0-23): 24 x CLIPEncoderLayer(
+                (self_attn): CLIPAttention(
+                  (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                )
+                (layer_norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+                (mlp): CLIPMLP(
+                  (activation_fn): QuickGELUActivation()
+                  (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+                  (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+                )
+                (layer_norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              )
+            )
+          )
+          (post_layernorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (mm_projector): build_projector(
+      (image_spatial_proj): Sequential(
+        (0): Linear(in_features=1024, out_features=2048, bias=True)
+        (1): GELU(approximate='none')
+        (2): Linear(in_features=2048, out_features=2048, bias=True)
+      )
+      (video_patch_proj): Identity()
+      (video_spatial_proj): Identity()
+      (video_temproal_proj): Identity()
+      (video_global_proj): Identity()
+    )
+  )
+  (lm_head): Linear(in_features=2048, out_features=100352, bias=False)
+)
+Formatting inputs...Skip in lazy mode
+Formatting inputs...Skip in lazy mode
+Setting up RePaMoE fine-tuning mode...
+Setting up RePaMoE fine-tuning mode...  Detected RePaMoE model: RePaMoELLaVAStablelmForCausalLM
+
+  Detected RePaMoE model: RePaMoELLaVAStablelmForCausalLM
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAStablelmForCausalLM
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAStablelmForCausalLM
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAStablelmForCausalLM
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAStablelmForCausalLM
+  Frozen 699 non-MoE parameters, kept 156 MoE parameters trainable  Frozen 699 non-MoE parameters, kept 156 MoE parameters trainable
+
+  Frozen 699 non-MoE parameters, kept 156 MoE parameters trainable
+  Frozen 699 non-MoE parameters, kept 156 MoE parameters trainable
+  Frozen 699 non-MoE parameters, kept 156 MoE parameters trainable
+  Frozen 699 non-MoE parameters, kept 156 MoE parameters trainable
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAStablelmForCausalLM
+  Frozen 699 non-MoE parameters, kept 156 MoE parameters trainable
+  Set initial gated ratio to 1.0
+  Total training steps: 10395.0
+  Stage 1 (gated ratio reduction): 5197.0 steps
+  Stage 2 (post-reparam training): 5198.0 steps
+  Gated ratio will be reduced from 1.0 to 1.0 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+  Set initial gated ratio to 1.0
+  Total training steps: 10395.0
+  Stage 1 (gated ratio reduction): 5197.0 steps
+  Stage 2 (post-reparam training): 5198.0 steps
+  Set initial gated ratio to 1.0  Gated ratio will be reduced from 1.0 to 1.0 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+
+  Total training steps: 10395.0
+  Stage 1 (gated ratio reduction): 5197.0 steps
+  Stage 2 (post-reparam training): 5198.0 steps
+  Gated ratio will be reduced from 1.0 to 1.0 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+  Set initial gated ratio to 1.0
+  Total training steps: 10395.0
+  Stage 1 (gated ratio reduction): 5197.0 steps
+  Stage 2 (post-reparam training): 5198.0 steps
+  Gated ratio will be reduced from 1.0 to 1.0 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+  Set initial gated ratio to 1.0
+  Total training steps: 10395.0
+  Stage 1 (gated ratio reduction): 5197.0 steps
+  Stage 2 (post-reparam training): 5198.0 steps
+  Gated ratio will be reduced from 1.0 to 1.0 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+  Set initial gated ratio to 1.0
+  Total training steps: 10395.0
+  Stage 1 (gated ratio reduction): 5197.0 steps
+  Stage 2 (post-reparam training): 5198.0 steps
+  Gated ratio will be reduced from 1.0 to 1.0 linearly over stage 1
+  Set initial gated ratio to 1.0  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+
+  Total training steps: 10395.0
+  Stage 1 (gated ratio reduction): 5197.0 steps
+  Stage 2 (post-reparam training): 5198.0 steps
+  Gated ratio will be reduced from 1.0 to 1.0 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAStablelmForCausalLM
+  Frozen 699 non-MoE parameters, kept 156 MoE parameters trainable
+  Set initial gated ratio to 1.0
+  Total training steps: 10395.0
+  Stage 1 (gated ratio reduction): 5197.0 steps
+  Stage 2 (post-reparam training): 5198.0 steps
+  Gated ratio will be reduced from 1.0 to 1.0 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+No existing process group found, creating a new group named: ep_size_1
+No existing process group found, creating a new group named: ep_size_1
+No existing process group found, creating a new group named: ep_size_1
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+No existing process group found, creating a new group named: ep_size_1
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+No existing process group found, creating a new group named: ep_size_1
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+No existing process group found, creating a new group named: ep_size_1
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+No existing process group found, creating a new group named: ep_size_1
+NCCL version 2.21.5+cuda12.4
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+No existing process group found, creating a new group named: ep_size_1
+NCCL version 2.21.5+cuda12.4
+NCCL version 2.21.5+cuda12.4
+NCCL version 2.21.5+cuda12.4
+NCCL version 2.21.5+cuda12.4
+NCCL version 2.21.5+cuda12.4
+NCCL version 2.21.5+cuda12.4
+NCCL version 2.21.5+cuda12.4
+{'loss': 1.0432, 'grad_norm': 0.6021081209182739, 'learning_rate': 0.0, 'epoch': 0.0}
+{'loss': 0.9545, 'grad_norm': 0.5481686592102051, 'learning_rate': 6.41025641025641e-08, 'epoch': 0.0}
+{'loss': 0.8927, 'grad_norm': 0.3564505875110626, 'learning_rate': 1.282051282051282e-07, 'epoch': 0.0}
+{'loss': 0.9458, 'grad_norm': 0.5697659254074097, 'learning_rate': 1.9230769230769234e-07, 'epoch': 0.0}
+{'loss': 1.018, 'grad_norm': 0.5290944576263428, 'learning_rate': 2.564102564102564e-07, 'epoch': 0.0}
+{'loss': 1.0195, 'grad_norm': 0.5515956878662109, 'learning_rate': 3.205128205128205e-07, 'epoch': 0.0}
+{'loss': 0.9669, 'grad_norm': 0.5065875053405762, 'learning_rate': 3.846153846153847e-07, 'epoch': 0.0}
+{'loss': 1.1093, 'grad_norm': 0.5834937691688538, 'learning_rate': 4.4871794871794876e-07, 'epoch': 0.0}
+{'loss': 0.9207, 'grad_norm': 0.5211367011070251, 'learning_rate': 5.128205128205128e-07, 'epoch': 0.0}
+{'loss': 0.955, 'grad_norm': 0.4859851896762848, 'learning_rate': 5.76923076923077e-07, 'epoch': 0.0}
+{'loss': 0.9184, 'grad_norm': 0.5163630843162537, 'learning_rate': 6.41025641025641e-07, 'epoch': 0.0}
+{'loss': 0.9389, 'grad_norm': 0.573130190372467, 'learning_rate': 7.051282051282052e-07, 'epoch': 0.0}
+{'loss': 1.0851, 'grad_norm': 0.5258644223213196, 'learning_rate': 7.692307692307694e-07, 'epoch': 0.0}
+{'loss': 1.0217, 'grad_norm': 0.6089131832122803, 'learning_rate': 8.333333333333333e-07, 'epoch': 0.0}
+{'loss': 1.0607, 'grad_norm': 0.6281992793083191, 'learning_rate': 8.974358974358975e-07, 'epoch': 0.0}
+{'loss': 0.923, 'grad_norm': 0.3410745859146118, 'learning_rate': 9.615384615384617e-07, 'epoch': 0.0}
+{'loss': 1.0964, 'grad_norm': 0.5153853893280029, 'learning_rate': 1.0256410256410257e-06, 'epoch': 0.0}
+{'loss': 1.0199, 'grad_norm': 0.51973956823349, 'learning_rate': 1.0897435897435899e-06, 'epoch': 0.0}
+{'loss': 0.8378, 'grad_norm': 0.46421605348587036, 'learning_rate': 1.153846153846154e-06, 'epoch': 0.0}
+{'loss': 1.1795, 'grad_norm': 0.6221699118614197, 'learning_rate': 1.217948717948718e-06, 'epoch': 0.0}
+{'loss': 0.9513, 'grad_norm': 0.5282295346260071, 'learning_rate': 1.282051282051282e-06, 'epoch': 0.0}
+{'loss': 1.0337, 'grad_norm': 0.5522478818893433, 'learning_rate': 1.3461538461538462e-06, 'epoch': 0.0}
+{'loss': 1.0393, 'grad_norm': 0.6052029132843018, 'learning_rate': 1.4102564102564104e-06, 'epoch': 0.0}
+{'loss': 1.0538, 'grad_norm': 0.5576091408729553, 'learning_rate': 1.4743589743589745e-06, 'epoch': 0.0}
+{'loss': 0.9181, 'grad_norm': 0.31637686491012573, 'learning_rate': 1.5384615384615387e-06, 'epoch': 0.0}
+{'loss': 0.894, 'grad_norm': 0.5572149753570557, 'learning_rate': 1.602564102564103e-06, 'epoch': 0.0}
+{'loss': 0.9569, 'grad_norm': 0.5621832013130188, 'learning_rate': 1.6666666666666667e-06, 'epoch': 0.0}
+{'loss': 1.0264, 'grad_norm': 0.5736680030822754, 'learning_rate': 1.7307692307692308e-06, 'epoch': 0.0}
+{'loss': 1.0571, 'grad_norm': 0.5336769819259644, 'learning_rate': 1.794871794871795e-06, 'epoch': 0.0}
+{'loss': 0.9283, 'grad_norm': 0.4635128676891327, 'learning_rate': 1.8589743589743592e-06, 'epoch': 0.0}
+{'loss': 1.0352, 'grad_norm': 0.5216324925422668, 'learning_rate': 1.9230769230769234e-06, 'epoch': 0.0}
+{'loss': 0.9852, 'grad_norm': 0.5106363296508789, 'learning_rate': 1.987179487179487e-06, 'epoch': 0.0}
+{'loss': 1.016, 'grad_norm': 0.5634948015213013, 'learning_rate': 2.0512820512820513e-06, 'epoch': 0.0}
+{'loss': 0.8877, 'grad_norm': 0.5053709745407104, 'learning_rate': 2.1153846153846155e-06, 'epoch': 0.0}
+{'loss': 1.1119, 'grad_norm': 0.5822147130966187, 'learning_rate': 2.1794871794871797e-06, 'epoch': 0.0}
+{'loss': 0.9177, 'grad_norm': 0.4726501405239105, 'learning_rate': 2.243589743589744e-06, 'epoch': 0.0}
+{'loss': 1.0406, 'grad_norm': 0.5647879242897034, 'learning_rate': 2.307692307692308e-06, 'epoch': 0.0}
+{'loss': 1.0463, 'grad_norm': 0.528831958770752, 'learning_rate': 2.371794871794872e-06, 'epoch': 0.0}
+{'loss': 1.0149, 'grad_norm': 0.5212339162826538, 'learning_rate': 2.435897435897436e-06, 'epoch': 0.0}
+{'loss': 1.0608, 'grad_norm': 0.5340285301208496, 'learning_rate': 2.5e-06, 'epoch': 0.0}
+{'loss': 1.022, 'grad_norm': 0.49678894877433777, 'learning_rate': 2.564102564102564e-06, 'epoch': 0.0}
+{'loss': 1.0138, 'grad_norm': 0.5034973621368408, 'learning_rate': 2.6282051282051286e-06, 'epoch': 0.0}
+{'loss': 1.1254, 'grad_norm': 0.5240713357925415, 'learning_rate': 2.6923076923076923e-06, 'epoch': 0.0}
+{'loss': 0.9476, 'grad_norm': 0.4780503213405609, 'learning_rate': 2.756410256410257e-06, 'epoch': 0.0}
+{'loss': 0.9951, 'grad_norm': 0.5184759497642517, 'learning_rate': 2.8205128205128207e-06, 'epoch': 0.0}
+{'loss': 0.9514, 'grad_norm': 0.5652843117713928, 'learning_rate': 2.8846153846153845e-06, 'epoch': 0.0}
+{'loss': 1.0255, 'grad_norm': 0.548583984375, 'learning_rate': 2.948717948717949e-06, 'epoch': 0.0}
+{'loss': 0.8998, 'grad_norm': 0.29926371574401855, 'learning_rate': 3.012820512820513e-06, 'epoch': 0.0}
+{'loss': 1.055, 'grad_norm': 0.625825822353363, 'learning_rate': 3.0769230769230774e-06, 'epoch': 0.0}
+{'loss': 0.9054, 'grad_norm': 0.5170665979385376, 'learning_rate': 3.141025641025641e-06, 'epoch': 0.0}
+{'loss': 1.1279, 'grad_norm': 0.538561224937439, 'learning_rate': 3.205128205128206e-06, 'epoch': 0.0}
+{'loss': 1.0543, 'grad_norm': 0.6208482980728149, 'learning_rate': 3.2692307692307696e-06, 'epoch': 0.01}
+{'loss': 1.0626, 'grad_norm': 0.4970950186252594, 'learning_rate': 3.3333333333333333e-06, 'epoch': 0.01}
+{'loss': 1.1297, 'grad_norm': 0.5458225011825562, 'learning_rate': 3.397435897435898e-06, 'epoch': 0.01}
+{'loss': 0.8238, 'grad_norm': 0.541357159614563, 'learning_rate': 3.4615384615384617e-06, 'epoch': 0.01}
+{'loss': 0.8783, 'grad_norm': 0.3274918496608734, 'learning_rate': 3.5256410256410263e-06, 'epoch': 0.01}
+{'loss': 0.992, 'grad_norm': 0.5697121620178223, 'learning_rate': 3.58974358974359e-06, 'epoch': 0.01}
+{'loss': 1.0349, 'grad_norm': 0.5456894636154175, 'learning_rate': 3.653846153846154e-06, 'epoch': 0.01}
+{'loss': 1.0798, 'grad_norm': 0.5936978459358215, 'learning_rate': 3.7179487179487184e-06, 'epoch': 0.01}
+{'loss': 1.0559, 'grad_norm': 0.5163302421569824, 'learning_rate': 3.782051282051282e-06, 'epoch': 0.01}
+{'loss': 1.0334, 'grad_norm': 0.5869437456130981, 'learning_rate': 3.846153846153847e-06, 'epoch': 0.01}
