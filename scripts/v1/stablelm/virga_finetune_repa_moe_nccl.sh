@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=finetune_repa_moe_nccl
-#SBATCH --nodes=2
+#SBATCH --nodes=8
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=72
-#SBATCH --gres=gpu:4
-#SBATCH --mem=512G
+#SBATCH --cpus-per-task=36
+#SBATCH --gres=gpu:2
+#SBATCH --mem=128G
 #SBATCH --time=1:00:00
 #SBATCH --output=logs/log_finetune_repa_moe_nccl_%j.out
 #SBATCH --error=logs/log_finetune_repa_moe_nccl_%j.err
@@ -97,9 +97,8 @@ WANDB_MODE=offline HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
 torchrun \
     --nnodes=\$SLURM_NNODES \
     --nproc_per_node=\$SLURM_GPUS_ON_NODE \
-    --rdzv_id=\$SLURM_JOB_ID \
-    --rdzv_backend=c10d \
-    --rdzv_endpoint=\$MASTER_ADDR:\$MASTER_PORT \
+    --master_addr=\$MASTER_ADDR \
+    --master_port=\$MASTER_PORT \
     moellava/train/train_mem.py \
     --moe_enable True --num_experts ${num_experts} --top_k_experts ${top_k_experts} --capacity_factor 1.5 \
     --moe_mode ${moe_mode} --use_residual ${use_residual} --router_aux_loss_coef ${router_aux_loss_coef} \
