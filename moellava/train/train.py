@@ -1532,8 +1532,8 @@ def train():
     # for name, param in model.named_parameters():
     #     if param.requires_grad:
     #         rank0_print(name)
+    model.to(training_args.device)
     rank0_print(model)
-    # sys.exit()
             
     data_module = make_supervised_data_module(tokenizer=tokenizer,
                                               data_args=data_args)

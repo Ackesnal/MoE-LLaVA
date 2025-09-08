@@ -588,6 +588,7 @@ class RePaMLP(nn.Module):
         # 确保mask在正确的设备上
         self.mask.fill_(False)  # 先全部设为False
         self.mask[:self.num_gated_channels] = True
+        self.mask.to(self.gate_proj.weight.device)  # 确保mask在正确的设备上
 
 
 class RePaMoE(MoE):

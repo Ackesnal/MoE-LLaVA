@@ -13,7 +13,9 @@ REPA_GATED_RATIO=0.25
 JSON_FOLDER="/mnt/data/llava_data/train_json"
 IMAGE_FOLDER="/mnt/data/llava_data/train_image"
 cd ~/MoE-LLaVA
-HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 deepspeed moellava/train/train_mem.py \
+HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 torchrun \
+    --nproc_per_node=2 --nnodes=1 \
+     moellava/train/train_mem.py \
     --moe_enable True --num_experts ${num_experts} --top_k_experts ${top_k_experts} --capacity_factor 1.5 \
     --moe_mode ${moe_mode} --use_residual ${use_residual} --router_aux_loss_coef ${router_aux_loss_coef} \
     --train_modules gate_proj up_proj down_proj wg \
@@ -32,12 +34,12 @@ HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 deepspeed moellava/train/train_mem.
     --bf16 True \
     --output_dir ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-2 \
     --num_train_epochs 1 \
-    --per_device_train_batch_size 4 \
+    --per_device_train_batch_size 2 \
     --per_device_eval_batch_size 4 \
     --gradient_accumulation_steps 1 \
     --eval_strategy "no" \
     --save_strategy "steps" \
-    --save_steps 4000 \
+    --save_steps 10 \
     --save_total_limit 1 \
     --learning_rate 2e-5 \
     --weight_decay 0. \

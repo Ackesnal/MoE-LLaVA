@@ -73,30 +73,30 @@ function get_free_port() {
 # Set distributed training environment variables
 export MASTER_PORT=$(get_free_port)
 export MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)
-export WORLD_SIZE=$SLURM_NTASKS
-export RANK=$SLURM_PROCID
-export LOCAL_RANK=$SLURM_LOCALID
-export NODE_RANK=$SLURM_NODEID
-export CUDA_VISIBLE_DEVICES=$SLURM_LOCALID
+# export WORLD_SIZE=$SLURM_NTASKS
+# export RANK=$SLURM_PROCID
+# export LOCAL_RANK=$SLURM_LOCALID
+# export NODE_RANK=$SLURM_NODEID
+# export CUDA_VISIBLE_DEVICES=$SLURM_LOCALID
 
-echo "VERSION: 1.3 (NCCL-only)"
+echo "VERSION: 1.4 (NCCL-only)"
 echo "MASTER_PORT: $MASTER_PORT"
 echo "MASTER_ADDR: $MASTER_ADDR"
-echo "WORLD_SIZE: $WORLD_SIZE"
-echo "RANK: $RANK"
-echo "LOCAL_RANK: $LOCAL_RANK"
-echo "NODE_RANK: $NODE_RANK"
-echo "SLURM_NNODES: $SLURM_NNODES"
-echo "SLURM_NTASKS: $SLURM_NTASKS"
-echo "SLURM_PROCID: $SLURM_PROCID"
-echo "SLURM_LOCALID: $SLURM_LOCALID"
+# echo "WORLD_SIZE: $WORLD_SIZE"
+# echo "RANK: $RANK"
+# echo "LOCAL_RANK: $LOCAL_RANK"
+# echo "NODE_RANK: $NODE_RANK"
+# echo "SLURM_NNODES: $SLURM_NNODES"
+# echo "SLURM_NTASKS: $SLURM_NTASKS"
+# echo "SLURM_PROCID: $SLURM_PROCID"
+# echo "SLURM_LOCALID: $SLURM_LOCALID"
 
 # Use torchrun approach to avoid MPI dependency completely
 srun --export=ALL bash -c "
 WANDB_MODE=offline HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
 torchrun \
     --nnodes=\$SLURM_NNODES \
-    --nproc_per_node=1 \
+    --nproc_per_node=\$SLURM_GPUS_ON_NODE \
     --rdzv_id=\$SLURM_JOB_ID \
     --rdzv_backend=c10d \
     --rdzv_endpoint=\$MASTER_ADDR:\$MASTER_PORT \
