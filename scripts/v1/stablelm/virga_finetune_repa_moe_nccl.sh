@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=finetune_repa_moe_nccl
-#SBATCH --nodes=4
+#SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=18
-#SBATCH --gres=gpu:1
-#SBATCH --mem=200G
+#SBATCH --cpus-per-task=72
+#SBATCH --gres=gpu:4
+#SBATCH --mem=512G
 #SBATCH --time=1:00:00
 #SBATCH --output=logs/log_finetune_repa_moe_nccl_%j.out
 #SBATCH --error=logs/log_finetune_repa_moe_nccl_%j.err
@@ -79,7 +79,7 @@ export MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)
 # export NODE_RANK=$SLURM_NODEID
 # export CUDA_VISIBLE_DEVICES=$SLURM_LOCALID
 
-echo "VERSION: 1.4 (NCCL-only)"
+echo "VERSION: 1.5 (NCCL-only)"
 echo "MASTER_PORT: $MASTER_PORT"
 echo "MASTER_ADDR: $MASTER_ADDR"
 # echo "WORLD_SIZE: $WORLD_SIZE"
@@ -121,7 +121,7 @@ torchrun \
     --num_train_epochs 1 \
     --per_device_train_batch_size 8 \
     --per_device_eval_batch_size 8 \
-    --gradient_accumulation_steps 1 \
+    --gradient_accumulation_steps 2 \
     --eval_strategy no \
     --save_strategy steps \
     --save_steps 4000 \
