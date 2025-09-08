@@ -1,0 +1,994 @@
+Loading cuda/12.4.0
+  Unloading conflict: cuda/12.8.1
+VERSION: 1.4 (NCCL-only)
+MASTER_PORT: 40341
+MASTER_ADDR: g011
+[2025-09-08 23:21:59,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-08 23:21:59,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-08 23:21:59,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-08 23:21:59,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[2025-09-08 23:22:21,638] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-08 23:22:21,638] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-08 23:22:21,638] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-08 23:22:21,638] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+⚙️  Running in WANDB offline mode⚙️  Running in WANDB offline mode
+⚙️  Running in WANDB offline mode
+
+⚙️  Running in WANDB offline mode
+[2025-09-08 23:22:28,857] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-08 23:22:28,857] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-08 23:22:28,857] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-08 23:22:28,857] [INFO] [comm.py:852:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[2025-09-08 23:22:28,857] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-08 23:22:29,433] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:22:29,435] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:22:29,437] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:22:29,439] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:22:29,441] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:22:29,443] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:22:29,444] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:22:29,446] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:22:29,448] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:22:29,449] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:22:29,451] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-08 23:22:29,453] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+Vision encoder and proj init.
+
+RePaMoELLaVAStablelmForCausalLM(
+  (model): MoELLaVAStablelmModel(
+    (embed_tokens): Embedding(100352, 2048, padding_idx=100280)
+    (layers): ModuleList(
+      (0): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (1): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (2): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (3): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (4): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (5): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (6): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (7): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (8): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (9): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (10): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (11): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (12): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (13): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (14): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (15): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (16): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (17): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (18): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (19): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (20): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (21): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (22): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+                  (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+                  (act_fn): SiLU()
+                )
+              )
+            )
+          )
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+      (23): DecoderLayer(
+        (self_attn): Attention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (k_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (v_proj): Linear(in_features=2048, out_features=2048, bias=True)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+        )
+        (mlp): MLP(
+          (gate_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=5632, bias=False)
+          (down_proj): Linear(in_features=5632, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+        (post_attention_layernorm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True)
+    (image_tower): CLIPVisionTower(
+      (image_tower): CLIPVisionModel(
+        (vision_model): CLIPVisionTransformer(
+          (embeddings): CLIPVisionEmbeddings(
+            (patch_embedding): Conv2d(3, 1024, kernel_size=(14, 14), stride=(14, 14), bias=False)
+            (position_embedding): Embedding(577, 1024)
+          )
+          (pre_layrnorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (encoder): CLIPEncoder(
+            (layers): ModuleList(
+              (0-23): 24 x CLIPEncoderLayer(
+                (self_attn): CLIPAttention(
+                  (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                )
+                (layer_norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+                (mlp): CLIPMLP(
+                  (activation_fn): QuickGELUActivation()
+                  (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+                  (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+                )
+                (layer_norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              )
+            )
+          )
+          (post_layernorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (mm_projector): build_projector(
+      (image_spatial_proj): Sequential(
+        (0): Linear(in_features=1024, out_features=2048, bias=True)
+        (1): GELU(approximate='none')
+        (2): Linear(in_features=2048, out_features=2048, bias=True)
+      )
+      (video_patch_proj): Identity()
+      (video_spatial_proj): Identity()
+      (video_temproal_proj): Identity()
+      (video_global_proj): Identity()
+    )
+  )
+  (lm_head): Linear(in_features=2048, out_features=100352, bias=False)
+)
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAStablelmForCausalLM
+  Frozen 699 non-MoE parameters, kept 156 MoE parameters trainable
+  Set initial gated ratio to 1.0
+  Total training steps: 20790.0
+  Stage 1 (gated ratio reduction): 10395.0 steps
+  Stage 2 (post-reparam training): 10395.0 steps
+  Gated ratio will be reduced from 1.0 to 1.0 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+Formatting inputs...Skip in lazy mode
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAStablelmForCausalLM
+  Frozen 699 non-MoE parameters, kept 156 MoE parameters trainable
+  Set initial gated ratio to 1.0
+  Total training steps: 20790.0
+  Stage 1 (gated ratio reduction): 10395.0 steps
+  Stage 2 (post-reparam training): 10395.0 steps
+  Gated ratio will be reduced from 1.0 to 1.0 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAStablelmForCausalLM
+  Frozen 699 non-MoE parameters, kept 156 MoE parameters trainable
+  Set initial gated ratio to 1.0
+  Total training steps: 20790.0
+  Stage 1 (gated ratio reduction): 10395.0 steps
+  Stage 2 (post-reparam training): 10395.0 steps
+  Gated ratio will be reduced from 1.0 to 1.0 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAStablelmForCausalLM
+  Frozen 699 non-MoE parameters, kept 156 MoE parameters trainable
+  Set initial gated ratio to 1.0
+  Total training steps: 20790.0
+  Stage 1 (gated ratio reduction): 10395.0 steps
+  Stage 2 (post-reparam training): 10395.0 steps
+  Gated ratio will be reduced from 1.0 to 1.0 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+No existing process group found, creating a new group named: ep_size_1
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+No existing process group found, creating a new group named: ep_size_1
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+No existing process group found, creating a new group named: ep_size_1
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+No existing process group found, creating a new group named: ep_size_1
+NCCL version 2.21.5+cuda12.4
+WARNING: tokenization mismatch: 0 vs. 1275. (ignored)
+NCCL version 2.21.5+cuda12.4
+NCCL version 2.21.5+cuda12.4
+NCCL version 2.21.5+cuda12.4
+{'loss': 1.1232, 'grad_norm': 0.7346400022506714, 'learning_rate': 0.0, 'epoch': 0.0}
+{'loss': 0.9433, 'grad_norm': 0.8658998608589172, 'learning_rate': 3.205128205128205e-08, 'epoch': 0.0}
+{'loss': 0.9679, 'grad_norm': 0.774110734462738, 'learning_rate': 6.41025641025641e-08, 'epoch': 0.0}
+{'loss': 1.1998, 'grad_norm': 0.840589702129364, 'learning_rate': 9.615384615384617e-08, 'epoch': 0.0}
+{'loss': 1.0248, 'grad_norm': 0.7430291175842285, 'learning_rate': 1.282051282051282e-07, 'epoch': 0.0}
+{'loss': 0.9745, 'grad_norm': 0.7143713235855103, 'learning_rate': 1.6025641025641025e-07, 'epoch': 0.0}
+{'loss': 1.0301, 'grad_norm': 0.7876430749893188, 'learning_rate': 1.9230769230769234e-07, 'epoch': 0.0}
+{'loss': 0.8712, 'grad_norm': 0.6511784791946411, 'learning_rate': 2.2435897435897438e-07, 'epoch': 0.0}
+{'loss': 0.876, 'grad_norm': 0.8518229722976685, 'learning_rate': 2.564102564102564e-07, 'epoch': 0.0}
+{'loss': 0.8226, 'grad_norm': 0.6186084151268005, 'learning_rate': 2.884615384615385e-07, 'epoch': 0.0}
+{'loss': 1.0772, 'grad_norm': 0.8850848078727722, 'learning_rate': 3.205128205128205e-07, 'epoch': 0.0}
+{'loss': 0.8809, 'grad_norm': 0.4091930389404297, 'learning_rate': 3.525641025641026e-07, 'epoch': 0.0}
+{'loss': 1.0919, 'grad_norm': 0.7973026037216187, 'learning_rate': 3.846153846153847e-07, 'epoch': 0.0}
+{'loss': 0.913, 'grad_norm': 0.704542338848114, 'learning_rate': 4.1666666666666667e-07, 'epoch': 0.0}
+{'loss': 0.9194, 'grad_norm': 0.7745960354804993, 'learning_rate': 4.4871794871794876e-07, 'epoch': 0.0}
+{'loss': 1.0705, 'grad_norm': 0.6504311561584473, 'learning_rate': 4.807692307692308e-07, 'epoch': 0.0}
+{'loss': 1.082, 'grad_norm': 0.6984604001045227, 'learning_rate': 5.128205128205128e-07, 'epoch': 0.0}
+{'loss': 1.2058, 'grad_norm': 0.7761505246162415, 'learning_rate': 5.448717948717949e-07, 'epoch': 0.0}
+{'loss': 1.0699, 'grad_norm': 0.8006558418273926, 'learning_rate': 5.76923076923077e-07, 'epoch': 0.0}
+{'loss': 0.8726, 'grad_norm': 0.7341392040252686, 'learning_rate': 6.08974358974359e-07, 'epoch': 0.0}
+{'loss': 1.0425, 'grad_norm': 0.8838917016983032, 'learning_rate': 6.41025641025641e-07, 'epoch': 0.0}
+{'loss': 0.946, 'grad_norm': 0.44285598397254944, 'learning_rate': 6.730769230769231e-07, 'epoch': 0.0}
+{'loss': 0.9222, 'grad_norm': 0.7443856596946716, 'learning_rate': 7.051282051282052e-07, 'epoch': 0.0}
+{'loss': 0.9775, 'grad_norm': 0.7608789205551147, 'learning_rate': 7.371794871794873e-07, 'epoch': 0.0}
+{'loss': 1.0412, 'grad_norm': 0.8724699020385742, 'learning_rate': 7.692307692307694e-07, 'epoch': 0.0}
+{'loss': 0.9464, 'grad_norm': 0.6273731589317322, 'learning_rate': 8.012820512820515e-07, 'epoch': 0.0}
+{'loss': 1.1286, 'grad_norm': 0.8997440934181213, 'learning_rate': 8.333333333333333e-07, 'epoch': 0.0}
+{'loss': 1.0455, 'grad_norm': 0.7927666306495667, 'learning_rate': 8.653846153846154e-07, 'epoch': 0.0}
+{'loss': 1.1503, 'grad_norm': 0.7693939208984375, 'learning_rate': 8.974358974358975e-07, 'epoch': 0.0}
+{'loss': 1.0006, 'grad_norm': 0.6413967609405518, 'learning_rate': 9.294871794871796e-07, 'epoch': 0.0}
+{'loss': 1.0516, 'grad_norm': 0.7167873978614807, 'learning_rate': 9.615384615384617e-07, 'epoch': 0.0}
+{'loss': 1.0082, 'grad_norm': 0.8742207288742065, 'learning_rate': 9.935897435897436e-07, 'epoch': 0.0}
+{'loss': 0.9259, 'grad_norm': 0.8191637396812439, 'learning_rate': 1.0256410256410257e-06, 'epoch': 0.0}
+{'loss': 1.0293, 'grad_norm': 0.7646414637565613, 'learning_rate': 1.0576923076923078e-06, 'epoch': 0.0}
+{'loss': 0.9956, 'grad_norm': 0.7775712013244629, 'learning_rate': 1.0897435897435899e-06, 'epoch': 0.0}
+{'loss': 0.9553, 'grad_norm': 0.7833099961280823, 'learning_rate': 1.121794871794872e-06, 'epoch': 0.0}
+{'loss': 1.0554, 'grad_norm': 0.7559751272201538, 'learning_rate': 1.153846153846154e-06, 'epoch': 0.0}
+{'loss': 0.969, 'grad_norm': 0.8989771604537964, 'learning_rate': 1.185897435897436e-06, 'epoch': 0.0}
+{'loss': 1.057, 'grad_norm': 0.7070725560188293, 'learning_rate': 1.217948717948718e-06, 'epoch': 0.0}
+{'loss': 0.8382, 'grad_norm': 0.7346091866493225, 'learning_rate': 1.25e-06, 'epoch': 0.0}
+{'loss': 0.9607, 'grad_norm': 0.7282366752624512, 'learning_rate': 1.282051282051282e-06, 'epoch': 0.0}
+{'loss': 0.9304, 'grad_norm': 0.7448212504386902, 'learning_rate': 1.3141025641025643e-06, 'epoch': 0.0}
+{'loss': 1.0112, 'grad_norm': 0.6986038088798523, 'learning_rate': 1.3461538461538462e-06, 'epoch': 0.0}
+{'loss': 1.0978, 'grad_norm': 0.765252947807312, 'learning_rate': 1.3782051282051285e-06, 'epoch': 0.0}
+{'loss': 0.9984, 'grad_norm': 0.794563353061676, 'learning_rate': 1.4102564102564104e-06, 'epoch': 0.0}
+{'loss': 0.9306, 'grad_norm': 0.6784840226173401, 'learning_rate': 1.4423076923076922e-06, 'epoch': 0.0}
+{'loss': 0.9385, 'grad_norm': 0.8796691298484802, 'learning_rate': 1.4743589743589745e-06, 'epoch': 0.0}
+{'loss': 0.9952, 'grad_norm': 0.4815029203891754, 'learning_rate': 1.5064102564102564e-06, 'epoch': 0.0}
+{'loss': 0.995, 'grad_norm': 0.6937130093574524, 'learning_rate': 1.5384615384615387e-06, 'epoch': 0.0}
+{'loss': 0.9606, 'grad_norm': 0.6813515424728394, 'learning_rate': 1.5705128205128206e-06, 'epoch': 0.0}
+{'loss': 1.1315, 'grad_norm': 0.7218724489212036, 'learning_rate': 1.602564102564103e-06, 'epoch': 0.0}
+{'loss': 0.9951, 'grad_norm': 0.664227306842804, 'learning_rate': 1.6346153846153848e-06, 'epoch': 0.0}
+{'loss': 1.1363, 'grad_norm': 0.8470407724380493, 'learning_rate': 1.6666666666666667e-06, 'epoch': 0.0}
+{'loss': 1.0291, 'grad_norm': 0.7578630447387695, 'learning_rate': 1.698717948717949e-06, 'epoch': 0.0}
+{'loss': 0.8999, 'grad_norm': 0.8681771159172058, 'learning_rate': 1.7307692307692308e-06, 'epoch': 0.0}
+{'loss': 0.9586, 'grad_norm': 0.767761766910553, 'learning_rate': 1.7628205128205131e-06, 'epoch': 0.0}
+{'loss': 0.9188, 'grad_norm': 0.4724370539188385, 'learning_rate': 1.794871794871795e-06, 'epoch': 0.0}
+{'loss': 1.0056, 'grad_norm': 0.851934552192688, 'learning_rate': 1.826923076923077e-06, 'epoch': 0.0}
+{'loss': 1.1431, 'grad_norm': 0.8917189240455627, 'learning_rate': 1.8589743589743592e-06, 'epoch': 0.0}
+{'loss': 1.155, 'grad_norm': 0.9795529246330261, 'learning_rate': 1.891025641025641e-06, 'epoch': 0.0}
+{'loss': 0.993, 'grad_norm': 0.7204895615577698, 'learning_rate': 1.9230769230769234e-06, 'epoch': 0.0}
+{'loss': 0.9656, 'grad_norm': 0.6486737728118896, 'learning_rate': 1.9551282051282055e-06, 'epoch': 0.0}
+{'loss': 1.113, 'grad_norm': 0.9452784061431885, 'learning_rate': 1.987179487179487e-06, 'epoch': 0.0}
+{'loss': 1.0458, 'grad_norm': 0.7221438884735107, 'learning_rate': 2.0192307692307692e-06, 'epoch': 0.0}
+{'loss': 1.0424, 'grad_norm': 0.7799336910247803, 'learning_rate': 2.0512820512820513e-06, 'epoch': 0.0}
+{'loss': 0.995, 'grad_norm': 0.7546067833900452, 'learning_rate': 2.0833333333333334e-06, 'epoch': 0.0}
+{'loss': 1.1127, 'grad_norm': 0.7785381078720093, 'learning_rate': 2.1153846153846155e-06, 'epoch': 0.0}
+{'loss': 0.7783, 'grad_norm': 0.4020082950592041, 'learning_rate': 2.1474358974358976e-06, 'epoch': 0.0}
+{'loss': 0.9296, 'grad_norm': 0.48123788833618164, 'learning_rate': 2.1794871794871797e-06, 'epoch': 0.0}
+{'loss': 0.9861, 'grad_norm': 0.7515658736228943, 'learning_rate': 2.211538461538462e-06, 'epoch': 0.0}
+{'loss': 1.0269, 'grad_norm': 0.8018814325332642, 'learning_rate': 2.243589743589744e-06, 'epoch': 0.0}
+{'loss': 1.0516, 'grad_norm': 0.93339604139328, 'learning_rate': 2.275641025641026e-06, 'epoch': 0.0}
+{'loss': 0.9774, 'grad_norm': 0.6694237589836121, 'learning_rate': 2.307692307692308e-06, 'epoch': 0.0}
+{'loss': 0.9846, 'grad_norm': 0.7960137724876404, 'learning_rate': 2.3397435897435897e-06, 'epoch': 0.0}
+{'loss': 0.8496, 'grad_norm': 0.8539713025093079, 'learning_rate': 2.371794871794872e-06, 'epoch': 0.0}
+{'loss': 1.0973, 'grad_norm': 0.8686479926109314, 'learning_rate': 2.403846153846154e-06, 'epoch': 0.0}
+{'loss': 0.9707, 'grad_norm': 0.6157591938972473, 'learning_rate': 2.435897435897436e-06, 'epoch': 0.0}
+{'loss': 0.974, 'grad_norm': 0.7095537185668945, 'learning_rate': 2.467948717948718e-06, 'epoch': 0.0}
+{'loss': 1.1245, 'grad_norm': 0.7676459550857544, 'learning_rate': 2.5e-06, 'epoch': 0.0}
+{'loss': 0.9008, 'grad_norm': 0.7252578139305115, 'learning_rate': 2.5320512820512823e-06, 'epoch': 0.0}
+{'loss': 1.051, 'grad_norm': 0.7609193325042725, 'learning_rate': 2.564102564102564e-06, 'epoch': 0.0}
+{'loss': 0.8636, 'grad_norm': 0.7052870392799377, 'learning_rate': 2.5961538461538465e-06, 'epoch': 0.0}
+{'loss': 1.104, 'grad_norm': 0.8031594753265381, 'learning_rate': 2.6282051282051286e-06, 'epoch': 0.0}
+{'loss': 0.9347, 'grad_norm': 0.7369941473007202, 'learning_rate': 2.6602564102564107e-06, 'epoch': 0.0}
+{'loss': 0.8088, 'grad_norm': 0.7192468047142029, 'learning_rate': 2.6923076923076923e-06, 'epoch': 0.0}
+{'loss': 1.036, 'grad_norm': 0.7273937463760376, 'learning_rate': 2.7243589743589744e-06, 'epoch': 0.0}
+{'loss': 1.0448, 'grad_norm': 0.45939382910728455, 'learning_rate': 2.756410256410257e-06, 'epoch': 0.0}
+{'loss': 1.0859, 'grad_norm': 0.8958422541618347, 'learning_rate': 2.7884615384615386e-06, 'epoch': 0.0}
+{'loss': 0.956, 'grad_norm': 0.8229658603668213, 'learning_rate': 2.8205128205128207e-06, 'epoch': 0.0}
+{'loss': 1.147, 'grad_norm': 0.7008286714553833, 'learning_rate': 2.852564102564103e-06, 'epoch': 0.0}
+{'loss': 0.9625, 'grad_norm': 0.6632843017578125, 'learning_rate': 2.8846153846153845e-06, 'epoch': 0.0}
+{'loss': 1.1167, 'grad_norm': 0.7805784344673157, 'learning_rate': 2.916666666666667e-06, 'epoch': 0.0}
+{'loss': 1.2923, 'grad_norm': 0.8124434351921082, 'learning_rate': 2.948717948717949e-06, 'epoch': 0.0}
+{'loss': 1.1228, 'grad_norm': 0.8053059577941895, 'learning_rate': 2.980769230769231e-06, 'epoch': 0.0}
+{'loss': 1.0479, 'grad_norm': 0.7728090286254883, 'learning_rate': 3.012820512820513e-06, 'epoch': 0.0}
+{'loss': 0.9131, 'grad_norm': 0.7355070114135742, 'learning_rate': 3.044871794871795e-06, 'epoch': 0.0}
+{'loss': 1.0031, 'grad_norm': 0.6802853941917419, 'learning_rate': 3.0769230769230774e-06, 'epoch': 0.0}
+{'loss': 0.9715, 'grad_norm': 0.7887936234474182, 'learning_rate': 3.108974358974359e-06, 'epoch': 0.0}
+{'loss': 1.0262, 'grad_norm': 0.9324048161506653, 'learning_rate': 3.141025641025641e-06, 'epoch': 0.0}
+{'loss': 0.8964, 'grad_norm': 0.71632981300354, 'learning_rate': 3.1730769230769233e-06, 'epoch': 0.0}
+{'loss': 1.0493, 'grad_norm': 0.6983281373977661, 'learning_rate': 3.205128205128206e-06, 'epoch': 0.0}
+{'loss': 0.9718, 'grad_norm': 0.8364376425743103, 'learning_rate': 3.2371794871794875e-06, 'epoch': 0.0}
+{'loss': 0.9739, 'grad_norm': 0.819173276424408, 'learning_rate': 3.2692307692307696e-06, 'epoch': 0.0}
+{'loss': 1.0339, 'grad_norm': 0.8269026875495911, 'learning_rate': 3.3012820512820517e-06, 'epoch': 0.01}
+{'loss': 1.1263, 'grad_norm': 0.6883870959281921, 'learning_rate': 3.3333333333333333e-06, 'epoch': 0.01}
+{'loss': 0.9747, 'grad_norm': 0.7819686532020569, 'learning_rate': 3.365384615384616e-06, 'epoch': 0.01}
+{'loss': 0.9807, 'grad_norm': 0.622118353843689, 'learning_rate': 3.397435897435898e-06, 'epoch': 0.01}
+{'loss': 1.102, 'grad_norm': 0.7400475144386292, 'learning_rate': 3.4294871794871796e-06, 'epoch': 0.01}
+{'loss': 1.112, 'grad_norm': 0.7847113609313965, 'learning_rate': 3.4615384615384617e-06, 'epoch': 0.01}
+{'loss': 1.0591, 'grad_norm': 0.7755642533302307, 'learning_rate': 3.4935897435897438e-06, 'epoch': 0.01}
+{'loss': 1.0319, 'grad_norm': 0.7482016682624817, 'learning_rate': 3.5256410256410263e-06, 'epoch': 0.01}
+{'loss': 1.0927, 'grad_norm': 0.7695273160934448, 'learning_rate': 3.557692307692308e-06, 'epoch': 0.01}
+{'loss': 1.1049, 'grad_norm': 0.8304901123046875, 'learning_rate': 3.58974358974359e-06, 'epoch': 0.01}
+{'loss': 0.9079, 'grad_norm': 0.8471439480781555, 'learning_rate': 3.621794871794872e-06, 'epoch': 0.01}
+{'loss': 0.9251, 'grad_norm': 0.7887731194496155, 'learning_rate': 3.653846153846154e-06, 'epoch': 0.01}
+{'loss': 1.0869, 'grad_norm': 0.8510277271270752, 'learning_rate': 3.6858974358974363e-06, 'epoch': 0.01}
+{'loss': 0.9262, 'grad_norm': 0.8822326064109802, 'learning_rate': 3.7179487179487184e-06, 'epoch': 0.01}
+{'loss': 0.9399, 'grad_norm': 0.8029512166976929, 'learning_rate': 3.7500000000000005e-06, 'epoch': 0.01}
+{'loss': 0.9978, 'grad_norm': 0.9728407263755798, 'learning_rate': 3.782051282051282e-06, 'epoch': 0.01}
+{'loss': 1.0533, 'grad_norm': 0.7982767820358276, 'learning_rate': 3.8141025641025643e-06, 'epoch': 0.01}
+{'loss': 1.067, 'grad_norm': 0.9609127640724182, 'learning_rate': 3.846153846153847e-06, 'epoch': 0.01}
+{'loss': 1.1067, 'grad_norm': 0.8687411546707153, 'learning_rate': 3.878205128205129e-06, 'epoch': 0.01}
+{'loss': 1.1825, 'grad_norm': 1.03337824344635, 'learning_rate': 3.910256410256411e-06, 'epoch': 0.01}
+{'loss': 0.9924, 'grad_norm': 0.7511246800422668, 'learning_rate': 3.942307692307692e-06, 'epoch': 0.01}
+{'loss': 1.0475, 'grad_norm': 0.7452242374420166, 'learning_rate': 3.974358974358974e-06, 'epoch': 0.01}
+{'loss': 0.9652, 'grad_norm': 0.7413038015365601, 'learning_rate': 4.006410256410257e-06, 'epoch': 0.01}
+{'loss': 1.14, 'grad_norm': 0.8239468932151794, 'learning_rate': 4.0384615384615385e-06, 'epoch': 0.01}
+{'loss': 1.0402, 'grad_norm': 0.6588384509086609, 'learning_rate': 4.070512820512821e-06, 'epoch': 0.01}
+{'loss': 0.8471, 'grad_norm': 0.6975422501564026, 'learning_rate': 4.102564102564103e-06, 'epoch': 0.01}
+{'loss': 0.8998, 'grad_norm': 0.8371134996414185, 'learning_rate': 4.134615384615385e-06, 'epoch': 0.01}
+{'loss': 1.1422, 'grad_norm': 0.8173168897628784, 'learning_rate': 4.166666666666667e-06, 'epoch': 0.01}
+{'loss': 1.0261, 'grad_norm': 0.7498281002044678, 'learning_rate': 4.198717948717949e-06, 'epoch': 0.01}
+{'loss': 0.8627, 'grad_norm': 0.7256953716278076, 'learning_rate': 4.230769230769231e-06, 'epoch': 0.01}
+{'loss': 1.0225, 'grad_norm': 0.7358185052871704, 'learning_rate': 4.262820512820513e-06, 'epoch': 0.01}
+{'loss': 0.8731, 'grad_norm': 0.8480489253997803, 'learning_rate': 4.294871794871795e-06, 'epoch': 0.01}
+{'loss': 1.0782, 'grad_norm': 0.735096275806427, 'learning_rate': 4.326923076923077e-06, 'epoch': 0.01}
+{'loss': 1.0432, 'grad_norm': 0.8137407898902893, 'learning_rate': 4.358974358974359e-06, 'epoch': 0.01}
+{'loss': 1.0972, 'grad_norm': 0.8737870454788208, 'learning_rate': 4.3910256410256415e-06, 'epoch': 0.01}
+{'loss': 1.0876, 'grad_norm': 1.0022042989730835, 'learning_rate': 4.423076923076924e-06, 'epoch': 0.01}
+{'loss': 0.9124, 'grad_norm': 0.7009207010269165, 'learning_rate': 4.455128205128206e-06, 'epoch': 0.01}
+{'loss': 1.0003, 'grad_norm': 0.7354065179824829, 'learning_rate': 4.487179487179488e-06, 'epoch': 0.01}
+{'loss': 0.957, 'grad_norm': 0.7955856919288635, 'learning_rate': 4.51923076923077e-06, 'epoch': 0.01}
+{'loss': 0.7025, 'grad_norm': 0.8017207980155945, 'learning_rate': 4.551282051282052e-06, 'epoch': 0.01}
+{'loss': 0.8844, 'grad_norm': 0.7146033048629761, 'learning_rate': 4.583333333333333e-06, 'epoch': 0.01}
+{'loss': 0.8249, 'grad_norm': 0.6748329401016235, 'learning_rate': 4.615384615384616e-06, 'epoch': 0.01}
+{'loss': 1.0019, 'grad_norm': 0.8241491913795471, 'learning_rate': 4.647435897435898e-06, 'epoch': 0.01}
+{'loss': 1.0447, 'grad_norm': 0.9191009402275085, 'learning_rate': 4.6794871794871795e-06, 'epoch': 0.01}
+{'loss': 0.9466, 'grad_norm': 0.4459393322467804, 'learning_rate': 4.711538461538462e-06, 'epoch': 0.01}
+{'loss': 0.9767, 'grad_norm': 0.8909863233566284, 'learning_rate': 4.743589743589744e-06, 'epoch': 0.01}
+{'loss': 1.0204, 'grad_norm': 0.7881030440330505, 'learning_rate': 4.775641025641027e-06, 'epoch': 0.01}
+{'loss': 1.0234, 'grad_norm': 0.7151840925216675, 'learning_rate': 4.807692307692308e-06, 'epoch': 0.01}
+{'loss': 0.9423, 'grad_norm': 0.6806774139404297, 'learning_rate': 4.83974358974359e-06, 'epoch': 0.01}
+{'loss': 1.0466, 'grad_norm': 0.9702035784721375, 'learning_rate': 4.871794871794872e-06, 'epoch': 0.01}
+{'loss': 0.9121, 'grad_norm': 0.8394929766654968, 'learning_rate': 4.903846153846154e-06, 'epoch': 0.01}
+{'loss': 0.9852, 'grad_norm': 0.9027756452560425, 'learning_rate': 4.935897435897436e-06, 'epoch': 0.01}
+{'loss': 1.0166, 'grad_norm': 0.7411431670188904, 'learning_rate': 4.967948717948718e-06, 'epoch': 0.01}
+{'loss': 1.0758, 'grad_norm': 0.8190290927886963, 'learning_rate': 5e-06, 'epoch': 0.01}
+{'loss': 1.1082, 'grad_norm': 0.7071897387504578, 'learning_rate': 5.0320512820512825e-06, 'epoch': 0.01}
+{'loss': 0.8913, 'grad_norm': 0.7088102102279663, 'learning_rate': 5.064102564102565e-06, 'epoch': 0.01}
+{'loss': 1.0966, 'grad_norm': 0.7608349323272705, 'learning_rate': 5.096153846153846e-06, 'epoch': 0.01}
+{'loss': 1.0177, 'grad_norm': 0.7443983554840088, 'learning_rate': 5.128205128205128e-06, 'epoch': 0.01}
+{'loss': 0.9746, 'grad_norm': 0.8796345591545105, 'learning_rate': 5.160256410256411e-06, 'epoch': 0.01}
+{'loss': 0.85, 'grad_norm': 0.7691949605941772, 'learning_rate': 5.192307692307693e-06, 'epoch': 0.01}
+{'loss': 0.9035, 'grad_norm': 0.7077798843383789, 'learning_rate': 5.224358974358975e-06, 'epoch': 0.01}
+{'loss': 0.9108, 'grad_norm': 0.7705800533294678, 'learning_rate': 5.256410256410257e-06, 'epoch': 0.01}
+{'loss': 0.9273, 'grad_norm': 0.6820882558822632, 'learning_rate': 5.288461538461539e-06, 'epoch': 0.01}
+{'loss': 1.1239, 'grad_norm': 0.9180198311805725, 'learning_rate': 5.320512820512821e-06, 'epoch': 0.01}
+{'loss': 0.967, 'grad_norm': 0.9124570488929749, 'learning_rate': 5.3525641025641026e-06, 'epoch': 0.01}
+{'loss': 0.939, 'grad_norm': 0.6240986585617065, 'learning_rate': 5.384615384615385e-06, 'epoch': 0.01}
+{'loss': 1.1359, 'grad_norm': 0.9811677932739258, 'learning_rate': 5.416666666666667e-06, 'epoch': 0.01}
+{'loss': 1.0538, 'grad_norm': 0.7907929420471191, 'learning_rate': 5.448717948717949e-06, 'epoch': 0.01}
+{'loss': 1.162, 'grad_norm': 0.992709219455719, 'learning_rate': 5.480769230769232e-06, 'epoch': 0.01}
+{'loss': 1.0873, 'grad_norm': 0.8560701012611389, 'learning_rate': 5.512820512820514e-06, 'epoch': 0.01}
+{'loss': 0.9583, 'grad_norm': 0.7155488133430481, 'learning_rate': 5.544871794871796e-06, 'epoch': 0.01}
+{'loss': 0.9324, 'grad_norm': 0.8635536432266235, 'learning_rate': 5.576923076923077e-06, 'epoch': 0.01}
+{'loss': 0.8809, 'grad_norm': 0.7854083776473999, 'learning_rate': 5.608974358974359e-06, 'epoch': 0.01}
+{'loss': 0.9487, 'grad_norm': 0.4987824261188507, 'learning_rate': 5.641025641025641e-06, 'epoch': 0.01}
+{'loss': 0.7959, 'grad_norm': 0.8041109442710876, 'learning_rate': 5.6730769230769235e-06, 'epoch': 0.01}
+{'loss': 0.9924, 'grad_norm': 0.6929842233657837, 'learning_rate': 5.705128205128206e-06, 'epoch': 0.01}
+{'loss': 0.8946, 'grad_norm': 0.735011100769043, 'learning_rate': 5.737179487179487e-06, 'epoch': 0.01}
+{'loss': 1.044, 'grad_norm': 0.7500391602516174, 'learning_rate': 5.769230769230769e-06, 'epoch': 0.01}
+{'loss': 0.9583, 'grad_norm': 0.8171724677085876, 'learning_rate': 5.801282051282052e-06, 'epoch': 0.01}
+{'loss': 1.0553, 'grad_norm': 0.8643280267715454, 'learning_rate': 5.833333333333334e-06, 'epoch': 0.01}
+{'loss': 1.02, 'grad_norm': 0.7868094444274902, 'learning_rate': 5.865384615384616e-06, 'epoch': 0.01}
+{'loss': 1.1238, 'grad_norm': 0.903735876083374, 'learning_rate': 5.897435897435898e-06, 'epoch': 0.01}
+{'loss': 1.0132, 'grad_norm': 0.7488113641738892, 'learning_rate': 5.92948717948718e-06, 'epoch': 0.01}
+{'loss': 0.8885, 'grad_norm': 0.4432605504989624, 'learning_rate': 5.961538461538462e-06, 'epoch': 0.01}
+{'loss': 1.1028, 'grad_norm': 0.797333836555481, 'learning_rate': 5.9935897435897436e-06, 'epoch': 0.01}
+{'loss': 1.2474, 'grad_norm': 0.9503281712532043, 'learning_rate': 6.025641025641026e-06, 'epoch': 0.01}
+{'loss': 1.008, 'grad_norm': 0.7754295468330383, 'learning_rate': 6.057692307692308e-06, 'epoch': 0.01}
+{'loss': 0.9843, 'grad_norm': 0.765743613243103, 'learning_rate': 6.08974358974359e-06, 'epoch': 0.01}
+{'loss': 0.9438, 'grad_norm': 0.8343388438224792, 'learning_rate': 6.121794871794873e-06, 'epoch': 0.01}
+{'loss': 1.0543, 'grad_norm': 0.796506941318512, 'learning_rate': 6.153846153846155e-06, 'epoch': 0.01}
+{'loss': 0.9032, 'grad_norm': 0.9016762375831604, 'learning_rate': 6.185897435897437e-06, 'epoch': 0.01}
+{'loss': 0.9878, 'grad_norm': 0.8208842873573303, 'learning_rate': 6.217948717948718e-06, 'epoch': 0.01}
+{'loss': 1.0147, 'grad_norm': 0.8966189622879028, 'learning_rate': 6.25e-06, 'epoch': 0.01}
+{'loss': 0.9072, 'grad_norm': 0.4756789207458496, 'learning_rate': 6.282051282051282e-06, 'epoch': 0.01}
+{'loss': 1.0189, 'grad_norm': 0.8832319378852844, 'learning_rate': 6.3141025641025645e-06, 'epoch': 0.01}
+{'loss': 0.8698, 'grad_norm': 0.7472732067108154, 'learning_rate': 6.3461538461538466e-06, 'epoch': 0.01}
+{'loss': 1.0703, 'grad_norm': 0.7634823322296143, 'learning_rate': 6.378205128205129e-06, 'epoch': 0.01}
+{'loss': 0.9466, 'grad_norm': 0.6971115469932556, 'learning_rate': 6.410256410256412e-06, 'epoch': 0.01}
+{'loss': 0.9732, 'grad_norm': 0.7857523560523987, 'learning_rate': 6.442307692307693e-06, 'epoch': 0.01}
+{'loss': 1.1038, 'grad_norm': 0.7624552249908447, 'learning_rate': 6.474358974358975e-06, 'epoch': 0.01}
+{'loss': 1.0973, 'grad_norm': 0.8127272129058838, 'learning_rate': 6.506410256410257e-06, 'epoch': 0.01}
+{'loss': 0.9093, 'grad_norm': 0.8113082647323608, 'learning_rate': 6.538461538461539e-06, 'epoch': 0.01}
+{'loss': 1.0934, 'grad_norm': 0.9810067415237427, 'learning_rate': 6.570512820512821e-06, 'epoch': 0.01}
+{'loss': 1.0559, 'grad_norm': 0.8231292366981506, 'learning_rate': 6.602564102564103e-06, 'epoch': 0.01}
+{'loss': 1.2432, 'grad_norm': 0.9799140095710754, 'learning_rate': 6.6346153846153846e-06, 'epoch': 0.01}
+{'loss': 1.115, 'grad_norm': 0.6641945838928223, 'learning_rate': 6.666666666666667e-06, 'epoch': 0.01}
+{'loss': 1.0015, 'grad_norm': 0.7349031567573547, 'learning_rate': 6.698717948717949e-06, 'epoch': 0.01}
+{'loss': 1.0156, 'grad_norm': 0.7484990954399109, 'learning_rate': 6.730769230769232e-06, 'epoch': 0.01}
+{'loss': 1.0938, 'grad_norm': 0.760174572467804, 'learning_rate': 6.762820512820514e-06, 'epoch': 0.01}
+{'loss': 1.1107, 'grad_norm': 0.9369139671325684, 'learning_rate': 6.794871794871796e-06, 'epoch': 0.01}
+{'loss': 1.0493, 'grad_norm': 0.8045583367347717, 'learning_rate': 6.826923076923078e-06, 'epoch': 0.01}
+{'loss': 1.0212, 'grad_norm': 0.9495567679405212, 'learning_rate': 6.858974358974359e-06, 'epoch': 0.01}
+{'loss': 0.9516, 'grad_norm': 0.7666997313499451, 'learning_rate': 6.891025641025641e-06, 'epoch': 0.01}
+{'loss': 1.0107, 'grad_norm': 0.7702541351318359, 'learning_rate': 6.923076923076923e-06, 'epoch': 0.01}
+{'loss': 1.1452, 'grad_norm': 0.9237550497055054, 'learning_rate': 6.9551282051282055e-06, 'epoch': 0.01}
+{'loss': 0.9589, 'grad_norm': 0.785730242729187, 'learning_rate': 6.9871794871794876e-06, 'epoch': 0.01}
+{'loss': 0.8281, 'grad_norm': 0.5082501769065857, 'learning_rate': 7.01923076923077e-06, 'epoch': 0.01}
+{'loss': 1.0614, 'grad_norm': 0.7903199791908264, 'learning_rate': 7.051282051282053e-06, 'epoch': 0.01}
+{'loss': 1.0699, 'grad_norm': 0.8302031755447388, 'learning_rate': 7.083333333333335e-06, 'epoch': 0.01}
+{'loss': 1.0908, 'grad_norm': 0.822384774684906, 'learning_rate': 7.115384615384616e-06, 'epoch': 0.01}
+{'loss': 1.1721, 'grad_norm': 1.0763869285583496, 'learning_rate': 7.147435897435898e-06, 'epoch': 0.01}
+{'loss': 0.9227, 'grad_norm': 0.7726983428001404, 'learning_rate': 7.17948717948718e-06, 'epoch': 0.01}
+{'loss': 1.0441, 'grad_norm': 0.9309486150741577, 'learning_rate': 7.211538461538462e-06, 'epoch': 0.01}
+{'loss': 0.888, 'grad_norm': 0.8706465363502502, 'learning_rate': 7.243589743589744e-06, 'epoch': 0.01}
+{'loss': 1.0248, 'grad_norm': 0.8819506168365479, 'learning_rate': 7.2756410256410255e-06, 'epoch': 0.01}
+{'loss': 1.0844, 'grad_norm': 0.773460328578949, 'learning_rate': 7.307692307692308e-06, 'epoch': 0.01}
+{'loss': 0.9623, 'grad_norm': 0.8197311758995056, 'learning_rate': 7.33974358974359e-06, 'epoch': 0.01}
+{'loss': 1.0423, 'grad_norm': 0.9059447646141052, 'learning_rate': 7.371794871794873e-06, 'epoch': 0.01}
+{'loss': 0.99, 'grad_norm': 0.7589074969291687, 'learning_rate': 7.403846153846155e-06, 'epoch': 0.01}
+{'loss': 1.1461, 'grad_norm': 0.84714275598526, 'learning_rate': 7.435897435897437e-06, 'epoch': 0.01}
+{'loss': 0.9628, 'grad_norm': 0.7751411199569702, 'learning_rate': 7.467948717948719e-06, 'epoch': 0.01}
+{'loss': 0.8828, 'grad_norm': 0.48465847969055176, 'learning_rate': 7.500000000000001e-06, 'epoch': 0.01}
+{'loss': 0.9494, 'grad_norm': 0.7645019292831421, 'learning_rate': 7.532051282051282e-06, 'epoch': 0.01}
+{'loss': 1.2391, 'grad_norm': 0.9233223795890808, 'learning_rate': 7.564102564102564e-06, 'epoch': 0.01}
+{'loss': 0.9454, 'grad_norm': 0.6693440675735474, 'learning_rate': 7.5961538461538465e-06, 'epoch': 0.01}
+{'loss': 0.9573, 'grad_norm': 0.7079776525497437, 'learning_rate': 7.6282051282051286e-06, 'epoch': 0.01}
+{'loss': 0.917, 'grad_norm': 0.6863831877708435, 'learning_rate': 7.660256410256411e-06, 'epoch': 0.01}
+{'loss': 1.03, 'grad_norm': 0.8531458973884583, 'learning_rate': 7.692307692307694e-06, 'epoch': 0.01}
+{'loss': 0.9177, 'grad_norm': 0.7572745084762573, 'learning_rate': 7.724358974358976e-06, 'epoch': 0.01}
+{'loss': 1.0407, 'grad_norm': 0.7445659041404724, 'learning_rate': 7.756410256410258e-06, 'epoch': 0.01}
+{'loss': 1.0158, 'grad_norm': 0.8992041349411011, 'learning_rate': 7.78846153846154e-06, 'epoch': 0.01}
+{'loss': 1.0151, 'grad_norm': 0.7025542855262756, 'learning_rate': 7.820512820512822e-06, 'epoch': 0.01}
+{'loss': 1.053, 'grad_norm': 0.7842750549316406, 'learning_rate': 7.852564102564102e-06, 'epoch': 0.01}
+{'loss': 1.1816, 'grad_norm': 0.9452658295631409, 'learning_rate': 7.884615384615384e-06, 'epoch': 0.01}
+{'loss': 0.9712, 'grad_norm': 0.4963272213935852, 'learning_rate': 7.916666666666667e-06, 'epoch': 0.01}
+{'loss': 1.1136, 'grad_norm': 0.8331769704818726, 'learning_rate': 7.948717948717949e-06, 'epoch': 0.01}
+{'loss': 1.1388, 'grad_norm': 0.9519323110580444, 'learning_rate': 7.980769230769232e-06, 'epoch': 0.01}
+{'loss': 1.0632, 'grad_norm': 0.8135805130004883, 'learning_rate': 8.012820512820515e-06, 'epoch': 0.01}
+{'loss': 1.1369, 'grad_norm': 0.8575393557548523, 'learning_rate': 8.044871794871797e-06, 'epoch': 0.01}
+{'loss': 1.1014, 'grad_norm': 0.8293297290802002, 'learning_rate': 8.076923076923077e-06, 'epoch': 0.01}
+{'loss': 1.1111, 'grad_norm': 0.7697952389717102, 'learning_rate': 8.108974358974359e-06, 'epoch': 0.01}
+{'loss': 0.9298, 'grad_norm': 0.4727216362953186, 'learning_rate': 8.141025641025641e-06, 'epoch': 0.01}
+Error with image file is truncated (16 bytes not processed)
+{'loss': 1.0698, 'grad_norm': 0.8413393497467041, 'learning_rate': 8.173076923076923e-06, 'epoch': 0.01}
+{'loss': 1.0982, 'grad_norm': 1.0036641359329224, 'learning_rate': 8.205128205128205e-06, 'epoch': 0.01}
+{'loss': 1.1373, 'grad_norm': 0.825186550617218, 'learning_rate': 8.237179487179487e-06, 'epoch': 0.01}
+{'loss': 0.9504, 'grad_norm': 0.8305390477180481, 'learning_rate': 8.26923076923077e-06, 'epoch': 0.01}
+{'loss': 0.9304, 'grad_norm': 0.7760130167007446, 'learning_rate': 8.301282051282052e-06, 'epoch': 0.01}
+{'loss': 1.0236, 'grad_norm': 0.8175131678581238, 'learning_rate': 8.333333333333334e-06, 'epoch': 0.01}
+{'loss': 0.941, 'grad_norm': 0.9126794934272766, 'learning_rate': 8.365384615384616e-06, 'epoch': 0.01}
+{'loss': 0.8479, 'grad_norm': 0.4130738079547882, 'learning_rate': 8.397435897435898e-06, 'epoch': 0.01}
+{'loss': 1.0601, 'grad_norm': 0.8093774914741516, 'learning_rate': 8.42948717948718e-06, 'epoch': 0.01}
+{'loss': 1.1049, 'grad_norm': 0.9379425048828125, 'learning_rate': 8.461538461538462e-06, 'epoch': 0.01}
+{'loss': 1.0304, 'grad_norm': 0.8893513083457947, 'learning_rate': 8.493589743589744e-06, 'epoch': 0.01}
+{'loss': 1.0154, 'grad_norm': 0.7654839754104614, 'learning_rate': 8.525641025641026e-06, 'epoch': 0.01}
+{'loss': 1.0733, 'grad_norm': 0.7472696900367737, 'learning_rate': 8.557692307692308e-06, 'epoch': 0.01}
+{'loss': 0.8969, 'grad_norm': 0.7903308868408203, 'learning_rate': 8.58974358974359e-06, 'epoch': 0.01}
+{'loss': 1.0109, 'grad_norm': 0.46752890944480896, 'learning_rate': 8.621794871794873e-06, 'epoch': 0.01}
+{'loss': 1.2013, 'grad_norm': 0.98126220703125, 'learning_rate': 8.653846153846155e-06, 'epoch': 0.01}
+{'loss': 0.9354, 'grad_norm': 0.75515216588974, 'learning_rate': 8.685897435897437e-06, 'epoch': 0.01}
+{'loss': 0.988, 'grad_norm': 0.8689439296722412, 'learning_rate': 8.717948717948719e-06, 'epoch': 0.01}
+{'loss': 1.0796, 'grad_norm': 0.8502712845802307, 'learning_rate': 8.750000000000001e-06, 'epoch': 0.01}
+{'loss': 1.0454, 'grad_norm': 0.7755513191223145, 'learning_rate': 8.782051282051283e-06, 'epoch': 0.01}
+{'loss': 1.0709, 'grad_norm': 0.8943424820899963, 'learning_rate': 8.814102564102565e-06, 'epoch': 0.01}
+{'loss': 1.1344, 'grad_norm': 0.7606271505355835, 'learning_rate': 8.846153846153847e-06, 'epoch': 0.01}
+{'loss': 0.9094, 'grad_norm': 0.9081172347068787, 'learning_rate': 8.87820512820513e-06, 'epoch': 0.01}
+{'loss': 1.2496, 'grad_norm': 0.9541351795196533, 'learning_rate': 8.910256410256411e-06, 'epoch': 0.01}
+{'loss': 1.1324, 'grad_norm': 0.7565779089927673, 'learning_rate': 8.942307692307693e-06, 'epoch': 0.01}
+{'loss': 1.096, 'grad_norm': 0.7847740650177002, 'learning_rate': 8.974358974358976e-06, 'epoch': 0.01}
+{'loss': 1.0524, 'grad_norm': 0.8224051594734192, 'learning_rate': 9.006410256410258e-06, 'epoch': 0.01}
+{'loss': 0.8733, 'grad_norm': 0.5264129638671875, 'learning_rate': 9.03846153846154e-06, 'epoch': 0.01}
+{'loss': 0.8701, 'grad_norm': 0.8669780492782593, 'learning_rate': 9.070512820512822e-06, 'epoch': 0.01}
+{'loss': 1.206, 'grad_norm': 0.9692344069480896, 'learning_rate': 9.102564102564104e-06, 'epoch': 0.01}
+{'loss': 0.828, 'grad_norm': 0.6850462555885315, 'learning_rate': 9.134615384615384e-06, 'epoch': 0.01}
+{'loss': 1.0216, 'grad_norm': 0.7984384298324585, 'learning_rate': 9.166666666666666e-06, 'epoch': 0.01}
+{'loss': 1.0254, 'grad_norm': 0.8409125804901123, 'learning_rate': 9.198717948717949e-06, 'epoch': 0.01}
+{'loss': 0.9348, 'grad_norm': 0.7629426121711731, 'learning_rate': 9.230769230769232e-06, 'epoch': 0.01}
+{'loss': 0.9912, 'grad_norm': 0.8848979473114014, 'learning_rate': 9.262820512820514e-06, 'epoch': 0.01}
+{'loss': 0.933, 'grad_norm': 0.8029178380966187, 'learning_rate': 9.294871794871796e-06, 'epoch': 0.01}
+{'loss': 0.9835, 'grad_norm': 0.8022916913032532, 'learning_rate': 9.326923076923079e-06, 'epoch': 0.01}
+{'loss': 0.9354, 'grad_norm': 0.8980881571769714, 'learning_rate': 9.358974358974359e-06, 'epoch': 0.01}
+{'loss': 1.0991, 'grad_norm': 0.7187499403953552, 'learning_rate': 9.391025641025641e-06, 'epoch': 0.01}
+{'loss': 1.0117, 'grad_norm': 0.7441406846046448, 'learning_rate': 9.423076923076923e-06, 'epoch': 0.01}
+{'loss': 0.9244, 'grad_norm': 0.6924595236778259, 'learning_rate': 9.455128205128205e-06, 'epoch': 0.01}
+{'loss': 0.9611, 'grad_norm': 0.7697159051895142, 'learning_rate': 9.487179487179487e-06, 'epoch': 0.01}
+{'loss': 0.9697, 'grad_norm': 0.9447286128997803, 'learning_rate': 9.51923076923077e-06, 'epoch': 0.01}
+{'loss': 0.9335, 'grad_norm': 0.8255895972251892, 'learning_rate': 9.551282051282053e-06, 'epoch': 0.01}
+{'loss': 0.933, 'grad_norm': 0.7588441967964172, 'learning_rate': 9.583333333333335e-06, 'epoch': 0.01}
+{'loss': 1.0514, 'grad_norm': 0.8034307956695557, 'learning_rate': 9.615384615384616e-06, 'epoch': 0.01}
+{'loss': 1.1501, 'grad_norm': 0.8959863781929016, 'learning_rate': 9.647435897435898e-06, 'epoch': 0.01}
+{'loss': 1.0104, 'grad_norm': 0.8944839239120483, 'learning_rate': 9.67948717948718e-06, 'epoch': 0.01}
+{'loss': 0.9612, 'grad_norm': 0.7440874576568604, 'learning_rate': 9.711538461538462e-06, 'epoch': 0.01}
+{'loss': 0.9442, 'grad_norm': 0.8252643346786499, 'learning_rate': 9.743589743589744e-06, 'epoch': 0.01}
+{'loss': 1.0818, 'grad_norm': 0.7887541055679321, 'learning_rate': 9.775641025641026e-06, 'epoch': 0.01}
+{'loss': 0.8949, 'grad_norm': 0.7576169371604919, 'learning_rate': 9.807692307692308e-06, 'epoch': 0.01}
+{'loss': 0.9412, 'grad_norm': 0.8844656348228455, 'learning_rate': 9.83974358974359e-06, 'epoch': 0.01}
