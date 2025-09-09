@@ -97,6 +97,7 @@ class ModelArguments:
     use_residual: bool = False
     router_aux_loss_coef: float = 0.01
     gated_ratio: float = 1.0
+    reparamed: bool = False
     # =============================================================
 
 @dataclass
@@ -147,7 +148,6 @@ class TrainingArguments(transformers.TrainingArguments):
     mm_projector_lr: Optional[float] = None
     group_by_modality_length: bool = field(default=False)
     finetune_repa_mode: bool = field(default=False, metadata={"help": "Enable RePaMoE finetuning mode"})
-    repa_gated_ratio: float = field(default=1.0, metadata={"help": "Gated ratio for RePaMoE adjust_gated_ratio function"})
 
 
 def maybe_zero_3(param, ignore_status=False, name=None):
@@ -1369,7 +1369,9 @@ def train():
             rank0_print("Adding LoRA adapters...")
             model = get_peft_model(model, lora_config)
         model.initialize_moe_modules(model_args=model_args)
-    elif model_args.moe_enable and training_args.finetune_repa_mode:
+    elif model_args.moe_enable and training_args.finetune_repa_mode:    
+        training_args.gated_ratio = model_args.gated_ratio
+        model.config.reparam["target_gated_ratio"] = model_args.gated_ratio
         model.disable_moe_allreduce()
     else:
         if training_args.lora_enable:

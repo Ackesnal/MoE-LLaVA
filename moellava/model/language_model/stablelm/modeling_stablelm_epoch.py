@@ -239,7 +239,10 @@ class Attention(nn.Module):
 
         kv_seq_len = key_states.shape[-2]
         if past_key_value is not None:
-            kv_seq_len += past_key_value[0].shape[-2]
+            if hasattr(past_key_value, "get_seq_length"):
+                kv_seq_len += past_key_value.get_seq_length()
+            else:
+                kv_seq_len += past_key_value[0].shape[-2]
         cos, sin = self.rotary_emb(value_states, seq_len=kv_seq_len)
         query_states, key_states = apply_rotary_pos_emb(query_rot, key_rot, cos, sin, position_ids)
 
@@ -249,11 +252,21 @@ class Attention(nn.Module):
 
         if past_key_value is not None:
             # Reuse k, v, self_attention
-            key_states = torch.cat((past_key_value[0], key_states), dim=2)
-            value_states = torch.cat((past_key_value[1], value_states), dim=2)
-
-        past_key_value = (key_states, value_states) if use_cache else None
-
+            if hasattr(past_key_value, "update"):
+                if use_cache:
+                    past_key_value.update(key_states, value_states)
+                    key_states = past_key_value.keys
+                    value_states = past_key_value.values
+                else:
+                    key_states = torch.cat((past_key_value.keys, key_states), dim=2)
+                    value_states = torch.cat((past_key_value.values, value_states), dim=2) 
+            else:
+                key_states = torch.cat((past_key_value[0], key_states), dim=2)
+                value_states = torch.cat((past_key_value[1], value_states), dim=2)
+                if use_cache:
+                    # `past_key_value` is a named tuple of (keys, values)
+                    past_key_value = (key_states, value_states)
+                
         # Repeat k/v heads if n_kv_heads < n_heads
         key_states = repeat_kv(key_states, self.num_key_value_groups)
         value_states = repeat_kv(value_states, self.num_key_value_groups)
@@ -350,7 +363,10 @@ class FlashAttention2(Attention):
 
         kv_seq_len = key_states.shape[-2]
         if past_key_value is not None:
-            kv_seq_len += past_key_value[0].shape[-2]
+            if hasattr(past_key_value, "get_seq_length"):
+                kv_seq_len += past_key_value.get_seq_length()
+            else:
+                kv_seq_len += past_key_value[0].shape[-2]
         cos, sin = self.rotary_emb(value_states, seq_len=kv_seq_len)
         query_states, key_states = apply_rotary_pos_emb(query_rot, key_rot, cos, sin, position_ids)
 
@@ -360,10 +376,20 @@ class FlashAttention2(Attention):
 
         if past_key_value is not None:
             # Reuse k, v, self_attention
-            key_states = torch.cat((past_key_value[0], key_states), dim=2)
-            value_states = torch.cat((past_key_value[1], value_states), dim=2)
+            if hasattr(past_key_value, "get_seq_length"):
+                if past_key_value.get_seq_length() > 0:
+                    key_states = torch.cat((past_key_value.keys, key_states), dim=2)
+                    value_states = torch.cat((past_key_value.values, value_states), dim=2)
+            else:
+                key_states = torch.cat((past_key_value[0], key_states), dim=2)
+                value_states = torch.cat((past_key_value[1], value_states), dim=2)
 
-        past_key_value = (key_states, value_states) if use_cache else None
+        if use_cache:
+            # `past_key_value` is a named tuple of (keys, values)
+            if hasattr(past_key_value, "update"):
+                past_key_value.update(key_states, value_states)
+            else:
+                past_key_value = (key_states, value_states)
 
         # TODO: These transpose are quite inefficient but Flash Attention requires the layout [batch_size, sequence_length, num_heads, head_dim]. We would need to refactor the KV cache
         # to be able to avoid many of these transpose/reshape/view.
@@ -865,8 +891,13 @@ class StableLMEpochForCausalLM(StableLMEpochPreTrainedModel):
     ):
         # Trim decoder_input_ids if past is used
         if past_key_values is not None:
-            past_length = past_key_values[0][0].shape[2]
-
+            if hasattr(past_key_values, "layers"):
+                past_length = past_key_values.layers[0].get_seq_length()
+            elif isinstance(past_key_values, tuple):
+                past_length = past_key_values[0][0].shape[2]
+            else:
+                past_length = 0
+            
             # Some generation methods already pass only the last input ID
             if input_ids.shape[1] > past_length:
                 remove_prefix_length = past_length

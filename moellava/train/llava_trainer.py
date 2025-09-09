@@ -195,7 +195,7 @@ class LLaVATrainer(Trainer):
                 'stage_1_complete': False,
                 'reparam_called': False,
                 'initial_gated_ratio': 1.0,
-                'target_gated_ratio': getattr(self.args, 'repa_gated_ratio', 0.25),
+                'target_gated_ratio': getattr(self.args, 'gated_ratio', 0.25),
                 'total_training_steps': 0,
                 'current_gated_ratio': 1.0,
                 'moe_layers_idx': [],
@@ -329,7 +329,7 @@ class LLaVATrainer(Trainer):
             
             if hasattr(self.model, 'adjust_gated_ratio_all_layers'):
                 self.model.adjust_gated_ratio_all_layers(new_ratio)
-                print(f"Step {current_step}: Updated gated ratio to {new_ratio:.12f} "
+                print(f"Step {current_step}: Updated gated ratio to {new_ratio:.4f} "
                       f"(progress: {progress:.1%})")
     
     def _transition_to_stage_2(self, current_step):

@@ -36,7 +36,7 @@ router_aux_loss_coef=0.01
 
 # RePaMoE specific arguments
 FINETUNE_REPA_MODE=true
-REPA_GATED_RATIO=1.0
+GATED_RATIO=1.0
 
 # Set data paths
 JSON_FOLDER="/scratch3/li309/data/llava_data/train_json"
@@ -117,14 +117,14 @@ torchrun \
     --image_aspect_ratio pad \
     --group_by_modality_length True \
     --bf16 True \
-    --output_dir ./finetuned_checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-2 \
+    --output_dir ./finetuned_checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment \
     --num_train_epochs 1 \
-    --per_device_train_batch_size 8 \
+    --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 8 \
-    --gradient_accumulation_steps 1 \
+    --gradient_accumulation_steps 2 \
     --eval_strategy no \
     --save_strategy steps \
-    --save_steps 4000 \
+    --save_steps 500 \
     --save_total_limit 1 \
     --learning_rate 2e-5 \
     --weight_decay 0. \
@@ -140,5 +140,5 @@ torchrun \
     --cache_dir ./cache_dir \
     --report_to wandb \
     --finetune_repa_mode $FINETUNE_REPA_MODE \
-    --repa_gated_ratio $REPA_GATED_RATIO
+    --gated_ratio $GATED_RATIO
 "

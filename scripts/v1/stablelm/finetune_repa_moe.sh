@@ -8,13 +8,13 @@ router_aux_loss_coef=0.01
 
 # RePaMoE specific arguments
 FINETUNE_REPA_MODE=true
-REPA_GATED_RATIO=0.25
+GATED_RATIO=0.5
 
 JSON_FOLDER="/mnt/data/llava_data/train_json"
 IMAGE_FOLDER="/mnt/data/llava_data/train_image"
 cd ~/MoE-LLaVA
 HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 torchrun \
-    --nproc_per_node=2 --nnodes=1 \
+    --nproc_per_node=1 --nnodes=1 \
      moellava/train/train_mem.py \
     --moe_enable True --num_experts ${num_experts} --top_k_experts ${top_k_experts} --capacity_factor 1.5 \
     --moe_mode ${moe_mode} --use_residual ${use_residual} --router_aux_loss_coef ${router_aux_loss_coef} \
@@ -32,7 +32,7 @@ HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 torchrun \
     --image_aspect_ratio pad \
     --group_by_modality_length True \
     --bf16 True \
-    --output_dir ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-2 \
+    --output_dir ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save \
     --num_train_epochs 1 \
     --per_device_train_batch_size 2 \
     --per_device_eval_batch_size 4 \
@@ -55,4 +55,4 @@ HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 torchrun \
     --cache_dir "./cache_dir" \
     --report_to wandb \
     --finetune_repa_mode $FINETUNE_REPA_MODE \
-    --repa_gated_ratio $REPA_GATED_RATIO 
+    --gated_ratio $GATED_RATIO 

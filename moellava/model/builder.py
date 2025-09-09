@@ -34,6 +34,7 @@ if a == '4' and int(b) >= 36:
     from moellava.model.language_model.llava_phi_moe import EvalMoELLaVAPhiForCausalLM
     from moellava.model.language_model.llava_phi import LlavaPhiForCausalLM
     from moellava.model.language_model.llava_stablelm_moe import EvalMoELLaVAStablelmForCausalLM
+    from moellava.model.language_model.llava_stablelm_moe import RePaMoELLaVAStablelmForCausalLM
     from moellava.model.language_model.llava_stablelm import LlavaStablelmForCausalLM
 if a == '4' and int(b) >= 37:
     from moellava.model.language_model.llava_qwen1_5_moe import EvalMoELLaVAQwen1_5ForCausalLM
@@ -48,7 +49,7 @@ from moellava.model.language_model.qwen.tokenization_qwen import QWenTokenizer
 
 
 def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, load_4bit=False, device_map="auto",
-                          device="cuda", padding_side="right", merge=False, **kwargs):
+                          device="cuda", padding_side="right", merge=False, gated_ratio=1.0, **kwargs):
     kwargs = {"device_map": device_map, **kwargs}
 
     if device != "cuda":
@@ -421,15 +422,18 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
                 # print(tokenizer)
                 if 'moe' in model_name.lower():
                     assert not load_8bit and not load_4bit  # FIXME
-                    model = EvalMoELLaVAStablelmForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
+                    if "repa" in model_name.lower():
+                        model = RePaMoELLaVAStablelmForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
+                    else:
+                        model = EvalMoELLaVAStablelmForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
                     import deepspeed
                     deepspeed.init_distributed(dist_backend='nccl')
                     # Initialize the DeepSpeed-Inference engine
                     ds_engine = deepspeed.init_inference(model,
-                                                         # mp_size=2,
-                                                         # dtype=torch.half,
-                                                         checkpoint=None,
-                                                         replace_with_kernel_inject=False)
+                                                        # mp_size=2,
+                                                        # dtype=torch.half,
+                                                        checkpoint=None,
+                                                        replace_with_kernel_inject=False)
                     model = ds_engine.module
                 else:
                     model = LlavaStablelmForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)

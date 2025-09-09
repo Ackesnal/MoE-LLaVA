@@ -31,7 +31,7 @@ def eval_model(args):
     disable_torch_init()
     model_path = os.path.expanduser(args.model_path)
     model_name = get_model_name_from_path(model_path)
-    tokenizer, model, processor, context_len = load_pretrained_model(model_path, args.model_base, model_name)
+    tokenizer, model, processor, context_len = load_pretrained_model(model_path, args.model_base, model_name, gated_ratio=args.repa_gated_ratio)
     if args.return_gating_logit is not None:
         from moellava.utils import get_gating_logit_by_hook
         print(model)
@@ -170,6 +170,7 @@ if __name__ == "__main__":
     parser.add_argument("--single-pred-prompt", action="store_true")
     parser.add_argument("--local_rank", type=int, default=-1)
     parser.add_argument("--return_gating_logit", type=str, default=None)
+    parser.add_argument("--repa_gated_ratio", type=float, default=1.0)
     args = parser.parse_args()
 
     eval_model(args)
