@@ -5,9 +5,11 @@
 #SBATCH --cpus-per-task=36
 #SBATCH --gres=gpu:2
 #SBATCH --mem=256G
-#SBATCH --time=1:00:00
-#SBATCH --output=logs/log_finetune_repa_moe_nccl_%j.out
-#SBATCH --error=logs/log_finetune_repa_moe_nccl_%j.err
+#SBATCH --time=5:00:00
+#SBATCH --output=logs/finetune_repa_moe_nccl_%A_%a.out
+#SBATCH --error=logs/finetune_repa_moe_nccl_%A_%a.err
+
+#SBATCH --array=1-9
 
 # Load required modules
 module load gcc/12.3.0
@@ -36,15 +38,33 @@ router_aux_loss_coef=0.01
 
 # RePaMoE specific arguments
 FINETUNE_REPA_MODE=true
-GATED_RATIO=1.0
+# Derive gated ratio from Slurm array index: 1-9 -> 0.1-0.9
+if [ -z "${SLURM_ARRAY_TASK_ID:-}" ]; then
+    echo "[WARN] SLURM_ARRAY_TASK_ID not set; defaulting GATED_RATIO=0.5" >&2
+    GATED_RATIO=0.5
+else
+    GATED_RATIO=$(awk "BEGIN {printf \"%.1f\", ${SLURM_ARRAY_TASK_ID}/10}")
+fi
+echo "Using GATED_RATIO=${GATED_RATIO} from SLURM_ARRAY_TASK_ID=${SLURM_ARRAY_TASK_ID}" >&2
+
+# Build per-run output directory incorporating gated ratio (sanitize decimal point)
+GATED_RATIO_TAG=${GATED_RATIO/./p}
+OUTPUT_DIR=./finetuned_checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio${GATED_RATIO_TAG}
+echo "OUTPUT_DIR: ${OUTPUT_DIR}" >&2
+
+# Redirect logs to ratio-tagged files (after we know GATED_RATIO)
+RATIO_LOG_PREFIX="logs/finetune_repa_moe_nccl_ratio${GATED_RATIO_TAG}_job${SLURM_JOB_ID}_task${SLURM_ARRAY_TASK_ID}"
+echo "Redirecting logs to ${RATIO_LOG_PREFIX}.out/.err" >&2
+exec > >(tee -a ${RATIO_LOG_PREFIX}.out)
+exec 2> >(tee -a ${RATIO_LOG_PREFIX}.err >&2)
 
 # Set data paths
 JSON_FOLDER="/scratch3/li309/data/llava_data/train_json"
 IMAGE_FOLDER="/scratch3/li309/data/llava_data/train_data"
 
 # NCCL environment variables for multi-node communication
-export NCCL_P2P_DISABLE=1
-export NCCL_IB_DISABLE=1
+export NCCL_P2P_DISABLE=0
+export NCCL_IB_DISABLE=0
 export NCCL_TREE_THRESHOLD=0
 export NCCL_SOCKET_IFNAME=^docker0,lo
 export NCCL_DEBUG=WARN
@@ -73,23 +93,10 @@ function get_free_port() {
 # Set distributed training environment variables
 export MASTER_PORT=$(get_free_port)
 export MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)
-# export WORLD_SIZE=$SLURM_NTASKS
-# export RANK=$SLURM_PROCID
-# export LOCAL_RANK=$SLURM_LOCALID
-# export NODE_RANK=$SLURM_NODEID
-# export CUDA_VISIBLE_DEVICES=$SLURM_LOCALID
 
 echo "VERSION: 1.6 (NCCL-only)"
 echo "MASTER_PORT: $MASTER_PORT"
 echo "MASTER_ADDR: $MASTER_ADDR"
-# echo "WORLD_SIZE: $WORLD_SIZE"
-# echo "RANK: $RANK"
-# echo "LOCAL_RANK: $LOCAL_RANK"
-# echo "NODE_RANK: $NODE_RANK"
-# echo "SLURM_NNODES: $SLURM_NNODES"
-# echo "SLURM_NTASKS: $SLURM_NTASKS"
-# echo "SLURM_PROCID: $SLURM_PROCID"
-# echo "SLURM_LOCALID: $SLURM_LOCALID"
 
 # Use torchrun approach to avoid MPI dependency completely
 srun --export=ALL bash -c "
@@ -117,7 +124,7 @@ torchrun \
     --image_aspect_ratio pad \
     --group_by_modality_length True \
     --bf16 True \
-    --output_dir ./finetuned_checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment \
+    --output_dir ${OUTPUT_DIR} \
     --num_train_epochs 1 \
     --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 8 \
