@@ -146,6 +146,6 @@ torchrun \
     --report_to tensorboard \
     --cache_dir ./cache_dir \
     --report_to wandb \
-    --finetune_repa_mode $FINETUNE_REPA_MODE \
-    --gated_ratio $GATED_RATIO
+    --finetune_repa_mode ${FINETUNE_REPA_MODE} \
+    --gated_ratio ${GATED_RATIO}
 "
