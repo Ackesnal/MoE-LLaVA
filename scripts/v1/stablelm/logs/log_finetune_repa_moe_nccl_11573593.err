@@ -1,0 +1,649 @@
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+You are using a model of type moe_llava_stablelm to instantiate a model of type repa_moe_llava_stablelm. This is not supported for all configurations of models and can yield errors.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.80s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.89s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.82s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.21s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.80s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.94s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.81s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.21s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.74s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.96s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.79s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.18s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.67s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.84s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.76s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.14s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.63s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.83s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.74s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.12s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.78s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.96s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.80s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.20s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.81s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.94s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.81s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.21s/it]
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.72s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.88s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.78s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.17s/it]
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask'deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask'deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask'Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask'deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask'deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask'deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepsp, 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepsp, 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspdeepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepsp, 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepsp, 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepsp, 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+eed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+eed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+, 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+eed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+eed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+eed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+eed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.78s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.19s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.80s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.23s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.79s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.21s/it]
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.74s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.16s/it]
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.77s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.19s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.74s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.16s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.79s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.21s/it]
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 16.80s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:38<00:00, 19.23s/it]
+Some weights of RePaMoELLaVAStablelmForCausalLM were not initialized from the model checkpoint at ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e and are newly initialized: ['model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.0.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.10.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.12.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.14.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.16.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.18.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.2.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.20.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.22.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.4.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.6.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.0.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.1.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.2.mask', 'model.layers.8.mlp.deepspeed_moe.experts.deepspeed_experts.3.mask']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/llava_trainer.py:187: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `LLaVATrainer.__init__`. Use `processing_class` instead.
+  super().__init__(**kwargs)
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 100280}.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+Gradient accumulation steps mismatch: GradientAccumulationPlugin has 1, DeepSpeed config has 2. Using DeepSpeed's value.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+[rank11]: Traceback (most recent call last):
+[rank11]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank11]:     train()
+[rank11]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank11]:     trainer.train(resume_from_checkpoint=True)
+[rank11]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank11]:     return inner_training_loop(
+[rank11]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank11]:     deepspeed_load_checkpoint(
+[rank11]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank11]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank0]:     train()
+[rank0]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank0]:     trainer.train(resume_from_checkpoint=True)
+[rank0]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank0]:     return inner_training_loop(
+[rank0]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank0]:     deepspeed_load_checkpoint(
+[rank0]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank0]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank5]: Traceback (most recent call last):
+[rank5]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank5]:     train()
+[rank5]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank5]:     trainer.train(resume_from_checkpoint=True)
+[rank5]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank5]:     return inner_training_loop(
+[rank5]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank5]:     deepspeed_load_checkpoint(
+[rank5]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank5]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank0]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank0]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank0]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank0]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank0]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank1]:     train()
+[rank1]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank1]:     trainer.train(resume_from_checkpoint=True)
+[rank1]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank1]:     return inner_training_loop(
+[rank1]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank1]:     deepspeed_load_checkpoint(
+[rank1]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank1]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank1]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank1]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank1]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank1]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank1]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank11]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank11]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank11]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank11]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank11]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank10]: Traceback (most recent call last):
+[rank10]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank10]:     train()
+[rank10]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank10]:     trainer.train(resume_from_checkpoint=True)
+[rank10]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank10]:     return inner_training_loop(
+[rank10]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank10]:     deepspeed_load_checkpoint(
+[rank10]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank10]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank10]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank10]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank10]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank10]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank10]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank5]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank5]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank5]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank5]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank5]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank4]: Traceback (most recent call last):
+[rank4]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank4]:     train()
+[rank4]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank4]:     trainer.train(resume_from_checkpoint=True)
+[rank4]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank4]:     return inner_training_loop(
+[rank4]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank4]:     deepspeed_load_checkpoint(
+[rank4]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank4]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank4]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank4]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank4]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank4]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank4]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank12]: Traceback (most recent call last):
+[rank12]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank12]:     train()
+[rank12]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank12]:     trainer.train(resume_from_checkpoint=True)
+[rank12]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank12]:     return inner_training_loop(
+[rank12]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank12]:     deepspeed_load_checkpoint(
+[rank12]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank12]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank6]: Traceback (most recent call last):
+[rank6]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank6]:     train()
+[rank6]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank6]:     trainer.train(resume_from_checkpoint=True)
+[rank6]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank6]:     return inner_training_loop(
+[rank6]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank6]:     deepspeed_load_checkpoint(
+[rank6]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank6]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank3]:     train()
+[rank3]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank3]:     trainer.train(resume_from_checkpoint=True)
+[rank3]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank3]:     return inner_training_loop(
+[rank3]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank3]:     deepspeed_load_checkpoint(
+[rank3]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank3]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank8]: Traceback (most recent call last):
+[rank8]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank8]:     train()
+[rank8]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank8]:     trainer.train(resume_from_checkpoint=True)
+[rank8]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank8]:     return inner_training_loop(
+[rank8]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank8]:     deepspeed_load_checkpoint(
+[rank8]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank8]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank12]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank12]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank12]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank12]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank12]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank13]: Traceback (most recent call last):
+[rank13]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank13]:     train()
+[rank13]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank13]:     trainer.train(resume_from_checkpoint=True)
+[rank13]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank13]:     return inner_training_loop(
+[rank13]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank13]:     deepspeed_load_checkpoint(
+[rank13]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank13]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank13]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank13]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank13]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank13]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank13]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank6]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank6]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank6]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank6]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank6]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank7]: Traceback (most recent call last):
+[rank7]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank7]:     train()
+[rank7]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank7]:     trainer.train(resume_from_checkpoint=True)
+[rank7]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank7]:     return inner_training_loop(
+[rank7]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank7]:     deepspeed_load_checkpoint(
+[rank7]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank7]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank7]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank7]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank7]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank7]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank7]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank3]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank3]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank3]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank3]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank3]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank2]:     train()
+[rank2]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank2]:     trainer.train(resume_from_checkpoint=True)
+[rank2]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank2]:     return inner_training_loop(
+[rank2]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank2]:     deepspeed_load_checkpoint(
+[rank2]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank2]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank2]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank2]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank2]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank2]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank2]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank8]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank8]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank8]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank8]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank8]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank9]: Traceback (most recent call last):
+[rank9]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank9]:     train()
+[rank9]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank9]:     trainer.train(resume_from_checkpoint=True)
+[rank9]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank9]:     return inner_training_loop(
+[rank9]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank9]:     deepspeed_load_checkpoint(
+[rank9]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank9]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank9]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank9]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank9]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank9]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank9]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank14]: Traceback (most recent call last):
+[rank14]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank14]:     train()
+[rank14]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank14]:     trainer.train(resume_from_checkpoint=True)
+[rank14]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank14]:     return inner_training_loop(
+[rank14]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank14]:     deepspeed_load_checkpoint(
+[rank14]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank14]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank14]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank14]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank14]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank14]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank14]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank15]: Traceback (most recent call last):
+[rank15]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train_mem.py", line 13, in <module>
+[rank15]:     train()
+[rank15]:   File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/train/train.py", line 1548, in train
+[rank15]:     trainer.train(resume_from_checkpoint=True)
+[rank15]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+[rank15]:     return inner_training_loop(
+[rank15]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/trainer.py", line 2507, in _inner_training_loop
+[rank15]:     deepspeed_load_checkpoint(
+[rank15]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/integrations/deepspeed.py", line 494, in deepspeed_load_checkpoint
+[rank15]:     load_path, _ = deepspeed_engine.load_checkpoint(
+[rank15]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3086, in load_checkpoint
+[rank15]:     success = self._load_zero_checkpoint(load_dir, tag, load_optimizer_states=load_optimizer_states)
+[rank15]:   File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 3265, in _load_zero_checkpoint
+[rank15]:     raise ZeRORuntimeException("The checkpoint being loaded used a DP " \
+[rank15]: deepspeed.runtime.zero.utils.ZeRORuntimeException: The checkpoint being loaded used a DP world size of 4 but the current world size is 16. Automatic adjustment of ZeRO's optimizer state partitioning with a new world size is not currently supported.
+[rank4]:[W909 21:52:38.604282567 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank14]:[W909 21:52:38.383190171 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank10]:[W909 21:52:38.238238890 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank6]:[W909 21:52:38.896343915 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank12]:[W909 21:52:39.289341282 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank2]:[W909 21:52:39.465160360 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank8]:[W909 21:52:39.454162079 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W909 21:52:39.982773164 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+W0909 21:52:41.571000 44147 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 44161 closing signal SIGTERM
+W0909 21:52:41.574000 32096 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 32108 closing signal SIGTERM
+W0909 21:52:41.581000 50911 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 51028 closing signal SIGTERM
+W0909 21:52:41.582000 73720 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 337 closing signal SIGTERM
+W0909 21:52:41.587000 69829 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 69849 closing signal SIGTERM
+W0909 21:52:41.586000 31272 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 31282 closing signal SIGTERM
+W0909 21:52:41.588000 47562 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 47574 closing signal SIGTERM
+W0909 21:52:41.601000 34885 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 34898 closing signal SIGTERM
+E0909 21:52:41.687000 44147 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 44160) of binary: /home/li309/pct_code/venv/moellava-test2/bin/python
+Traceback (most recent call last):
+  File "/home/li309/pct_code/venv/moellava-test2/bin/torchrun", line 7, in <module>
+E0909 21:52:41.690000 32096 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 32107) of binary: /home/li309/pct_code/venv/moellava-test2/bin/python
+    sys.exit(main())
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+    run(args)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+Traceback (most recent call last):
+  File "/home/li309/pct_code/venv/moellava-test2/bin/torchrun", line 7, in <module>
+    elastic_launch(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    sys.exit(main())
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+moellava/train/train_mem.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-09_21:52:41
+  host      : g003.cm.cluster
+  rank      : 2 (local_rank: 0)
+  exitcode  : 1 (pid: 44160)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+    return f(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+E0909 21:52:41.697000 50911 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 51027) of binary: /home/li309/pct_code/venv/moellava-test2/bin/python
+    run(args)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+    elastic_launch(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+E0909 21:52:41.698000 73720 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 331) of binary: /home/li309/pct_code/venv/moellava-test2/bin/python
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+moellava/train/train_mem.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-09_21:52:41
+  host      : g009.cm.cluster
+  rank      : 14 (local_rank: 0)
+  exitcode  : 1 (pid: 32107)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+Traceback (most recent call last):
+  File "/home/li309/pct_code/venv/moellava-test2/bin/torchrun", line 7, in <module>
+    sys.exit(main())
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+Traceback (most recent call last):
+    return f(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+  File "/home/li309/pct_code/venv/moellava-test2/bin/torchrun", line 7, in <module>
+    sys.exit(main())
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    run(args)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+    elastic_launch(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return f(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+E0909 21:52:41.702000 69829 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 69848) of binary: /home/li309/pct_code/venv/moellava-test2/bin/python
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+moellava/train/train_mem.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-09_21:52:41
+  host      : g002.cm.cluster
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 51027)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+E0909 21:52:41.702000 31272 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 31281) of binary: /home/li309/pct_code/venv/moellava-test2/bin/python
+    run(args)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+E0909 21:52:41.704000 47562 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 47573) of binary: /home/li309/pct_code/venv/moellava-test2/bin/python
+    elastic_launch(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+Traceback (most recent call last):
+  File "/home/li309/pct_code/venv/moellava-test2/bin/torchrun", line 7, in <module>
+    sys.exit(main())
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+Traceback (most recent call last):
+  File "/home/li309/pct_code/venv/moellava-test2/bin/torchrun", line 7, in <module>
+Traceback (most recent call last):
+  File "/home/li309/pct_code/venv/moellava-test2/bin/torchrun", line 7, in <module>
+    return f(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+    sys.exit(main())
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    sys.exit(main())
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+moellava/train/train_mem.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-09_21:52:41
+  host      : g008.cm.cluster
+  rank      : 12 (local_rank: 0)
+  exitcode  : 1 (pid: 331)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+    run(args)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+    return f(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+    return f(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+    elastic_launch(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    run(args)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+    run(args)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+    elastic_launch(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    elastic_launch(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+moellava/train/train_mem.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-09_21:52:41
+  host      : g005.cm.cluster
+  rank      : 6 (local_rank: 0)
+  exitcode  : 1 (pid: 69848)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+moellava/train/train_mem.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-09_21:52:41
+  host      : g006.cm.cluster
+  rank      : 8 (local_rank: 0)
+  exitcode  : 1 (pid: 31281)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+moellava/train/train_mem.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-09_21:52:41
+  host      : g004.cm.cluster
+  rank      : 4 (local_rank: 0)
+  exitcode  : 1 (pid: 47573)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+E0909 21:52:41.717000 34885 /datasets/work/d61-pct/work/yang_work/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 34897) of binary: /home/li309/pct_code/venv/moellava-test2/bin/python
+Traceback (most recent call last):
+  File "/home/li309/pct_code/venv/moellava-test2/bin/torchrun", line 7, in <module>
+    sys.exit(main())
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+    run(args)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+    elastic_launch(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+moellava/train/train_mem.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-09_21:52:41
+  host      : g007.cm.cluster
+  rank      : 10 (local_rank: 0)
+  exitcode  : 1 (pid: 34897)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: g003: task 1: Exited with exit code 1
+srun: error: g009: task 7: Exited with exit code 1
+srun: error: g008: task 6: Exited with exit code 1
+srun: error: g005: task 3: Exited with exit code 1
+srun: error: g002: task 0: Exited with exit code 1
+srun: error: g004: task 2: Exited with exit code 1
+srun: error: g006: task 4: Exited with exit code 1
+srun: error: g007: task 5: Exited with exit code 1
