@@ -1,8 +1,7 @@
 #!/bin/bash
 
-
-CONV="stablelm"
-CKPT_NAME="MoE-LLaVA-StableLM-1.6B-4e-RePa-Save/checkpoint-20"
+CONV="qwen"
+CKPT_NAME="MoE-LLaVA-Qwen-1.8B-4e-RePa-Save/checkpoint-40"
 CKPT="checkpoints/${CKPT_NAME}"
 EVAL="/mnt/data/llava_data/eval"
 deepspeed moellava/eval/model_vqa_science.py \

@@ -16,6 +16,7 @@
 from abc import ABC, abstractmethod
 
 import torch
+from transformers import AutoConfig, AutoModelForCausalLM, GenerationMixin
 
 
 from .multimodal_encoder.builder import build_image_tower, build_video_tower
@@ -414,7 +415,7 @@ class LlavaMetaForCausalLM(ABC):
 
 
 
-class LlavaQWenMetaForCausalLM(LlavaMetaForCausalLM):
+class LlavaQWenMetaForCausalLM(LlavaMetaForCausalLM, GenerationMixin):
 
     def prepare_inputs_labels_for_multimodal(
         self, input_ids, position_ids, attention_mask, past_key_values, labels, images
@@ -424,10 +425,21 @@ class LlavaQWenMetaForCausalLM(LlavaMetaForCausalLM):
         image_tower = self.get_image_tower()
         video_tower = self.get_video_tower()
         if (image_tower is None and video_tower is None) or images is None or input_ids.shape[1] == 1:
-            if past_key_values is not None and (image_tower is not None or video_tower is not None) and images is not None and input_ids.shape[1] == 1:
+            if (past_key_values.layers[-1].values is not None if hasattr(past_key_values, "layers") else past_key_values is not None) \
+                and (image_tower is not None or video_tower is not None) and images is not None and input_ids.shape[1] == 1:
                 # import ipdb
                 # ipdb.set_trace()
-                target_shape = past_key_values[-1][-1].shape[-3] + 1  # FIXME: token_len in dim=-3
+                if hasattr(past_key_values, "layers"):
+                    if hasattr(past_key_values.layers[-1], "get_seq_length"):
+                        target_shape = past_key_values.layers[-1].get_seq_length() + 1
+                    elif past_key_values.layers[-1].values is not None:
+                        target_shape = past_key_values.layers[-1].values.shape[-2] + 1
+                    else:
+                        target_shape = past_key_values.layers[-1].values.shape[-2] + 1
+                else:
+                    target_shape = past_key_values[-1][-1].shape[-3] + 1  # FIXME: token_len in dim=-3
+                
+
                 attention_mask = torch.cat((attention_mask, torch.ones(
                     (attention_mask.shape[0], target_shape - attention_mask.shape[1]),
                     dtype=attention_mask.dtype,
@@ -437,7 +449,31 @@ class LlavaQWenMetaForCausalLM(LlavaMetaForCausalLM):
             return input_ids, position_ids, attention_mask, past_key_values, None, labels
 
 
+        # # Trim decoder_input_ids if past is used
+        # if past_key_values is not None:
+        #     if hasattr(past_key_values, "layers"):
+        #         past_length = past_key_values.layers[0].get_seq_length()
+        #     elif isinstance(past_key_values, tuple):
+        #         past_length = past_key_values[0][0].shape[2]
+        #     else:
+        #         past_length = 0
+            
+        #     # Some generation methods already pass only the last input ID
+        #     if input_ids.shape[1] > past_length:
+        #         remove_prefix_length = past_length
+        #     else:
+        #         # Default to old behavior: keep only final ID
+        #         remove_prefix_length = input_ids.shape[1] - 1
 
+        #     input_ids = input_ids[:, remove_prefix_length:]
+
+        # position_ids = kwargs.get("position_ids", None)
+        # if attention_mask is not None and position_ids is None:
+        #     # Create position_ids on the fly for batch generation
+        #     position_ids = attention_mask.long().cumsum(-1) - 1
+        #     position_ids.masked_fill_(attention_mask == 0, 1)
+        #     if past_key_values:
+        #         position_ids = position_ids[:, -1].unsqueeze(-1)
 
 
         # dist.barrier()

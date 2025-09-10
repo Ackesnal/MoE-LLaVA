@@ -184,6 +184,7 @@ def MoEStablelmDecoderLayer_forward(self):
     return forward
 
 
+
 def MoEStablelmModel_forward(self):
     def forward(
             # self,
@@ -225,6 +226,8 @@ def MoEStablelmModel_forward(self):
         if past_key_values is not None:
             if hasattr(past_key_values, "get_seq_length"):
                 past_key_values_length = past_key_values.get_seq_length()
+            elif hasattr(past_key_values, "layers"):
+                past_key_values_length = past_key_values.layers[0].get_seq_length()
             elif isinstance(past_key_values, tuple):
                 past_key_values_length = past_key_values[0][0].shape[2]
         
@@ -574,6 +577,7 @@ class MoELLaVAStablelmForCausalLM(StableLMEpochForCausalLM, LlavaMetaForCausalLM
         # ipdb.set_trace()
 
 
+
 class EvalMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMixin):
     config_class = MoELLaVAStablelmConfig
 
@@ -605,6 +609,7 @@ class EvalMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
         rank0_print(f'replace StablelmDecoderLayer.forward to MoEStablelmDecoderLayer.forward')
         self.model.forward = MoEStablelmModel_forward(self.model)
         rank0_print(f'replace StablelmModel.forward to MoEStablelmModel.forward')
+
 
 
 class RePaMLP(nn.Module):
@@ -755,9 +760,9 @@ class RePaMoE(MoE):
                         param.group_name = self.expert_group_name
                 
                 self.reparamed = True
-                rank0_print(f"RePaMoE reparameterized: created new expert from {len(reparam_weights)} experts")
+                print(f"RePaMoE reparameterized: created new expert from {len(reparam_weights)} experts")
             else:
-                rank0_print("Warning: No reparam weights collected from experts")
+                print("Warning: No reparam weights collected from experts")
             
     def adjust_gated_ratio(self, gated_ratio: float):
         """Apply adjust_gated_ratio to all experts"""
@@ -766,6 +771,7 @@ class RePaMoE(MoE):
             for expert in experts:
                 if hasattr(expert, 'adjust_gated_ratio') and callable(expert.adjust_gated_ratio):
                     expert.adjust_gated_ratio(gated_ratio)
+        self.gated_ratio = gated_ratio
     
 
 

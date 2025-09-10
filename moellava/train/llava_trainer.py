@@ -208,14 +208,14 @@ class LLaVATrainer(Trainer):
         """Setup RePaMoE fine-tuning mode with two stages"""
         print("Setting up RePaMoE fine-tuning mode...")
         
-        # Check if we have RePaMoELLaVAStablelmForCausalLM
+        # Check if we have RePaMoELLaVAxxxxForCausalLM
         model_class_name = self.model.__class__.__name__
         if "RePaMoE" in model_class_name:
             self.repa_state['has_repamoe'] = True
             print(f"  Detected RePaMoE model: {model_class_name}")
         else:
             raise ValueError(f"Model {model_class_name} does not support RePaMoE. "
-                           "Please use RePaMoELLaVAStablelmForCausalLM.")
+                           "Please use RePaMoELLaVAxxxxForCausalLM.")
         
         # 1. Calculate total training steps
         num_training_steps = self.args.max_steps
@@ -231,7 +231,7 @@ class LLaVATrainer(Trainer):
         self.repa_state['total_training_steps'] = num_training_steps
         
         # 2. Divide into two equal stages
-        stage_1_steps = num_training_steps // 2
+        stage_1_steps = 10#num_training_steps // 2
         stage_2_steps = num_training_steps - stage_1_steps
         
         self.repa_state['stage_1_steps'] = stage_1_steps
@@ -263,10 +263,17 @@ class LLaVATrainer(Trainer):
     def _detect_moe_layers(self):
         """Detect MoE layer indices from the model"""
         moe_layers_idx = []
+        # For StableLM
         if hasattr(self.model, 'model') and hasattr(self.model.model, 'layers'):
             layers = self.model.model.layers
             for i, layer in enumerate(layers):
                 # Check if this layer has MoE/RePaMoE
+                if hasattr(layer, 'mlp') and hasattr(layer.mlp, 'deepspeed_moe'):
+                    moe_layers_idx.append(i)
+        # For QWen
+        elif hasattr(self.model, 'transformer') and hasattr(self.model.transformer, 'h'):
+            layers = self.model.transformer.h
+            for i, layer in enumerate(layers):
                 if hasattr(layer, 'mlp') and hasattr(layer.mlp, 'deepspeed_moe'):
                     moe_layers_idx.append(i)
         return moe_layers_idx
@@ -280,7 +287,9 @@ class LLaVATrainer(Trainer):
             # Check if this parameter belongs to MoE layers
             is_moe_param = False
             for layer_idx in self.repa_state['moe_layers_idx']:
-                if (f'model.layers.{layer_idx}.mlp' in name or f'layers.{layer_idx}.mlp' in name) and 'image_tower' not in name:
+                if ((f'model.layers.{layer_idx}.mlp' in name or f'layers.{layer_idx}.mlp' in name) \
+                    or (f'transformer.h.{layer_idx}.mlp' in name or f'h.{layer_idx}.mlp' in name)) \
+                    and 'image_tower' not in name:
                     is_moe_param = True
                     break
             
@@ -322,9 +331,10 @@ class LLaVATrainer(Trainer):
         # Linear interpolation from initial to target ratio
         new_ratio = (self.repa_state['initial_gated_ratio'] * (1 - progress) + 
                     self.repa_state['target_gated_ratio'] * progress)
+        new_ratio = round(new_ratio, 4)  # Round for cleaner logging
         
         # Update the ratio if it has changed significantly
-        if abs(new_ratio - self.repa_state['current_gated_ratio']) > 0.01:
+        if abs(new_ratio - self.repa_state['current_gated_ratio']) >= 0.0001:
             self.repa_state['current_gated_ratio'] = new_ratio
             
             if hasattr(self.model, 'adjust_gated_ratio_all_layers'):
@@ -774,7 +784,8 @@ class LLaVATrainer(Trainer):
                             if hasattr(self.args, 'finetune_repa_mode') and self.args.finetune_repa_mode:
                                 if hasattr(self, 'repa_state') and self.repa_state.get('moe_layers_idx'):
                                     for layer_idx in self.repa_state['moe_layers_idx']:
-                                        if f'layers.{layer_idx}.mlp' in name or f'model.layers.{layer_idx}.mlp' in name:
+                                        if f'model.layers.{layer_idx}.mlp' in name or f'layers.{layer_idx}.mlp' in name \
+                                           or f'transformer.h.{layer_idx}.mlp' in name or f'h.{layer_idx}.mlp' in name:
                                             is_moe_param = True
                                             break
                             

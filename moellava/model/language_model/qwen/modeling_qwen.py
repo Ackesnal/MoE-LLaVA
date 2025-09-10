@@ -453,28 +453,37 @@ class QWenAttention(nn.Module):
                                          bits=8,
                                          qmin=self.cache_qmin,
                                          qmax=self.cache_qmax)
-
-
+        
         if layer_past is not None:
-            past_key, past_value = layer_past[0], layer_past[1]
-            if self.use_cache_quantization:
-                # use_cache_quantization:
-                # present=((q_key,key_scale,key_zero_point),
-                #          (q_value,value_scale,value_zero_point))
-                key = (torch.cat((past_key[0], key[0]), dim=2),
-                       torch.cat((past_key[1], key[1]), dim=2),
-                       torch.cat((past_key[2], key[2]), dim=2))
-                value = (torch.cat((past_value[0], value[0]), dim=2),
-                         torch.cat((past_value[1], value[1]), dim=2),
-                         torch.cat((past_value[2], value[2]), dim=2))
+            if hasattr(layer_past, "update"):
+                layer_past.update(key.permute(0, 2, 1, 3), value.permute(0, 2, 1, 3))
+                key = layer_past.keys.permute(0, 2, 1, 3)
+                value = layer_past.values.permute(0, 2, 1, 3)
+                if use_cache:
+                    present = layer_past
+                else:
+                    present = None
             else:
-                # not use_cache_quantization:
-                # present=(key,value)
-                key = torch.cat((past_key, key), dim=1)
-                value = torch.cat((past_value, value), dim=1)
-
-        if use_cache:
-            present = (key, value)
+                past_key, past_value = layer_past[0], layer_past[1]
+                if self.use_cache_quantization:
+                    # use_cache_quantization:
+                    # present=((q_key,key_scale,key_zero_point),
+                    #          (q_value,value_scale,value_zero_point))
+                    key = (torch.cat((past_key[0], key[0]), dim=2),
+                        torch.cat((past_key[1], key[1]), dim=2),
+                        torch.cat((past_key[2], key[2]), dim=2))
+                    value = (torch.cat((past_value[0], value[0]), dim=2),
+                            torch.cat((past_value[1], value[1]), dim=2),
+                            torch.cat((past_value[2], value[2]), dim=2))
+                else:
+                    # not use_cache_quantization:
+                    # present=(key,value)
+                    key = torch.cat((past_key, key), dim=1)
+                    value = torch.cat((past_value, value), dim=1)
+                if use_cache:
+                    present = (key, value)
+                else:
+                    present = None
         else:
             present = None
 
@@ -520,11 +529,33 @@ class QWenAttention(nn.Module):
 
             if not self.use_cache_quantization and SUPPORT_TORCH2:
                 if attention_mask is not None:
-                    attention_mask = attention_mask.expand(-1, -1, query.size(2), -1)
-                    if causal_mask is not None:
-                        attention_mask = attention_mask.masked_fill(~causal_mask, torch.finfo(query.dtype).min)
+                    # Ensure mask last dimension matches seq_k
+                    seq_q = query.size(2)
+                    seq_k = key.size(2)
+                    if attention_mask.size(-1) != seq_k:
+                        if attention_mask.size(-1) > seq_k:
+                            # Trim to the most recent seq_k positions
+                            attention_mask = attention_mask[..., -seq_k:]
+                        else:
+                            # Rare: pad on the left if mask is shorter than seq_k
+                            pad_len = seq_k - attention_mask.size(-1)
+                            attention_mask = F.pad(
+                                attention_mask, (pad_len, 0), value=torch.finfo(attention_mask.dtype).min
+                            )
+                    # Expand to [B, 1, S_q, S_k] (broadcast across heads)
+                    attention_mask = attention_mask.expand(query.size(0), self.num_heads, seq_q, seq_k).contiguous()
+
+                    # When S_q == S_k (training/full-chunk), add causal masking
+                    if causal_mask is not None and seq_q == seq_k:
+                        attention_mask = attention_mask.masked_fill(
+                            ~causal_mask, torch.finfo(query.dtype).min
+                        )
                 else:
-                    attention_mask = causal_mask
+                    # If no additive mask is provided, only use causal mask when S_q == S_k
+                    seq_q = query.size(2)
+                    seq_k = key.size(2)
+                    attention_mask = causal_mask if seq_q == seq_k else None
+                
                 attn_output = F.scaled_dot_product_attention(
                     query, key, value, attn_mask=attention_mask
                 ).transpose(1, 2)
@@ -794,10 +825,16 @@ class QWenModel(QWenPreTrainedModel):
             past_length = 0
             past_key_values = tuple([None] * len(self.h))
         else:
-            if self.use_cache_quantization:
-                past_length = past_key_values[0][0][0].size(2)
-            else:
-                past_length = past_key_values[0][0].size(-2)
+            if hasattr(past_key_values, "layers"):
+                past_length = past_key_values.layers[0].get_seq_length()
+            elif hasattr(past_key_values, "get_seq_length"):
+                past_length = past_key_values.get_seq_length()
+            elif isinstance(past_key_values, tuple):
+                if self.use_cache_quantization:
+                    past_length = past_key_values[0][0][0].size(2)
+                else:
+                    past_length = past_key_values[0][0].size(-2)
+        
         if position_ids is None:
             position_ids = torch.arange(
                 past_length,
@@ -823,13 +860,17 @@ class QWenModel(QWenPreTrainedModel):
         hidden_states = inputs_embeds
 
         kv_seq_len = hidden_states.size()[1]
-        if past_key_values[0] is not None:
-            # past key values[0][0] shape: bs * seq_len * head_num * dim
-            if self.use_cache_quantization:
-                kv_seq_len += past_key_values[0][0][0].shape[2]
-            else:
-                kv_seq_len += past_key_values[0][0].shape[1]
-
+        if hasattr(past_key_values, "layers"):
+            kv_seq_len += past_key_values.layers[0].get_seq_length()
+        elif hasattr(past_key_values, "get_seq_length"):
+            kv_seq_len += past_key_values.get_seq_length()
+        else:
+            if past_key_values[0] is not None:
+                # past key values[0][0] shape: bs * seq_len * head_num * dim
+                if self.use_cache_quantization:
+                    kv_seq_len += past_key_values[0][0][0].shape[2]
+                else:
+                    kv_seq_len += past_key_values[0][0].shape[1]
         if self.training or not self.use_dynamic_ntk:
             ntk_alpha_list = [1.0]
         elif kv_seq_len != hidden_states.size()[1]:
@@ -863,7 +904,7 @@ class QWenModel(QWenPreTrainedModel):
         presents = () if use_cache else None
         all_self_attentions = () if output_attentions else None
         all_hidden_states = () if output_hidden_states else None
-        for i, (block, layer_past) in enumerate(zip(self.h, past_key_values)):
+        for i, (block, layer_past) in enumerate(zip(self.h, past_key_values.layers if hasattr(past_key_values, "layers") else past_key_values)):
 
             if output_hidden_states:
                 all_hidden_states = all_hidden_states + (hidden_states,)
@@ -996,9 +1037,13 @@ class QWenLMHeadModel(QWenPreTrainedModel):
     def prepare_inputs_for_generation(
         self, input_ids, past_key_values=None, inputs_embeds=None, **kwargs
     ):
-        if past_key_values:
-            input_ids = input_ids[:, -1].unsqueeze(-1)
-
+        if hasattr(past_key_values, "layers"):
+            if past_key_values.layers[0].get_seq_length() > 0:
+                input_ids = input_ids[:, -1].unsqueeze(-1)
+        elif past_key_values is not None:
+            if past_key_values[0][0] is not None:
+                input_ids = input_ids[:, -1].unsqueeze(-1)
+        
         # if input_ids.size(0) == 1:  # FIXME: why attention = None?
         #     attention_mask = None
         # else:

@@ -1237,11 +1237,18 @@ def train():
                 )
         else:
             if 'qwen' in model_args.model_name_or_path.lower() and '1.5' not in model_args.model_name_or_path.lower():
-                model = MoELLaVAQWenForCausalLM.from_pretrained(
-                    model_args.model_name_or_path,
-                    cache_dir=training_args.cache_dir,
-                    **bnb_model_from_pretrained_args
-                )
+                if training_args.finetune_repa_mode:
+                    model = RePaMoELLaVAQWenForCausalLM.from_pretrained(
+                        model_args.model_name_or_path,
+                        cache_dir=training_args.cache_dir,
+                        **bnb_model_from_pretrained_args
+                    )
+                else:
+                    model = MoELLaVAQWenForCausalLM.from_pretrained(
+                        model_args.model_name_or_path,
+                        cache_dir=training_args.cache_dir,
+                        **bnb_model_from_pretrained_args
+                    )
             elif 'qwen' in model_args.model_name_or_path.lower() and '1.5' in model_args.model_name_or_path.lower():
                 model = MoELLaVAQwen1_5ForCausalLM.from_pretrained(
                     model_args.model_name_or_path,

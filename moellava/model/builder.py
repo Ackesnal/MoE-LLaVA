@@ -18,6 +18,7 @@ import warnings
 import shutil
 
 from moellava.model.language_model.llava_qwen_moe import EvalMoELLaVAQWenForCausalLM
+from moellava.model.language_model.llava_qwen_moe import RePaMoELLaVAQWenForCausalLM
 from moellava.model.language_model.llava_qwen import LlavaQWenForCausalLM
 
 from moellava.model.language_model.llava_llama_moe import EvalMoELLaVALlamaForCausalLM
@@ -326,7 +327,10 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
                 tokenizer = QWenTokenizer.from_pretrained(model_path, use_fast=False, padding_side=padding_side)
                 if 'moe' in model_name.lower():
                     assert not load_8bit and not load_4bit  # FIXME
-                    model = EvalMoELLaVAQWenForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
+                    if "repa" in model_name.lower():
+                        model = RePaMoELLaVAQWenForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
+                    else:
+                        model = EvalMoELLaVAQWenForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
                     import deepspeed
                     deepspeed.init_distributed(dist_backend='nccl')
                     # Initialize the DeepSpeed-Inference engine
