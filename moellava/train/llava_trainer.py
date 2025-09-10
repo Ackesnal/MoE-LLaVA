@@ -231,7 +231,7 @@ class LLaVATrainer(Trainer):
         self.repa_state['total_training_steps'] = num_training_steps
         
         # 2. Divide into two equal stages
-        stage_1_steps = 10#num_training_steps // 2
+        stage_1_steps = num_training_steps // 2
         stage_2_steps = num_training_steps - stage_1_steps
         
         self.repa_state['stage_1_steps'] = stage_1_steps
