@@ -5,11 +5,11 @@
 #SBATCH --cpus-per-task=36
 #SBATCH --gres=gpu:2
 #SBATCH --mem=256G
-#SBATCH --time=5:00:00
+#SBATCH --time=1:00:00
 #SBATCH --output=logs/finetune_repa_moe_QWen_%A_%a.out
 #SBATCH --error=logs/finetune_repa_moe_QWen_%A_%a.err
 
-#SBATCH --array=1-9
+#SBATCH --array=1-1%2
 
 # Load required modules
 module load gcc/12.3.0
@@ -49,7 +49,7 @@ echo "Using GATED_RATIO=${GATED_RATIO} from SLURM_ARRAY_TASK_ID=${SLURM_ARRAY_TA
 
 # Build per-run output directory incorporating gated ratio (sanitize decimal point)
 GATED_RATIO_TAG=${GATED_RATIO/./p}
-OUTPUT_DIR=./finetuned_checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio${GATED_RATIO_TAG}
+OUTPUT_DIR=./finetuned_checkpoints/MoE-LLaVA-Qwen-1.8B-4e-RePa-Save-Experiment-ratio${GATED_RATIO_TAG}
 echo "OUTPUT_DIR: ${OUTPUT_DIR}" >&2
 
 # Redirect logs to ratio-tagged files (after we know GATED_RATIO)
