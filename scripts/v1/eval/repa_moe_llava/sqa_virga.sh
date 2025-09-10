@@ -2,7 +2,7 @@
 
 
 CONV="stablelm"
-CKPT_NAME="MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio0.1"
+CKPT_NAME="MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio0p1"
 CKPT="finetuned_checkpoints/${CKPT_NAME}"
 EVAL="/scratch3/li309/data/llava_data/eval"
 deepspeed moellava/eval/model_vqa_science.py \

@@ -5,6 +5,17 @@
 <h5 align="center"> If you like our project, please give us a star ⭐ on GitHub for latest update.  </h2>
 
 <h5 align="center">
+
+## ⚙️ Requirements and Installation
+* Install required packages:
+```bash
+git clone https://github.com/Ackesnal/MoE-LLaVA
+cd MoE-LLaVA
+conda env create -f environment.yml
+conda activate moellava
+pip install git+https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.1.post4/flash_attn-2.7.1.post4+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+pip install -e .
+```
     
 
 
