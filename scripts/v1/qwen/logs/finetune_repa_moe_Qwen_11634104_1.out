@@ -1,0 +1,3925 @@
+Loading cuda/12.4.0
+  Unloading conflict: cuda/12.8.1
+VERSION: 1.7 (NCCL-only)
+MASTER_PORT: 35283
+MASTER_ADDR: g023
+[2025-09-11 04:27:27,463] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-11 04:27:27,463] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-11 04:27:27,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-11 04:27:27,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-11 04:27:27,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-11 04:27:27,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-11 04:27:27,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-11 04:27:27,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-11 04:27:27,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-11 04:27:27,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-11 04:27:27,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-11 04:27:27,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-11 04:27:27,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-09-11 04:27:27,462] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[2025-09-11 04:27:47,003] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-11 04:27:47,003] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-11 04:27:47,002] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-11 04:27:47,002] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-11 04:27:47,002] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-11 04:27:47,002] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-11 04:27:47,002] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-11 04:27:47,002] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-11 04:27:47,003] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-11 04:27:47,003] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-11 04:27:47,002] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-11 04:27:47,002] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-11 04:27:47,002] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-11 04:27:47,002] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+⚙️  Running in WANDB offline mode⚙️  Running in WANDB offline mode
+
+⚙️  Running in WANDB offline mode⚙️  Running in WANDB offline mode
+⚙️  Running in WANDB offline mode
+
+⚙️  Running in WANDB offline mode
+⚙️  Running in WANDB offline mode
+⚙️  Running in WANDB offline mode⚙️  Running in WANDB offline mode
+
+⚙️  Running in WANDB offline mode
+⚙️  Running in WANDB offline mode
+⚙️  Running in WANDB offline mode
+⚙️  Running in WANDB offline mode⚙️  Running in WANDB offline mode
+
+[2025-09-11 04:27:52,858] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-11 04:27:52,857] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-11 04:27:52,857] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-11 04:27:52,857] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-11 04:27:52,858] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-11 04:27:52,858] [INFO] [comm.py:852:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[2025-09-11 04:27:52,857] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-11 04:27:52,857] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-11 04:27:52,857] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-11 04:27:52,858] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-11 04:27:52,858] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-11 04:27:52,857] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-11 04:27:52,858] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-11 04:27:52,857] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-11 04:27:52,857] [INFO] [comm.py:821:init_distributed] cdb=None
+[2025-09-11 04:27:53,385] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-11 04:27:53,386] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-11 04:27:53,388] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-11 04:27:53,389] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-11 04:27:53,390] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-11 04:27:53,391] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-11 04:27:53,392] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-11 04:27:53,393] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-11 04:27:53,395] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-11 04:27:53,396] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-11 04:27:53,397] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+[2025-09-11 04:27:53,398] [INFO] [logging.py:107:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 4 | expert_parallel_size: 1
+Vision encoder and proj init.
+
+Vision encoder and proj init.
+
+Vision encoder and proj init.
+
+Vision encoder and proj init.
+
+Vision encoder and proj init.
+
+Vision encoder and proj init.
+
+Vision encoder and proj init.
+
+RePaMoELLaVAQWenForCausalLM(
+  (transformer): MoELLaVAQWenModel(
+    (wte): Embedding(151936, 2048)
+    (drop): Dropout(p=0.0, inplace=False)
+    (rotary_emb): RotaryEmbedding()
+    (h): ModuleList(
+      (0): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+RePaMoELLaVAQWenForCausalLM(
+  (transformer): MoELLaVAQWenModel(
+    (wte): Embedding(151936, 2048)
+    (drop): Dropout(p=0.0, inplace=False)
+    (rotary_emb): RotaryEmbedding()
+    (h): ModuleList(
+      (0): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (1): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (2): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (3): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (4): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (5): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (6): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (7): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (8): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (9): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (10): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (11): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (1): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (2): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (3): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (4): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (5): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (6): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (7): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (8): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (9): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (10): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (11): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (12): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (13): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (14): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (15): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (16): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (17): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (18): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (19): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (20): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (21): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (22): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (23): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+    )
+    (ln_f): RMSNorm()
+    (image_tower): CLIPVisionTower(
+      (image_tower): CLIPVisionModel(
+        (vision_model): CLIPVisionTransformer(
+          (embeddings): CLIPVisionEmbeddings(
+            (patch_embedding): Conv2d(3, 1024, kernel_size=(14, 14), stride=(14, 14), bias=False)
+            (position_embedding): Embedding(577, 1024)
+          )
+          (pre_layrnorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (encoder): CLIPEncoder(
+            (layers): ModuleList(
+              (0-23): 24 x CLIPEncoderLayer(
+                (self_attn): CLIPAttention(
+                  (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                )
+                (layer_norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+                (mlp): CLIPMLP(
+                  (activation_fn): QuickGELUActivation()
+                  (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+                  (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+                )
+                (layer_norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              )
+            )
+          )
+          (post_layernorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (mm_projector): build_projector(
+      (image_spatial_proj): Sequential(
+        (0): Linear(in_features=1024, out_features=2048, bias=True)
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (12): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+        (1): GELU(approximate='none')
+        (2): Linear(in_features=2048, out_features=2048, bias=True)
+      )
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (13): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (14): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+      (video_patch_proj): Identity()
+      (video_spatial_proj): Identity()
+      (video_temproal_proj): Identity()
+      (video_global_proj): Identity()
+    )
+  )
+  (lm_head): Linear(in_features=2048, out_features=151936, bias=False)
+)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (15): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (16): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (17): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (18): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (19): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (20): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (21): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (22): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (23): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+    )
+    (ln_f): RMSNorm()
+    (image_tower): CLIPVisionTower(
+      (image_tower): CLIPVisionModel(
+        (vision_model): CLIPVisionTransformer(
+          (embeddings): CLIPVisionEmbeddings(
+            (patch_embedding): Conv2d(3, 1024, kernel_size=(14, 14), stride=(14, 14), bias=False)
+            (position_embedding): Embedding(577, 1024)
+          )
+          (pre_layrnorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (encoder): CLIPEncoder(
+            (layers): ModuleList(
+              (0-23): 24 x CLIPEncoderLayer(
+                (self_attn): CLIPAttention(
+                  (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                )
+                (layer_norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+                (mlp): CLIPMLP(
+                  (activation_fn): QuickGELUActivation()
+                  (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+                  (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+                )
+                (layer_norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              )
+            )
+          )
+          (post_layernorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (mm_projector): build_projector(
+      (image_spatial_proj): Sequential(
+        (0): Linear(in_features=1024, out_features=2048, bias=True)
+        (1): GELU(approximate='none')
+        (2): Linear(in_features=2048, out_features=2048, bias=True)
+      )
+      (video_patch_proj): Identity()
+      (video_spatial_proj): Identity()
+      (video_temproal_proj): Identity()
+      (video_global_proj): Identity()
+    )
+  )
+  (lm_head): Linear(in_features=2048, out_features=151936, bias=False)
+)
+RePaMoELLaVAQWenForCausalLM(
+  (transformer): MoELLaVAQWenModel(
+    (wte): Embedding(151936, 2048)
+    (drop): Dropout(p=0.0, inplace=False)
+    (rotary_emb): RotaryEmbedding()
+    (h): ModuleList(
+      (0): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (1): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (2): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (3): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (4): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (5): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (6): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (7): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (8): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (9): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (10): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (11): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (12): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (13): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (14): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (15): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (16): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (17): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (18): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (19): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (20): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (21): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (22): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (23): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+    )
+    (ln_f): RMSNorm()
+    (image_tower): CLIPVisionTower(
+      (image_tower): CLIPVisionModel(
+        (vision_model): CLIPVisionTransformer(
+          (embeddings): CLIPVisionEmbeddings(
+            (patch_embedding): Conv2d(3, 1024, kernel_size=(14, 14), stride=(14, 14), bias=False)
+            (position_embedding): Embedding(577, 1024)
+          )
+          (pre_layrnorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (encoder): CLIPEncoder(
+            (layers): ModuleList(
+              (0-23): 24 x CLIPEncoderLayer(
+                (self_attn): CLIPAttention(
+                  (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                )
+                (layer_norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+                (mlp): CLIPMLP(
+                  (activation_fn): QuickGELUActivation()
+                  (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+                  (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+                )
+                (layer_norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              )
+            )
+          )
+          (post_layernorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (mm_projector): build_projector(
+      (image_spatial_proj): Sequential(
+        (0): Linear(in_features=1024, out_features=2048, bias=True)
+        (1): GELU(approximate='none')
+        (2): Linear(in_features=2048, out_features=2048, bias=True)
+      )
+      (video_patch_proj): Identity()
+      (video_spatial_proj): Identity()
+      (video_temproal_proj): Identity()
+      (video_global_proj): Identity()
+    )
+  )
+  (lm_head): Linear(in_features=2048, out_features=151936, bias=False)
+)
+RePaMoELLaVAQWenForCausalLM(
+  (transformer): MoELLaVAQWenModel(
+    (wte): Embedding(151936, 2048)
+    (drop): Dropout(p=0.0, inplace=False)
+    (rotary_emb): RotaryEmbedding()
+    (h): ModuleList(
+      (0): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (1): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (2): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (3): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (4): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (5): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (6): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (7): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (8): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (9): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (10): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (11): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (12): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (13): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (14): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (15): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (16): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (17): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (18): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (19): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (20): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+RePaMoELLaVAQWenForCausalLM(
+  (transformer): MoELLaVAQWenModel(
+    (wte): Embedding(151936, 2048)
+    (drop): Dropout(p=0.0, inplace=False)
+    (rotary_emb): RotaryEmbedding()
+    (h): ModuleList(
+      (0): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (21): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (22): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (23): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+    )
+    (ln_f): RMSNorm()
+    (image_tower): CLIPVisionTower(
+      (image_tower): CLIPVisionModel(
+        (vision_model): CLIPVisionTransformer(
+          (embeddings): CLIPVisionEmbeddings(
+            (patch_embedding): Conv2d(3, 1024, kernel_size=(14, 14), stride=(14, 14), bias=False)
+            (position_embedding): Embedding(577, 1024)
+          )
+          (pre_layrnorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (encoder): CLIPEncoder(
+            (layers): ModuleList(
+              (0-23): 24 x CLIPEncoderLayer(
+                (self_attn): CLIPAttention(
+                  (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                )
+                (layer_norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+                (mlp): CLIPMLP(
+                  (activation_fn): QuickGELUActivation()
+                  (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+                  (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+                )
+                (layer_norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              )
+            )
+          )
+          (post_layernorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (mm_projector): build_projector(
+      (image_spatial_proj): Sequential(
+        (0): Linear(in_features=1024, out_features=2048, bias=True)
+        (1): GELU(approximate='none')
+        (2): Linear(in_features=2048, out_features=2048, bias=True)
+      )
+      (video_patch_proj): Identity()
+      (video_spatial_proj): Identity()
+      (video_temproal_proj): Identity()
+      (video_global_proj): Identity()
+    )
+  )
+  (lm_head): Linear(in_features=2048, out_features=151936, bias=False)
+)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (1): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (2): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (3): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (4): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (5): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (6): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (7): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (8): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (9): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (10): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (11): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (12): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (13): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (14): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (15): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (16): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (17): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (18): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (19): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (20): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (21): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (22): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (23): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+    )
+    (ln_f): RMSNorm()
+    (image_tower): CLIPVisionTower(
+      (image_tower): CLIPVisionModel(
+        (vision_model): CLIPVisionTransformer(
+          (embeddings): CLIPVisionEmbeddings(
+            (patch_embedding): Conv2d(3, 1024, kernel_size=(14, 14), stride=(14, 14), bias=False)
+            (position_embedding): Embedding(577, 1024)
+          )
+          (pre_layrnorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (encoder): CLIPEncoder(
+            (layers): ModuleList(
+              (0-23): 24 x CLIPEncoderLayer(
+                (self_attn): CLIPAttention(
+                  (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                )
+                (layer_norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+                (mlp): CLIPMLP(
+                  (activation_fn): QuickGELUActivation()
+                  (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+                  (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+                )
+                (layer_norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              )
+            )
+          )
+          (post_layernorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (mm_projector): build_projector(
+      (image_spatial_proj): Sequential(
+        (0): Linear(in_features=1024, out_features=2048, bias=True)
+        (1): GELU(approximate='none')
+        (2): Linear(in_features=2048, out_features=2048, bias=True)
+      )
+      (video_patch_proj): Identity()
+      (video_spatial_proj): Identity()
+      (video_temproal_proj): Identity()
+      (video_global_proj): Identity()
+    )
+  )
+  (lm_head): Linear(in_features=2048, out_features=151936, bias=False)
+)
+RePaMoELLaVAQWenForCausalLM(
+  (transformer): MoELLaVAQWenModel(
+    (wte): Embedding(151936, 2048)
+    (drop): Dropout(p=0.0, inplace=False)
+    (rotary_emb): RotaryEmbedding()
+    (h): ModuleList(
+      (0): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (1): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (2): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (3): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (4): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (5): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (6): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (7): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (8): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (9): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (10): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (11): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (12): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (13): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (14): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (15): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (16): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (17): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (18): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (19): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (20): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (21): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (22): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (23): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+    )
+    (ln_f): RMSNorm()
+    (image_tower): CLIPVisionTower(
+      (image_tower): CLIPVisionModel(
+        (vision_model): CLIPVisionTransformer(
+          (embeddings): CLIPVisionEmbeddings(
+            (patch_embedding): Conv2d(3, 1024, kernel_size=(14, 14), stride=(14, 14), bias=False)
+            (position_embedding): Embedding(577, 1024)
+          )
+          (pre_layrnorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (encoder): CLIPEncoder(
+            (layers): ModuleList(
+              (0-23): 24 x CLIPEncoderLayer(
+                (self_attn): CLIPAttention(
+                  (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                )
+                (layer_norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+                (mlp): CLIPMLP(
+                  (activation_fn): QuickGELUActivation()
+                  (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+                  (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+                )
+                (layer_norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              )
+            )
+          )
+          (post_layernorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (mm_projector): build_projector(
+      (image_spatial_proj): Sequential(
+        (0): Linear(in_features=1024, out_features=2048, bias=True)
+        (1): GELU(approximate='none')
+        (2): Linear(in_features=2048, out_features=2048, bias=True)
+      )
+      (video_patch_proj): Identity()
+      (video_spatial_proj): Identity()
+      (video_temproal_proj): Identity()
+      (video_global_proj): Identity()
+    )
+  )
+  (lm_head): Linear(in_features=2048, out_features=151936, bias=False)
+)
+RePaMoELLaVAQWenForCausalLM(
+  (transformer): MoELLaVAQWenModel(
+    (wte): Embedding(151936, 2048)
+    (drop): Dropout(p=0.0, inplace=False)
+    (rotary_emb): RotaryEmbedding()
+    (h): ModuleList(
+      (0): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (1): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (2): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (3): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (4): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (5): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (6): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (7): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (8): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (9): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (10): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (11): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (12): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (13): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (14): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (15): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (16): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (17): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (18): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (19): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (20): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (21): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+      (22): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): RePaMoE(
+          (deepspeed_moe): MOELayer(
+            (gate): TopKGate(
+              (wg): Linear(in_features=2048, out_features=4, bias=False)
+            )
+            (experts): Experts(
+              (deepspeed_experts): ModuleList(
+                (0-3): 4 x RePaMLP(
+                  (w1): Linear(in_features=2048, out_features=5504, bias=False)
+                  (w2): Linear(in_features=2048, out_features=5504, bias=False)
+                  (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+                )
+              )
+            )
+          )
+        )
+      )
+      (23): QWenBlock(
+        (ln_1): RMSNorm()
+        (attn): QWenAttention(
+          (c_attn): Linear(in_features=2048, out_features=6144, bias=True)
+          (c_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+        )
+        (ln_2): RMSNorm()
+        (mlp): QWenMLP(
+          (w1): Linear(in_features=2048, out_features=5504, bias=False)
+          (w2): Linear(in_features=2048, out_features=5504, bias=False)
+          (c_proj): Linear(in_features=5504, out_features=2048, bias=False)
+        )
+      )
+    )
+    (ln_f): RMSNorm()
+    (image_tower): CLIPVisionTower(
+      (image_tower): CLIPVisionModel(
+        (vision_model): CLIPVisionTransformer(
+          (embeddings): CLIPVisionEmbeddings(
+            (patch_embedding): Conv2d(3, 1024, kernel_size=(14, 14), stride=(14, 14), bias=False)
+            (position_embedding): Embedding(577, 1024)
+          )
+          (pre_layrnorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (encoder): CLIPEncoder(
+            (layers): ModuleList(
+              (0-23): 24 x CLIPEncoderLayer(
+                (self_attn): CLIPAttention(
+                  (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                )
+                (layer_norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+                (mlp): CLIPMLP(
+                  (activation_fn): QuickGELUActivation()
+                  (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+                  (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+                )
+                (layer_norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              )
+            )
+          )
+          (post_layernorm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (mm_projector): build_projector(
+      (image_spatial_proj): Sequential(
+        (0): Linear(in_features=1024, out_features=2048, bias=True)
+        (1): GELU(approximate='none')
+        (2): Linear(in_features=2048, out_features=2048, bias=True)
+      )
+      (video_patch_proj): Identity()
+      (video_spatial_proj): Identity()
+      (video_temproal_proj): Identity()
+      (video_global_proj): Identity()
+    )
+  )
+  (lm_head): Linear(in_features=2048, out_features=151936, bias=False)
+)
+Formatting inputs...Skip in lazy mode
+Formatting inputs...Skip in lazy mode
+Formatting inputs...Skip in lazy mode
+Formatting inputs...Skip in lazy mode
+Formatting inputs...Skip in lazy mode
+Formatting inputs...Skip in lazy mode
+Formatting inputs...Skip in lazy mode
+Setting up RePaMoE fine-tuning mode...
+Setting up RePaMoE fine-tuning mode...Setting up RePaMoE fine-tuning mode...
+
+  Detected RePaMoE model: RePaMoELLaVAQWenForCausalLM  Detected RePaMoE model: RePaMoELLaVAQWenForCausalLM
+
+  Detected RePaMoE model: RePaMoELLaVAQWenForCausalLM
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAQWenForCausalLM
+Setting up RePaMoE fine-tuning mode...
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAQWenForCausalLM
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAQWenForCausalLM
+  Detected RePaMoE model: RePaMoELLaVAQWenForCausalLM
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAQWenForCausalLM
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAQWenForCausalLM
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAQWenForCausalLM
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAQWenForCausalLM
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAQWenForCausalLM
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAQWenForCausalLM
+  Frozen 554 non-MoE parameters, kept 156 MoE parameters trainable
+  Frozen 554 non-MoE parameters, kept 156 MoE parameters trainable
+  Frozen 554 non-MoE parameters, kept 156 MoE parameters trainable
+  Frozen 554 non-MoE parameters, kept 156 MoE parameters trainable
+  Frozen 554 non-MoE parameters, kept 156 MoE parameters trainable
+  Frozen 554 non-MoE parameters, kept 156 MoE parameters trainable
+  Frozen 554 non-MoE parameters, kept 156 MoE parameters trainable
+  Frozen 554 non-MoE parameters, kept 156 MoE parameters trainable
+  Frozen 554 non-MoE parameters, kept 156 MoE parameters trainable
+  Frozen 554 non-MoE parameters, kept 156 MoE parameters trainable
+  Frozen 554 non-MoE parameters, kept 156 MoE parameters trainable
+  Frozen 554 non-MoE parameters, kept 156 MoE parameters trainable
+  Frozen 554 non-MoE parameters, kept 156 MoE parameters trainable
+Setting up RePaMoE fine-tuning mode...
+  Detected RePaMoE model: RePaMoELLaVAQWenForCausalLM
+  Frozen 554 non-MoE parameters, kept 156 MoE parameters trainable
+  Set initial gated ratio to 1.0
+  Set initial gated ratio to 1.0
+  Set initial gated ratio to 1.0
+  Total training steps: 5197.0
+  Stage 1 (gated ratio reduction): 2598.0 steps
+  Stage 2 (post-reparam training): 2599.0 steps
+  Gated ratio will be reduced from 1.0 to 0.1 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+  Set initial gated ratio to 1.0
+  Total training steps: 5197.0
+  Set initial gated ratio to 1.0
+  Total training steps: 5197.0
+  Stage 1 (gated ratio reduction): 2598.0 steps
+  Stage 2 (post-reparam training): 2599.0 steps
+  Total training steps: 5197.0
+  Gated ratio will be reduced from 1.0 to 0.1 linearly over stage 1
+  Stage 1 (gated ratio reduction): 2598.0 steps
+  Stage 2 (post-reparam training): 2599.0 steps
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+  Gated ratio will be reduced from 1.0 to 0.1 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+  Total training steps: 5197.0
+  Stage 1 (gated ratio reduction): 2598.0 steps
+  Stage 2 (post-reparam training): 2599.0 steps
+  Gated ratio will be reduced from 1.0 to 0.1 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+  Set initial gated ratio to 1.0
+  Total training steps: 5197.0
+  Set initial gated ratio to 1.0  Set initial gated ratio to 1.0
+  Total training steps: 5197.0
+
+  Total training steps: 5197.0  Stage 1 (gated ratio reduction): 2598.0 steps
+
+  Stage 1 (gated ratio reduction): 2598.0 steps  Stage 2 (post-reparam training): 2599.0 steps
+
+  Stage 2 (post-reparam training): 2599.0 steps
+  Gated ratio will be reduced from 1.0 to 0.1 linearly over stage 1
+  Gated ratio will be reduced from 1.0 to 0.1 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+  Stage 1 (gated ratio reduction): 2598.0 steps
+  Stage 1 (gated ratio reduction): 2598.0 steps
+  Stage 2 (post-reparam training): 2599.0 steps
+  Gated ratio will be reduced from 1.0 to 0.1 linearly over stage 1
+  Stage 2 (post-reparam training): 2599.0 steps
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+  Gated ratio will be reduced from 1.0 to 0.1 linearly over stage 1
+  Set initial gated ratio to 1.0
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+  Total training steps: 5197.0
+  Stage 1 (gated ratio reduction): 2598.0 steps
+  Stage 2 (post-reparam training): 2599.0 steps
+  Gated ratio will be reduced from 1.0 to 0.1 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+  Set initial gated ratio to 1.0  Set initial gated ratio to 1.0
+
+  Total training steps: 5197.0  Total training steps: 5197.0
+
+  Stage 1 (gated ratio reduction): 2598.0 steps
+  Stage 1 (gated ratio reduction): 2598.0 steps  Stage 2 (post-reparam training): 2599.0 steps
+
+  Stage 2 (post-reparam training): 2599.0 steps
+  Gated ratio will be reduced from 1.0 to 0.1 linearly over stage 1
+  Gated ratio will be reduced from 1.0 to 0.1 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+
+  Set initial gated ratio to 1.0
+  Total training steps: 5197.0
+  Stage 1 (gated ratio reduction): 2598.0 steps
+  Stage 2 (post-reparam training): 2599.0 steps
+  Gated ratio will be reduced from 1.0 to 0.1 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+  Set initial gated ratio to 1.0
+  Total training steps: 5197.0
+  Stage 1 (gated ratio reduction): 2598.0 steps
+  Stage 2 (post-reparam training): 2599.0 steps
+  Gated ratio will be reduced from 1.0 to 0.1 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+  Set initial gated ratio to 1.0
+  Total training steps: 5197.0
+  Stage 1 (gated ratio reduction): 2598.0 steps
+  Stage 2 (post-reparam training): 2599.0 steps
+  Gated ratio will be reduced from 1.0 to 0.1 linearly over stage 1
+  MoE layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+No existing process group found, creating a new group named: ep_size_1
+Skipping empty parameter group: no_decay_parameters
+No existing process group found, creating a new group named: ep_size_1
+No existing process group found, creating a new group named: ep_size_1
+No existing process group found, creating a new group named: ep_size_1
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+No existing process group found, creating a new group named: ep_size_1
+No existing process group found, creating a new group named: ep_size_1
+No existing process group found, creating a new group named: ep_size_1
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+No existing process group found, creating a new group named: ep_size_1
+No existing process group found, creating a new group named: ep_size_1
+No existing process group found, creating a new group named: ep_size_1
+No existing process group found, creating a new group named: ep_size_1
+NCCL version 2.21.5+cuda12.4
+No existing process group found, creating a new group named: ep_size_1
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+Skipping empty parameter group: no_decay_parameters
+✓ DeepSpeed MoE requirements satisfied: 10 MoE groups found
+No existing process group found, creating a new group named: ep_size_1
+No existing process group found, creating a new group named: ep_size_1

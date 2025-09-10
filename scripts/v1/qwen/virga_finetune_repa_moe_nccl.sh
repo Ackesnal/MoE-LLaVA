@@ -5,11 +5,11 @@
 #SBATCH --cpus-per-task=36
 #SBATCH --gres=gpu:2
 #SBATCH --mem=256G
-#SBATCH --time=1:00:00
-#SBATCH --output=logs/finetune_repa_moe_QWen_%A_%a.out
-#SBATCH --error=logs/finetune_repa_moe_QWen_%A_%a.err
+#SBATCH --time=5:00:00
+#SBATCH --output=logs/finetune_repa_moe_Qwen_%A_%a.out
+#SBATCH --error=logs/finetune_repa_moe_Qwen_%A_%a.err
 
-#SBATCH --array=1-1%2
+#SBATCH --array=1-9%2
 
 # Load required modules
 module load gcc/12.3.0
