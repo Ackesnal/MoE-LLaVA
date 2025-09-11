@@ -317,8 +317,8 @@ class LLaVATrainer(Trainer):
             self.repa_state['current_stage'] = 1
             self._handle_stage_1_logic(current_step)
         else:
-            if not self.repa_state['stage_1_complete']:
-                self._transition_to_stage_2(current_step)
+            # if not self.repa_state['stage_1_complete']:
+                # self._transition_to_stage_2(current_step)
             self.repa_state['current_stage'] = 2
             # Stage 2: normal training, no special logic needed
     
