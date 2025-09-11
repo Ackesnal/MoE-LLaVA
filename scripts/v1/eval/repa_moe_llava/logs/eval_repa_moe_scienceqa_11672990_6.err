@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/eval/model_vqa_science.py", line 176, in <module>
+    eval_model(args)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/eval/model_vqa_science.py", line 34, in eval_model
+    tokenizer, model, processor, context_len = load_pretrained_model(model_path, args.model_base, model_name, gated_ratio=args.repa_gated_ratio)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/model/builder.py", line 425, in load_pretrained_model
+    tokenizer = Arcade100kTokenizer.from_pretrained(model_path, use_fast=False, padding_side=padding_side)
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 2070, in from_pretrained
+    return cls._from_pretrained(
+  File "/home/li309/pct_code/venv/moellava-test2/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 2316, in _from_pretrained
+    tokenizer = cls(*init_inputs, **init_kwargs)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/model/language_model/stablelm/tokenization_arcade100k.py", line 114, in __init__
+    self._tiktoken_config = _arcade100k(vocab_file)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/model/language_model/stablelm/tokenization_arcade100k.py", line 80, in _arcade100k
+    mergeable_ranks = _load_tiktoken_bpe(vocab_file)
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/model/language_model/stablelm/tokenization_arcade100k.py", line 24, in _load_tiktoken_bpe
+    with open(tiktoken_bpe_file, "rb") as f:
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+Traceback (most recent call last):
+  File "/datasets/work/d61-pct/work/yang_work/moe/MoE-LLaVA/moellava/eval/eval_science_qa.py", line 45, in <module>
+    predictions = [json.loads(line) for line in open(args.result_file)]
+FileNotFoundError: [Errno 2] No such file or directory: '/scratch3/li309/data/llava_data/eval/scienceqa/answers/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio0p6.jsonl'
+/cm/local/apps/slurm/var/spool/job11675559/slurm_script: line 76: unexpected EOF while looking for matching `"'
+/cm/local/apps/slurm/var/spool/job11675559/slurm_script: line 77: syntax error: unexpected end of file
