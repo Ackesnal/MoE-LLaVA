@@ -49,7 +49,7 @@ echo "Using GATED_RATIO=${GATED_RATIO} from SLURM_ARRAY_TASK_ID=${SLURM_ARRAY_TA
 
 # Build per-run output directory incorporating gated ratio (sanitize decimal point)
 GATED_RATIO_TAG=${GATED_RATIO/./p}
-OUTPUT_DIR=./finetuned_checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-full-model-Experiment-ratio${GATED_RATIO_TAG}
+OUTPUT_DIR=./finetuned_checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio${GATED_RATIO_TAG}
 echo "OUTPUT_DIR: ${OUTPUT_DIR}" >&2
 
 # Redirect logs to ratio-tagged files (after we know GATED_RATIO)

@@ -1,15 +1,13 @@
 #!/bin/bash
 #SBATCH --job-name=finetune_repa_moe_nccl
-#SBATCH --nodes=8
+#SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=36
 #SBATCH --gres=gpu:2
 #SBATCH --mem=256G
-#SBATCH --time=5:00:00
-#SBATCH --output=logs/finetune_repa_moe_nccl_%A_%a.out
-#SBATCH --error=logs/finetune_repa_moe_nccl_%A_%a.err
-
-#SBATCH --array=1-9
+#SBATCH --time=2:00:00
+#SBATCH --output=logs/test-finetune_repa_moe_nccl_%A_%a.out
+#SBATCH --error=logs/test-finetune_repa_moe_nccl_%A_%a.err
 
 # Load required modules
 module load gcc/12.3.0
@@ -46,11 +44,14 @@ else
     GATED_RATIO=$(awk "BEGIN {printf \"%.1f\", ${SLURM_ARRAY_TASK_ID}/10}")
 fi
 echo "Using GATED_RATIO=${GATED_RATIO} from SLURM_ARRAY_TASK_ID=${SLURM_ARRAY_TASK_ID}" >&2
+SELF_KD=true
 
 # Build per-run output directory incorporating gated ratio (sanitize decimal point)
 GATED_RATIO_TAG=${GATED_RATIO/./p}
-OUTPUT_DIR=./finetuned_checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-full-model-Experiment-ratio${GATED_RATIO_TAG}
+OUTPUT_DIR=./finetuned_checkpoints/test-MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio${GATED_RATIO_TAG}
 echo "OUTPUT_DIR: ${OUTPUT_DIR}" >&2
+
+rm -rf ${OUTPUT_DIR}
 
 # Redirect logs to ratio-tagged files (after we know GATED_RATIO)
 RATIO_LOG_PREFIX="logs/finetune_repa_moe_nccl_ratio${GATED_RATIO_TAG}_job${SLURM_JOB_ID}_task${SLURM_ARRAY_TASK_ID}"
@@ -126,7 +127,7 @@ torchrun \
     --bf16 True \
     --output_dir ${OUTPUT_DIR} \
     --num_train_epochs 1 \
-    --per_device_train_batch_size 4 \
+    --per_device_train_batch_size 2 \
     --per_device_eval_batch_size 8 \
     --gradient_accumulation_steps 2 \
     --eval_strategy no \
@@ -147,5 +148,8 @@ torchrun \
     --cache_dir ./cache_dir \
     --report_to wandb \
     --finetune_repa_mode ${FINETUNE_REPA_MODE} \
-    --gated_ratio ${GATED_RATIO}
+    --gated_ratio ${GATED_RATIO} \
+    --self_kd ${SELF_KD} \
+    --kd_alpha 0.5 \
+    --kd_temperature 2.0
 "
