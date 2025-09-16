@@ -1,0 +1,26 @@
+Evaluating checkpoint with GATED_RATIO=0.6 (tag=0p6)
+CKPT: finetuned_checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio0p6
+Answer file: /scratch3/li309/data/llava_data/eval/scienceqa/answers/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio0p6.jsonl
+[2025-09-12 01:02:55,169] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[2025-09-12 01:03:02,015] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-12 01:03:05,638] [WARNING] [runner.py:220:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+Detected VISIBLE_DEVICES=0: setting --include=localhost:0
+[2025-09-12 01:03:05,638] [INFO] [runner.py:610:main] cmd = /home/li309/pct_code/venv/moellava-test2/bin/python -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMF19 --master_addr=127.0.0.1 --master_port=29500 --enable_each_rank_log=None moellava/eval/model_vqa_science.py --model-path finetuned_checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio0p6 --question-file /scratch3/li309/data/llava_data/eval/scienceqa/llava_test_CQM-A.json --image-folder /scratch3/li309/data/llava_data/eval/scienceqa/images/test --answers-file /scratch3/li309/data/llava_data/eval/scienceqa/answers/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio0p6.jsonl --single-pred-prompt --temperature 0 --conv-mode stablelm
+[2025-09-12 01:03:07,357] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[2025-09-12 01:03:11,971] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-12 01:03:14,667] [INFO] [launch.py:139:main] 0 NCCL_ROOT=/apps/nccl/2.20.5-cu124
+[2025-09-12 01:03:14,667] [INFO] [launch.py:139:main] 0 NCCL_ROOT_modshare=/apps/nccl/2.20.5-cu124:1
+[2025-09-12 01:03:14,667] [INFO] [launch.py:139:main] 0 NCCL_HOME=/apps/nccl/2.20.5-cu124
+[2025-09-12 01:03:14,667] [INFO] [launch.py:146:main] WORLD INFO DICT: {'localhost': [0]}
+[2025-09-12 01:03:14,667] [INFO] [launch.py:152:main] nnodes=1, num_local_procs=1, node_rank=0
+[2025-09-12 01:03:14,667] [INFO] [launch.py:163:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0]})
+[2025-09-12 01:03:14,667] [INFO] [launch.py:164:main] dist_world_size=1
+[2025-09-12 01:03:14,667] [INFO] [launch.py:168:main] Setting CUDA_VISIBLE_DEVICES=0
+[2025-09-12 01:03:14,669] [INFO] [launch.py:256:main] process 941 spawned with command: ['/home/li309/pct_code/venv/moellava-test2/bin/python', '-u', 'moellava/eval/model_vqa_science.py', '--local_rank=0', '--model-path', 'finetuned_checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio0p6', '--question-file', '/scratch3/li309/data/llava_data/eval/scienceqa/llava_test_CQM-A.json', '--image-folder', '/scratch3/li309/data/llava_data/eval/scienceqa/images/test', '--answers-file', '/scratch3/li309/data/llava_data/eval/scienceqa/answers/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio0p6.jsonl', '--single-pred-prompt', '--temperature', '0', '--conv-mode', 'stablelm']
+[2025-09-12 01:03:24,319] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/li309/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[2025-09-12 01:03:25,904] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-09-12 01:03:27,683] [INFO] [launch.py:319:sigkill_handler] Killing subprocess 941
+[2025-09-12 01:03:27,683] [ERROR] [launch.py:325:sigkill_handler] ['/home/li309/pct_code/venv/moellava-test2/bin/python', '-u', 'moellava/eval/model_vqa_science.py', '--local_rank=0', '--model-path', 'finetuned_checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio0p6', '--question-file', '/scratch3/li309/data/llava_data/eval/scienceqa/llava_test_CQM-A.json', '--image-folder', '/scratch3/li309/data/llava_data/eval/scienceqa/images/test', '--answers-file', '/scratch3/li309/data/llava_data/eval/scienceqa/answers/MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio0p6.jsonl', '--single-pred-prompt', '--temperature', '0', '--conv-mode', 'stablelm'] exits with return code = 1

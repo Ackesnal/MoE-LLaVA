@@ -1376,7 +1376,7 @@ def train():
             rank0_print("Adding LoRA adapters...")
             model = get_peft_model(model, lora_config)
         model.initialize_moe_modules(model_args=model_args)
-    elif model_args.moe_enable and training_args.finetune_repa_mode:    
+    elif model_args.moe_enable and training_args.finetune_repa_mode:
         training_args.gated_ratio = model_args.gated_ratio
         model.config.reparam["target_gated_ratio"] = model_args.gated_ratio
         model.disable_moe_allreduce()

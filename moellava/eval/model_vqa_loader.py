@@ -221,94 +221,44 @@ def eval_model(args):
         torch.save(all_gating_logits, f'{args.return_gating_logit}.pt')
 
 def count_parameters(model):
-    """计算模型的参数量，包括MoE模型的激活参数量"""
-    total_params = sum(p.numel() for p in model.parameters())
-    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    total_params = 0
+    trainable_params = 0
+    activated_params = 0
+    inactivated_params = 0
+    total_params = 0
     
-    # 计算MoE相关参数
-    moe_stats = analyze_moe_structure(model)
+    for name, param in model.named_parameters():
+        if "image_tower" in name:
+            continue
+        
+        # For general params
+        if param.requires_grad:
+            trainable_params += param.numel()
+        total_params += param.numel()
+        
+        # For MoE params
+        if "deepspeed_experts" in name:
+            activated_params += param.numel() / 2
+            inactivated_params += param.numel() / 2
+        else:
+            activated_params += param.numel()
     
     result = {
         'total_params': total_params,
         'trainable_params': trainable_params,
+        'activated_params': activated_params,
+        'inactivated_params': inactivated_params,
         'total_params_M': total_params / 1e6,
         'trainable_params_M': trainable_params / 1e6,
+        'activated_params_M': activated_params / 1e6,
+        'inactivated_params_M': inactivated_params / 1e6,
         'total_params_B': total_params / 1e9,
-        'trainable_params_B': trainable_params / 1e9
+        'trainable_params_B': trainable_params / 1e9,
+        'activated_params_B': activated_params / 1e9,
+        'inactivated_params_B': inactivated_params / 1e9
     }
-    
-    # 添加MoE相关统计
-    if moe_stats['is_moe']:
-        result.update(moe_stats)
-        result['activated_params_M'] = moe_stats['activated_params'] / 1e6
-        result['activated_params_B'] = moe_stats['activated_params'] / 1e9
-    
     return result
 
-def analyze_moe_structure(model):
-    """分析模型的MoE结构，计算激活参数量"""
-    moe_info = {
-        'is_moe': False,
-        'num_experts': 0,
-        'experts_per_token': 0,
-        'moe_layers': 0,
-        'expert_params': 0,
-        'non_expert_params': 0,
-        'activated_params': 0
-    }
-    
-    # 遍历模型查找MoE层
-    for name, module in model.named_modules():
-        # 检查是否是MoE层（根据常见的MoE命名模式）
-        if any(keyword in name.lower() for keyword in ['moe', 'expert', 'mixture']):
-            moe_info['is_moe'] = True
-            
-            # 尝试获取专家数量和选择数量
-            if hasattr(module, 'num_experts'):
-                moe_info['num_experts'] = max(moe_info['num_experts'], module.num_experts)
-            if hasattr(module, 'top_k') or hasattr(module, 'num_experts_per_tok'):
-                experts_per_token = getattr(module, 'top_k', getattr(module, 'num_experts_per_tok', 2))
-                moe_info['experts_per_token'] = max(moe_info['experts_per_token'], experts_per_token)
-            
-            # 计算专家参数
-            if 'experts' in name.lower():
-                expert_params = sum(p.numel() for p in module.parameters())
-                moe_info['expert_params'] += expert_params
-                moe_info['moe_layers'] += 1
-    
-    # 如果没有直接找到MoE信息，尝试从配置中获取
-    if not moe_info['is_moe'] and hasattr(model, 'config'):
-        config = model.config
-        if hasattr(config, 'num_experts') or hasattr(config, 'moe'):
-            moe_info['is_moe'] = True
-            moe_info['num_experts'] = getattr(config, 'num_experts', 8)
-            moe_info['experts_per_token'] = getattr(config, 'num_experts_per_tok', 2)
-            
-            # 估算专家参数（基于总参数和配置）
-            if hasattr(config, 'intermediate_size') and hasattr(config, 'hidden_size'):
-                # 假设每个专家主要是FFN层
-                expert_size = 2 * config.hidden_size * config.intermediate_size
-                num_layers = getattr(config, 'num_hidden_layers', 32)
-                moe_info['expert_params'] = expert_size * moe_info['num_experts'] * num_layers
-                moe_info['moe_layers'] = num_layers
-    
-    # 计算总参数量和激活参数量
-    total_model_params = sum(p.numel() for p in model.parameters())
-    
-    if moe_info['is_moe'] and moe_info['num_experts'] > 0 and moe_info['experts_per_token'] > 0:
-        # 非专家参数 = 总参数 - 专家参数
-        moe_info['non_expert_params'] = total_model_params - moe_info['expert_params']
-        
-        # 激活参数 = 非专家参数 + (激活专家数 / 总专家数) * 专家参数
-        activation_ratio = moe_info['experts_per_token'] / moe_info['num_experts']
-        activated_expert_params = moe_info['expert_params'] * activation_ratio
-        moe_info['activated_params'] = moe_info['non_expert_params'] + activated_expert_params
-    else:
-        # 非MoE模型，激活参数等于总参数
-        moe_info['activated_params'] = total_model_params
-        moe_info['non_expert_params'] = total_model_params
-    
-    return moe_info
 
 def estimate_flops_generation(model, input_ids, image_tensor, generated_tokens):
     """估算生成过程中的FLOPs，考虑MoE模型的激活参数"""
@@ -400,21 +350,8 @@ def print_model_stats(param_stats, flop_stats=None, generation_time=None):
     # 参数量统计
     print(f"Total Parameters: {param_stats['total_params']:,} ({param_stats['total_params_M']:.2f}M / {param_stats['total_params_B']:.2f}B)")
     print(f"Trainable Parameters: {param_stats['trainable_params']:,} ({param_stats['trainable_params_M']:.2f}M / {param_stats['trainable_params_B']:.2f}B)")
-    
-    # MoE相关统计
-    if param_stats.get('is_moe', False):
-        print(f"MoE Model Detected: YES")
-        print(f"Number of Experts: {param_stats['num_experts']}")
-        print(f"Experts per Token: {param_stats['experts_per_token']}")
-        print(f"MoE Layers: {param_stats['moe_layers']}")
-        print(f"Expert Parameters: {param_stats['expert_params']:,} ({param_stats['expert_params'] / 1e6:.2f}M / {param_stats['expert_params'] / 1e9:.2f}B)")
-        print(f"Non-Expert Parameters: {param_stats['non_expert_params']:,} ({param_stats['non_expert_params'] / 1e6:.2f}M / {param_stats['non_expert_params'] / 1e9:.2f}B)")
-        print(f"Activated Parameters: {param_stats['activated_params']:,} ({param_stats['activated_params_M']:.2f}M / {param_stats['activated_params_B']:.2f}B)")
-        activation_ratio = param_stats['activated_params'] / param_stats['total_params'] * 100
-        print(f"Activation Ratio: {activation_ratio:.1f}%")
-    else:
-        print(f"MoE Model Detected: NO")
-        print(f"Activated Parameters: {param_stats['total_params']:,} ({param_stats['total_params_M']:.2f}M / {param_stats['total_params_B']:.2f}B)")
+    print(f"Activated Parameters: {param_stats['activated_params']:,} ({param_stats['activated_params_M']:.2f}M / {param_stats['activated_params_B']:.2f}B)")
+    print(f"Inactivated Parameters: {param_stats['inactivated_params']:,} ({param_stats['inactivated_params_M']:.2f}M / {param_stats['inactivated_params_B']:.2f}B)")
     
     # FLOPs统计
     if flop_stats:

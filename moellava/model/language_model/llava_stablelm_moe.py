@@ -518,9 +518,7 @@ class MoELLaVAStablelmForCausalLM(StableLMEpochForCausalLM, LlavaMetaForCausalLM
                     continue
                 else:
                     p.requires_grad = False
-
-
-
+        
         num_layers = self.config.num_hidden_layers
 
         moe_layers_idx = model_args.moe_layers_idx
