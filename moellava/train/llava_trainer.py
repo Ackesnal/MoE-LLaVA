@@ -246,6 +246,7 @@ class LLaVATrainer(Trainer):
         
         # 4. Freeze all non-MoE layers
         self._freeze_non_moe_layers()
+        self._unfreeze_all_layers()
         
         # 5. Set initial gated ratio to 1.0
         self.repa_state['current_gated_ratio'] = self.repa_state['initial_gated_ratio']
@@ -302,6 +303,16 @@ class LLaVATrainer(Trainer):
         
         print(f"  Frozen {frozen_count} non-MoE parameters, kept {unfrozen_count} MoE parameters trainable")
     
+    def _unfreeze_all_layers(self):
+        """Unfreeze all layers"""
+        for name, param in self.model.named_parameters():
+            if 'image_tower' in name or 'mm_projector' in name:
+                param.requires_grad = False
+            else:
+                param.requires_grad = True
+
+        print(f"  Unfreeze all layers, except image_tower and mm_projector if present")
+
     def training_step(self, model, inputs, num_items_in_batch):
         """Override training step to handle RePaMoE logic"""
         if hasattr(self.args, 'finetune_repa_mode') and self.args.finetune_repa_mode:
@@ -317,8 +328,8 @@ class LLaVATrainer(Trainer):
             self.repa_state['current_stage'] = 1
             self._handle_stage_1_logic(current_step)
         else:
-            if not self.repa_state['stage_1_complete']:
-                self._transition_to_stage_2(current_step)
+            # if not self.repa_state['stage_1_complete']:
+               # self._transition_to_stage_2(current_step)
             self.repa_state['current_stage'] = 2
             # Stage 2: normal training, no special logic needed
     
