@@ -5,11 +5,11 @@
 #SBATCH --cpus-per-task=36
 #SBATCH --gres=gpu:2
 #SBATCH --mem=256G
-#SBATCH --time=5:00:00
-#SBATCH --output=logs/finetune_repa_moe_nccl_%A_%a.out
-#SBATCH --error=logs/finetune_repa_moe_nccl_%A_%a.err
+#SBATCH --time=7:00:00
+#SBATCH --output=logs/full_model_finetune_repa_moe_nccl_%A_%a.out
+#SBATCH --error=logs/full_model_finetune_repa_moe_nccl_%A_%a.err
 
-#SBATCH --array=1-9
+#SBATCH --array=1-9%2
 
 # Load required modules
 module load gcc/12.3.0
@@ -43,7 +43,7 @@ if [ -z "${SLURM_ARRAY_TASK_ID:-}" ]; then
     echo "[WARN] SLURM_ARRAY_TASK_ID not set; defaulting GATED_RATIO=0.5" >&2
     GATED_RATIO=0.5
 else
-    GATED_RATIO=$(awk "BEGIN {printf \"%.1f\", ${SLURM_ARRAY_TASK_ID}/10}")
+    GATED_RATIO=$(awk "BEGIN {printf \"%.1f\", 1-(${SLURM_ARRAY_TASK_ID}/10)}")
 fi
 echo "Using GATED_RATIO=${GATED_RATIO} from SLURM_ARRAY_TASK_ID=${SLURM_ARRAY_TASK_ID}" >&2
 
