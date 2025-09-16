@@ -13,6 +13,7 @@ from transformers.trainer import (
     # ShardedDDPOption,
     logger,
 )
+from moellava.constants import IGNORE_INDEX
 
 # Replace the string list with a tuple of actual layer norm classes
 def _customized_layer_norm_types():
@@ -203,7 +204,55 @@ class LLaVATrainer(Trainer):
             }
             # Setup RePaMoE fine-tuning mode if enabled
             self.setup_repa_finetuning()
-            
+    
+    def compute_loss(self, model, inputs, return_outputs=False, num_items_in_batch=None):
+        # Standard loss from model (includes CE and moe aux if any)
+        outputs = model(**inputs)
+        loss = outputs['loss'] if isinstance(outputs, dict) else getattr(outputs, 'loss', None)
+        if loss is None:
+            loss = outputs[0]
+        
+        # KD integration
+        try:
+            if getattr(self.args, 'finetune_repa_mode', False) and getattr(self.args, 'self_kd', False):
+                teacher = getattr(model, 'teacher_model', None)
+                if teacher is not None and 'labels' in inputs and inputs['labels'] is not None:
+                    with torch.no_grad():
+                        t_outputs = teacher(
+                            input_ids=inputs.get('input_ids'),
+                            attention_mask=inputs.get('attention_mask'),
+                            position_ids=inputs.get('position_ids'),
+                            inputs_embeds=inputs.get('inputs_embeds'),
+                            images=inputs.get('images', None),
+                            return_dict=True,
+                        )
+                    s_logits = outputs['logits'] if isinstance(outputs, dict) else getattr(outputs, 'logits', outputs[1])
+                    t_logits = t_outputs['logits'] if isinstance(t_outputs, dict) else getattr(t_outputs, 'logits', t_outputs[0])
+                    labels = inputs['labels']
+
+                    # Align with CE shift
+                    s_shift = s_logits[..., :-1, :].contiguous()
+                    t_shift = t_logits[..., :-1, :].contiguous()
+                    shift_labels = labels[..., 1:].contiguous()
+                    mask = shift_labels.ne(IGNORE_INDEX)
+
+                    if mask.any():
+                        vocab = s_shift.size(-1)
+                        s_flat = s_shift.view(-1, vocab)[mask.view(-1)]
+                        t_flat = t_shift.view(-1, vocab)[mask.view(-1)]
+                        T = float(getattr(self.args, 'kd_temperature', 1.0))
+                        alpha = float(getattr(self.args, 'kd_alpha', 0.5))
+                        kd = torch.nn.functional.kl_div(
+                            torch.nn.functional.log_softmax(s_flat / T, dim=-1),
+                            torch.nn.functional.softmax(t_flat / T, dim=-1),
+                            reduction='batchmean'
+                        ) * (T * T)
+                        loss = loss + alpha * kd
+        except Exception as e:
+            print(f"KD compute error (ignored): {e}")
+        
+        return (loss, outputs) if return_outputs else loss
+
     def setup_repa_finetuning(self):
         """Setup RePaMoE fine-tuning mode with two stages"""
         print("Setting up RePaMoE fine-tuning mode...")
@@ -246,7 +295,7 @@ class LLaVATrainer(Trainer):
         
         # 4. Freeze all non-MoE layers
         self._freeze_non_moe_layers()
-        self._unfreeze_all_layers()
+        # self._unfreeze_all_layers()
         
         # 5. Set initial gated ratio to 1.0
         self.repa_state['current_gated_ratio'] = self.repa_state['initial_gated_ratio']
@@ -328,8 +377,9 @@ class LLaVATrainer(Trainer):
             self.repa_state['current_stage'] = 1
             self._handle_stage_1_logic(current_step)
         else:
-            # if not self.repa_state['stage_1_complete']:
-                # self._transition_to_stage_2(current_step)
+            # Transition to Stage 2 once
+            if not self.repa_state['stage_1_complete']:
+                self._transition_to_stage_2(current_step)
             self.repa_state['current_stage'] = 2
             # Stage 2: normal training, no special logic needed
     

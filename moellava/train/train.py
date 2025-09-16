@@ -148,6 +148,10 @@ class TrainingArguments(transformers.TrainingArguments):
     mm_projector_lr: Optional[float] = None
     group_by_modality_length: bool = field(default=False)
     finetune_repa_mode: bool = field(default=False, metadata={"help": "Enable RePaMoE finetuning mode"})
+    # KD flags
+    self_kd: bool = field(default=False, metadata={"help": "Enable self-knowledge distillation in RePaMoE finetuning"})
+    kd_alpha: float = field(default=0.5, metadata={"help": "Weight for KD loss added to the supervised loss"})
+    kd_temperature: float = field(default=1.0, metadata={"help": "Temperature for KD soft targets"})
 
 
 def maybe_zero_3(param, ignore_status=False, name=None):
@@ -1543,7 +1547,57 @@ def train():
     #         rank0_print(name)
     model.to(training_args.device)
     rank0_print(model)
-            
+
+    # ===================== Self-KD Teacher (only for RePaMoE finetuning) =====================
+    if getattr(training_args, 'finetune_repa_mode', False) and getattr(training_args, 'self_kd', False):
+        rank0_print('Initializing self-KD teacher model...')
+        try:
+            # Instantiate a teacher with the same class as the student
+            TeacherCls = model.__class__
+            teacher = TeacherCls.from_pretrained(
+                model_args.model_name_or_path,
+                cache_dir=training_args.cache_dir,
+                **bnb_model_from_pretrained_args
+            )
+            # Force teacher to non-reparam and full gating
+            if hasattr(teacher, 'adjust_gated_ratio_all_layers'):
+                teacher.adjust_gated_ratio_all_layers(1.0)
+            if hasattr(teacher, 'config') and hasattr(teacher.config, 'reparam'):
+                teacher.config.reparam['reparamed'] = False
+                teacher.config.reparam['current_gated_ratio'] = 1.0
+                teacher.config.reparam['target_gated_ratio'] = 1.0
+
+            # Initialize teacher vision modules to match student
+            if model_args.image_tower is not None or model_args.video_tower is not None:
+                teacher.get_model().initialize_vision_modules(
+                    model_args=model_args,
+                    fsdp=training_args.fsdp
+                )
+                if model_args.image_tower is not None:
+                    t_image_tower = teacher.get_image_tower()
+                    t_image_tower.to(dtype=torch.bfloat16 if training_args.bf16 else torch.float16, device=training_args.device)
+                if model_args.video_tower is not None:
+                    t_video_tower = teacher.get_video_tower()
+                    t_video_tower.to(dtype=torch.bfloat16 if training_args.bf16 else torch.float16, device=training_args.device)
+                teacher.config.image_aspect_ratio = data_args.image_aspect_ratio
+                teacher.config.mm_use_im_start_end = model_args.mm_use_im_start_end
+                teacher.config.mm_use_im_patch_token = model_args.mm_use_im_patch_token
+                teacher.initialize_vision_tokenizer(model_args, tokenizer=tokenizer)
+                if training_args.bits in [4, 8] and hasattr(teacher.get_model(), 'mm_projector'):
+                    teacher.get_model().mm_projector.to(dtype=compute_dtype, device=training_args.device)
+
+            # Freeze teacher
+            teacher.requires_grad_(False)
+            for param in teacher.parameters():
+                param.requires_grad = False
+            teacher.eval()
+            teacher.to(training_args.device)
+            # Attach to student model for the trainer to access
+            model.teacher_model = teacher
+            rank0_print('Teacher model prepared and frozen for self-KD.')
+        except Exception as e:
+            rank0_print(f'Failed to initialize teacher for self-KD: {e}')
+
     data_module = make_supervised_data_module(tokenizer=tokenizer,
                                               data_args=data_args)
     trainer = LLaVATrainer(model=model,
