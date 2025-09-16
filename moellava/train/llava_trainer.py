@@ -295,7 +295,7 @@ class LLaVATrainer(Trainer):
         
         # 4. Freeze all non-MoE layers
         self._freeze_non_moe_layers()
-        # self._unfreeze_all_layers()
+        self._unfreeze_all_layers()
         
         # 5. Set initial gated ratio to 1.0
         self.repa_state['current_gated_ratio'] = self.repa_state['initial_gated_ratio']
