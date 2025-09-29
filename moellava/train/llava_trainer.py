@@ -51,6 +51,24 @@ ALL_LAYERNORM_LAYERS = _customized_layer_norm_types()
 
 from typing import List, Optional
 
+class ManualLRScheduler:
+    """A minimal scheduler wrapper so HF Trainer can call step()/get_last_lr().
+    Learning rates are actually updated externally (manual two-stage logic).
+    """
+    def __init__(self, optimizer):
+        self.optimizer = optimizer
+    def step(self):
+        # No-op: LR already updated manually each step
+        pass
+    def get_last_lr(self):
+        if self.optimizer is None:
+            return [0.0]
+        return [group.get('lr', 0.0) for group in self.optimizer.param_groups]
+    def state_dict(self):
+        return {}
+    def load_state_dict(self, state_dict):
+        pass
+
 
 def maybe_zero_3(param, ignore_status=False, name=None):
     from deepspeed import zero
@@ -229,11 +247,21 @@ class LLaVATrainer(Trainer):
                 g['lr'] = base * scale
 
     def create_scheduler(self, num_training_steps: int, optimizer: Optional[torch.optim.Optimizer] = None):
-        # For RePa mode we manage LR manually (constant in stage 1, decay in stage 2)
+        # For RePa mode we still need a scheduler object placeholder for Trainer
         if hasattr(self.args, 'finetune_repa_mode') and self.args.finetune_repa_mode:
-            self.lr_scheduler = None
-            return None
+            if optimizer is None:
+                optimizer = self.optimizer
+            self.lr_scheduler = ManualLRScheduler(optimizer)
+            return self.lr_scheduler
         return super().create_scheduler(num_training_steps, optimizer)
+
+    def _get_learning_rate(self):
+        # Use manual scheduler placeholder
+        if getattr(self.args, 'finetune_repa_mode', False):
+            if self.lr_scheduler is not None:
+                lrs = self.lr_scheduler.get_last_lr()
+                return lrs[0] if lrs else 0.0
+        return super()._get_learning_rate()
 
     def setup_repa_finetuning(self):
         """Setup RePaMoE fine-tuning mode with two stages"""
@@ -401,8 +429,215 @@ class LLaVATrainer(Trainer):
         self.repa_state['stage_1_complete'] = True
         print(f"Step {current_step}: Entered Stage 2 (LR will now decay linearly)")
 
-    # The old _update_optimizer_after_reparam / verify / fallback methods are retained below but unused in new flow.
-    # ...existing code...
+    
+    def create_optimizer(self):
+        """
+        Setup the optimizer.
+
+        We provide a reasonable default that works well. If you want to use something else, you can pass a tuple in the
+        Trainer's init through `optimizers`, or subclass and override this method in a subclass.
+        """
+        if is_sagemaker_mp_enabled():
+            return super().create_optimizer()
+        # if self.sharded_ddp == ShardedDDPOption.SIMPLE:
+        #     return super().create_optimizer()
+
+        opt_model = self.model
+
+        if self.optimizer is None:
+            decay_parameters = get_parameter_names(opt_model, ALL_LAYERNORM_LAYERS)
+            decay_parameters = [name for name in decay_parameters if "bias" not in name]
+            if self.args.mm_projector_lr is not None:
+                projector_parameters = [name for name, _ in opt_model.named_parameters() if "mm_projector" in name]
+                optimizer_grouped_parameters = [
+                    {
+                        "params": [
+                            p for n, p in opt_model.named_parameters() if (n in decay_parameters and n not in projector_parameters and p.requires_grad)
+                        ],
+                        "weight_decay": self.args.weight_decay,
+                        "name": "decay_no_proj_parameters"
+                    },
+                    {
+                        "params": [
+                            p for n, p in opt_model.named_parameters() if (n not in decay_parameters and n not in projector_parameters and p.requires_grad)
+                        ],
+                        "weight_decay": 0.0,
+                        "name": "no_decay_no_proj_parameters"
+                    },
+                    {
+                        "params": [
+                            p for n, p in opt_model.named_parameters() if (n in decay_parameters and n in projector_parameters and p.requires_grad)
+                        ],
+                        "weight_decay": self.args.weight_decay,
+                        "lr": self.args.mm_projector_lr,
+                        "name": "decay_proj_parameters"
+                    },
+                    {
+                        "params": [
+                            p for n, p in opt_model.named_parameters() if (n not in decay_parameters and n in projector_parameters and p.requires_grad)
+                        ],
+                        "weight_decay": 0.0,
+                        "lr": self.args.mm_projector_lr,
+                        "name": "no_decay_proj_parameters"
+                    },
+                ]
+            else:
+                optimizer_grouped_parameters = [
+                    {
+                        "params": [
+                            p for n, p in opt_model.named_parameters() if (n in decay_parameters and p.requires_grad)
+                        ],
+                        "weight_decay": self.args.weight_decay,
+                        "name": "decay_parameters"
+                    },
+                    {
+                        "params": [
+                            p for n, p in opt_model.named_parameters() if (n not in decay_parameters and p.requires_grad)
+                        ],
+                        "weight_decay": 0.0,
+                        "name": "no_decay_parameters"
+                    },
+                ]
+            # Filter out empty parameter groups (important for RePaMoE mode where parameters are initially frozen)
+            non_empty_groups = []
+            for group in optimizer_grouped_parameters:
+                if group.get('params') and len(group['params']) > 0:
+                    non_empty_groups.append(group)
+                else:
+                    print(f"Skipping empty parameter group: {group.get('name', 'unnamed')}")
+            optimizer_grouped_parameters = non_empty_groups
+            
+            # Handle MoE parameters - Apply DeepSpeed MoE grouping
+            if self.args.moe_enable:
+                from deepspeed.moe.utils import split_params_into_different_moe_groups_for_optimizer
+                optimizer_grouped_parameters = split_params_into_different_moe_groups_for_optimizer(optimizer_grouped_parameters)
+                
+                # Ensure at least one group is marked as MoE for DeepSpeed
+                moe_groups_found = any(group.get('moe', False) for group in optimizer_grouped_parameters)
+                
+                if not moe_groups_found:
+                    print("Warning: No MoE groups found after DeepSpeed grouping. Creating dedicated MoE groups...")
+                    
+                    # Collect MoE parameters manually
+                    moe_params = []
+                    non_moe_params = []
+                    
+                    for name, param in opt_model.named_parameters():
+                        if param.requires_grad:
+                            is_moe_param = False
+                            # Check for various MoE parameter patterns
+                            moe_patterns = ['deepspeed_moe', 'experts', 'gate', 'mlp.experts', 'mlp.gate']
+                            if any(pattern in name for pattern in moe_patterns):
+                                is_moe_param = True
+                            
+                            # For RePaMoE mode, also check MoE layer indices
+                            if hasattr(self.args, 'finetune_repa_mode') and self.args.finetune_repa_mode:
+                                if hasattr(self, 'repa_state') and self.repa_state.get('moe_layers_idx'):
+                                    for layer_idx in self.repa_state['moe_layers_idx']:
+                                        if f'model.layers.{layer_idx}.mlp' in name or f'layers.{layer_idx}.mlp' in name \
+                                           or f'transformer.h.{layer_idx}.mlp' in name or f'h.{layer_idx}.mlp' in name:
+                                            is_moe_param = True
+                                            break
+                            
+                            if is_moe_param:
+                                moe_params.append((name, param))
+                            else:
+                                non_moe_params.append((name, param))
+                    
+                    if moe_params:
+                        # Create new parameter groups with proper MoE marking
+                        new_groups = []
+                        
+                        # Separate MoE parameters by weight decay
+                        moe_decay_params = []
+                        moe_no_decay_params = []
+                        
+                        for name, param in moe_params:
+                            print("Creating opt:", name)
+                            print(param.allreduce)
+                            if any(decay_name in name for decay_name in decay_parameters) and "bias" not in name:    
+                                moe_decay_params.append(param)
+                            else:
+                                moe_no_decay_params.append(param)
+                        
+                        # Add MoE parameter groups
+                        if moe_decay_params:
+                            new_groups.append({
+                                "params": moe_decay_params,
+                                "weight_decay": self.args.weight_decay,
+                                "name": "moe_decay_parameters",
+                                "moe": True
+                            })
+                        
+                        if moe_no_decay_params:
+                            new_groups.append({
+                                "params": moe_no_decay_params,
+                                "weight_decay": 0.0,
+                                "name": "moe_no_decay_parameters", 
+                                "moe": True
+                            })
+                        
+                        # Update existing non-MoE groups
+                        for group in optimizer_grouped_parameters:
+                            # Remove MoE parameters from existing groups
+                            moe_param_ids = {id(p) for _, p in moe_params}
+                            filtered_params = [p for p in group.get('params', []) if id(p) not in moe_param_ids]
+                            
+                            if filtered_params:
+                                new_group = group.copy()
+                                new_group['params'] = filtered_params
+                                new_group['moe'] = False  # Explicitly mark as non-MoE
+                                new_groups.append(new_group)
+                        
+                        optimizer_grouped_parameters = new_groups
+                        print(f"Created {len([g for g in new_groups if g.get('moe')])} dedicated MoE parameter groups")
+                        print(f"Found {len(moe_params)} MoE parameters, {len(non_moe_params)} non-MoE parameters")
+                
+                # Final verification that we have MoE groups
+                moe_groups_final = [g for g in optimizer_grouped_parameters if g.get('moe', False)]
+                if not moe_groups_final:
+                    assert False, "Error: No MoE parameter groups found after final verification!"
+                else:
+                    print(f"✓ DeepSpeed MoE requirements satisfied: {len(moe_groups_final)} MoE groups found")
+            
+            # Final check to ensure we have at least one non-empty parameter group
+            if not optimizer_grouped_parameters or all(len(group.get('params', [])) == 0 for group in optimizer_grouped_parameters):
+                # If all parameter groups are empty, create a dummy group with at least one parameter
+                # This can happen in RePaMoE mode when all parameters are initially frozen
+                dummy_param = next(opt_model.parameters())
+                optimizer_grouped_parameters = [{
+                    "params": [dummy_param],
+                    "weight_decay": 0.0,
+                    "name": "dummy_param_group"
+                }]
+                print("Warning: All parameter groups were empty. Created dummy group to avoid optimizer error.")
+            
+            optimizer_cls, optimizer_kwargs = Trainer.get_optimizer_cls_and_kwargs(self.args)
+
+            # if self.sharded_ddp == ShardedDDPOption.SIMPLE:
+            #     self.optimizer = OSS(
+            #         params=optimizer_grouped_parameters,
+            #         optim=optimizer_cls,
+            #         **optimizer_kwargs,
+            #     )
+            # else:
+            self.optimizer = optimizer_cls(optimizer_grouped_parameters, **optimizer_kwargs)
+            if optimizer_cls.__name__ == "Adam8bit":
+                import bitsandbytes
+
+                manager = bitsandbytes.optim.GlobalOptimManager.get_instance()
+
+                skipped = 0
+                for module in opt_model.modules():
+                    if isinstance(module, nn.Embedding):
+                        skipped += sum({p.data_ptr(): p.numel() for p in module.parameters()}.values())
+                        logger.info(f"skipped {module}: {skipped/2**20}M params")
+                        manager.register_module_override(module, "weight", {"optim_bits": 32})
+                        logger.debug(f"bitsandbytes: will optimize {module} in fp32")
+                logger.info(f"skipped: {skipped/2**20}M params")
+
+        return self.optimizer
+    
     def _save_checkpoint(self, model, trial, metrics=None):
         if getattr(self.args, 'tune_mm_mlp_adapter', False):
             from transformers.trainer_utils import PREFIX_CHECKPOINT_DIR
@@ -429,6 +664,3 @@ class LLaVATrainer(Trainer):
             pass
         else:
             super(LLaVATrainer, self)._save(output_dir, state_dict)
-
-
-

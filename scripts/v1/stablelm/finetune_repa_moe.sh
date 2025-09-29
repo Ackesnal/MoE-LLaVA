@@ -9,7 +9,6 @@ router_aux_loss_coef=0.01
 # RePaMoE specific arguments
 FINETUNE_REPA_MODE=true
 GATED_RATIO=0.9
-SELF_KD=true
 
 JSON_FOLDER="/mnt/data/llava_data/train_json"
 IMAGE_FOLDER="/mnt/data/llava_data/train_image"
@@ -33,7 +32,7 @@ HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 torchrun \
     --image_aspect_ratio pad \
     --group_by_modality_length True \
     --bf16 True \
-    --output_dir ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-SelfKD \
+    --output_dir ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa \
     --num_train_epochs 1 \
     --per_device_train_batch_size 1 \
     --per_device_eval_batch_size 4 \
@@ -56,7 +55,4 @@ HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 torchrun \
     --cache_dir "./cache_dir" \
     --report_to wandb \
     --finetune_repa_mode $FINETUNE_REPA_MODE \
-    --gated_ratio $GATED_RATIO \
-    --self_kd $SELF_KD \
-    --kd_alpha 0.5 \
-    --kd_temperature 2.0
+    --gated_ratio $GATED_RATIO
