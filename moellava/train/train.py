@@ -1286,6 +1286,7 @@ def train():
                     model = RePaMoELLaVAStablelmForCausalLM.from_pretrained(
                         model_args.model_name_or_path,
                         cache_dir=training_args.cache_dir,
+                        low_cpu_mem_usage=False,
                         # attn_implementation="flash_attention_2",
                         # torch_dtype=torch.bfloat16,
                         **bnb_model_from_pretrained_args
@@ -1319,7 +1320,7 @@ def train():
 
     if model_args.freeze_backbone:
         model.model.requires_grad_(False)
-
+    
     if training_args.bits in [4, 8]:
         from peft import prepare_model_for_kbit_training
         model.config.torch_dtype = (torch.float32 if training_args.fp16 else (torch.bfloat16 if training_args.bf16 else torch.float32))

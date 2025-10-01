@@ -165,6 +165,8 @@ class MLP(nn.Module):
         self.act_fn = nn.SiLU()
         
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        # gate = self.act_fn(self.gate_proj(x))
+        # print(gate.min(), gate.max(), gate.mean(), gate.median(), gate.std())
         return self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
             
 
