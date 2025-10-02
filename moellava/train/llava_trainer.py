@@ -397,7 +397,7 @@ class LLaVATrainer(Trainer):
     def _handle_stage_1_logic(self, current_step):
         """Handle Stage 1: gradually reduce gated ratio"""
         # Calculate new gated ratio based on progress through stage 1
-        progress = current_step / self.repa_state['stage_1_steps']
+        progress = round(current_step / self.repa_state['stage_1_steps'], 2)
         progress = min(1.0, progress)  # Ensure we don't exceed 1.0
         
         # Linear interpolation from initial to target ratio
@@ -406,7 +406,7 @@ class LLaVATrainer(Trainer):
         new_ratio = round(new_ratio, 4)  # Round for cleaner logging
         
         # Update the ratio if it has changed significantly
-        if abs(new_ratio - self.repa_state['current_gated_ratio']) >= 0.0001:
+        if abs(new_ratio - self.repa_state['current_gated_ratio']) >= 0.00005:
             self.repa_state['current_gated_ratio'] = new_ratio
             
             if hasattr(self.model, 'adjust_gated_ratio_all_layers'):
