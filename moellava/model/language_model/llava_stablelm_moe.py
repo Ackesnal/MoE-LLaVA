@@ -616,77 +616,128 @@ class RePaMLP(nn.Module):
         self.config = config
         self.hidden_size = config.hidden_size
         self.intermediate_size = config.intermediate_size
-        self.gate_proj = nn.Linear(config.hidden_size, config.intermediate_size, bias=False)
-        self.up_proj = nn.Linear(config.hidden_size, config.intermediate_size, bias=False)
-        self.down_proj = nn.Linear(config.intermediate_size, config.hidden_size, bias=False)
-        self.act_fn = nn.SiLU()
-        
-        # Ratio of active (non-masked) channels
-        self.gated_ratio = 1.0
-        self.num_gated_channels = int(self.intermediate_size * self.gated_ratio)
-        
-        # mask semantics (IMPORTANT): mask == True means this channel IS MASKED (replaced), mask == False means active
-        self.register_buffer('mask', torch.zeros(self.intermediate_size, dtype=torch.bool))  # start with no masked channels
-        # Running mean statistics for active (unmasked) channels
-        self.register_buffer('channel_running_mean', torch.zeros(self.intermediate_size))
-        self.momentum = 0.9
-        
-        # Trainable replacement parameters for masked channels (initialized to 0). These replace x_gate for masked channels.
-        self.masked_replacements = nn.Parameter(torch.zeros(self.intermediate_size))
         
         # Reparameterization flag
-        self.reparamed = False
+        self.reparamed = config.reparam["reparamed"]
+        
+        if self.reparamed:
+            # Ratio of active (non-masked) channels
+            self.gated_ratio = config.reparam["current_gated_ratio"]
+            
+            if self.gated_ratio == 1.0:
+                self.gate_proj = nn.Linear(config.hidden_size, config.intermediate_size, bias=False)
+                self.up_proj = nn.Linear(config.hidden_size, config.intermediate_size, bias=False)
+                self.down_proj = nn.Linear(config.intermediate_size, config.hidden_size, bias=False)
+                self.act_fn = nn.SiLU()
+                self.repa_proj = None
+            elif self.gated_ratio == 0.0:
+                self.gate_proj = None
+                self.up_proj = None
+                self.down_proj = None
+                self.act_fn = None
+                self.repa_proj = nn.Linear(config.hidden_size, config.hidden_size, bias=False)
+            else:
+                self.num_gated_channels = int(self.intermediate_size * self.gated_ratio)
+                self.gate_proj = nn.Linear(config.hidden_size, self.num_gated_channels, bias=False)
+                self.up_proj = nn.Linear(config.hidden_size, self.num_gated_channels, bias=False)
+                self.down_proj = nn.Linear(self.num_gated_channels, config.hidden_size, bias=False)
+                self.act_fn = nn.SiLU()
+                self.repa_proj = nn.Linear(config.hidden_size, config.hidden_size, bias=False)
+        else:
+            self.num_gated_channels = self.intermediate_size
+            self.gate_proj = nn.Linear(config.hidden_size, config.intermediate_size, bias=False)
+            self.up_proj = nn.Linear(config.hidden_size, config.intermediate_size, bias=False)
+            self.down_proj = nn.Linear(config.intermediate_size, config.hidden_size, bias=False)
+            self.act_fn = nn.SiLU()
+            self.repa_proj = None
+            
+            # mask semantics (IMPORTANT): mask == True means this channel IS MASKED (replaced), mask == False means active
+            self.register_buffer('mask', torch.zeros(self.intermediate_size, dtype=torch.bool))  # start with no masked channels
+            # Running mean statistics for active (unmasked) channels
+            self.register_buffer('channel_running_mean', torch.zeros(self.intermediate_size))
+            self.momentum = 0.9
+            # Trainable replacement parameters for masked channels (initialized to 0). These replace x_gate for masked channels.
+            self.masked_replacements = nn.Parameter(torch.zeros(self.intermediate_size))
                 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        # If reparameterized, use the reparameterized form. No need to track running means or masks.
         if self.reparamed:
-            # After reparameterization, fall back to standard gated FFN on (possibly reduced) channel set
-            return self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
+            if self.repa_proj is not None and self.up_proj is not None and self.down_proj is not None and self.gate_proj is not None:
+                return self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x)) + self.repa_proj(x)
+            elif self.repa_proj is not None:
+                return self.repa_proj(x)
+            else:
+                return self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
         
-        # Compute gated activation
-        x_gate = self.act_fn(self.gate_proj(x))  # [B, T, N, C]
-        # 1. Update running means for ACTIVE channels (mask == False) during training
-        if self.training:
-            with torch.no_grad():
-                if (~self.mask).any():
-                    # mean over batch and sequence dims -> [C]
-                    cur_mean = x_gate.mean(dim=(0,1,2))
-                    active_idx = (~self.mask).nonzero(as_tuple=False).flatten()
-                    # momentum update for active channels only
-                    self.channel_running_mean[active_idx] = (
-                        self.momentum * self.channel_running_mean[active_idx] +
-                        (1 - self.momentum) * cur_mean[active_idx]
-                    )
-        # 2. Construct replaced gate tensor: active channels use x_gate, masked use trainable params
-        # broadcast replacement params
-        if self.mask.any():
-            # out = x_gate * (1 - mask) + masked_replacements * mask
-            mask_float = self.mask.to(x_gate.dtype)
-            replaced_gate = x_gate * (1.0 - mask_float)[None, None, :] + self.masked_replacements[None, None, :] * mask_float[None, None, :]
+        # If not reparameterized
         else:
-            replaced_gate = x_gate
-        
-        x = self.down_proj(replaced_gate * self.up_proj(x))
+            # Compute gated activation
+            x_gate = self.act_fn(self.gate_proj(x))  # [B, E, N, C]
+            # Update running means for ACTIVE channels (mask == False) during training
+            if self.training:
+                with torch.no_grad():
+                    if (~self.mask).any():
+                        # mean over batch and sequence dims -> [C]
+                        cur_mean = x_gate.mean(dim=(0,1,2))
+                        active_idx = (~self.mask).nonzero(as_tuple=False).flatten()
+                        # momentum update for active channels only
+                        self.channel_running_mean[active_idx] = (
+                            self.momentum * self.channel_running_mean[active_idx] +
+                            (1 - self.momentum) * cur_mean[active_idx]
+                        )
+            # Construct replaced gate tensor: active channels use x_gate, masked use trainable params
+            # broadcast replacement params
+            if self.mask.any():
+                # out = x_gate * (1 - mask) + masked_replacements * mask
+                mask_float = self.mask.to(x_gate.dtype)
+                replaced_gate = x_gate * (1.0 - mask_float)[None, None, :] + self.masked_replacements[None, None, :] * mask_float[None, None, :]
+            else:
+                replaced_gate = x_gate
+            
+            x = self.down_proj(replaced_gate * self.up_proj(x))
         return x
 
     def reparam(self):
         if not self.reparamed:
-            # Original reparameterization logic adapts to currently active channels
-            active_idx = (~self.mask).nonzero(as_tuple=False).flatten()
-            if active_idx.numel() == 0:
-                # fallback: treat all as active to avoid empty slice
-                active_idx = torch.arange(self.intermediate_size, device=self.gate_proj.weight.device)
-            # Slice weights to only active channels then perform original transformation
-            # NOTE: This is a simplified adaptation of original logic; adjust if different aggregation desired.
-            gate_w = self.gate_proj.weight[active_idx]
-            up_w = self.up_proj.weight[active_idx]
-            down_w = self.down_proj.weight[:, active_idx]
-            reparamed_weight = up_w.T @ down_w.T  # shape [active, hidden]^T @ [hidden, active]^T -> [?, ?]
-            # Replace parameter tensors with only active subset
-            self.gate_proj.weight = nn.Parameter(gate_w)
-            self.up_proj.weight = nn.Parameter(up_w)
-            self.down_proj.weight = nn.Parameter(down_w)
+            
+            linear_idx = self.mask.nonzero(as_tuple=False).flatten()
+            nonlinear_idx = (~self.mask).nonzero(as_tuple=False).flatten()
+            
+            if linear_idx.numel() > 0:
+                # Some channels are masked and weights can be linearly reparameterized
+                repa_proj_weight = self.down_proj.weight[:, linear_idx] @ (self.up_proj.weight[linear_idx] * self.masked_replacements[linear_idx].unsqueeze(1))
+                self.repa_proj = nn.Linear(self.hidden_size, self.hidden_size, bias=False)
+                self.repa_proj.weight = nn.Parameter(repa_proj_weight)
+            else:
+                self.repa_proj = None
+                
+            if nonlinear_idx.numel() > 0:
+                # Some channels remain active and need gating and nonlinearity
+                gate_proj_weight = self.gate_proj.weight[nonlinear_idx]
+                self.gate_proj = nn.Linear(self.hidden_size, nonlinear_idx.numel(), bias=False)
+                self.gate_proj.weight = nn.Parameter(gate_proj_weight)
+                
+                up_proj_weight = self.up_proj.weight[nonlinear_idx]
+                self.up_proj = nn.Linear(self.hidden_size, nonlinear_idx.numel(), bias=False)
+                self.up_proj.weight = nn.Parameter(up_proj_weight)
+
+                down_proj_weight = self.down_proj.weight[:, nonlinear_idx]
+                self.down_proj = nn.Linear(nonlinear_idx.numel(), self.hidden_size, bias=False)
+                self.down_proj.weight = nn.Parameter(down_proj_weight)
+            else:
+                self.gate_proj = None
+                self.up_proj = None
+                self.down_proj = None
+                
             self.reparamed = True
-            return reparamed_weight.T
+            self.num_gated_channels = nonlinear_idx.numel()
+            self.masked_replacements = None
+            self.mask = None
+            self.channel_running_mean = None
+            import gc
+            gc.collect()
+            torch.cuda.empty_cache()
+            
 
     def adjust_gated_ratio(self, gated_ratio: float):
         """
@@ -747,14 +798,12 @@ class RePaMoE(MoE):
             use_residual=use_residual
         )
         
-        self.gated_ratio = 1.0
+        self.gated_ratio = gated_ratio
         # Adjust gated ratio for all experts if needed
-        if gated_ratio < 1.0:
-            self.adjust_gated_ratio(gated_ratio)
-            self.gated_ratio = gated_ratio
+        self.adjust_gated_ratio(gated_ratio)
+        self.gated_ratio = gated_ratio
         
-        self.reparamed = False
-        self.reparam_ffn = None
+        self.reparamed = reparamed
         # Reparameterize experts if specified
         if reparamed:
             self.reparam()
@@ -773,17 +822,19 @@ class RePaMoE(MoE):
         If reparamed=False, use MoE's forward.
         If reparamed=True, combine MoE's forward with new expert's output.
         """
-        if self.reparamed and self.reparam_ffn is not None:
-            # Get MoE output
-            moe_output, moe_l_aux, moe_exp_counts = super().forward(x, *args, **kwargs)
-            # Get new expert output
-            reparamed_expert_output = self.reparam_ffn(x)
-            # Combine outputs
-            combined_output = moe_output + reparamed_expert_output
-            return combined_output, moe_l_aux, moe_exp_counts 
-        else:
-            # Use standard MoE forward
-            return super().forward(x, *args, **kwargs)
+        # if self.reparamed and self.reparam_ffn is not None:
+        #     # Get MoE output
+        #     moe_output, moe_l_aux, moe_exp_counts = super().forward(x, *args, **kwargs)
+        #     # Get new expert output
+        #     reparamed_expert_output = self.reparam_ffn(x)
+        #     # Combine outputs
+        #     combined_output = moe_output + reparamed_expert_output
+        #     return combined_output, moe_l_aux, moe_exp_counts 
+        # else:
+        #     # Use standard MoE forward
+        #     return super().forward(x, *args, **kwargs)
+        
+        return super().forward(x, *args, **kwargs)
     
     def reparam(self):
         """
@@ -791,46 +842,14 @@ class RePaMoE(MoE):
         This method reparameterizes all experts and creates a new aggregated expert.
         """
         if not self.reparamed:
-            # Collect reparameterization results from all experts
-            reparam_weights = []
-            
             # Access experts from the parent MoE class
             if hasattr(self, 'deepspeed_moe') and hasattr(self.deepspeed_moe, 'experts'):
                 experts = self.deepspeed_moe.experts.deepspeed_experts
                 for expert in experts:
                     if hasattr(expert, 'reparam') and callable(expert.reparam):
-                        reparam_weight = expert.reparam()
-                        if reparam_weight is not None:
-                            reparam_weights.append(reparam_weight)
-            
-            if reparam_weights:
-                # Aggregate all reparam weights (mean aggregation)
-                aggregated_weight = torch.stack(reparam_weights, dim=0).mean(dim=0)
-                
-                # Create new expert as a simple linear layer with aggregated weights
-                # This expert will always be selected (weight = 1.0)
-                self.reparam_ffn = nn.Linear(
-                    aggregated_weight.shape[0], 
-                    aggregated_weight.shape[1], 
-                    bias=False
-                )
-                self.reparam_ffn.weight.data = aggregated_weight
-                
-                # Move to same device as other experts
-                device = reparam_weights[0].device
-                self.reparam_ffn.to(device)
-                
-                # Disable allreduce for new expert parameters
-                for param in self.reparam_ffn.parameters():
-                    param.allreduce = False
-                    if hasattr(self, 'expert_group_name'):
-                        param.group_name = self.expert_group_name
-                
-                self.reparamed = True
-                print(f"RePaMoE reparameterized: created new expert from {len(reparam_weights)} experts")
-            else:
-                print("Warning: No reparam weights collected from experts")
-            
+                        expert.reparam()
+            self.reparamed = True
+        
     def adjust_gated_ratio(self, gated_ratio: float):
         """Apply adjust_gated_ratio to all experts"""
         if hasattr(self, 'deepspeed_moe') and hasattr(self.deepspeed_moe, 'experts'):
