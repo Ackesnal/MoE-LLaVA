@@ -699,6 +699,8 @@ class RePaMLP(nn.Module):
 
     def reparam(self):
         if not self.reparamed:
+            self.mask[:int(self.intermediate_size * 0.9)] = False
+            self.mask[int(self.intermediate_size * 0.9):] = True
             
             linear_idx = self.mask.nonzero(as_tuple=False).flatten()
             nonlinear_idx = (~self.mask).nonzero(as_tuple=False).flatten()
@@ -808,6 +810,12 @@ class RePaMoE(MoE):
         if reparamed:
             self.reparam()
 
+        # Flag for full expert averaging mode (stage 1 training requirement)
+        self.full_average_mode = False
+        self._saved_k = None
+        self._saved_capacity_factor = None
+        self._saved_drop_tokens = None
+
         for expert in self.deepspeed_moe.experts.deepspeed_experts:
             if not isinstance(expert, RePaMLP):
                 raise ValueError("Experts must be instances of RePaMLP for RePaMoE")
@@ -859,6 +867,38 @@ class RePaMoE(MoE):
                     expert.adjust_gated_ratio(gated_ratio)
         self.gated_ratio = gated_ratio
     
+    def enable_full_expert_average(self):
+        """Enable using ALL experts (k = num_experts) with weighted averaging.
+        This sets k to the total number of global experts so the MoE gate returns a full softmax mixture.
+        """
+        if not self.full_average_mode:
+            # Save original k and capacity settings
+            if self._saved_k is None:
+                self._saved_k = self.deepspeed_moe.gate.k
+            self._saved_capacity_factor = self.deepspeed_moe.gate.capacity_factor
+            self._saved_drop_tokens = self.deepspeed_moe.gate.drop_tokens
+            
+            # Set k to use all experts
+            self.deepspeed_moe.gate.k = self.num_experts
+            
+            # Critical: disable token dropping to avoid capacity issues
+            # When k=num_experts, the capacity calculation can exceed token count
+            # Setting drop_tokens=False makes DeepSpeed adjust capacity dynamically
+            self.deepspeed_moe.gate.drop_tokens = False
+            
+            self.full_average_mode = True
+            rank0_print(f"[RePaMoE] Enabled full expert averaging: k={self.num_experts}, drop_tokens=False")
+
+    def disable_full_expert_average(self):
+        """Restore original top-k behavior after full expert averaging stage."""
+        if self.full_average_mode:
+            # Restore original settings
+            self.deepspeed_moe.gate.k = self._saved_k
+            self.deepspeed_moe.gate.capacity_factor = self._saved_capacity_factor
+            self.deepspeed_moe.gate.drop_tokens = self._saved_drop_tokens
+            self.full_average_mode = False
+            rank0_print(f"[RePaMoE] Disabled full expert averaging: restored k={self._saved_k}, drop_tokens={self._saved_drop_tokens}")
+
 
 
 class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMixin):
@@ -966,6 +1006,23 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
                         param.group_name = moe_layer.expert_group_name
         
         rank0_print(f"Disabled allreduce for all MoE layer parameters in {len(moe_layers_idx)} layers")
+        
+    def set_full_expert_average_stage(self, full_expert=False):
+        """
+        Enable full expert averaging mode for all RePaMoE layers.
+        This sets each RePaMoE layer to use all experts (k = num_global_experts) with weighted averaging.
+        """
+        moe_layers_idx = self.config.moe['moe_layers_idx']
+        for layer_num in moe_layers_idx:
+            moe_layer = self.model.layers[layer_num].mlp
+            if isinstance(moe_layer, RePaMoE):
+                if full_expert:
+                    moe_layer.enable_full_expert_average()
+                    rank0_print(f"Enabled full expert averaging mode for all RePaMoE layers")
+                else:
+                    moe_layer.disable_full_expert_average()
+                    rank0_print(f"Disabled full expert averaging mode for all RePaMoE layers")
+
 
 
 

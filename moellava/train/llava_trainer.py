@@ -312,7 +312,12 @@ class LLaVATrainer(Trainer):
         if hasattr(self.model, 'adjust_gated_ratio_all_layers'):
             self.model.adjust_gated_ratio_all_layers(self.repa_state['current_gated_ratio'])
             print(f"  Set initial gated ratio to {self.repa_state['current_gated_ratio']}")
-        
+            
+        # 6. Ensure full expert averaging enabled during entire Stage 1
+        if hasattr(self.model, 'set_full_expert_average_stage'):
+            self.model.set_full_expert_average_stage(True)
+            print(f"  Set full expert averaging stage to True")
+
         print(f"  Total training steps: {num_training_steps}")
         print(f"  Stage 1 (gated ratio reduction): {stage_1_steps} steps")
         print(f"  Stage 2 (post-reparam training): {stage_2_steps} steps")
@@ -413,13 +418,17 @@ class LLaVATrainer(Trainer):
                 self.model.adjust_gated_ratio_all_layers(new_ratio)
                 print(f"Step {current_step}: Updated gated ratio to {new_ratio:.4f} "
                       f"(progress: {progress:.1%})")
-    
+
     def _transition_to_stage_2(self, current_step):
         """Transition from Stage 1 to Stage 2: reparameterize and update optimizer"""
         print(f"Step {current_step}: Transitioning to Stage 2 - begin LR decay (no reparameterization)")
+        # Disable full expert averaging and restore original top-k routing
+        if hasattr(self.model, 'set_full_expert_average_stage'):
+            self.model.set_full_expert_average_stage(False)
+            print(f"  Set full expert averaging stage to False")
         
         # Ensure final gated ratio applied
-        if abs(self.repa_state['current_gated_ratio'] - self.repa_state['target_gated_ratio']) > 0.01:
+        if abs(self.repa_state['current_gated_ratio'] - self.repa_state['target_gated_ratio']) >= 0.00005:
             if hasattr(self.model, 'adjust_gated_ratio_all_layers'):
                 self.model.adjust_gated_ratio_all_layers(self.repa_state['target_gated_ratio'])
                 self.repa_state['current_gated_ratio'] = self.repa_state['target_gated_ratio']
