@@ -699,9 +699,6 @@ class RePaMLP(nn.Module):
 
     def reparam(self):
         if not self.reparamed:
-            self.mask[:int(self.intermediate_size * 0.9)] = False
-            self.mask[int(self.intermediate_size * 0.9):] = True
-            
             linear_idx = self.mask.nonzero(as_tuple=False).flatten()
             nonlinear_idx = (~self.mask).nonzero(as_tuple=False).flatten()
             
