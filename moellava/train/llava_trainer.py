@@ -1,6 +1,7 @@
 import os
 import torch
 import torch.nn as nn
+import math
 
 from torch.utils.data import Sampler
 
@@ -238,11 +239,12 @@ class LLaVATrainer(Trainer):
             for g, base in zip(self.optimizer.param_groups, base_lrs):
                 g['lr'] = base
         else:
-            # Stage 2: linear decay from base -> 0 over remaining steps
+            # Stage 2: cosine decay from base -> 0 over remaining steps
             start = stage_1_steps
             remaining_total = max(1, total_steps - start)
             progress = min(1.0, max(0.0, (current_step - start) / remaining_total))
-            scale = 1.0 - progress  # linear decay
+            # Cosine schedule: 0.5 * (1 + cos(pi * progress))
+            scale = 0.5 * (1.0 + math.cos(math.pi * progress))
             for g, base in zip(self.optimizer.param_groups, base_lrs):
                 g['lr'] = base * scale
 
@@ -312,11 +314,6 @@ class LLaVATrainer(Trainer):
         if hasattr(self.model, 'adjust_gated_ratio_all_layers'):
             self.model.adjust_gated_ratio_all_layers(self.repa_state['current_gated_ratio'])
             print(f"  Set initial gated ratio to {self.repa_state['current_gated_ratio']}")
-            
-        # 6. Ensure full expert averaging enabled during entire Stage 1
-        if hasattr(self.model, 'set_full_expert_average_stage'):
-            self.model.set_full_expert_average_stage(True)
-            print(f"  Set full expert averaging stage to True")
 
         print(f"  Total training steps: {num_training_steps}")
         print(f"  Stage 1 (gated ratio reduction): {stage_1_steps} steps")
@@ -422,10 +419,6 @@ class LLaVATrainer(Trainer):
     def _transition_to_stage_2(self, current_step):
         """Transition from Stage 1 to Stage 2: reparameterize and update optimizer"""
         print(f"Step {current_step}: Transitioning to Stage 2 - begin LR decay (no reparameterization)")
-        # Disable full expert averaging and restore original top-k routing
-        if hasattr(self.model, 'set_full_expert_average_stage'):
-            self.model.set_full_expert_average_stage(False)
-            print(f"  Set full expert averaging stage to False")
         
         # Ensure final gated ratio applied
         if abs(self.repa_state['current_gated_ratio'] - self.repa_state['target_gated_ratio']) >= 0.00005:
