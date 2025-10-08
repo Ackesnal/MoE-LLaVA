@@ -34,7 +34,7 @@ HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 torchrun \
     --bf16 True \
     --output_dir ./checkpoints/MoE-LLaVA-Qwen-1.8B-4e-RePa-Save \
     --num_train_epochs 1 \
-    --per_device_train_batch_size 2 \
+    --per_device_train_batch_size 1 \
     --per_device_eval_batch_size 4 \
     --gradient_accumulation_steps 1 \
     --eval_strategy "no" \

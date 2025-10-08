@@ -737,7 +737,6 @@ class RePaMLP(nn.Module):
             gc.collect()
             torch.cuda.empty_cache()
             
-
     def adjust_gated_ratio(self, gated_ratio: float):
         """
         Adjust gating ratio by masking additional channels with smallest running means.
@@ -766,7 +765,7 @@ class RePaMLP(nn.Module):
             candidates = (~self.mask).nonzero(as_tuple=False).flatten()
             if candidates.numel() > 0:
                 # Sort candidates by running mean ascending (smallest first)
-                means = self.channel_running_mean[candidates]
+                means = torch.abs(self.channel_running_mean[candidates])
                 _, order = torch.sort(means)  # ascending
                 select = candidates[order[:need_mask]] if need_mask < candidates.numel() else candidates
                 self.mask[select] = True
