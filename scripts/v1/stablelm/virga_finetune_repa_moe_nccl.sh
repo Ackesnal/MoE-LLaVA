@@ -9,7 +9,7 @@
 #SBATCH --output=logs/full_model_finetune_repa_moe_nccl_%A_%a.out
 #SBATCH --error=logs/full_model_finetune_repa_moe_nccl_%A_%a.err
 
-#SBATCH --array=1-5%2
+#SBATCH --array=6-9%2
 
 # Load required modules
 module load gcc/12.3.0
