@@ -9,7 +9,7 @@
 #SBATCH --output=logs/finetune_repa_moe_Qwen_%A_%a.out
 #SBATCH --error=logs/finetune_repa_moe_Qwen_%A_%a.err
 
-#SBATCH --array=1-9%2
+#SBATCH --array=1-5%2
 
 # Load required modules
 module load gcc/12.3.0
