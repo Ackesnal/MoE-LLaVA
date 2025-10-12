@@ -36,7 +36,7 @@ GATED_RATIO_TAG=${GATED_RATIO/./p}
 echo "Evaluating checkpoint with GATED_RATIO=${GATED_RATIO} (tag=${GATED_RATIO_TAG})"
 
 CONV="stablelm"
-CKPT_NAME="MoE-LLaVA-StableLM-1.6B-4e-RePa-Save-Experiment-ratio${GATED_RATIO_TAG}"
+CKPT_NAME="MoE-LLaVA-StableLM-1.6B-4e-RePa-Only_MoE-Learnable_Masking-ratio${GATED_RATIO_TAG}"
 CKPT="finetuned_checkpoints/${CKPT_NAME}"
 EVAL="/scratch3/li309/data/llava_data/eval"
 
@@ -56,8 +56,33 @@ RES_JSON="${ANS_DIR}/${CKPT_NAME}_result.json"
 echo "CKPT: ${CKPT}"
 echo "Answer file: ${ANS_FILE}"
 
+function get_free_port() {
+    # Function to find a free port
+    local port
+    local max_attempts=10
+    local attempt=0
+    
+    while [ $attempt -lt $max_attempts ]; do
+        port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
+        # Check if port is truly available
+        if ! ss -tuln | grep -q ":$port "; then
+            echo $port
+            return 0
+        fi
+        attempt=$((attempt + 1))
+        sleep 1
+    done
+    
+    # Fallback to a random port in high range
+    echo $((29500 + RANDOM % 1000))
+}
+
+# Set distributed training environment variables
+export MASTER_PORT=$(get_free_port)
+export MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)
+
 # Run VQA-style evaluation (generation)
-deepspeed moellava/eval/model_vqa_science.py \
+deepspeed --master_port=$MASTER_PORT --master_addr=$MASTER_ADDR moellava/eval/model_vqa_science.py \
     --model-path "${CKPT}" \
     --question-file "${EVAL}/scienceqa/llava_test_CQM-A.json" \
     --image-folder "${EVAL}/scienceqa/images/test" \
