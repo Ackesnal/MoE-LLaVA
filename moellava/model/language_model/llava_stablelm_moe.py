@@ -545,6 +545,47 @@ class MoELLaVAStablelmForCausalLM(StableLMEpochForCausalLM, LlavaMetaForCausalLM
             self.config.moe['num_experts'] = model_args.num_experts * len(moe_layers_idx)
         assert len(self.config.moe['num_experts']) == len(moe_layers_idx)
 
+        # Helper: attach a forward wrapper to compute pairwise cosine similarity between expert outputs
+        def _attach_expert_similarity_hook(moe_module):
+            if not hasattr(moe_module, 'deepspeed_moe') or not hasattr(moe_module.deepspeed_moe, 'experts'):
+                return
+            if getattr(moe_module, '_similarity_hook_attached', False):
+                return
+            moe_module._similarity_hook_attached = True
+            _orig_forward = moe_module.forward
+
+            def _forward_with_similarity(x, *args, **kwargs):
+                out = _orig_forward(x, *args, **kwargs)
+                try:
+                    # Token-wise expert output similarity BEFORE gating weighting
+                    sample = x
+                    if isinstance(sample, (tuple, list)) and len(sample) > 0:
+                        sample = sample[0]
+                    if sample.dim() >= 2:
+                        tokens = sample.reshape(-1, sample.size(-1))
+                    else:
+                        tokens = sample
+                    max_tokens = 64
+                    if tokens.size(0) > max_tokens:
+                        tokens = tokens[:max_tokens]
+                    experts = moe_module.deepspeed_moe.experts.deepspeed_experts
+                    if len(experts) >= 2 and tokens.numel() > 0:
+                        expert_outputs = []  # list of [T, H]
+                        for expert in experts:
+                            y = expert(tokens)
+                            expert_outputs.append(y)
+                        stacked = torch.stack(expert_outputs, dim=0)  # [E, T, H]
+                        stacked = F.normalize(stacked, dim=2)
+                        per_token = stacked.permute(1, 0, 2)  # [T, E, H]
+                        sims = torch.matmul(per_token, per_token.transpose(1, 2))  # [T, E, E]
+                        sim_mean = sims.mean(dim=0)  # [E, E]
+                        moe_module.expert_cosine_similarity = sim_mean.detach().to('cpu')
+                except Exception:
+                    pass
+                return out
+
+            moe_module.forward = _forward_with_similarity
+
         for num_experts, layer_num in zip(self.config.moe['num_experts'], moe_layers_idx):
             pretrained_state_dict = self.model.layers[layer_num].mlp.state_dict()
             self.model.layers[layer_num].mlp = MoE(
@@ -558,10 +599,15 @@ class MoELLaVAStablelmForCausalLM(StableLMEpochForCausalLM, LlavaMetaForCausalLM
                 min_capacity=model_args.min_capacity,
                 use_residual=model_args.use_residual,
             )
+            
+            # Attach similarity hook
+            # _attach_expert_similarity_hook(self.model.layers[layer_num].mlp)
+            
             for e in self.model.layers[layer_num].mlp.deepspeed_moe.experts.deepspeed_experts:  # check weight
                 loaded_state_dict = e.state_dict()
                 assert all([torch.allclose(pretrained_state_dict[k], v) for k, v in loaded_state_dict.items()])
                 assert all([torch.allclose(loaded_state_dict[k], v) for k, v in pretrained_state_dict.items()])
+                
         # ipdb.set_trace()
         rank0_print(f"LLM num_layers: {num_layers}, MoE num_layers: {len(moe_layers_idx)}, where\n",
                     *[f'layer-{layer_num} has {num_experts} experts\n' for num_experts, layer_num in
@@ -586,6 +632,47 @@ class EvalMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
         num_layers = self.config.num_hidden_layers
         moe_layers_idx = self.config.moe['moe_layers_idx']
 
+        # Helper reused in eval: attach similarity hook
+        def _attach_expert_similarity_hook(moe_module):
+            if not hasattr(moe_module, 'deepspeed_moe') or not hasattr(moe_module.deepspeed_moe, 'experts'):
+                return
+            if getattr(moe_module, '_similarity_hook_attached', False):
+                return
+            moe_module._similarity_hook_attached = True
+            _orig_forward = moe_module.forward
+
+            def _forward_with_similarity(x, *args, **kwargs):
+                out = _orig_forward(x, *args, **kwargs)
+                try:
+                    sample = x
+                    if isinstance(sample, (tuple, list)) and len(sample) > 0:
+                        sample = sample[0]
+                    if sample.dim() >= 2:
+                        tokens = sample.reshape(-1, sample.size(-1))
+                    else:
+                        tokens = sample
+                    max_tokens = 64
+                    if tokens.size(0) > max_tokens:
+                        tokens = tokens[:max_tokens]
+                    experts = moe_module.deepspeed_moe.experts.deepspeed_experts
+                    if len(experts) >= 2 and tokens.numel() > 0:
+                        expert_outputs = []
+                        for expert in experts:
+                            y = expert(tokens)
+                            expert_outputs.append(y)
+                        stacked = torch.stack(expert_outputs, dim=0)  # [E, T, H]
+                        stacked = F.normalize(stacked, dim=2)
+                        per_token = stacked.permute(1, 0, 2)  # [T, E, H]
+                        sims = torch.matmul(per_token, per_token.transpose(1, 2))  # [T, E, E]
+                        sim_mean = sims.mean(dim=0)  # [E, E]
+                        moe_module.expert_cosine_similarity = sim_mean.detach().to('cpu')
+                    print(moe_module.expert_cosine_similarity)
+                except Exception:
+                    pass
+                return out
+
+            moe_module.forward = _forward_with_similarity
+
         for num_experts, layer_num in zip(self.config.moe['num_experts'], moe_layers_idx):
             self.model.layers[layer_num].mlp = MoE(
                 self.config.hidden_size,
@@ -598,6 +685,8 @@ class EvalMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
                 min_capacity=self.config.moe['min_capacity'],
                 use_residual=self.config.moe['use_residual'],
             )
+            # Attach similarity hook
+            _attach_expert_similarity_hook(self.model.layers[layer_num].mlp)
         rank0_print(f"LLM num_layers: {num_layers}, MoE num_layers: {len(moe_layers_idx)}, where\n",
                     *[f'layer-{layer_num} has {num_experts} experts\n' for num_experts, layer_num in
                       zip(self.config.moe['num_experts'], moe_layers_idx)])
@@ -655,10 +744,9 @@ class RePaMLP(nn.Module):
             self.register_buffer('mask', torch.zeros(self.intermediate_size, dtype=torch.bool))  # start with no masked channels
             # Running mean statistics for active (unmasked) channels
             self.register_buffer('channel_running_mean', torch.zeros(self.intermediate_size))
+            self.channel_running_mean_init = False
             self.momentum = 0.9
-            # Trainable replacement parameters for masked channels (initialized to 0). These replace x_gate for masked channels.
-            self.masked_replacements = nn.Parameter(torch.zeros(self.intermediate_size))
-                
+            
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # If reparameterized, use the reparameterized form. No need to track running means or masks.
         if self.reparamed:
@@ -677,20 +765,26 @@ class RePaMLP(nn.Module):
             if self.training:
                 with torch.no_grad():
                     if (~self.mask).any():
-                        # mean over batch and sequence dims -> [C]
-                        cur_mean = x_gate.mean(dim=(0,1,2))
-                        active_idx = (~self.mask).nonzero(as_tuple=False).flatten()
-                        # momentum update for active channels only
-                        self.channel_running_mean[active_idx] = (
-                            self.momentum * self.channel_running_mean[active_idx] +
-                            (1 - self.momentum) * cur_mean[active_idx]
-                        )
-            # Construct replaced gate tensor: active channels use x_gate, masked use trainable params
-            # broadcast replacement params
+                        # Exclude tokens that are all-zero across channels
+                        flat = x_gate.reshape(-1, x_gate.size(-1))  # [T, C]
+                        valid_tokens = (flat.abs().sum(dim=1) > 0)  # [T]
+                        if valid_tokens.any():
+                            cur_mean = flat[valid_tokens].mean(dim=0)  # [C]
+                            # momentum update for active channels only
+                            # if self.channel_running_mean is all zero, initialize it with current mean
+                            if not self.channel_running_mean_init:
+                                self.channel_running_mean = cur_mean
+                                self.channel_running_mean_init = True
+                            else:
+                                self.channel_running_mean = self.momentum * self.channel_running_mean + (1 - self.momentum) * cur_mean
+            # Construct replaced gate tensor: active channels use x_gate, masked use running means
             if self.mask.any():
-                # out = x_gate * (1 - mask) + masked_replacements * mask
                 mask_float = self.mask.to(x_gate.dtype)
-                replaced_gate = x_gate * (1.0 - mask_float)[None, None, :] + self.masked_replacements[None, None, :] * mask_float[None, None, :]
+                # Broadcast to match x_gate dims
+                view_shape = [1] * (x_gate.dim() - 1) + [-1]
+                mask_b = mask_float.view(*view_shape)
+                rep = self.channel_running_mean.to(x_gate.dtype).view(*view_shape)
+                replaced_gate = x_gate * (1.0 - mask_b) + rep * mask_b
             else:
                 replaced_gate = x_gate
             
@@ -704,7 +798,9 @@ class RePaMLP(nn.Module):
             
             if linear_idx.numel() > 0:
                 # Some channels are masked and weights can be linearly reparameterized
-                repa_proj_weight = self.down_proj.weight[:, linear_idx] @ (self.up_proj.weight[linear_idx] * self.masked_replacements[linear_idx].unsqueeze(1))
+                # Use running means as replacement values for masked channels
+                rep_factors = self.channel_running_mean[linear_idx].unsqueeze(1)  # [Lm, 1]
+                repa_proj_weight = self.down_proj.weight[:, linear_idx] @ (self.up_proj.weight[linear_idx] * rep_factors)
                 self.repa_proj = nn.Linear(self.hidden_size, self.hidden_size, bias=False)
                 self.repa_proj.weight = nn.Parameter(repa_proj_weight)
             else:
@@ -730,13 +826,13 @@ class RePaMLP(nn.Module):
                 
             self.reparamed = True
             self.num_gated_channels = nonlinear_idx.numel()
-            self.masked_replacements = None
             self.mask = None
             self.channel_running_mean = None
             import gc
             gc.collect()
             torch.cuda.empty_cache()
             
+
     def adjust_gated_ratio(self, gated_ratio: float):
         """
         Adjust gating ratio by masking additional channels with smallest running means.
@@ -745,8 +841,11 @@ class RePaMLP(nn.Module):
         2. Compute how many channels must be masked = total - active.
         3. If we need to mask MORE channels, select from currently unmasked channels those with lowest running mean.
         4. If we need to UNMASK channels (ratio increased), unmask channels with highest running mean first.
-        5. Newly masked channels get their replacement parameters initialized to 0.
+        5. Newly masked channels use running means as replacement values.
         """
+        if not self.channel_running_mean_init:
+            self.channel_running_mean = self.channel_running_mean * 0.0
+            self.channel_running_mean_init = True
         gated_ratio = float(gated_ratio)
         gated_ratio = min(1.0, max(0.0, gated_ratio))
         self.gated_ratio = gated_ratio
@@ -757,8 +856,7 @@ class RePaMLP(nn.Module):
             # Unmask all
             self.mask[:] = False
             self.num_gated_channels = self.intermediate_size
-            self.masked_replacements.data.zero_()
-            
+        
         elif desired_masked > current_masked:
             # Need to mask additional channels
             need_mask = desired_masked - current_masked
@@ -769,8 +867,6 @@ class RePaMLP(nn.Module):
                 _, order = torch.sort(means)  # ascending
                 select = candidates[order[:need_mask]] if need_mask < candidates.numel() else candidates
                 self.mask[select] = True
-                with torch.no_grad():
-                    self.masked_replacements[select] = self.masked_replacements[select]*0.0  # init newly masked params
         # Update counts
         self.num_gated_channels = desired_active
         
@@ -805,12 +901,6 @@ class RePaMoE(MoE):
         # Reparameterize experts if specified
         if reparamed:
             self.reparam()
-
-        # Flag for full expert averaging mode (stage 1 training requirement)
-        self.full_average_mode = False
-        self._saved_k = None
-        self._saved_capacity_factor = None
-        self._saved_drop_tokens = None
 
         for expert in self.deepspeed_moe.experts.deepspeed_experts:
             if not isinstance(expert, RePaMLP):
@@ -862,7 +952,7 @@ class RePaMoE(MoE):
                 if hasattr(expert, 'adjust_gated_ratio') and callable(expert.adjust_gated_ratio):
                     expert.adjust_gated_ratio(gated_ratio)
         self.gated_ratio = gated_ratio
-
+    
 
 
 class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMixin):
@@ -878,6 +968,49 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
         self.router_aux_loss_coef = self.config.moe['router_aux_loss_coef']
         num_layers = self.config.num_hidden_layers
         moe_layers_idx = self.config.moe['moe_layers_idx']
+        
+        
+        # Helper reused in eval: attach similarity hook
+        def _attach_expert_similarity_hook(moe_module):
+            if not hasattr(moe_module, 'deepspeed_moe') or not hasattr(moe_module.deepspeed_moe, 'experts'):
+                return
+            if getattr(moe_module, '_similarity_hook_attached', False):
+                return
+            moe_module._similarity_hook_attached = True
+            _orig_forward = moe_module.forward
+
+            def _forward_with_similarity(x, *args, **kwargs):
+                out = _orig_forward(x, *args, **kwargs)
+                try:
+                    sample = x
+                    if isinstance(sample, (tuple, list)) and len(sample) > 0:
+                        sample = sample[0]
+                    if sample.dim() >= 2:
+                        tokens = sample.reshape(-1, sample.size(-1))
+                    else:
+                        tokens = sample
+                    max_tokens = 64
+                    if tokens.size(0) > max_tokens:
+                        tokens = tokens[:max_tokens]
+                    experts = moe_module.deepspeed_moe.experts.deepspeed_experts
+                    if len(experts) >= 2 and tokens.numel() > 0:
+                        expert_outputs = []
+                        for expert in experts:
+                            y = expert(tokens)
+                            expert_outputs.append(y)
+                        stacked = torch.stack(expert_outputs, dim=0)  # [E, T, H]
+                        stacked = F.normalize(stacked, dim=2)
+                        per_token = stacked.permute(1, 0, 2)  # [T, E, H]
+                        sims = torch.matmul(per_token, per_token.transpose(1, 2))  # [T, E, E]
+                        sim_mean = sims.mean(dim=0)  # [E, E]
+                        moe_module.expert_cosine_similarity = sim_mean.detach().to('cpu')
+                    print(moe_module.expert_cosine_similarity)
+                except Exception:
+                    pass
+                return out
+
+            moe_module.forward = _forward_with_similarity
+            
             
         # Replace MoE layers with RePaMoE after model initialization
         for num_experts, layer_num in zip(self.config.moe['num_experts'], moe_layers_idx):
@@ -899,6 +1032,10 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
                 reparamed=self.config.reparam['reparamed'],
             )
         
+            # Attach similarity hook
+            # _attach_expert_similarity_hook(self.model.layers[layer_num].mlp)
+            
+            
         rank0_print(f"LLM num_layers: {num_layers}, RePaMoE num_layers: {len(moe_layers_idx)}, where\n",
                     *[f'layer-{layer_num} has {num_experts} experts\n' for num_experts, layer_num in
                       zip(self.config.moe['num_experts'], moe_layers_idx)])
@@ -921,9 +1058,9 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
             moe_layer = self.model.layers[layer_num].mlp
             if isinstance(moe_layer, RePaMoE):
                 moe_layer.reparam()
-                rank0_print(f"Reparameterized RePaMoE layer {layer_num}")
+                print(f"Reparameterized RePaMoE layer {layer_num}")
             else:
-                rank0_print(f"Layer {layer_num} is not a RePaMoE layer, skipping reparameterization")
+                print(f"Layer {layer_num} is not a RePaMoE layer, skipping reparameterization")
         self.config.reparam["reparamed"] = True
             
     def adjust_gated_ratio_all_layers(self, gated_ratio: float):
