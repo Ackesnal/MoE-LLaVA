@@ -752,7 +752,7 @@ class RePaMLP(nn.Module):
         # If reparameterized, use the reparameterized form. No need to track running means or masks.
         if self.reparamed:
             if self.repa_proj is not None and self.up_proj is not None and self.down_proj is not None and self.gate_proj is not None:
-                return self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x)) + self.repa_proj(x)
+                return self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x)) * 1.8 + self.repa_proj(x) * 0.2
             elif self.repa_proj is not None:
                 return self.repa_proj(x)
             else:
