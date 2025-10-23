@@ -707,6 +707,7 @@ class RePaMLP(nn.Module):
         self.intermediate_size = config.intermediate_size
         
         # Reparameterization flag
+        self.align_weight = 1.8
         self.reparamed = config.reparam["reparamed"]
         
         if self.reparamed:
@@ -752,7 +753,7 @@ class RePaMLP(nn.Module):
         # If reparameterized, use the reparameterized form. No need to track running means or masks.
         if self.reparamed:
             if self.repa_proj is not None and self.up_proj is not None and self.down_proj is not None and self.gate_proj is not None:
-                return self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x)) * 1.8 + self.repa_proj(x) * 0.2
+                return self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x)) * self.align_weight + self.repa_proj(x) * (2 - self.align_weight)
             elif self.repa_proj is not None:
                 return self.repa_proj(x)
             else:
@@ -780,7 +781,7 @@ class RePaMLP(nn.Module):
             if self.mask.any():
                 # out = x_gate * (1 - mask) + masked_replacements * mask
                 mask_float = self.mask.to(x_gate.dtype)
-                replaced_gate = x_gate * (1.0 - mask_float)[None, None, :] * 1.8 + self.masked_replacements[None, None, :] * mask_float[None, None, :] * 0.2
+                replaced_gate = x_gate * (1.0 - mask_float)[None, None, :] * self.align_weight + self.masked_replacements[None, None, :] * mask_float[None, None, :] * (2 - self.align_weight)
             else:
                 replaced_gate = x_gate
             
