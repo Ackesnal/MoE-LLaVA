@@ -744,8 +744,9 @@ class RePaMLP(nn.Module):
             self.register_buffer('mask', torch.zeros(self.intermediate_size, dtype=torch.bool))  # start with no masked channels
             # Running mean statistics for active (unmasked) channels
             self.register_buffer('channel_running_mean', torch.zeros(self.intermediate_size))
-            self.channel_running_mean_init = False
             self.momentum = 0.9
+            # Trainable replacement parameters for masked channels (initialized to 0). These replace x_gate for masked channels.
+            self.masked_replacements = nn.Parameter(torch.zeros(self.intermediate_size))
             
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # If reparameterized, use the reparameterized form. No need to track running means or masks.
@@ -770,21 +771,16 @@ class RePaMLP(nn.Module):
                         valid_tokens = (flat.abs().sum(dim=1) > 0)  # [T]
                         if valid_tokens.any():
                             cur_mean = flat[valid_tokens].mean(dim=0)  # [C]
+                            active_idx = (~self.mask).nonzero(as_tuple=False).flatten()
                             # momentum update for active channels only
-                            # if self.channel_running_mean is all zero, initialize it with current mean
-                            if not self.channel_running_mean_init:
-                                self.channel_running_mean = cur_mean
-                                self.channel_running_mean_init = True
-                            else:
-                                self.channel_running_mean = self.momentum * self.channel_running_mean + (1 - self.momentum) * cur_mean
-            # Construct replaced gate tensor: active channels use x_gate, masked use running means
+                            self.channel_running_mean[active_idx] = (
+                                self.momentum * self.channel_running_mean[active_idx] +
+                                (1 - self.momentum) * cur_mean[active_idx]
+                            )            # Construct replaced gate tensor: active channels use x_gate, masked use running means
             if self.mask.any():
+                # out = x_gate * (1 - mask) + masked_replacements * mask
                 mask_float = self.mask.to(x_gate.dtype)
-                # Broadcast to match x_gate dims
-                view_shape = [1] * (x_gate.dim() - 1) + [-1]
-                mask_b = mask_float.view(*view_shape)
-                rep = self.channel_running_mean.to(x_gate.dtype).view(*view_shape)
-                replaced_gate = x_gate * (1.0 - mask_b) + rep * mask_b
+                replaced_gate = x_gate * (1.0 - mask_float)[None, None, :] * 1.8 + self.masked_replacements[None, None, :] * mask_float[None, None, :] * 0.2
             else:
                 replaced_gate = x_gate
             
@@ -798,9 +794,7 @@ class RePaMLP(nn.Module):
             
             if linear_idx.numel() > 0:
                 # Some channels are masked and weights can be linearly reparameterized
-                # Use running means as replacement values for masked channels
-                rep_factors = self.channel_running_mean[linear_idx].unsqueeze(1)  # [Lm, 1]
-                repa_proj_weight = self.down_proj.weight[:, linear_idx] @ (self.up_proj.weight[linear_idx] * rep_factors)
+                repa_proj_weight = self.down_proj.weight[:, linear_idx] @ (self.up_proj.weight[linear_idx] * self.masked_replacements[linear_idx].unsqueeze(1))
                 self.repa_proj = nn.Linear(self.hidden_size, self.hidden_size, bias=False)
                 self.repa_proj.weight = nn.Parameter(repa_proj_weight)
             else:
@@ -826,12 +820,12 @@ class RePaMLP(nn.Module):
                 
             self.reparamed = True
             self.num_gated_channels = nonlinear_idx.numel()
+            self.masked_replacements = None
             self.mask = None
             self.channel_running_mean = None
             import gc
             gc.collect()
             torch.cuda.empty_cache()
-            
 
     def adjust_gated_ratio(self, gated_ratio: float):
         """
@@ -841,11 +835,8 @@ class RePaMLP(nn.Module):
         2. Compute how many channels must be masked = total - active.
         3. If we need to mask MORE channels, select from currently unmasked channels those with lowest running mean.
         4. If we need to UNMASK channels (ratio increased), unmask channels with highest running mean first.
-        5. Newly masked channels use running means as replacement values.
+        5. Newly masked channels get their replacement parameters initialized to 0.
         """
-        if not self.channel_running_mean_init:
-            self.channel_running_mean = self.channel_running_mean * 0.0
-            self.channel_running_mean_init = True
         gated_ratio = float(gated_ratio)
         gated_ratio = min(1.0, max(0.0, gated_ratio))
         self.gated_ratio = gated_ratio
@@ -856,17 +847,20 @@ class RePaMLP(nn.Module):
             # Unmask all
             self.mask[:] = False
             self.num_gated_channels = self.intermediate_size
-        
+            self.masked_replacements.data.zero_()
+            
         elif desired_masked > current_masked:
             # Need to mask additional channels
             need_mask = desired_masked - current_masked
             candidates = (~self.mask).nonzero(as_tuple=False).flatten()
             if candidates.numel() > 0:
                 # Sort candidates by running mean ascending (smallest first)
-                means = torch.abs(self.channel_running_mean[candidates])
+                means = self.channel_running_mean[candidates]
                 _, order = torch.sort(means)  # ascending
                 select = candidates[order[:need_mask]] if need_mask < candidates.numel() else candidates
                 self.mask[select] = True
+                with torch.no_grad():
+                    self.masked_replacements[select] = self.masked_replacements[select]*0.0  # init newly masked params
         # Update counts
         self.num_gated_channels = desired_active
         
