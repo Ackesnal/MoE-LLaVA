@@ -6,7 +6,7 @@
 #SBATCH --gres=gpu:2
 #SBATCH --mem=32G
 #SBATCH --time=5:00:00
-#SBATCH --array=1-9%4
+#SBATCH --array=5-9%4
 #SBATCH --output=logs/eval_repa_moe_vqav2_%A_%a.out
 #SBATCH --error=logs/eval_repa_moe_vqav2_%A_%a.err
 
@@ -35,12 +35,6 @@ fi
 GATED_RATIO_TAG=${GATED_RATIO/./p}
 echo "Evaluating checkpoint with GATED_RATIO=${GATED_RATIO} (tag=${GATED_RATIO_TAG})"
 
-# Basic existence check
-if [ ! -d "${CKPT}" ]; then
-    echo "[ERROR] Checkpoint directory not found: ${CKPT}" >&2
-    exit 1
-fi
-
 
 gpu_list="${CUDA_VISIBLE_DEVICES:-0,1}"
 IFS=',' read -ra GPULIST <<< "$gpu_list"
@@ -48,10 +42,18 @@ IFS=',' read -ra GPULIST <<< "$gpu_list"
 CHUNKS=${#GPULIST[@]}
 
 CONV="stablelm"
-CKPT_NAME="MoE-LLaVA-StableLM-1.6B-4e-RePa-MoE_Only-learnable_masking-ratio${GATED_RATIO_TAG}"
+CKPT_NAME="MoE-LLaVA-StableLM-1.6B-4e-RePa-Only_MoE-Learnable_Masking-ratio${GATED_RATIO_TAG}"
 CKPT="finetuned_checkpoints/${CKPT_NAME}"
 SPLIT="llava_vqav2_mscoco_test2015"
 EVAL="/scratch3/li309/data/llava_data/eval"
+
+
+# Basic existence check
+if [ ! -d "${CKPT}" ]; then
+    echo "[ERROR] Checkpoint directory not found: ${CKPT}" >&2
+    exit 1
+fi
+
 
 for IDX in $(seq 0 $((CHUNKS-1))); do
     deepspeed --include localhost:${GPULIST[$IDX]} --master_port $((${GPULIST[$IDX]} + 29501)) moellava/eval/model_vqa_loader.py \

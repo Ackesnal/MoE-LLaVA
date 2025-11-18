@@ -317,7 +317,7 @@ class LLaVATrainer(Trainer):
 
         print(f"  Total training steps: {num_training_steps}")
         print(f"  Stage 1 (gated ratio reduction): {stage_1_steps} steps")
-        print(f"  Stage 2 (post-reparam training): {stage_2_steps} steps")
+        print(f"  Stage 2 (fixed gated ratio finetuning): {stage_2_steps} steps")
         print(f"  Gated ratio will be reduced from {self.repa_state['initial_gated_ratio']} "
               f"to {self.repa_state['target_gated_ratio']} linearly over stage 1")
         print(f"  MoE layers: {self.repa_state['moe_layers_idx']}")

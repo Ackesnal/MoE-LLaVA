@@ -35,6 +35,7 @@ from einops import rearrange
 from torch.nn import CrossEntropyLoss
 from transformers.models.llama.modeling_llama import logger
 from transformers.utils import ModelOutput
+import os, json  # added for local saving of SiLU stats
 
 local_rank = None
 
@@ -632,8 +633,15 @@ class EvalMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
         num_layers = self.config.num_hidden_layers
         moe_layers_idx = self.config.moe['moe_layers_idx']
 
+        # For SiLU channel stats aggregation and saving
+        self._silu_channel_values = {}
+        self._silu_stats_path = os.environ.get('SILU_STATS_PATH', 'silu_stats_eval.json')
+        # For expert similarity aggregation and saving
+        self._expert_similarity = {}
+        self._expert_sim_path = os.environ.get('EXPERT_SIM_PATH', 'expert_similarity_eval.json')
+
         # Helper reused in eval: attach similarity hook
-        def _attach_expert_similarity_hook(moe_module):
+        def _attach_expert_similarity_hook(moe_module, layer_idx: int):
             if not hasattr(moe_module, 'deepspeed_moe') or not hasattr(moe_module.deepspeed_moe, 'experts'):
                 return
             if getattr(moe_module, '_similarity_hook_attached', False):
@@ -666,12 +674,50 @@ class EvalMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
                         sims = torch.matmul(per_token, per_token.transpose(1, 2))  # [T, E, E]
                         sim_mean = sims.mean(dim=0)  # [E, E]
                         moe_module.expert_cosine_similarity = sim_mean.detach().to('cpu')
-                    print(moe_module.expert_cosine_similarity)
+                        # save into class dict as {layer_a: {"similarity": [[..]]}}
+                        layer_key = f"layer_{layer_idx}"
+                        self._expert_similarity[layer_key] = {"similarity": moe_module.expert_cosine_similarity.tolist()}
                 except Exception:
                     pass
                 return out
 
             moe_module.forward = _forward_with_similarity
+
+        # New: attach SiLU activation capture to experts of each MoE layer
+        def _attach_silu_capture_to_experts(moe_module, layer_idx: int):
+            if not hasattr(moe_module, 'deepspeed_moe') or not hasattr(moe_module.deepspeed_moe, 'experts'):
+                return
+            experts = moe_module.deepspeed_moe.experts.deepspeed_experts
+            for expert_idx, expert in enumerate(experts):
+                if getattr(expert, '_silu_capture_attached', False):
+                    continue
+                expert._silu_capture_attached = True
+                # keep original forward
+                _orig_expert_forward = expert.forward
+
+                def _expert_forward_with_silu_capture(x, *args, __layer_idx=layer_idx, __expert_idx=expert_idx, **kwargs):
+                    # Capture post-SiLU gate activation aggregated across all channels (fp16)
+                    try:
+                        if hasattr(expert, 'gate_proj') and hasattr(expert, 'act_fn'):
+                            gate = expert.act_fn(expert.gate_proj(x))
+                            # detach, move to cpu, and flatten tokens/channels
+                            gate2d = gate.detach().to('cpu')
+                            if gate2d.dim() > 2:
+                                gate2d = gate2d.view(-1, gate2d.size(-1))  # [T, C]
+                            # Quantize to float16 before storing and flatten across all channels
+                            gate2d = gate2d.to(dtype=torch.float16)
+                            flat = gate2d.reshape(-1)
+                            # store aggregated values per expert
+                            layer_key = f"layer_{__layer_idx}"
+                            expert_key = f"expert_{__expert_idx}"
+                            leaf = self._silu_channel_values.setdefault(layer_key, {}).setdefault(expert_key, [])
+                            # extend with fp16-quantized values as Python floats
+                            leaf.extend([float(v) for v in flat.tolist()])
+                    except Exception:
+                        pass
+                    return _orig_expert_forward(x, *args, **kwargs)
+
+                expert.forward = _expert_forward_with_silu_capture
 
         for num_experts, layer_num in zip(self.config.moe['num_experts'], moe_layers_idx):
             self.model.layers[layer_num].mlp = MoE(
@@ -686,16 +732,77 @@ class EvalMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
                 use_residual=self.config.moe['use_residual'],
             )
             # Attach similarity hook
-            _attach_expert_similarity_hook(self.model.layers[layer_num].mlp)
-        rank0_print(f"LLM num_layers: {num_layers}, MoE num_layers: {len(moe_layers_idx)}, where\n",
+            _attach_expert_similarity_hook(self.model.layers[layer_num].mlp, layer_num)
+            # Attach SiLU capture hooks to experts
+            _attach_silu_capture_to_experts(self.model.layers[layer_num].mlp, layer_num)
+        print(f"LLM num_layers: {num_layers}, MoE num_layers: {len(moe_layers_idx)}, where\n",
                     *[f'layer-{layer_num} has {num_experts} experts\n' for num_experts, layer_num in
                       zip(self.config.moe['num_experts'], moe_layers_idx)])
 
         for m in self.model.layers:
             m.forward = MoEStablelmDecoderLayer_forward(m)
-        rank0_print(f'replace StablelmDecoderLayer.forward to MoEStablelmDecoderLayer.forward')
+        print(f'replace StablelmDecoderLayer.forward to MoEStablelmDecoderLayer.forward')
         self.model.forward = MoEStablelmModel_forward(self.model)
-        rank0_print(f'replace StablelmModel.forward to MoEStablelmModel.forward')
+        print(f'replace StablelmModel.forward to MoEStablelmModel.forward')
+
+    def _save_silu_stats(self, path: Optional[str] = None):
+        try:
+            save_path = path or self._silu_stats_path
+            # ensure directory exists if path includes folder
+            dirn = os.path.dirname(save_path)
+            if dirn and not os.path.exists(dirn):
+                os.makedirs(dirn, exist_ok=True)
+            # write json
+            with open(save_path, 'w', encoding='utf-8') as f:
+                json.dump(self._silu_channel_values, f)
+            print(f"Saved SiLU stats to {save_path}")
+        except Exception as e:
+            print(f"Failed to save SiLU stats: {e}")
+
+    def _save_expert_similarity(self, path: Optional[str] = None):
+        try:
+            save_path = path or self._expert_sim_path
+            dirn = os.path.dirname(save_path)
+            if dirn and not os.path.exists(dirn):
+                os.makedirs(dirn, exist_ok=True)
+            with open(save_path, 'w', encoding='utf-8') as f:
+                json.dump(self._expert_similarity, f)
+            print(f"Saved expert similarity to {save_path}")
+        except Exception as e:
+            print(f"Failed to save expert similarity: {e}")
+
+    # Override forward to save stats after inference step
+    def forward(
+        self,
+        input_ids: torch.LongTensor = None,
+        attention_mask: Optional[torch.Tensor] = None,
+        position_ids: Optional[torch.LongTensor] = None,
+        past_key_values: Optional[List[torch.FloatTensor]] = None,
+        inputs_embeds: Optional[torch.FloatTensor] = None,
+        labels: Optional[torch.LongTensor] = None,
+        use_cache: Optional[bool] = None,
+        output_attentions: Optional[bool] = None,
+        output_hidden_states: Optional[bool] = None,
+        images: Optional[torch.FloatTensor] = None,
+        return_dict: Optional[bool] = None,
+    ):
+        out = super().forward(
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+            position_ids=position_ids,
+            past_key_values=past_key_values,
+            inputs_embeds=inputs_embeds,
+            labels=labels,
+            use_cache=use_cache,
+            output_attentions=output_attentions,
+            output_hidden_states=output_hidden_states,
+            images=images,
+            return_dict=return_dict,
+        )
+        if not self.training:
+            self._save_silu_stats()
+            self._save_expert_similarity()
+        return out
 
 
 
@@ -707,7 +814,6 @@ class RePaMLP(nn.Module):
         self.intermediate_size = config.intermediate_size
         
         # Reparameterization flag
-        self.align_weight = 1.8
         self.reparamed = config.reparam["reparamed"]
         
         if self.reparamed:
@@ -735,58 +841,64 @@ class RePaMLP(nn.Module):
                 self.repa_proj = nn.Linear(config.hidden_size, config.hidden_size, bias=False)
         else:
             self.num_gated_channels = self.intermediate_size
-            self.gate_proj = nn.Linear(config.hidden_size, config.intermediate_size, bias=False)
-            self.up_proj = nn.Linear(config.hidden_size, config.intermediate_size, bias=False)
-            self.down_proj = nn.Linear(config.intermediate_size, config.hidden_size, bias=False)
+            self.gate_proj = nn.Linear(config.hidden_size, self.intermediate_size, bias=False)
+            self.up_proj = nn.Linear(config.hidden_size, self.intermediate_size, bias=False)
+            self.down_proj = nn.Linear(self.intermediate_size, config.hidden_size, bias=False)
+            self.residual_proj = nn.Linear(self.intermediate_size, config.hidden_size, bias=False)
             self.act_fn = nn.SiLU()
             self.repa_proj = None
             
-            # mask semantics (IMPORTANT): mask == True means this channel IS MASKED (replaced), mask == False means active
+            # mask semantics (IMPORTANT): mask == True means this channel IS MASKED (linear), mask == False means gated
             self.register_buffer('mask', torch.zeros(self.intermediate_size, dtype=torch.bool))  # start with no masked channels
             # Running mean statistics for active (unmasked) channels
             self.register_buffer('channel_running_mean', torch.zeros(self.intermediate_size))
             self.momentum = 0.9
-            # Trainable replacement parameters for masked channels (initialized to 0). These replace x_gate for masked channels.
-            self.masked_replacements = nn.Parameter(torch.zeros(self.intermediate_size))
             
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # If reparameterized, use the reparameterized form. No need to track running means or masks.
         if self.reparamed:
             if self.repa_proj is not None and self.up_proj is not None and self.down_proj is not None and self.gate_proj is not None:
-                return self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x)) * self.align_weight + self.repa_proj(x) * (2 - self.align_weight)
+                return self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x)) + self.repa_proj(x)
             elif self.repa_proj is not None:
                 return self.repa_proj(x)
             else:
                 return self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
-        
-        # If not reparameterized
         else:
-            # Compute gated activation
-            x_gate = self.act_fn(self.gate_proj(x))  # [B, E, N, C]
-            # Update running means for ACTIVE channels (mask == False) during training
+            # Compute linear gate then SiLU for active path
+            gate_linear = self.gate_proj(x) # [*, C]
+            x_gate = self.act_fn(gate_linear) # [*, C]
+
+            # Statistics: per-channel running mean (existing) and L1 distance to 0 (new, lazy-init)
             if self.training:
                 with torch.no_grad():
-                    if (~self.mask).any():
-                        # Exclude tokens that are all-zero across channels
-                        flat = x_gate.reshape(-1, x_gate.size(-1))  # [T, C]
-                        valid_tokens = (flat.abs().sum(dim=1) > 0)  # [T]
-                        if valid_tokens.any():
-                            cur_mean = flat[valid_tokens].mean(dim=0)  # [C]
-                            active_idx = (~self.mask).nonzero(as_tuple=False).flatten()
-                            # momentum update for active channels only
+                    flat = x_gate.reshape(-1, x_gate.size(-1))  # [T, C]
+                    valid_tokens = (flat.abs().sum(dim=1) > 0)
+                    if valid_tokens.any():
+                        cur_mean = flat[valid_tokens].mean(dim=0)
+                        # update running mean on active channels only
+                        active_idx = (~self.mask).nonzero(as_tuple=False).flatten()
+                        if active_idx.numel() > 0:
                             self.channel_running_mean[active_idx] = (
-                                self.momentum * self.channel_running_mean[active_idx] +
-                                (1 - self.momentum) * cur_mean[active_idx]
-                            )            # Construct replaced gate tensor: active channels use x_gate, masked use running means
+                                self.momentum * self.channel_running_mean[active_idx]
+                                + (1 - self.momentum) * cur_mean[active_idx]
+                            )
+            # Apply masking    
             if self.mask.any():
-                # out = x_gate * (1 - mask) + masked_replacements * mask
                 mask_float = self.mask.to(x_gate.dtype)
-                replaced_gate = x_gate * (1.0 - mask_float)[None, None, :] * self.align_weight + self.masked_replacements[None, None, :] * mask_float[None, None, :] * (2 - self.align_weight)
+                
+                # Branch 1, replace masked channels in gate with 1.0 to linearize the corresponding channels
+                # gate become 1.0 for masked channels
+                x_gate = x_gate * (1.0 - mask_float)[None, None, :] + mask_float[None, None, :]
+                x_gated_branch = self.down_proj(x_gate * self.up_proj(x))
+                
+                # Branch 2, residual projection for masked channels only
+                x_linear_branch = self.residual_proj(gate_linear * mask_float[None, None, :])
+                
+                x = x_gated_branch + x_linear_branch
             else:
-                replaced_gate = x_gate
+                x = self.down_proj(x_gate * self.up_proj(x))
             
-            x = self.down_proj(replaced_gate * self.up_proj(x))
-        return x
+            return x
 
     def reparam(self):
         if not self.reparamed:
@@ -795,19 +907,27 @@ class RePaMLP(nn.Module):
             
             if linear_idx.numel() > 0:
                 # Some channels are masked and weights can be linearly reparameterized
-                repa_proj_weight = self.down_proj.weight[:, linear_idx] @ (self.up_proj.weight[linear_idx] * self.masked_replacements[linear_idx].unsqueeze(1))
+                residual_weight = self.residual_proj.weight[:, linear_idx]
+                gate_weight = self.gate_proj.weight[linear_idx, :]
+                residual_gate_weight = residual_weight @ gate_weight
+                
+                up_weight = self.up_proj.weight[linear_idx, :]
+                down_weight = self.down_proj.weight[:, linear_idx]
+                up_down_weight = down_weight @ up_weight
+                
+                repa_weight = residual_gate_weight + up_down_weight
                 self.repa_proj = nn.Linear(self.hidden_size, self.hidden_size, bias=False)
-                self.repa_proj.weight = nn.Parameter(repa_proj_weight)
+                self.repa_proj.weight = nn.Parameter(repa_weight)
             else:
                 self.repa_proj = None
                 
             if nonlinear_idx.numel() > 0:
                 # Some channels remain active and need gating and nonlinearity
-                gate_proj_weight = self.gate_proj.weight[nonlinear_idx]
+                gate_proj_weight = self.gate_proj.weight[nonlinear_idx, :]
                 self.gate_proj = nn.Linear(self.hidden_size, nonlinear_idx.numel(), bias=False)
                 self.gate_proj.weight = nn.Parameter(gate_proj_weight)
                 
-                up_proj_weight = self.up_proj.weight[nonlinear_idx]
+                up_proj_weight = self.up_proj.weight[nonlinear_idx, :]
                 self.up_proj = nn.Linear(self.hidden_size, nonlinear_idx.numel(), bias=False)
                 self.up_proj.weight = nn.Parameter(up_proj_weight)
 
@@ -821,7 +941,6 @@ class RePaMLP(nn.Module):
                 
             self.reparamed = True
             self.num_gated_channels = nonlinear_idx.numel()
-            self.masked_replacements = None
             self.mask = None
             self.channel_running_mean = None
             import gc
@@ -841,29 +960,28 @@ class RePaMLP(nn.Module):
         gated_ratio = float(gated_ratio)
         gated_ratio = min(1.0, max(0.0, gated_ratio))
         self.gated_ratio = gated_ratio
-        desired_active = int(self.intermediate_size * gated_ratio)
-        desired_masked = self.intermediate_size - desired_active
-        current_masked = int(self.mask.sum().item())
-        if desired_masked == 0:
+        desired_gated = int(self.intermediate_size * gated_ratio)
+        desired_linear = self.intermediate_size - desired_gated
+        current_linear = int(self.mask.sum().item())
+        if desired_linear == 0:
             # Unmask all
             self.mask[:] = False
             self.num_gated_channels = self.intermediate_size
-            self.masked_replacements.data.zero_()
-            
-        elif desired_masked > current_masked:
+
+        elif desired_linear > current_linear:
             # Need to mask additional channels
-            need_mask = desired_masked - current_masked
+            need_mask = desired_linear - current_linear
             candidates = (~self.mask).nonzero(as_tuple=False).flatten()
             if candidates.numel() > 0:
                 # Sort candidates by running mean ascending (smallest first)
                 means = self.channel_running_mean[candidates]
                 _, order = torch.sort(means)  # ascending
                 select = candidates[order[:need_mask]] if need_mask < candidates.numel() else candidates
-                self.mask[select] = True
-                with torch.no_grad():
-                    self.masked_replacements[select] = self.masked_replacements[select]*0.0  # init newly masked params
+                self.mask[select] = True # init newly masked params
+                
         # Update counts
-        self.num_gated_channels = desired_active
+        self.num_gated_channels = desired_gated
+        
         
 
 class RePaMoE(MoE):
@@ -989,7 +1107,7 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
                         tokens = tokens[:max_tokens]
                     experts = moe_module.deepspeed_moe.experts.deepspeed_experts
                     if len(experts) >= 2 and tokens.numel() > 0:
-                        expert_outputs = []
+                        expert_outputs = []  # list of [T, H]
                         for expert in experts:
                             y = expert(tokens)
                             expert_outputs.append(y)
@@ -999,7 +1117,6 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
                         sims = torch.matmul(per_token, per_token.transpose(1, 2))  # [T, E, E]
                         sim_mean = sims.mean(dim=0)  # [E, E]
                         moe_module.expert_cosine_similarity = sim_mean.detach().to('cpu')
-                    print(moe_module.expert_cosine_similarity)
                 except Exception:
                     pass
                 return out
@@ -1009,8 +1126,22 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
             
         # Replace MoE layers with RePaMoE after model initialization
         for num_experts, layer_num in zip(self.config.moe['num_experts'], moe_layers_idx):
+            # Save original MLP's down_proj weight before replacement
+            original_mlp = self.model.layers[layer_num].mlp
+            original_down_proj_weight = None
+            if hasattr(original_mlp, 'down_proj') and hasattr(original_mlp.down_proj, 'weight'):
+                original_down_proj_weight = original_mlp.down_proj.weight.data.clone().detach()
+            
             # Create RePaMLP from the original MLP
             repa_expert = RePaMLP(config)
+            
+            # Initialize residual_proj with down_proj weight if available
+            if (original_down_proj_weight is not None and 
+                hasattr(repa_expert, 'residual_proj') and 
+                repa_expert.residual_proj is not None and
+                original_down_proj_weight.shape == repa_expert.residual_proj.weight.shape):
+                repa_expert.residual_proj.weight.data.copy_(original_down_proj_weight)
+                rank0_print(f"Initialized residual_proj in layer {layer_num} with down_proj weight")
             
             # Replace with RePaMoE
             self.model.layers[layer_num].mlp = RePaMoE(
@@ -1029,7 +1160,6 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
         
             # Attach similarity hook
             # _attach_expert_similarity_hook(self.model.layers[layer_num].mlp)
-            
             
         rank0_print(f"LLM num_layers: {num_layers}, RePaMoE num_layers: {len(moe_layers_idx)}, where\n",
                     *[f'layer-{layer_num} has {num_experts} experts\n' for num_experts, layer_num in

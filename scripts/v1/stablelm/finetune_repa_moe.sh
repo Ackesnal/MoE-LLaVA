@@ -34,9 +34,9 @@ HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 torchrun \
     --bf16 True \
     --output_dir ./checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa \
     --num_train_epochs 1 \
-    --per_device_train_batch_size 4 \
+    --per_device_train_batch_size 1 \
     --per_device_eval_batch_size 4 \
-    --gradient_accumulation_steps 16 \
+    --gradient_accumulation_steps 128 \
     --eval_strategy "no" \
     --save_strategy "steps" \
     --save_steps 10 \
