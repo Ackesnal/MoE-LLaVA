@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=36
 #SBATCH --gres=gpu:2
 #SBATCH --mem=256G
-#SBATCH --time=7:00:00
+#SBATCH --time=10:00:00
 #SBATCH --output=logs/finetune_repa_moe_StableLM_%A_%a.out
 #SBATCH --error=logs/finetune_repa_moe_StableLM_%A_%a.err
 
