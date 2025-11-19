@@ -96,7 +96,8 @@ class RePaMoELLaVAStablelmConfig(MoELLaVAStablelmConfig):
         self.reparam = dict(
             reparamed=reparamed,
             target_gated_ratio=gated_ratio,
-            current_gated_ratio=1.0
+            current_gated_ratio=1.0,
+            current_alpha=1.0
         )
 
         super(RePaMoELLaVAStablelmConfig, self).__init__(**kwargs)
@@ -840,20 +841,21 @@ class RePaMLP(nn.Module):
                 self.act_fn = nn.SiLU()
                 self.repa_proj = nn.Linear(config.hidden_size, config.hidden_size, bias=False)
         else:
+            # Alpha parameter for blending gated and linear paths (1.0 = gated, 0.0 = linear)
+            self.alpha = config.reparam["current_alpha"]
+            
             self.num_gated_channels = self.intermediate_size
             self.gate_proj = nn.Linear(config.hidden_size, self.intermediate_size, bias=False)
             self.up_proj = nn.Linear(config.hidden_size, self.intermediate_size, bias=False)
             self.down_proj = nn.Linear(self.intermediate_size, config.hidden_size, bias=False)
-            self.residual_proj = nn.Linear(self.intermediate_size, config.hidden_size, bias=False)
             self.act_fn = nn.SiLU()
             self.repa_proj = None
             
             # mask semantics (IMPORTANT): mask == True means this channel IS MASKED (linear), mask == False means gated
             self.register_buffer('mask', torch.zeros(self.intermediate_size, dtype=torch.bool))  # start with no masked channels
             # Running mean statistics for active (unmasked) channels
-            self.register_buffer('channel_running_mean', torch.zeros(self.intermediate_size))
-            self.momentum = 0.9
-            
+            self.register_buffer('channel_sum', torch.zeros(self.intermediate_size))
+
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # If reparameterized, use the reparameterized form. No need to track running means or masks.
         if self.reparamed:
@@ -864,40 +866,32 @@ class RePaMLP(nn.Module):
             else:
                 return self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
         else:
+            x_up = self.up_proj(x) # B, N, pC
+            
             # Compute linear gate then SiLU for active path
-            gate_linear = self.gate_proj(x) # [*, C]
-            x_gate = self.act_fn(gate_linear) # [*, C]
-
-            # Statistics: per-channel running mean (existing) and L1 distance to 0 (new, lazy-init)
+            x_gate_linear = self.gate_proj(x) # B, N, pC
+            x_gate_act = self.act_fn(x_gate_linear) # B, N, pC
+            
+            # Statistics: per-channel sum over active tokens only
             if self.training:
                 with torch.no_grad():
-                    flat = x_gate.reshape(-1, x_gate.size(-1))  # [T, C]
-                    valid_tokens = (flat.abs().sum(dim=1) > 0)
+                    flat = x_gate_act.reshape(-1, x_gate_act.size(-1))  # B*N, pC
+                    valid_tokens = (flat.abs().sum(dim=1) > 1e-9)
                     if valid_tokens.any():
-                        cur_mean = flat[valid_tokens].mean(dim=0)
+                        cur_sum = flat[valid_tokens].sum(dim=0)
                         # update running mean on active channels only
-                        active_idx = (~self.mask).nonzero(as_tuple=False).flatten()
-                        if active_idx.numel() > 0:
-                            self.channel_running_mean[active_idx] = (
-                                self.momentum * self.channel_running_mean[active_idx]
-                                + (1 - self.momentum) * cur_mean[active_idx]
-                            )
-            # Apply masking    
-            if self.mask.any():
-                mask_float = self.mask.to(x_gate.dtype)
-                
-                # Branch 1, replace masked channels in gate with 1.0 to linearize the corresponding channels
-                # gate become 1.0 for masked channels
-                x_gate = x_gate * (1.0 - mask_float)[None, None, :] + mask_float[None, None, :]
-                x_gated_branch = self.down_proj(x_gate * self.up_proj(x))
-                
-                # Branch 2, residual projection for masked channels only
-                x_linear_branch = self.residual_proj(gate_linear * mask_float[None, None, :])
-                
-                x = x_gated_branch + x_linear_branch
-            else:
-                x = self.down_proj(x_gate * self.up_proj(x))
+                        self.channel_sum = self.channel_sum + cur_sum
+
+            x_gate_act_times_up = x_gate_act * x_up
+            x_gate_act_adds_up = x_gate_act + x_up
             
+            mask_float = self.mask.to(x.dtype) # pC
+            
+            x_gate_up = x_gate_act_times_up * (1.0 - mask_float)[None, None, :] + \
+                (x_gate_act_times_up * self.alpha + x_gate_act_adds_up * (1 - self.alpha)) * mask_float[None, None, :]
+
+            x = self.down_proj(x_gate_up)
+
             return x
 
     def reparam(self):
@@ -942,20 +936,19 @@ class RePaMLP(nn.Module):
             self.reparamed = True
             self.num_gated_channels = nonlinear_idx.numel()
             self.mask = None
-            self.channel_running_mean = None
+            self.channel_sum = None
             import gc
             gc.collect()
             torch.cuda.empty_cache()
 
     def adjust_gated_ratio(self, gated_ratio: float):
         """
-        Adjust gating ratio by masking additional channels with smallest running means.
+        Adjust gating ratio by masking additional channels with smallest channel_sum values.
         Steps:
         1. Determine desired number of active channels = floor(ratio * total).
         2. Compute how many channels must be masked = total - active.
-        3. If we need to mask MORE channels, select from currently unmasked channels those with lowest running mean.
-        4. If we need to UNMASK channels (ratio increased), unmask channels with highest running mean first.
-        5. Newly masked channels get their replacement parameters initialized to 0.
+        3. If we need to mask MORE channels, select from currently unmasked channels those with lowest channel_sum.
+        4. If we need to UNMASK channels (ratio increased), unmask channels with highest channel_sum first.
         """
         gated_ratio = float(gated_ratio)
         gated_ratio = min(1.0, max(0.0, gated_ratio))
@@ -973,16 +966,19 @@ class RePaMLP(nn.Module):
             need_mask = desired_linear - current_linear
             candidates = (~self.mask).nonzero(as_tuple=False).flatten()
             if candidates.numel() > 0:
-                # Sort candidates by running mean ascending (smallest first)
-                means = self.channel_running_mean[candidates]
-                _, order = torch.sort(means)  # ascending
+                # Sort candidates by channel_sum ascending (smallest first - least important channels)
+                sums = self.channel_sum[candidates]
+                _, order = torch.sort(sums)  # ascending
                 select = candidates[order[:need_mask]] if need_mask < candidates.numel() else candidates
-                self.mask[select] = True # init newly masked params
+                self.mask[select] = True
                 
         # Update counts
         self.num_gated_channels = desired_gated
-        
-        
+
+    def adjust_alpha(self, alpha: float):
+        self.alpha = alpha
+
+
 
 class RePaMoE(MoE):
     """
@@ -991,7 +987,7 @@ class RePaMoE(MoE):
     """
     def __init__(self, hidden_size, expert, num_experts=4, ep_size=1, k=2, 
                  capacity_factor=1.0, eval_capacity_factor=1.0, min_capacity=4, 
-                 use_residual=False, gated_ratio=1.0, reparamed=False):
+                 use_residual=False, gated_ratio=1.0, alpha=1.0, reparamed=False):
         # Initialize the parent MoE class with RePaMLP experts
         super().__init__(
             hidden_size=hidden_size,
@@ -1005,15 +1001,13 @@ class RePaMoE(MoE):
             use_residual=use_residual
         )
         
-        self.gated_ratio = gated_ratio
         # Adjust gated ratio for all experts if needed
         self.adjust_gated_ratio(gated_ratio)
         self.gated_ratio = gated_ratio
-        
-        self.reparamed = reparamed
-        # Reparameterize experts if specified
-        if reparamed:
-            self.reparam()
+
+        # Adjust alpha for all experts if needed
+        self.adjust_alpha(alpha)
+        self.alpha = alpha
 
         for expert in self.deepspeed_moe.experts.deepspeed_experts:
             if not isinstance(expert, RePaMLP):
@@ -1065,7 +1059,16 @@ class RePaMoE(MoE):
                 if hasattr(expert, 'adjust_gated_ratio') and callable(expert.adjust_gated_ratio):
                     expert.adjust_gated_ratio(gated_ratio)
         self.gated_ratio = gated_ratio
-    
+
+    def adjust_alpha(self, alpha: float):
+        """Apply adjust_alpha to all experts"""
+        if hasattr(self, 'deepspeed_moe') and hasattr(self.deepspeed_moe, 'experts'):
+            experts = self.deepspeed_moe.experts.deepspeed_experts
+            for expert in experts:
+                if hasattr(expert, 'adjust_alpha') and callable(expert.adjust_alpha):
+                    expert.adjust_alpha(alpha)
+        self.alpha = alpha
+
 
 
 class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMixin):
@@ -1126,22 +1129,8 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
             
         # Replace MoE layers with RePaMoE after model initialization
         for num_experts, layer_num in zip(self.config.moe['num_experts'], moe_layers_idx):
-            # Save original MLP's down_proj weight before replacement
-            original_mlp = self.model.layers[layer_num].mlp
-            original_down_proj_weight = None
-            if hasattr(original_mlp, 'down_proj') and hasattr(original_mlp.down_proj, 'weight'):
-                original_down_proj_weight = original_mlp.down_proj.weight.data.clone().detach()
-            
             # Create RePaMLP from the original MLP
             repa_expert = RePaMLP(config)
-            
-            # Initialize residual_proj with down_proj weight if available
-            if (original_down_proj_weight is not None and 
-                hasattr(repa_expert, 'residual_proj') and 
-                repa_expert.residual_proj is not None and
-                original_down_proj_weight.shape == repa_expert.residual_proj.weight.shape):
-                repa_expert.residual_proj.weight.data.copy_(original_down_proj_weight)
-                rank0_print(f"Initialized residual_proj in layer {layer_num} with down_proj weight")
             
             # Replace with RePaMoE
             self.model.layers[layer_num].mlp = RePaMoE(
@@ -1155,6 +1144,7 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
                 min_capacity=self.config.moe['min_capacity'],
                 use_residual=self.config.moe['use_residual'],
                 gated_ratio=self.config.reparam['current_gated_ratio'],
+                alpha=self.config.reparam['current_alpha'],
                 reparamed=self.config.reparam['reparamed'],
             )
         
@@ -1199,8 +1189,19 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
                 moe_layer.adjust_gated_ratio(gated_ratio)
         rank0_print(f"Adjusted gated ratio to {gated_ratio} for all RePaMoE layers")
         self.config.reparam["current_gated_ratio"] = gated_ratio
-        # print(self.config.reparam["current_gated_ratio"], self.config.reparam["target_gated_ratio"])
-
+        
+    def adjust_alpha_all_layers(self, alpha: float):
+        """
+        Adjust alpha for all RePaMoE layers.
+        """
+        moe_layers_idx = self.config.moe['moe_layers_idx']
+        for layer_num in moe_layers_idx:
+            moe_layer = self.model.layers[layer_num].mlp
+            if isinstance(moe_layer, RePaMoE):
+                moe_layer.adjust_alpha(alpha)
+        rank0_print(f"Adjusted alpha to {alpha} for all RePaMoE layers")
+        self.config.reparam["current_alpha"] = alpha
+        
     def disable_moe_allreduce(self):
         """
         Disable allreduce for all parameters in MoE layers.

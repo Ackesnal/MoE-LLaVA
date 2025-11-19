@@ -49,7 +49,7 @@ echo "Using GATED_RATIO=${GATED_RATIO} from SLURM_ARRAY_TASK_ID=${SLURM_ARRAY_TA
 
 # Build per-run output directory incorporating gated ratio (sanitize decimal point)
 GATED_RATIO_TAG=${GATED_RATIO/./p}
-OUTPUT_DIR=./finetuned_checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-Only_MoE-Residual_Proj-ratio${GATED_RATIO_TAG}
+OUTPUT_DIR=./finetuned_checkpoints/MoE-LLaVA-StableLM-1.6B-4e-RePa-Only_MoE-Dual_Branch-ratio${GATED_RATIO_TAG}
 echo "OUTPUT_DIR: ${OUTPUT_DIR}" >&2
 
 # Redirect logs to ratio-tagged files (after we know GATED_RATIO)
@@ -131,7 +131,7 @@ torchrun \
     --gradient_accumulation_steps 2 \
     --eval_strategy no \
     --save_strategy steps \
-    --save_steps 500 \
+    --save_steps 1000 \
     --save_total_limit 1 \
     --learning_rate 2e-5 \
     --weight_decay 0. \

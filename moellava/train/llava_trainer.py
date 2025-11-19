@@ -217,6 +217,7 @@ class LLaVATrainer(Trainer):
                 'target_gated_ratio': getattr(self.args, 'gated_ratio', 0.25),
                 'total_training_steps': 0,
                 'current_gated_ratio': 1.0,
+                'current_alpha': 1.0,  # Alpha starts at 1.0
                 'moe_layers_idx': [],
                 'has_repamoe': False,
                 # New fields for two-stage LR control
@@ -234,10 +235,10 @@ class LLaVATrainer(Trainer):
         base_lrs = self.repa_state['base_lrs']
         stage_1_steps = self.repa_state['stage_1_steps']
         total_steps = self.repa_state['total_training_steps']
-        # Stage 1: keep constant LR
+        # Stage 1: set LR to 0 (no parameter updates, only statistics collection)
         if current_step <= stage_1_steps:
-            for g, base in zip(self.optimizer.param_groups, base_lrs):
-                g['lr'] = base
+            for g in self.optimizer.param_groups:
+                g['lr'] = 0.0
         else:
             # Stage 2: cosine decay from base -> 0 over remaining steps
             start = stage_1_steps
@@ -309,18 +310,25 @@ class LLaVATrainer(Trainer):
         self._freeze_non_moe_layers()
         # self._unfreeze_all_layers()
         
-        # 5. Set initial gated ratio to 1.0
+        # 5. Set initial gated ratio to 1.0 and alpha to 1.0 for Stage 1
         self.repa_state['current_gated_ratio'] = self.repa_state['initial_gated_ratio']
+        self.repa_state['current_alpha'] = 1.0
         if hasattr(self.model, 'adjust_gated_ratio_all_layers'):
             self.model.adjust_gated_ratio_all_layers(self.repa_state['current_gated_ratio'])
             print(f"  Set initial gated ratio to {self.repa_state['current_gated_ratio']}")
+        if hasattr(self.model, 'adjust_alpha_all_layers'):
+            self.model.adjust_alpha_all_layers(self.repa_state['current_alpha'])
+            print(f"  Set initial alpha to {self.repa_state['current_alpha']}")
 
         print(f"  Total training steps: {num_training_steps}")
-        print(f"  Stage 1 (gated ratio reduction): {stage_1_steps} steps")
-        print(f"  Stage 2 (fixed gated ratio finetuning): {stage_2_steps} steps")
-        print(f"  Gated ratio will be reduced from {self.repa_state['initial_gated_ratio']} "
-              f"to {self.repa_state['target_gated_ratio']} linearly over stage 1")
+        print(f"  Stage 1 (statistics collection): {stage_1_steps} steps")
+        print(f"  Stage 2 (fine-tuning with alpha decay): {stage_2_steps} steps")
+        print(f"  Gated ratio: remains at {self.repa_state['initial_gated_ratio']} in Stage 1, "
+              f"switches to {self.repa_state['target_gated_ratio']} in Stage 2")
+        print(f"  Alpha: remains at 1.0 in Stage 1, decays from 1.0 to 0.0 via cosine in Stage 2")
+        print(f"  Learning rate: 0.0 in Stage 1 (no training), cosine decay in Stage 2")
         print(f"  MoE layers: {self.repa_state['moe_layers_idx']}")
+        print(f"  Stage 1: MoE parameters trainable but LR=0 (only statistics collection)")
     
     def _detect_moe_layers(self):
         """Detect MoE layer indices from the model"""
@@ -341,7 +349,7 @@ class LLaVATrainer(Trainer):
         return moe_layers_idx
     
     def _freeze_non_moe_layers(self):
-        """Freeze all non-MoE layers"""
+        """Freeze all non-MoE layers, keep MoE layers trainable"""
         frozen_count = 0
         unfrozen_count = 0
         
@@ -362,7 +370,7 @@ class LLaVATrainer(Trainer):
                 param.requires_grad = False
                 frozen_count += 1
         
-        print(f"  Frozen {frozen_count} non-MoE parameters, kept {unfrozen_count} MoE parameters trainable")
+        print(f"  Frozen {frozen_count} non-MoE parameters, kept {unfrozen_count} MoE parameters trainable (but LR=0 in Stage 1)")
     
     def _unfreeze_all_layers(self):
         """Unfreeze all layers"""
@@ -393,43 +401,37 @@ class LLaVATrainer(Trainer):
             if not self.repa_state['stage_1_complete']:
                 self._transition_to_stage_2(current_step)
             self.repa_state['current_stage'] = 2
+            self._handle_stage_2_logic(current_step)
         # Update LR each step according to stage
         self._update_two_stage_lr(current_step)
 
     def _handle_stage_1_logic(self, current_step):
-        """Handle Stage 1: gradually reduce gated ratio"""
-        # Calculate new gated ratio based on progress through stage 1
-        progress = round(current_step / self.repa_state['stage_1_steps'], 2)
-        progress = min(1.0, progress)  # Ensure we don't exceed 1.0
-        
-        # Linear interpolation from initial to target ratio
-        new_ratio = (self.repa_state['initial_gated_ratio'] * (1 - progress) + 
-                    self.repa_state['target_gated_ratio'] * progress)
-        new_ratio = round(new_ratio, 4)  # Round for cleaner logging
-        
-        # Update the ratio if it has changed significantly
-        if abs(new_ratio - self.repa_state['current_gated_ratio']) >= 0.00005:
-            self.repa_state['current_gated_ratio'] = new_ratio
-            
-            if hasattr(self.model, 'adjust_gated_ratio_all_layers'):
-                self.model.adjust_gated_ratio_all_layers(new_ratio)
-                print(f"Step {current_step}: Updated gated ratio to {new_ratio:.4f} "
-                      f"(progress: {progress:.1%})")
+        """Handle Stage 1: collect statistics only, no training, keep gated_ratio=1.0 and alpha=1.0"""
+        # Stage 1: No parameter updates, only statistics collection
+        # gated_ratio and alpha remain at 1.0
+        pass
 
     def _transition_to_stage_2(self, current_step):
-        """Transition from Stage 1 to Stage 2: reparameterize and update optimizer"""
-        print(f"Step {current_step}: Transitioning to Stage 2 - begin LR decay (no reparameterization)")
+        """Transition from Stage 1 to Stage 2: set target gated_ratio, start alpha decay, enable LR"""
+        print(f"Step {current_step}: Transitioning to Stage 2")
         
-        # Ensure final gated ratio applied
-        if abs(self.repa_state['current_gated_ratio'] - self.repa_state['target_gated_ratio']) >= 0.00005:
-            if hasattr(self.model, 'adjust_gated_ratio_all_layers'):
-                self.model.adjust_gated_ratio_all_layers(self.repa_state['target_gated_ratio'])
-                self.repa_state['current_gated_ratio'] = self.repa_state['target_gated_ratio']
-                print(f"  Set final gated ratio to {self.repa_state['target_gated_ratio']}")
+        # 1. Update gated_ratio from 1.0 to target value and apply mask based on channel_sum
+        if hasattr(self.model, 'adjust_gated_ratio_all_layers'):
+            self.model.adjust_gated_ratio_all_layers(self.repa_state['target_gated_ratio'])
+            self.repa_state['current_gated_ratio'] = self.repa_state['target_gated_ratio']
+            print(f"  Set gated ratio to target: {self.repa_state['target_gated_ratio']}")
         
-        # No reparam, no optimizer rebuild
+        # 2. Alpha starts at 1.0 and will decay via cosine in Stage 2
+        self.repa_state['current_alpha'] = 1.0
+        if hasattr(self.model, 'adjust_alpha_all_layers'):
+            self.model.adjust_alpha_all_layers(self.repa_state['current_alpha'])
+            print(f"  Alpha starts at {self.repa_state['current_alpha']}, will decay to 0.0 via cosine")
+        
+        # 3. LR will be updated from 0 to base value via _update_two_stage_lr
+        print(f"  Learning rate will be enabled (cosine decay from base to 0)")
+        
         self.repa_state['stage_1_complete'] = True
-        print(f"Step {current_step}: Entered Stage 2 (LR will now decay linearly)")
+        print(f"Step {current_step}: Stage 2 begins (training with alpha decay)")
 
     
     def create_optimizer(self):
@@ -604,15 +606,7 @@ class LLaVATrainer(Trainer):
             
             # Final check to ensure we have at least one non-empty parameter group
             if not optimizer_grouped_parameters or all(len(group.get('params', [])) == 0 for group in optimizer_grouped_parameters):
-                # If all parameter groups are empty, create a dummy group with at least one parameter
-                # This can happen in RePaMoE mode when all parameters are initially frozen
-                dummy_param = next(opt_model.parameters())
-                optimizer_grouped_parameters = [{
-                    "params": [dummy_param],
-                    "weight_decay": 0.0,
-                    "name": "dummy_param_group"
-                }]
-                print("Warning: All parameter groups were empty. Created dummy group to avoid optimizer error.")
+                raise ValueError("No trainable parameters found. Please check your model and freezing configuration.")
             
             optimizer_cls, optimizer_kwargs = Trainer.get_optimizer_cls_and_kwargs(self.args)
 
@@ -666,3 +660,23 @@ class LLaVATrainer(Trainer):
             pass
         else:
             super(LLaVATrainer, self)._save(output_dir, state_dict)
+
+    def _handle_stage_2_logic(self, current_step):
+        """Handle Stage 2: train with alpha cosine decay from 1.0 to 0.0"""
+        # Calculate alpha based on cosine decay
+        stage_1_steps = self.repa_state['stage_1_steps']
+        total_steps = self.repa_state['total_training_steps']
+        stage_2_total = max(1, total_steps - stage_1_steps)
+        progress = min(1.0, max(0.0, (current_step - stage_1_steps) / stage_2_total))
+        
+        # Cosine decay from 1.0 to 0.0
+        new_alpha = 0.5 * (1.0 + math.cos(math.pi * progress))
+        new_alpha = round(new_alpha, 4)
+        
+        # Update alpha if changed significantly
+        if abs(new_alpha - self.repa_state['current_alpha']) >= 0.0001:
+            self.repa_state['current_alpha'] = new_alpha
+            if hasattr(self.model, 'adjust_alpha_all_layers'):
+                self.model.adjust_alpha_all_layers(new_alpha)
+                if current_step % 100 == 0:  # Log every 100 steps
+                    print(f"Step {current_step}: Updated alpha to {new_alpha:.4f} (progress: {progress:.1%})")
