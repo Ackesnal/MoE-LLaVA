@@ -667,7 +667,7 @@ class LLaVATrainer(Trainer):
         stage_1_steps = self.repa_state['stage_1_steps']
         total_steps = self.repa_state['total_training_steps']
         stage_2_total = max(1, total_steps - stage_1_steps)
-        progress = min(1.0, max(0.0, (current_step - stage_1_steps) / stage_2_total))
+        progress = min(1.0, max(0.0, (current_step - stage_1_steps) / (0.9 * stage_2_total))) # 90% of Stage 2
         
         # Cosine decay from 1.0 to 0.0
         new_alpha = 0.5 * (1.0 + math.cos(math.pi * progress))
