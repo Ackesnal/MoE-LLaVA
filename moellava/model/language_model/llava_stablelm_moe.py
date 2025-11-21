@@ -856,7 +856,8 @@ class RePaMLP(nn.Module):
             # Running mean statistics for active (unmasked) channels
             self.register_buffer('channel_sum', torch.zeros(self.intermediate_size))
             
-            self.mask_scaler = nn.Parameter(torch.zeros(self.intermediate_size))
+            self.gate_scaler = nn.Parameter(torch.zeros(self.intermediate_size))
+            self.up_scaler = nn.Parameter(torch.zeros(self.intermediate_size))
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # If reparameterized, use the reparameterized form. No need to track running means or masks.
@@ -885,13 +886,13 @@ class RePaMLP(nn.Module):
                         self.channel_sum = self.channel_sum + cur_sum
 
             x_gate_act_times_up = x_gate_act * x_up
-            x_gate_linear_adds_up = x_gate_linear * self.mask_scaler + x_up
+            x_gate_linear_adds_up = x_gate_linear * self.gate_scaler + x_up * self.up_scaler 
             
             mask_float = self.mask.to(x.dtype) # pC
             
             x_gate_up = x_gate_act_times_up * (1.0 - mask_float)[None, None, :] + \
                 (x_gate_act_times_up * self.alpha + x_gate_linear_adds_up * (1 - self.alpha)) * mask_float[None, None, :]
-
+            
             x = self.down_proj(x_gate_up)
 
             return x
@@ -979,6 +980,9 @@ class RePaMLP(nn.Module):
 
     def adjust_alpha(self, alpha: float):
         self.alpha = alpha
+        if self.alpha == 1.0:
+            self.gate_scaler.data.zero_()
+            self.up_scaler.data.zero_()
 
 
 
@@ -1189,7 +1193,7 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
             moe_layer = self.model.layers[layer_num].mlp
             if isinstance(moe_layer, RePaMoE):
                 moe_layer.adjust_gated_ratio(gated_ratio)
-        rank0_print(f"Adjusted gated ratio to {gated_ratio} for all RePaMoE layers")
+        print(f"Adjusted gated ratio to {gated_ratio} for all RePaMoE layers")
         self.config.reparam["current_gated_ratio"] = gated_ratio
         
     def adjust_alpha_all_layers(self, alpha: float):
@@ -1201,7 +1205,7 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
             moe_layer = self.model.layers[layer_num].mlp
             if isinstance(moe_layer, RePaMoE):
                 moe_layer.adjust_alpha(alpha)
-        rank0_print(f"Adjusted alpha to {alpha} for all RePaMoE layers")
+        print(f"Adjusted alpha to {alpha} for all RePaMoE layers")
         self.config.reparam["current_alpha"] = alpha
         
     def disable_moe_allreduce(self):
@@ -1234,7 +1238,7 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
                         param.allreduce = False
                         param.group_name = moe_layer.expert_group_name
         
-        rank0_print(f"Disabled allreduce for all MoE layer parameters in {len(moe_layers_idx)} layers")
+        print(f"Disabled allreduce for all MoE layer parameters in {len(moe_layers_idx)} layers")
 
 
 

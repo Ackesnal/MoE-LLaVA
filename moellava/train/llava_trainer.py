@@ -328,7 +328,6 @@ class LLaVATrainer(Trainer):
         print(f"  Alpha: remains at 1.0 in Stage 1, decays from 1.0 to 0.0 via cosine in Stage 2")
         print(f"  Learning rate: 0.0 in Stage 1 (no training), cosine decay in Stage 2")
         print(f"  MoE layers: {self.repa_state['moe_layers_idx']}")
-        print(f"  Stage 1: MoE parameters trainable but LR=0 (only statistics collection)")
     
     def _detect_moe_layers(self):
         """Detect MoE layer indices from the model"""
@@ -386,6 +385,20 @@ class LLaVATrainer(Trainer):
         """Override training step to handle RePaMoE logic"""
         if hasattr(self.args, 'finetune_repa_mode') and self.args.finetune_repa_mode:
             self._handle_repa_step_logic()
+            
+            # Set model mode based on current stage
+            current_step = self.state.global_step
+            if current_step <= self.repa_state['stage_1_steps']:
+                # Stage 1: Set model to eval mode (inference only, no training)
+                model.eval()
+                if hasattr(self.optimizer, "eval") and callable(self.optimizer.eval):
+                    self.optimizer.eval()
+            else:
+                # Stage 2: Set model to train mode (actual training)
+                model.train()
+                if hasattr(self.optimizer, "train") and callable(self.optimizer.train):
+                    self.optimizer.train()
+        
         return super().training_step(model, inputs, num_items_in_batch)
 
     def _handle_repa_step_logic(self):
