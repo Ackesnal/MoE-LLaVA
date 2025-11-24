@@ -886,12 +886,13 @@ class RePaMLP(nn.Module):
                         self.channel_sum = self.channel_sum + cur_sum
 
             x_gate_act_times_up = x_gate_act * x_up
-            x_gate_linear_adds_up = x_gate_linear * self.gate_scaler + x_up * self.up_scaler 
+            x_gate_linear_adds_up = x_gate_linear * self.gate_scaler + x_up * self.up_scaler
             
-            mask_float = self.mask.to(x.dtype) # pC
-            
-            x_gate_up = x_gate_act_times_up * (1.0 - mask_float)[None, None, :] + \
-                (x_gate_act_times_up * self.alpha + x_gate_linear_adds_up * (1 - self.alpha)) * mask_float[None, None, :]
+            x_gate_up = torch.where(
+                self.mask[None, None, :], 
+                x_gate_linear_adds_up,
+                x_gate_act_times_up
+            )
             
             x = self.down_proj(x_gate_up)
 
