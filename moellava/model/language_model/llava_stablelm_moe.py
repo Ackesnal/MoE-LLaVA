@@ -97,7 +97,6 @@ class RePaMoELLaVAStablelmConfig(MoELLaVAStablelmConfig):
             reparamed=reparamed,
             target_gated_ratio=gated_ratio,
             current_gated_ratio=1.0,
-            current_alpha=1.0
         )
 
         super(RePaMoELLaVAStablelmConfig, self).__init__(**kwargs)
@@ -841,9 +840,6 @@ class RePaMLP(nn.Module):
                 self.act_fn = nn.SiLU()
                 self.repa_proj = nn.Linear(config.hidden_size, config.hidden_size, bias=False)
         else:
-            # Alpha parameter for blending gated and linear paths (1.0 = gated, 0.0 = linear)
-            self.alpha = config.reparam["current_alpha"]
-            
             self.num_gated_channels = self.intermediate_size
             self.gate_proj = nn.Linear(config.hidden_size, self.intermediate_size, bias=False)
             self.up_proj = nn.Linear(config.hidden_size, self.intermediate_size, bias=False)
@@ -977,12 +973,9 @@ class RePaMLP(nn.Module):
         # Update counts
         self.num_gated_channels = desired_gated
 
-    def adjust_alpha(self, alpha: float):
-        self.alpha = alpha
-        if self.alpha == 1.0:
-            self.gate_scaler.data.zero_()
-            self.up_scaler.data.zero_()
-
+    def init_scaler(self):
+        self.gate_scaler = torch.zeros_like(self.gate_proj.weight)
+        self.up_scaler = torch.zeros_like(self.up_proj.weight)
 
 
 class RePaMoE(MoE):
@@ -992,7 +985,7 @@ class RePaMoE(MoE):
     """
     def __init__(self, hidden_size, expert, num_experts=4, ep_size=1, k=2, 
                  capacity_factor=1.0, eval_capacity_factor=1.0, min_capacity=4, 
-                 use_residual=False, gated_ratio=1.0, alpha=1.0, reparamed=False):
+                 use_residual=False, gated_ratio=1.0, reparamed=False):
         # Initialize the parent MoE class with RePaMLP experts
         super().__init__(
             hidden_size=hidden_size,
@@ -1010,10 +1003,9 @@ class RePaMoE(MoE):
         self.adjust_gated_ratio(gated_ratio)
         self.gated_ratio = gated_ratio
 
-        # Adjust alpha for all experts if needed
-        self.adjust_alpha(alpha)
-        self.alpha = alpha
-        
+        # Initialize scaler for all experts
+        self.init_scaler()
+
         self.reparamed = reparamed
 
         for expert in self.deepspeed_moe.experts.deepspeed_experts:
@@ -1067,14 +1059,13 @@ class RePaMoE(MoE):
                     expert.adjust_gated_ratio(gated_ratio)
         self.gated_ratio = gated_ratio
 
-    def adjust_alpha(self, alpha: float):
-        """Apply adjust_alpha to all experts"""
+    def init_scaler(self):
+        """Initialize the scaler for all experts"""
         if hasattr(self, 'deepspeed_moe') and hasattr(self.deepspeed_moe, 'experts'):
             experts = self.deepspeed_moe.experts.deepspeed_experts
             for expert in experts:
-                if hasattr(expert, 'adjust_alpha') and callable(expert.adjust_alpha):
-                    expert.adjust_alpha(alpha)
-        self.alpha = alpha
+                if hasattr(expert, 'init_scaler') and callable(expert.init_scaler):
+                    expert.init_scaler()
 
 
 
@@ -1109,7 +1100,6 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
                 min_capacity=self.config.moe['min_capacity'],
                 use_residual=self.config.moe['use_residual'],
                 gated_ratio=self.config.reparam['current_gated_ratio'],
-                alpha=self.config.reparam['current_alpha'],
                 reparamed=self.config.reparam['reparamed'],
             )
         
@@ -1155,18 +1145,17 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
         print(f"Adjusted gated ratio to {gated_ratio} for all RePaMoE layers")
         self.config.reparam["current_gated_ratio"] = gated_ratio
         
-    def adjust_alpha_all_layers(self, alpha: float):
+    def init_scaler(self):
         """
-        Adjust alpha for all RePaMoE layers.
+        Initialize the scaler for all RePaMoE layers.
         """
         moe_layers_idx = self.config.moe['moe_layers_idx']
         for layer_num in moe_layers_idx:
             moe_layer = self.model.layers[layer_num].mlp
             if isinstance(moe_layer, RePaMoE):
-                moe_layer.adjust_alpha(alpha)
-        print(f"Adjusted alpha to {alpha} for all RePaMoE layers")
-        self.config.reparam["current_alpha"] = alpha
-        
+                moe_layer.init_scaler()
+        print(f"Initialized scaler for all RePaMoE layers")
+
     def disable_moe_allreduce(self):
         """
         Disable allreduce for all parameters in MoE layers.
