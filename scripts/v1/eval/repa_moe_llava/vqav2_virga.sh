@@ -42,7 +42,7 @@ IFS=',' read -ra GPULIST <<< "$gpu_list"
 CHUNKS=${#GPULIST[@]}
 
 CONV="stablelm"
-CKPT_NAME="MoE-LLaVA-StableLM-1.6B-4e-RePa-Only_MoE-Learnable_Masking-ratio${GATED_RATIO_TAG}"
+CKPT_NAME="MoE-LLaVA-StableLM-1.6B-4e-RePa-Only_MoE-Dual_Branch-Full_Model-ratio${GATED_RATIO_TAG}"
 CKPT="finetuned_checkpoints/${CKPT_NAME}"
 SPLIT="llava_vqav2_mscoco_test2015"
 EVAL="/scratch3/li309/data/llava_data/eval"

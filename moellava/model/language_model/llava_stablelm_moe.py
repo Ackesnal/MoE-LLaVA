@@ -905,15 +905,11 @@ class RePaMLP(nn.Module):
             
             if linear_idx.numel() > 0:
                 # Some channels are masked and weights can be linearly reparameterized
-                residual_weight = self.residual_proj.weight[:, linear_idx]
-                gate_weight = self.gate_proj.weight[linear_idx, :]
-                residual_gate_weight = residual_weight @ gate_weight
-                
-                up_weight = self.up_proj.weight[linear_idx, :]
-                down_weight = self.down_proj.weight[:, linear_idx]
-                up_down_weight = down_weight @ up_weight
-                
-                repa_weight = residual_gate_weight + up_down_weight
+                gate_weight = (self.gate_proj.weight * self.gate_scaler[:, None])[self.mask, :]
+                up_weight = (self.up_proj.weight * self.up_scaler[:, None])[self.mask, :]
+                gate_up_weight = gate_weight + up_weight
+                down_weight = self.down_proj.weight[:, self.mask]
+                repa_weight = down_weight @ gate_up_weight
                 self.repa_proj = nn.Linear(self.hidden_size, self.hidden_size, bias=False)
                 self.repa_proj.weight = nn.Parameter(repa_weight)
             else:
@@ -921,15 +917,15 @@ class RePaMLP(nn.Module):
                 
             if nonlinear_idx.numel() > 0:
                 # Some channels remain active and need gating and nonlinearity
-                gate_proj_weight = self.gate_proj.weight[nonlinear_idx, :]
+                gate_proj_weight = self.gate_proj.weight[~self.mask, :]
                 self.gate_proj = nn.Linear(self.hidden_size, nonlinear_idx.numel(), bias=False)
                 self.gate_proj.weight = nn.Parameter(gate_proj_weight)
-                
-                up_proj_weight = self.up_proj.weight[nonlinear_idx, :]
+
+                up_proj_weight = self.up_proj.weight[~self.mask, :]
                 self.up_proj = nn.Linear(self.hidden_size, nonlinear_idx.numel(), bias=False)
                 self.up_proj.weight = nn.Parameter(up_proj_weight)
 
-                down_proj_weight = self.down_proj.weight[:, nonlinear_idx]
+                down_proj_weight = self.down_proj.weight[:, ~self.mask]
                 self.down_proj = nn.Linear(nonlinear_idx.numel(), self.hidden_size, bias=False)
                 self.down_proj.weight = nn.Parameter(down_proj_weight)
             else:
@@ -941,6 +937,8 @@ class RePaMLP(nn.Module):
             self.num_gated_channels = nonlinear_idx.numel()
             self.mask = None
             self.channel_sum = None
+            self.gate_scaler = None
+            self.up_scaler = None
             import gc
             gc.collect()
             torch.cuda.empty_cache()
@@ -1015,6 +1013,8 @@ class RePaMoE(MoE):
         # Adjust alpha for all experts if needed
         self.adjust_alpha(alpha)
         self.alpha = alpha
+        
+        self.reparamed = reparamed
 
         for expert in self.deepspeed_moe.experts.deepspeed_experts:
             if not isinstance(expert, RePaMLP):
