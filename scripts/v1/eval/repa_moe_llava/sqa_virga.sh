@@ -89,7 +89,8 @@ deepspeed --master_port=$MASTER_PORT --master_addr=$MASTER_ADDR moellava/eval/mo
     --answers-file "${ANS_FILE}" \
     --single-pred-prompt \
     --temperature 0 \
-    --conv-mode "${CONV}"
+    --conv-mode "${CONV}" \
+    --repa_gated_ratio ${GATED_RATIO}
 
 # Post evaluation scoring
 python3 moellava/eval/eval_science_qa.py \
