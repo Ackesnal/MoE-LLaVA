@@ -1092,48 +1092,6 @@ class RePaMoELLaVAStablelmForCausalLM(MoELLaVAStablelmForCausalLM, GenerationMix
         num_layers = self.config.num_hidden_layers
         moe_layers_idx = self.config.moe['moe_layers_idx']
         
-        
-        # Helper reused in eval: attach similarity hook
-        def _attach_expert_similarity_hook(moe_module):
-            if not hasattr(moe_module, 'deepspeed_moe') or not hasattr(moe_module.deepspeed_moe, 'experts'):
-                return
-            if getattr(moe_module, '_similarity_hook_attached', False):
-                return
-            moe_module._similarity_hook_attached = True
-            _orig_forward = moe_module.forward
-
-            def _forward_with_similarity(x, *args, **kwargs):
-                out = _orig_forward(x, *args, **kwargs)
-                try:
-                    sample = x
-                    if isinstance(sample, (tuple, list)) and len(sample) > 0:
-                        sample = sample[0]
-                    if sample.dim() >= 2:
-                        tokens = sample.reshape(-1, sample.size(-1))
-                    else:
-                        tokens = sample
-                    max_tokens = 64
-                    if tokens.size(0) > max_tokens:
-                        tokens = tokens[:max_tokens]
-                    experts = moe_module.deepspeed_moe.experts.deepspeed_experts
-                    if len(experts) >= 2 and tokens.numel() > 0:
-                        expert_outputs = []  # list of [T, H]
-                        for expert in experts:
-                            y = expert(tokens)
-                            expert_outputs.append(y)
-                        stacked = torch.stack(expert_outputs, dim=0)  # [E, T, H]
-                        stacked = F.normalize(stacked, dim=2)
-                        per_token = stacked.permute(1, 0, 2)  # [T, E, H]
-                        sims = torch.matmul(per_token, per_token.transpose(1, 2))  # [T, E, E]
-                        sim_mean = sims.mean(dim=0)  # [E, E]
-                        moe_module.expert_cosine_similarity = sim_mean.detach().to('cpu')
-                except Exception:
-                    pass
-                return out
-
-            moe_module.forward = _forward_with_similarity
-            
-            
         # Replace MoE layers with RePaMoE after model initialization
         for num_experts, layer_num in zip(self.config.moe['num_experts'], moe_layers_idx):
             # Create RePaMLP from the original MLP
