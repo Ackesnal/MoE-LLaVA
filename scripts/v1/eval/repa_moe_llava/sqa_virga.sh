@@ -99,4 +99,4 @@ python3 moellava/eval/eval_science_qa.py \
     --output-file "${OUT_JSONL}" \
     --output-result "${RES_JSON}"
 
-echo "Done: ratio ${GATED_RATIO} -
+echo "Done: ratio ${GATED_RATIO} "
