@@ -974,8 +974,8 @@ class RePaMLP(nn.Module):
         self.num_gated_channels = desired_gated
 
     def init_scaler(self):
-        self.gate_scaler = torch.zeros_like(self.gate_proj.weight)
-        self.up_scaler = torch.zeros_like(self.up_proj.weight)
+        self.gate_scaler = nn.Parameter(torch.zeros_like(self.gate_scaler, device=self.gate_scaler.device))
+        self.up_scaler = nn.Parameter(torch.zeros_like(self.up_scaler, device=self.up_scaler.device))
 
 
 class RePaMoE(MoE):

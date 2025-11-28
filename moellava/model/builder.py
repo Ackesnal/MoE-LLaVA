@@ -431,9 +431,9 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
                     assert not load_8bit and not load_4bit  # FIXME
                     if "repa" in model_name.lower():
                         model = RePaMoELLaVAStablelmForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
-                        # if model.config.reparam["reparamed"] == False:
-                        #     # Reparametrize the model for inference
-                        #     model.reparam_moe_layers()
+                        if model.config.reparam["reparamed"] == False:
+                            # Reparametrize the model for inference
+                            model.reparam_moe_layers()
                         model.adjust_gated_ratio_all_layers(gated_ratio)
                     else:
                         model = EvalMoELLaVAStablelmForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)

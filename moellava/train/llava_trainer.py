@@ -217,7 +217,6 @@ class LLaVATrainer(Trainer):
                 'target_gated_ratio': getattr(self.args, 'gated_ratio', 0.25),
                 'total_training_steps': 0,
                 'current_gated_ratio': 1.0,
-                'current_alpha': 1.0,  # Alpha starts at 1.0
                 'moe_layers_idx': [],
                 'has_repamoe': False,
                 # New fields for two-stage LR control
@@ -293,7 +292,7 @@ class LLaVATrainer(Trainer):
         self.repa_state['total_training_steps'] = num_training_steps
         
         # 2. Divide into two equal stages
-        stage_1_steps = num_training_steps // 2
+        stage_1_steps = 10 # num_training_steps // 2
         stage_2_steps = num_training_steps - stage_1_steps
         
         self.repa_state['stage_1_steps'] = stage_1_steps
@@ -308,24 +307,21 @@ class LLaVATrainer(Trainer):
         
         # 4. Freeze all non-MoE layers
         self._freeze_non_moe_layers()
-        self._unfreeze_all_layers()
+        # self._unfreeze_all_layers()
         
-        # 5. Set initial gated ratio to 1.0 and alpha to 1.0 for Stage 1
+        # 5. Set gated ratio
         self.repa_state['current_gated_ratio'] = self.repa_state['initial_gated_ratio']
-        self.repa_state['current_alpha'] = 1.0
         if hasattr(self.model, 'adjust_gated_ratio_all_layers'):
             self.model.adjust_gated_ratio_all_layers(self.repa_state['current_gated_ratio'])
             print(f"  Set initial gated ratio to {self.repa_state['current_gated_ratio']}")
-        if hasattr(self.model, 'adjust_alpha_all_layers'):
-            self.model.adjust_alpha_all_layers(self.repa_state['current_alpha'])
-            print(f"  Set initial alpha to {self.repa_state['current_alpha']}")
+        if hasattr(self.model, 'init_scaler'):
+            self.model.init_scaler()
 
         print(f"  Total training steps: {num_training_steps}")
         print(f"  Stage 1 (statistics collection): {stage_1_steps} steps")
-        print(f"  Stage 2 (fine-tuning with alpha decay): {stage_2_steps} steps")
+        print(f"  Stage 2 (fine-tuning): {stage_2_steps} steps")
         print(f"  Gated ratio: remains at {self.repa_state['initial_gated_ratio']} in Stage 1, "
               f"switches to {self.repa_state['target_gated_ratio']} in Stage 2")
-        print(f"  Alpha: remains at 1.0 in Stage 1, decays from 1.0 to 0.0 via cosine in Stage 2")
         print(f"  Learning rate: 0.0 in Stage 1 (no training), cosine decay in Stage 2")
         print(f"  MoE layers: {self.repa_state['moe_layers_idx']}")
     
@@ -417,13 +413,11 @@ class LLaVATrainer(Trainer):
         self._update_two_stage_lr(current_step)
 
     def _handle_stage_1_logic(self, current_step):
-        """Handle Stage 1: collect statistics only, no training, keep gated_ratio=1.0 and alpha=1.0"""
         # Stage 1: No parameter updates, only statistics collection
-        # gated_ratio and alpha remain at 1.0
         pass
 
     def _transition_to_stage_2(self, current_step):
-        """Transition from Stage 1 to Stage 2: set target gated_ratio, start alpha decay, enable LR"""
+        """Transition from Stage 1 to Stage 2: set target gated_ratio, enable LR"""
         print(f"Step {current_step}: Transitioning to Stage 2")
         
         # 1. Update gated_ratio from 1.0 to target value and apply mask based on channel_sum
@@ -432,17 +426,11 @@ class LLaVATrainer(Trainer):
             self.repa_state['current_gated_ratio'] = self.repa_state['target_gated_ratio']
             print(f"  Set gated ratio to target: {self.repa_state['target_gated_ratio']}")
         
-        # 2. Alpha starts at 1.0 and will decay via cosine in Stage 2
-        self.repa_state['current_alpha'] = 1.0
-        if hasattr(self.model, 'adjust_alpha_all_layers'):
-            self.model.adjust_alpha_all_layers(self.repa_state['current_alpha'])
-            print(f"  Alpha starts at {self.repa_state['current_alpha']}, will decay to 0.0 via cosine")
-        
-        # 3. LR will be updated from 0 to base value via _update_two_stage_lr
+        # 2. LR will be updated from 0 to base value via _update_two_stage_lr
         print(f"  Learning rate will be enabled (cosine decay from base to 0)")
         
         self.repa_state['stage_1_complete'] = True
-        print(f"Step {current_step}: Stage 2 begins (training with alpha decay)")
+        print(f"Step {current_step}: Stage 2 begins")
 
     
     def create_optimizer(self):

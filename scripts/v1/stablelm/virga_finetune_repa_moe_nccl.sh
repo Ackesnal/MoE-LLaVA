@@ -133,7 +133,7 @@ torchrun \
     --save_strategy steps \
     --save_steps 1000 \
     --save_total_limit 1 \
-    --learning_rate 2e-5 \
+    --learning_rate 1e-4 \
     --weight_decay 0. \
     --warmup_ratio 0.03 \
     --lr_scheduler_type cosine \
