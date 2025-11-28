@@ -6,7 +6,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --mem=32G
 #SBATCH --time=5:00:00
-#SBATCH --array=1-9%4
+#SBATCH --array=5-9%4
 #SBATCH --output=logs/eval_repa_moe_scienceqa_%A_%a.out
 #SBATCH --error=logs/eval_repa_moe_scienceqa_%A_%a.err
 
@@ -36,7 +36,7 @@ GATED_RATIO_TAG=${GATED_RATIO/./p}
 echo "Evaluating checkpoint with GATED_RATIO=${GATED_RATIO} (tag=${GATED_RATIO_TAG})"
 
 CONV="stablelm"
-CKPT_NAME="MoE-LLaVA-StableLM-1.6B-4e-RePa-Only_MoE-Learnable_Masking-ratio${GATED_RATIO_TAG}"
+CKPT_NAME="MoE-LLaVA-StableLM-1.6B-4e-RePa-Only_MoE-Dual_Branch-Full_Model-ratio${GATED_RATIO_TAG}"
 CKPT="finetuned_checkpoints/${CKPT_NAME}"
 EVAL="/scratch3/li309/data/llava_data/eval"
 
