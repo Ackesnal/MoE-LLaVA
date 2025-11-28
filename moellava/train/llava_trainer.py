@@ -408,13 +408,11 @@ class LLaVATrainer(Trainer):
         # Determine current stage
         if current_step <= self.repa_state['stage_1_steps']:
             self.repa_state['current_stage'] = 1
-            self._handle_stage_1_logic(current_step)
         else:
             # Transition to Stage 2 once
             if not self.repa_state['stage_1_complete']:
                 self._transition_to_stage_2(current_step)
             self.repa_state['current_stage'] = 2
-            self._handle_stage_2_logic(current_step)
         # Update LR each step according to stage
         self._update_two_stage_lr(current_step)
 
@@ -673,23 +671,3 @@ class LLaVATrainer(Trainer):
             pass
         else:
             super(LLaVATrainer, self)._save(output_dir, state_dict)
-
-    def _handle_stage_2_logic(self, current_step):
-        """Handle Stage 2: train with alpha cosine decay from 1.0 to 0.0"""
-        # Calculate alpha based on cosine decay
-        stage_1_steps = self.repa_state['stage_1_steps']
-        total_steps = self.repa_state['total_training_steps']
-        stage_2_total = max(1, total_steps - stage_1_steps)
-        progress = min(1.0, max(0.0, (current_step - stage_1_steps) / (0.9 * stage_2_total))) # 90% of Stage 2
-        
-        # Cosine decay from 1.0 to 0.0
-        new_alpha = 0.5 * (1.0 + math.cos(math.pi * progress))
-        new_alpha = round(new_alpha, 4)
-        
-        # Update alpha if changed significantly
-        if abs(new_alpha - self.repa_state['current_alpha']) >= 0.0001:
-            self.repa_state['current_alpha'] = new_alpha
-            if hasattr(self.model, 'adjust_alpha_all_layers'):
-                self.model.adjust_alpha_all_layers(new_alpha)
-                if current_step % 100 == 0:  # Log every 100 steps
-                    print(f"Step {current_step}: Updated alpha to {new_alpha:.4f} (progress: {progress:.1%})")
